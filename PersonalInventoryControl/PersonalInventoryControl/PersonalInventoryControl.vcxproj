@@ -1,168 +1,146 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <ItemGroup Label="ProjectConfigurations">
-    <ProjectConfiguration Include="Debug|Win32">
-      <Configuration>Debug</Configuration>
-      <Platform>Win32</Platform>
-    </ProjectConfiguration>
-    <ProjectConfiguration Include="Release|Win32">
-      <Configuration>Release</Configuration>
-      <Platform>Win32</Platform>
-    </ProjectConfiguration>
-  </ItemGroup>
-  <PropertyGroup Label="Globals">
-    <ProjectGuid>{63A2C8E2-F5EE-4C5E-A5AD-B849BF9CA405}</ProjectGuid>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <Keyword>ManagedCProj</Keyword>
-    <RootNamespace>PersonalInventoryControl</RootNamespace>
-  </PropertyGroup>
-  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
-    <UseDebugLibraries>true</UseDebugLibraries>
-    <CLRSupport>Pure</CLRSupport>
-    <CharacterSet>Unicode</CharacterSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
-    <UseDebugLibraries>false</UseDebugLibraries>
-    <CLRSupport>Pure</CLRSupport>
-    <CharacterSet>Unicode</CharacterSet>
-  </PropertyGroup>
-  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
-  <ImportGroup Label="ExtensionSettings">
-  </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-  </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-  </ImportGroup>
-  <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LinkIncremental>true</LinkIncremental>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <LinkIncremental>false</LinkIncremental>
-  </PropertyGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
-      <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <PrecompiledHeader>Use</PrecompiledHeader>
-    </ClCompile>
-    <Link>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>
-      </AdditionalDependencies>
-      <SubSystem>Windows</SubSystem>
-      <EntryPointSymbol>main</EntryPointSymbol>
-    </Link>
-  </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>WIN32;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <PrecompiledHeader>Use</PrecompiledHeader>
-    </ClCompile>
-    <Link>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>
-      </AdditionalDependencies>
-      <SubSystem>Windows</SubSystem>
-      <EntryPointSymbol>main</EntryPointSymbol>
-    </Link>
-  </ItemDefinitionGroup>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Reference Include="*Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-    <Reference Include="*System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-    <Reference Include="*System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-    <Reference Include="*System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-    <Reference Include="*System.Web.Services, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-    <Reference Include="*System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-    <Reference Include="*System.Xml, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-    <Reference Include="Microsoft.ReportViewer.Common" />
-    <Reference Include="Microsoft.ReportViewer.WinForms" />
-    <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Web.Services" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Core">
+      <UniqueIdentifier>{b765fe58-fbf7-432a-ae0e-71e7674441a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\control">
+      <UniqueIdentifier>{1dbd098e-babb-4711-a0e7-ad2c9d832ef4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\model">
+      <UniqueIdentifier>{a7828155-eeed-41d5-96b6-0ba7aae8e1f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\interface">
+      <UniqueIdentifier>{ffa1b9b0-2f5a-4f26-893b-8d0a3aa29d65}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.ico" />
     <None Include="ReadMe.txt" />
+    <None Include="app.ico">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
-	  <ClCompile Include="AboutForm.cpp" />
-    <ClCompile Include="AssemblyInfo.cpp" />
-    <ClCompile Include="cadAmigoForm.cpp" />
-    <ClCompile Include="cadMaterialForm.cpp" />
-    <ClCompile Include="EmprestimoForm.cpp" />
-    <ClCompile Include="Amigo.cpp" />
-    <ClCompile Include="Emprestimo.cpp" />
-    <ClCompile Include="Livro.cpp" />
-    <ClCompile Include="Material.cpp" />
-    <ClCompile Include="MidiaAudio.cpp" />
-    <ClCompile Include="MidiaDados.cpp" />
-    <ClCompile Include="MidiaFilme.cpp" />
-    <ClCompile Include="PersonalInventoryControl.cpp" />
+    <ClCompile Include="PersonalInventoryControl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AssemblyInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="stdafx.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Material.cpp">
+      <Filter>Core\model</Filter>
+    </ClCompile>
+    <ClCompile Include="Livro.cpp">
+      <Filter>Core\model</Filter>
+    </ClCompile>
+    <ClCompile Include="MidiaAudio.cpp">
+      <Filter>Core\model</Filter>
+    </ClCompile>
+    <ClCompile Include="MidiaFilme.cpp">
+      <Filter>Core\model</Filter>
+    </ClCompile>
+    <ClCompile Include="MidiaDados.cpp">
+      <Filter>Core\model</Filter>
+    </ClCompile>
+    <ClCompile Include="Amigo.cpp">
+      <Filter>Core\model</Filter>
+    </ClCompile>
+    <ClCompile Include="Emprestimo.cpp">
+      <Filter>Core\model</Filter>
+    </ClCompile>
+  <ClCompile Include="AboutForm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cadAmigoForm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cadMaterialForm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EmprestimoForm.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Amigo.h" />
-    <ClInclude Include="Emprestimo.h" />
-    <ClInclude Include="EnumTipoMidia.h" />
-    <ClInclude Include="Livro.h" />
-    <ClInclude Include="Material.h" />
-    <ClInclude Include="MidiaAudio.h" />
-    <ClInclude Include="MidiaDados.h" />
-    <ClInclude Include="MidiaFilme.h" />
-  	<ClInclude Include="AboutForm.h">
-      <FileType>CppForm</FileType>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+
+<ClInclude Include="AboutForm.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="cadAmigoForm.h">
-      <FileType>CppForm</FileType>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="cadMaterialForm.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
-    <ClInclude Include="EmprestimoForm.h">
-      <FileType>CppForm</FileType>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PrincipalForm.h">
-      <FileType>CppForm</FileType>
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h" />
-    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="EmprestimoForm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Material.h">
+      <Filter>Core\model</Filter>
+    </ClInclude>
+    <ClInclude Include="Livro.h">
+      <Filter>Core\model</Filter>
+    </ClInclude>
+    <ClInclude Include="MidiaAudio.h">
+      <Filter>Core\model</Filter>
+    </ClInclude>
+    <ClInclude Include="MidiaFilme.h">
+      <Filter>Core\model</Filter>
+    </ClInclude>
+    <ClInclude Include="EnumTipoMidia.h">
+      <Filter>Core\model</Filter>
+    </ClInclude>
+    <ClInclude Include="MidiaDados.h">
+      <Filter>Core\model</Filter>
+    </ClInclude>
+    <ClInclude Include="Amigo.h">
+      <Filter>Core\model</Filter>
+    </ClInclude>
+    <ClInclude Include="Emprestimo.h">
+      <Filter>Core\model</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="app.rc" />
+    <ResourceCompile Include="app.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-      <EmbeddedResource Include="AboutForm.resx">
-      <DependentUpon>AboutForm.h</DependentUpon>
+     <EmbeddedResource Include="AboutForm.resx">
+      <Filter>Resource Files</Filter>
     </EmbeddedResource>
     <EmbeddedResource Include="cadAmigoForm.resx">
-      <DependentUpon>cadAmigoForm.h</DependentUpon>
+      <Filter>Resource Files</Filter>
     </EmbeddedResource>
     <EmbeddedResource Include="cadMaterialForm.resx">
-      <DependentUpon>cadMaterialForm.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EmprestimoForm.resx">
-      <DependentUpon>EmprestimoForm.h</DependentUpon>
+      <Filter>Resource Files</Filter>
     </EmbeddedResource>
     <EmbeddedResource Include="PrincipalForm.resX">
-      <DependentUpon>PrincipalForm.h</DependentUpon>
-      <SubType>Designer</SubType>
+      <Filter>Resource Files</Filter>
     </EmbeddedResource>
   </ItemGroup>
-  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
-  <ImportGroup Label="ExtensionTargets">
-  </ImportGroup>
 </Project>

@@ -23,6 +23,8 @@ namespace PersonalInventoryControl {
 			//
 		}
 
+		void selecionaMidAudioTab(void);
+
 	protected:
 		/// <summary>
 		/// Clean up any resources being used.
@@ -187,36 +189,36 @@ private: System::Windows::Forms::Label^  label25;
 			this->label11 = (gcnew System::Windows::Forms::Label());
 			this->label10 = (gcnew System::Windows::Forms::Label());
 			this->tabPageMFilme = (gcnew System::Windows::Forms::TabPage());
+			this->btn_cad_mid_filme = (gcnew System::Windows::Forms::Button());
 			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
+			this->txtBox_Mfilme_diretor = (gcnew System::Windows::Forms::TextBox());
+			this->txtBox_Mfilme_produtor = (gcnew System::Windows::Forms::TextBox());
+			this->txtBox_Mfilme_atores = (gcnew System::Windows::Forms::TextBox());
+			this->txtBox_Mfilme_ano = (gcnew System::Windows::Forms::TextBox());
+			this->txtBox_Mfilme_genero = (gcnew System::Windows::Forms::TextBox());
+			this->txtBox_Mfilme_titulo = (gcnew System::Windows::Forms::TextBox());
+			this->comBox_MFilme_tipo_mid = (gcnew System::Windows::Forms::ComboBox());
+			this->label24 = (gcnew System::Windows::Forms::Label());
+			this->label23 = (gcnew System::Windows::Forms::Label());
+			this->label22 = (gcnew System::Windows::Forms::Label());
+			this->label21 = (gcnew System::Windows::Forms::Label());
+			this->label20 = (gcnew System::Windows::Forms::Label());
+			this->label19 = (gcnew System::Windows::Forms::Label());
+			this->label18 = (gcnew System::Windows::Forms::Label());
 			this->tabPageMDados = (gcnew System::Windows::Forms::TabPage());
+			this->btn_cad_mid_dados = (gcnew System::Windows::Forms::Button());
 			this->groupBox4 = (gcnew System::Windows::Forms::GroupBox());
+			this->comBox_Mdados_tipo_mid = (gcnew System::Windows::Forms::ComboBox());
+			this->txtBox_Mdados_descr = (gcnew System::Windows::Forms::TextBox());
+			this->txtBox_Mdados_ano = (gcnew System::Windows::Forms::TextBox());
+			this->txtBox_Mdados_titulo = (gcnew System::Windows::Forms::TextBox());
+			this->label28 = (gcnew System::Windows::Forms::Label());
+			this->label27 = (gcnew System::Windows::Forms::Label());
+			this->label26 = (gcnew System::Windows::Forms::Label());
+			this->label25 = (gcnew System::Windows::Forms::Label());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->label18 = (gcnew System::Windows::Forms::Label());
-			this->label19 = (gcnew System::Windows::Forms::Label());
-			this->label20 = (gcnew System::Windows::Forms::Label());
-			this->label21 = (gcnew System::Windows::Forms::Label());
-			this->label22 = (gcnew System::Windows::Forms::Label());
-			this->label23 = (gcnew System::Windows::Forms::Label());
-			this->label24 = (gcnew System::Windows::Forms::Label());
-			this->btn_cad_mid_filme = (gcnew System::Windows::Forms::Button());
-			this->comBox_MFilme_tipo_mid = (gcnew System::Windows::Forms::ComboBox());
-			this->txtBox_Mfilme_titulo = (gcnew System::Windows::Forms::TextBox());
-			this->txtBox_Mfilme_genero = (gcnew System::Windows::Forms::TextBox());
-			this->txtBox_Mfilme_ano = (gcnew System::Windows::Forms::TextBox());
-			this->txtBox_Mfilme_atores = (gcnew System::Windows::Forms::TextBox());
-			this->txtBox_Mfilme_produtor = (gcnew System::Windows::Forms::TextBox());
-			this->txtBox_Mfilme_diretor = (gcnew System::Windows::Forms::TextBox());
-			this->btn_cad_mid_dados = (gcnew System::Windows::Forms::Button());
-			this->label25 = (gcnew System::Windows::Forms::Label());
-			this->label26 = (gcnew System::Windows::Forms::Label());
-			this->label27 = (gcnew System::Windows::Forms::Label());
-			this->label28 = (gcnew System::Windows::Forms::Label());
-			this->txtBox_Mdados_titulo = (gcnew System::Windows::Forms::TextBox());
-			this->txtBox_Mdados_ano = (gcnew System::Windows::Forms::TextBox());
-			this->txtBox_Mdados_descr = (gcnew System::Windows::Forms::TextBox());
-			this->comBox_Mdados_tipo_mid = (gcnew System::Windows::Forms::ComboBox());
 			this->tabMaterial->SuspendLayout();
 			this->tabPageLivro->SuspendLayout();
 			this->groupBox1->SuspendLayout();
@@ -586,6 +588,15 @@ private: System::Windows::Forms::Label^  label25;
 			this->tabPageMFilme->TabIndex = 2;
 			this->tabPageMFilme->Text = L"Mídia de Filme";
 			// 
+			// btn_cad_mid_filme
+			// 
+			this->btn_cad_mid_filme->Location = System::Drawing::Point(406, 215);
+			this->btn_cad_mid_filme->Name = L"btn_cad_mid_filme";
+			this->btn_cad_mid_filme->Size = System::Drawing::Size(75, 23);
+			this->btn_cad_mid_filme->TabIndex = 1;
+			this->btn_cad_mid_filme->Text = L"Cadastrar";
+			this->btn_cad_mid_filme->UseVisualStyleBackColor = true;
+			// 
 			// groupBox3
 			// 
 			this->groupBox3->Controls->Add(this->txtBox_Mfilme_diretor);
@@ -609,6 +620,120 @@ private: System::Windows::Forms::Label^  label25;
 			this->groupBox3->TabStop = false;
 			this->groupBox3->Text = L"Dados Mídia Filme";
 			// 
+			// txtBox_Mfilme_diretor
+			// 
+			this->txtBox_Mfilme_diretor->Location = System::Drawing::Point(66, 160);
+			this->txtBox_Mfilme_diretor->Name = L"txtBox_Mfilme_diretor";
+			this->txtBox_Mfilme_diretor->Size = System::Drawing::Size(196, 20);
+			this->txtBox_Mfilme_diretor->TabIndex = 13;
+			// 
+			// txtBox_Mfilme_produtor
+			// 
+			this->txtBox_Mfilme_produtor->Location = System::Drawing::Point(66, 133);
+			this->txtBox_Mfilme_produtor->Name = L"txtBox_Mfilme_produtor";
+			this->txtBox_Mfilme_produtor->Size = System::Drawing::Size(196, 20);
+			this->txtBox_Mfilme_produtor->TabIndex = 12;
+			// 
+			// txtBox_Mfilme_atores
+			// 
+			this->txtBox_Mfilme_atores->Location = System::Drawing::Point(66, 106);
+			this->txtBox_Mfilme_atores->Name = L"txtBox_Mfilme_atores";
+			this->txtBox_Mfilme_atores->Size = System::Drawing::Size(196, 20);
+			this->txtBox_Mfilme_atores->TabIndex = 11;
+			// 
+			// txtBox_Mfilme_ano
+			// 
+			this->txtBox_Mfilme_ano->Location = System::Drawing::Point(66, 81);
+			this->txtBox_Mfilme_ano->Name = L"txtBox_Mfilme_ano";
+			this->txtBox_Mfilme_ano->Size = System::Drawing::Size(51, 20);
+			this->txtBox_Mfilme_ano->TabIndex = 10;
+			// 
+			// txtBox_Mfilme_genero
+			// 
+			this->txtBox_Mfilme_genero->Location = System::Drawing::Point(66, 54);
+			this->txtBox_Mfilme_genero->Name = L"txtBox_Mfilme_genero";
+			this->txtBox_Mfilme_genero->Size = System::Drawing::Size(196, 20);
+			this->txtBox_Mfilme_genero->TabIndex = 9;
+			// 
+			// txtBox_Mfilme_titulo
+			// 
+			this->txtBox_Mfilme_titulo->Location = System::Drawing::Point(66, 27);
+			this->txtBox_Mfilme_titulo->Name = L"txtBox_Mfilme_titulo";
+			this->txtBox_Mfilme_titulo->Size = System::Drawing::Size(196, 20);
+			this->txtBox_Mfilme_titulo->TabIndex = 8;
+			// 
+			// comBox_MFilme_tipo_mid
+			// 
+			this->comBox_MFilme_tipo_mid->FormattingEnabled = true;
+			this->comBox_MFilme_tipo_mid->Items->AddRange(gcnew cli::array< System::Object^  >(2) {L"DVD", L"Blu-Ray"});
+			this->comBox_MFilme_tipo_mid->Location = System::Drawing::Point(345, 27);
+			this->comBox_MFilme_tipo_mid->Name = L"comBox_MFilme_tipo_mid";
+			this->comBox_MFilme_tipo_mid->Size = System::Drawing::Size(72, 21);
+			this->comBox_MFilme_tipo_mid->TabIndex = 7;
+			// 
+			// label24
+			// 
+			this->label24->AutoSize = true;
+			this->label24->Location = System::Drawing::Point(266, 30);
+			this->label24->Name = L"label24";
+			this->label24->Size = System::Drawing::Size(73, 13);
+			this->label24->TabIndex = 6;
+			this->label24->Text = L"Tipo de Mídia";
+			// 
+			// label23
+			// 
+			this->label23->AutoSize = true;
+			this->label23->Location = System::Drawing::Point(21, 163);
+			this->label23->Name = L"label23";
+			this->label23->Size = System::Drawing::Size(38, 13);
+			this->label23->TabIndex = 5;
+			this->label23->Text = L"Diretor";
+			// 
+			// label22
+			// 
+			this->label22->AutoSize = true;
+			this->label22->Location = System::Drawing::Point(12, 136);
+			this->label22->Name = L"label22";
+			this->label22->Size = System::Drawing::Size(47, 13);
+			this->label22->TabIndex = 4;
+			this->label22->Text = L"Produtor";
+			// 
+			// label21
+			// 
+			this->label21->AutoSize = true;
+			this->label21->Location = System::Drawing::Point(22, 109);
+			this->label21->Name = L"label21";
+			this->label21->Size = System::Drawing::Size(37, 13);
+			this->label21->TabIndex = 3;
+			this->label21->Text = L"Atores";
+			// 
+			// label20
+			// 
+			this->label20->AutoSize = true;
+			this->label20->Location = System::Drawing::Point(33, 84);
+			this->label20->Name = L"label20";
+			this->label20->Size = System::Drawing::Size(26, 13);
+			this->label20->TabIndex = 2;
+			this->label20->Text = L"Ano";
+			// 
+			// label19
+			// 
+			this->label19->AutoSize = true;
+			this->label19->Location = System::Drawing::Point(17, 57);
+			this->label19->Name = L"label19";
+			this->label19->Size = System::Drawing::Size(42, 13);
+			this->label19->TabIndex = 1;
+			this->label19->Text = L"Gênero";
+			// 
+			// label18
+			// 
+			this->label18->AutoSize = true;
+			this->label18->Location = System::Drawing::Point(24, 30);
+			this->label18->Name = L"label18";
+			this->label18->Size = System::Drawing::Size(35, 13);
+			this->label18->TabIndex = 0;
+			this->label18->Text = L"Título";
+			// 
 			// tabPageMDados
 			// 
 			this->tabPageMDados->BackColor = System::Drawing::SystemColors::Control;
@@ -620,6 +745,15 @@ private: System::Windows::Forms::Label^  label25;
 			this->tabPageMDados->Size = System::Drawing::Size(487, 246);
 			this->tabPageMDados->TabIndex = 3;
 			this->tabPageMDados->Text = L"Mídia de Dados";
+			// 
+			// btn_cad_mid_dados
+			// 
+			this->btn_cad_mid_dados->Location = System::Drawing::Point(406, 215);
+			this->btn_cad_mid_dados->Name = L"btn_cad_mid_dados";
+			this->btn_cad_mid_dados->Size = System::Drawing::Size(75, 23);
+			this->btn_cad_mid_dados->TabIndex = 1;
+			this->btn_cad_mid_dados->Text = L"Cadastrar";
+			this->btn_cad_mid_dados->UseVisualStyleBackColor = true;
 			// 
 			// groupBox4
 			// 
@@ -637,6 +771,73 @@ private: System::Windows::Forms::Label^  label25;
 			this->groupBox4->TabIndex = 0;
 			this->groupBox4->TabStop = false;
 			this->groupBox4->Text = L"Dados Mídia Dados";
+			// 
+			// comBox_Mdados_tipo_mid
+			// 
+			this->comBox_Mdados_tipo_mid->FormattingEnabled = true;
+			this->comBox_Mdados_tipo_mid->Items->AddRange(gcnew cli::array< System::Object^  >(3) {L"CD", L"DVD", L"Blu-Ray"});
+			this->comBox_Mdados_tipo_mid->Location = System::Drawing::Point(345, 27);
+			this->comBox_Mdados_tipo_mid->Name = L"comBox_Mdados_tipo_mid";
+			this->comBox_Mdados_tipo_mid->Size = System::Drawing::Size(72, 21);
+			this->comBox_Mdados_tipo_mid->TabIndex = 7;
+			// 
+			// txtBox_Mdados_descr
+			// 
+			this->txtBox_Mdados_descr->Location = System::Drawing::Point(66, 87);
+			this->txtBox_Mdados_descr->Multiline = true;
+			this->txtBox_Mdados_descr->Name = L"txtBox_Mdados_descr";
+			this->txtBox_Mdados_descr->Size = System::Drawing::Size(352, 64);
+			this->txtBox_Mdados_descr->TabIndex = 6;
+			// 
+			// txtBox_Mdados_ano
+			// 
+			this->txtBox_Mdados_ano->Location = System::Drawing::Point(66, 54);
+			this->txtBox_Mdados_ano->Name = L"txtBox_Mdados_ano";
+			this->txtBox_Mdados_ano->Size = System::Drawing::Size(51, 20);
+			this->txtBox_Mdados_ano->TabIndex = 5;
+			// 
+			// txtBox_Mdados_titulo
+			// 
+			this->txtBox_Mdados_titulo->Location = System::Drawing::Point(66, 27);
+			this->txtBox_Mdados_titulo->Name = L"txtBox_Mdados_titulo";
+			this->txtBox_Mdados_titulo->Size = System::Drawing::Size(196, 20);
+			this->txtBox_Mdados_titulo->TabIndex = 4;
+			// 
+			// label28
+			// 
+			this->label28->AutoSize = true;
+			this->label28->Location = System::Drawing::Point(266, 30);
+			this->label28->Name = L"label28";
+			this->label28->Size = System::Drawing::Size(73, 13);
+			this->label28->TabIndex = 3;
+			this->label28->Text = L"Tipo de Mídia";
+			// 
+			// label27
+			// 
+			this->label27->AutoSize = true;
+			this->label27->Location = System::Drawing::Point(6, 90);
+			this->label27->Name = L"label27";
+			this->label27->Size = System::Drawing::Size(55, 13);
+			this->label27->TabIndex = 2;
+			this->label27->Text = L"Descrição";
+			// 
+			// label26
+			// 
+			this->label26->AutoSize = true;
+			this->label26->Location = System::Drawing::Point(33, 57);
+			this->label26->Name = L"label26";
+			this->label26->Size = System::Drawing::Size(26, 13);
+			this->label26->TabIndex = 1;
+			this->label26->Text = L"Ano";
+			// 
+			// label25
+			// 
+			this->label25->AutoSize = true;
+			this->label25->Location = System::Drawing::Point(24, 30);
+			this->label25->Name = L"label25";
+			this->label25->Size = System::Drawing::Size(35, 13);
+			this->label25->TabIndex = 0;
+			this->label25->Text = L"Título";
 			// 
 			// panel1
 			// 
@@ -670,205 +871,6 @@ private: System::Windows::Forms::Label^  label25;
 			this->label2->TabIndex = 2;
 			this->label2->Text = L"Selecione abaixo a categoria do material";
 			// 
-			// label18
-			// 
-			this->label18->AutoSize = true;
-			this->label18->Location = System::Drawing::Point(24, 30);
-			this->label18->Name = L"label18";
-			this->label18->Size = System::Drawing::Size(35, 13);
-			this->label18->TabIndex = 0;
-			this->label18->Text = L"Título";
-			// 
-			// label19
-			// 
-			this->label19->AutoSize = true;
-			this->label19->Location = System::Drawing::Point(17, 57);
-			this->label19->Name = L"label19";
-			this->label19->Size = System::Drawing::Size(42, 13);
-			this->label19->TabIndex = 1;
-			this->label19->Text = L"Gênero";
-			// 
-			// label20
-			// 
-			this->label20->AutoSize = true;
-			this->label20->Location = System::Drawing::Point(33, 84);
-			this->label20->Name = L"label20";
-			this->label20->Size = System::Drawing::Size(26, 13);
-			this->label20->TabIndex = 2;
-			this->label20->Text = L"Ano";
-			// 
-			// label21
-			// 
-			this->label21->AutoSize = true;
-			this->label21->Location = System::Drawing::Point(22, 109);
-			this->label21->Name = L"label21";
-			this->label21->Size = System::Drawing::Size(37, 13);
-			this->label21->TabIndex = 3;
-			this->label21->Text = L"Atores";
-			// 
-			// label22
-			// 
-			this->label22->AutoSize = true;
-			this->label22->Location = System::Drawing::Point(12, 136);
-			this->label22->Name = L"label22";
-			this->label22->Size = System::Drawing::Size(47, 13);
-			this->label22->TabIndex = 4;
-			this->label22->Text = L"Produtor";
-			// 
-			// label23
-			// 
-			this->label23->AutoSize = true;
-			this->label23->Location = System::Drawing::Point(21, 163);
-			this->label23->Name = L"label23";
-			this->label23->Size = System::Drawing::Size(38, 13);
-			this->label23->TabIndex = 5;
-			this->label23->Text = L"Diretor";
-			// 
-			// label24
-			// 
-			this->label24->AutoSize = true;
-			this->label24->Location = System::Drawing::Point(266, 30);
-			this->label24->Name = L"label24";
-			this->label24->Size = System::Drawing::Size(73, 13);
-			this->label24->TabIndex = 6;
-			this->label24->Text = L"Tipo de Mídia";
-			// 
-			// btn_cad_mid_filme
-			// 
-			this->btn_cad_mid_filme->Location = System::Drawing::Point(406, 215);
-			this->btn_cad_mid_filme->Name = L"btn_cad_mid_filme";
-			this->btn_cad_mid_filme->Size = System::Drawing::Size(75, 23);
-			this->btn_cad_mid_filme->TabIndex = 1;
-			this->btn_cad_mid_filme->Text = L"Cadastrar";
-			this->btn_cad_mid_filme->UseVisualStyleBackColor = true;
-			// 
-			// comBox_MFilme_tipo_mid
-			// 
-			this->comBox_MFilme_tipo_mid->FormattingEnabled = true;
-			this->comBox_MFilme_tipo_mid->Items->AddRange(gcnew cli::array< System::Object^  >(2) {L"DVD", L"Blu-Ray"});
-			this->comBox_MFilme_tipo_mid->Location = System::Drawing::Point(345, 27);
-			this->comBox_MFilme_tipo_mid->Name = L"comBox_MFilme_tipo_mid";
-			this->comBox_MFilme_tipo_mid->Size = System::Drawing::Size(72, 21);
-			this->comBox_MFilme_tipo_mid->TabIndex = 7;
-			// 
-			// txtBox_Mfilme_titulo
-			// 
-			this->txtBox_Mfilme_titulo->Location = System::Drawing::Point(66, 27);
-			this->txtBox_Mfilme_titulo->Name = L"txtBox_Mfilme_titulo";
-			this->txtBox_Mfilme_titulo->Size = System::Drawing::Size(196, 20);
-			this->txtBox_Mfilme_titulo->TabIndex = 8;
-			// 
-			// txtBox_Mfilme_genero
-			// 
-			this->txtBox_Mfilme_genero->Location = System::Drawing::Point(66, 54);
-			this->txtBox_Mfilme_genero->Name = L"txtBox_Mfilme_genero";
-			this->txtBox_Mfilme_genero->Size = System::Drawing::Size(196, 20);
-			this->txtBox_Mfilme_genero->TabIndex = 9;
-			// 
-			// txtBox_Mfilme_ano
-			// 
-			this->txtBox_Mfilme_ano->Location = System::Drawing::Point(66, 81);
-			this->txtBox_Mfilme_ano->Name = L"txtBox_Mfilme_ano";
-			this->txtBox_Mfilme_ano->Size = System::Drawing::Size(51, 20);
-			this->txtBox_Mfilme_ano->TabIndex = 10;
-			// 
-			// txtBox_Mfilme_atores
-			// 
-			this->txtBox_Mfilme_atores->Location = System::Drawing::Point(66, 106);
-			this->txtBox_Mfilme_atores->Name = L"txtBox_Mfilme_atores";
-			this->txtBox_Mfilme_atores->Size = System::Drawing::Size(196, 20);
-			this->txtBox_Mfilme_atores->TabIndex = 11;
-			// 
-			// txtBox_Mfilme_produtor
-			// 
-			this->txtBox_Mfilme_produtor->Location = System::Drawing::Point(66, 133);
-			this->txtBox_Mfilme_produtor->Name = L"txtBox_Mfilme_produtor";
-			this->txtBox_Mfilme_produtor->Size = System::Drawing::Size(196, 20);
-			this->txtBox_Mfilme_produtor->TabIndex = 12;
-			// 
-			// txtBox_Mfilme_diretor
-			// 
-			this->txtBox_Mfilme_diretor->Location = System::Drawing::Point(66, 160);
-			this->txtBox_Mfilme_diretor->Name = L"txtBox_Mfilme_diretor";
-			this->txtBox_Mfilme_diretor->Size = System::Drawing::Size(196, 20);
-			this->txtBox_Mfilme_diretor->TabIndex = 13;
-			// 
-			// btn_cad_mid_dados
-			// 
-			this->btn_cad_mid_dados->Location = System::Drawing::Point(406, 215);
-			this->btn_cad_mid_dados->Name = L"btn_cad_mid_dados";
-			this->btn_cad_mid_dados->Size = System::Drawing::Size(75, 23);
-			this->btn_cad_mid_dados->TabIndex = 1;
-			this->btn_cad_mid_dados->Text = L"Cadastrar";
-			this->btn_cad_mid_dados->UseVisualStyleBackColor = true;
-			// 
-			// label25
-			// 
-			this->label25->AutoSize = true;
-			this->label25->Location = System::Drawing::Point(24, 30);
-			this->label25->Name = L"label25";
-			this->label25->Size = System::Drawing::Size(35, 13);
-			this->label25->TabIndex = 0;
-			this->label25->Text = L"Título";
-			// 
-			// label26
-			// 
-			this->label26->AutoSize = true;
-			this->label26->Location = System::Drawing::Point(33, 57);
-			this->label26->Name = L"label26";
-			this->label26->Size = System::Drawing::Size(26, 13);
-			this->label26->TabIndex = 1;
-			this->label26->Text = L"Ano";
-			// 
-			// label27
-			// 
-			this->label27->AutoSize = true;
-			this->label27->Location = System::Drawing::Point(6, 90);
-			this->label27->Name = L"label27";
-			this->label27->Size = System::Drawing::Size(55, 13);
-			this->label27->TabIndex = 2;
-			this->label27->Text = L"Descrição";
-			// 
-			// label28
-			// 
-			this->label28->AutoSize = true;
-			this->label28->Location = System::Drawing::Point(266, 30);
-			this->label28->Name = L"label28";
-			this->label28->Size = System::Drawing::Size(73, 13);
-			this->label28->TabIndex = 3;
-			this->label28->Text = L"Tipo de Mídia";
-			// 
-			// txtBox_Mdados_titulo
-			// 
-			this->txtBox_Mdados_titulo->Location = System::Drawing::Point(66, 27);
-			this->txtBox_Mdados_titulo->Name = L"txtBox_Mdados_titulo";
-			this->txtBox_Mdados_titulo->Size = System::Drawing::Size(196, 20);
-			this->txtBox_Mdados_titulo->TabIndex = 4;
-			// 
-			// txtBox_Mdados_ano
-			// 
-			this->txtBox_Mdados_ano->Location = System::Drawing::Point(66, 54);
-			this->txtBox_Mdados_ano->Name = L"txtBox_Mdados_ano";
-			this->txtBox_Mdados_ano->Size = System::Drawing::Size(51, 20);
-			this->txtBox_Mdados_ano->TabIndex = 5;
-			// 
-			// txtBox_Mdados_descr
-			// 
-			this->txtBox_Mdados_descr->Location = System::Drawing::Point(66, 87);
-			this->txtBox_Mdados_descr->Multiline = true;
-			this->txtBox_Mdados_descr->Name = L"txtBox_Mdados_descr";
-			this->txtBox_Mdados_descr->Size = System::Drawing::Size(352, 64);
-			this->txtBox_Mdados_descr->TabIndex = 6;
-			// 
-			// comBox_Mdados_tipo_mid
-			// 
-			this->comBox_Mdados_tipo_mid->FormattingEnabled = true;
-			this->comBox_Mdados_tipo_mid->Items->AddRange(gcnew cli::array< System::Object^  >(3) {L"CD", L"DVD", L"Blu-Ray"});
-			this->comBox_Mdados_tipo_mid->Location = System::Drawing::Point(345, 27);
-			this->comBox_Mdados_tipo_mid->Name = L"comBox_Mdados_tipo_mid";
-			this->comBox_Mdados_tipo_mid->Size = System::Drawing::Size(72, 21);
-			this->comBox_Mdados_tipo_mid->TabIndex = 7;
-			// 
 			// cadMaterialForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -879,6 +881,7 @@ private: System::Windows::Forms::Label^  label25;
 			this->Controls->Add(this->tabMaterial);
 			this->MaximizeBox = false;
 			this->Name = L"cadMaterialForm";
+			this->Text = L"Cadastro de material";
 			this->tabMaterial->ResumeLayout(false);
 			this->tabPageLivro->ResumeLayout(false);
 			this->groupBox1->ResumeLayout(false);
