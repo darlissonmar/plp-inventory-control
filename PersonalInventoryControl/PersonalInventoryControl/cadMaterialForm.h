@@ -881,6 +881,7 @@ private: System::Windows::Forms::Label^  label25;
 			this->Controls->Add(this->tabMaterial);
 			this->MaximizeBox = false;
 			this->Name = L"cadMaterialForm";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Cadastro de material";
 			this->tabMaterial->ResumeLayout(false);
 			this->tabPageLivro->ResumeLayout(false);

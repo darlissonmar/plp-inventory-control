@@ -268,6 +268,7 @@ namespace PersonalInventoryControl {
 			this->MaximizeBox = false;
 			this->MinimizeBox = false;
 			this->Name = L"AboutForm";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Sobre Personal Inventory Control";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->pictureBox1))->EndInit();
 			this->groupBox1->ResumeLayout(false);

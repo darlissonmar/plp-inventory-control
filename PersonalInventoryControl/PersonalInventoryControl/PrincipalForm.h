@@ -98,10 +98,12 @@ namespace PersonalInventoryControl {
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(PrincipalForm::typeid));
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->cadastrosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->amigosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->materialToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->novoToolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->editarToolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->removerToolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->livroToolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->materiaisToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->midiaDeAudioToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->midiaDeToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -115,8 +117,6 @@ namespace PersonalInventoryControl {
 			this->toolStripSeparator1 = (gcnew System::Windows::Forms::ToolStripSeparator());
 			this->toolStripButton2 = (gcnew System::Windows::Forms::ToolStripButton());
 			this->toolStripSeparator2 = (gcnew System::Windows::Forms::ToolStripSeparator());
-			this->livroToolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->amigosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->toolStripEmprestimo = (gcnew System::Windows::Forms::ToolStripButton());
 			this->menuStrip1->SuspendLayout();
 			this->toolStrip1->SuspendLayout();
@@ -140,12 +140,18 @@ namespace PersonalInventoryControl {
 			this->cadastrosToolStripMenuItem->Size = System::Drawing::Size(71, 20);
 			this->cadastrosToolStripMenuItem->Text = L"&Cadastros";
 			// 
+			// amigosToolStripMenuItem
+			// 
+			this->amigosToolStripMenuItem->Name = L"amigosToolStripMenuItem";
+			this->amigosToolStripMenuItem->Size = System::Drawing::Size(117, 22);
+			this->amigosToolStripMenuItem->Text = L"Amigos";
+			// 
 			// materialToolStripMenuItem
 			// 
 			this->materialToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(4) {this->novoToolStripMenuItem1, 
 				this->editarToolStripMenuItem1, this->removerToolStripMenuItem1, this->livroToolStripMenuItem1});
 			this->materialToolStripMenuItem->Name = L"materialToolStripMenuItem";
-			this->materialToolStripMenuItem->Size = System::Drawing::Size(152, 22);
+			this->materialToolStripMenuItem->Size = System::Drawing::Size(117, 22);
 			this->materialToolStripMenuItem->Text = L"Material";
 			// 
 			// novoToolStripMenuItem1
@@ -166,6 +172,12 @@ namespace PersonalInventoryControl {
 			this->removerToolStripMenuItem1->Name = L"removerToolStripMenuItem1";
 			this->removerToolStripMenuItem1->Size = System::Drawing::Size(156, 22);
 			this->removerToolStripMenuItem1->Text = L"Mídia de Filme";
+			// 
+			// livroToolStripMenuItem1
+			// 
+			this->livroToolStripMenuItem1->Name = L"livroToolStripMenuItem1";
+			this->livroToolStripMenuItem1->Size = System::Drawing::Size(156, 22);
+			this->livroToolStripMenuItem1->Text = L"Livro";
 			// 
 			// materiaisToolStripMenuItem
 			// 
@@ -235,9 +247,11 @@ namespace PersonalInventoryControl {
 			this->toolStripCadUser->AutoSize = false;
 			this->toolStripCadUser->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
 			this->toolStripCadUser->Image = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"toolStripCadUser.Image")));
+			this->toolStripCadUser->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			this->toolStripCadUser->ImageScaling = System::Windows::Forms::ToolStripItemImageScaling::None;
 			this->toolStripCadUser->ImageTransparentColor = System::Drawing::Color::Magenta;
 			this->toolStripCadUser->Name = L"toolStripCadUser";
-			this->toolStripCadUser->Size = System::Drawing::Size(48, 48);
+			this->toolStripCadUser->Size = System::Drawing::Size(50, 49);
 			this->toolStripCadUser->Text = L"Cadastrar Amigo";
 			this->toolStripCadUser->ToolTipText = L"Cadasto de  Amigo";
 			this->toolStripCadUser->Click += gcnew System::EventHandler(this, &PrincipalForm::toolStripBtnCadUser_Click);
@@ -252,9 +266,10 @@ namespace PersonalInventoryControl {
 			this->toolStripButton2->AutoSize = false;
 			this->toolStripButton2->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
 			this->toolStripButton2->Image = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"toolStripButton2.Image")));
+			this->toolStripButton2->ImageScaling = System::Windows::Forms::ToolStripItemImageScaling::None;
 			this->toolStripButton2->ImageTransparentColor = System::Drawing::Color::Magenta;
 			this->toolStripButton2->Name = L"toolStripButton2";
-			this->toolStripButton2->Size = System::Drawing::Size(48, 48);
+			this->toolStripButton2->Size = System::Drawing::Size(50, 49);
 			this->toolStripButton2->Text = L"toolStripButton2";
 			// 
 			// toolStripSeparator2
@@ -262,26 +277,15 @@ namespace PersonalInventoryControl {
 			this->toolStripSeparator2->Name = L"toolStripSeparator2";
 			this->toolStripSeparator2->Size = System::Drawing::Size(6, 68);
 			// 
-			// livroToolStripMenuItem1
-			// 
-			this->livroToolStripMenuItem1->Name = L"livroToolStripMenuItem1";
-			this->livroToolStripMenuItem1->Size = System::Drawing::Size(156, 22);
-			this->livroToolStripMenuItem1->Text = L"Livro";
-			// 
-			// amigosToolStripMenuItem
-			// 
-			this->amigosToolStripMenuItem->Name = L"amigosToolStripMenuItem";
-			this->amigosToolStripMenuItem->Size = System::Drawing::Size(152, 22);
-			this->amigosToolStripMenuItem->Text = L"Amigos";
-			// 
 			// toolStripEmprestimo
 			// 
 			this->toolStripEmprestimo->AutoSize = false;
 			this->toolStripEmprestimo->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
 			this->toolStripEmprestimo->Image = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"toolStripEmprestimo.Image")));
+			this->toolStripEmprestimo->ImageScaling = System::Windows::Forms::ToolStripItemImageScaling::None;
 			this->toolStripEmprestimo->ImageTransparentColor = System::Drawing::Color::Magenta;
 			this->toolStripEmprestimo->Name = L"toolStripEmprestimo";
-			this->toolStripEmprestimo->Size = System::Drawing::Size(48, 65);
+			this->toolStripEmprestimo->Size = System::Drawing::Size(54, 49);
 			this->toolStripEmprestimo->Text = L"Realizar empréstimo";
 			this->toolStripEmprestimo->Click += gcnew System::EventHandler(this, &PrincipalForm::toolStripEmprestimo_Click);
 			// 
@@ -293,7 +297,9 @@ namespace PersonalInventoryControl {
 			this->Controls->Add(this->toolStrip1);
 			this->Controls->Add(this->menuStrip1);
 			this->MainMenuStrip = this->menuStrip1;
+			this->MaximizeBox = false;
 			this->Name = L"PrincipalForm";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Personal Inventory Control v. 0.1";
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
