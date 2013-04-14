@@ -42,6 +42,27 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Material.cpp">
+      <Filter>Core\model</Filter>
+    </ClCompile>
+    <ClCompile Include="Livro.cpp">
+      <Filter>Core\model</Filter>
+    </ClCompile>
+    <ClCompile Include="MidiaAudio.cpp">
+      <Filter>Core\model</Filter>
+    </ClCompile>
+    <ClCompile Include="MidiaFilme.cpp">
+      <Filter>Core\model</Filter>
+    </ClCompile>
+    <ClCompile Include="MidiaDados.cpp">
+      <Filter>Core\model</Filter>
+    </ClCompile>
+    <ClCompile Include="Amigo.cpp">
+      <Filter>Core\model</Filter>
+    </ClCompile>
+    <ClCompile Include="Emprestimo.cpp">
+      <Filter>Core\model</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Form1.h">
@@ -53,10 +74,39 @@
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Material.h">
+      <Filter>Core\model</Filter>
+    </ClInclude>
+    <ClInclude Include="Livro.h">
+      <Filter>Core\model</Filter>
+    </ClInclude>
+    <ClInclude Include="MidiaAudio.h">
+      <Filter>Core\model</Filter>
+    </ClInclude>
+    <ClInclude Include="MidiaFilme.h">
+      <Filter>Core\model</Filter>
+    </ClInclude>
+    <ClInclude Include="EnumTipoMidia.h">
+      <Filter>Core\model</Filter>
+    </ClInclude>
+    <ClInclude Include="MidiaDados.h">
+      <Filter>Core\model</Filter>
+    </ClInclude>
+    <ClInclude Include="Amigo.h">
+      <Filter>Core\model</Filter>
+    </ClInclude>
+    <ClInclude Include="Emprestimo.h">
+      <Filter>Core\model</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="app.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Form1.resX">
+      <Filter>Resource Files</Filter>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

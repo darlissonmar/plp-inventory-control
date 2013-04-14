@@ -86,7 +86,14 @@
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Amigo.cpp" />
     <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="Emprestimo.cpp" />
+    <ClCompile Include="Livro.cpp" />
+    <ClCompile Include="Material.cpp" />
+    <ClCompile Include="MidiaAudio.cpp" />
+    <ClCompile Include="MidiaDados.cpp" />
+    <ClCompile Include="MidiaFilme.cpp" />
     <ClCompile Include="PersonalInventoryControl.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -94,9 +101,17 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Amigo.h" />
+    <ClInclude Include="Emprestimo.h" />
+    <ClInclude Include="EnumTipoMidia.h" />
     <ClInclude Include="Form1.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Livro.h" />
+    <ClInclude Include="Material.h" />
+    <ClInclude Include="MidiaAudio.h" />
+    <ClInclude Include="MidiaDados.h" />
+    <ClInclude Include="MidiaFilme.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
