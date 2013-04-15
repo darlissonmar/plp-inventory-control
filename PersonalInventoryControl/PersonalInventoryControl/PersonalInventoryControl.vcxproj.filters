@@ -25,6 +25,9 @@
     <Filter Include="Core\interface">
       <UniqueIdentifier>{ffa1b9b0-2f5a-4f26-893b-8d0a3aa29d65}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Core\db">
+      <UniqueIdentifier>{d4cd049d-2bda-4111-8dcd-1e2483492024}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -63,7 +66,7 @@
     <ClCompile Include="Emprestimo.cpp">
       <Filter>Core\model</Filter>
     </ClCompile>
-  <ClCompile Include="AboutForm.cpp">
+    <ClCompile Include="AboutForm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="cadAmigoForm.cpp">
@@ -75,6 +78,9 @@
     <ClCompile Include="EmprestimoForm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DataBase.cpp">
+      <Filter>Core\db</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -83,8 +89,7 @@
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-
-<ClInclude Include="AboutForm.h">
+    <ClInclude Include="AboutForm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="cadAmigoForm.h">
@@ -123,6 +128,9 @@
     <ClInclude Include="Emprestimo.h">
       <Filter>Core\model</Filter>
     </ClInclude>
+    <ClInclude Include="DataBase.h">
+      <Filter>Core\db</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="app.rc">
@@ -130,7 +138,7 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-     <EmbeddedResource Include="AboutForm.resx">
+    <EmbeddedResource Include="AboutForm.resx">
       <Filter>Resource Files</Filter>
     </EmbeddedResource>
     <EmbeddedResource Include="cadAmigoForm.resx">
@@ -140,6 +148,9 @@
       <Filter>Resource Files</Filter>
     </EmbeddedResource>
     <EmbeddedResource Include="PrincipalForm.resX">
+      <Filter>Resource Files</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmprestimoForm.resx">
       <Filter>Resource Files</Filter>
     </EmbeddedResource>
   </ItemGroup>

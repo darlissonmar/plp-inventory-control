@@ -96,10 +96,11 @@
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-	  <ClCompile Include="AboutForm.cpp" />
+    <ClCompile Include="AboutForm.cpp" />
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="cadAmigoForm.cpp" />
     <ClCompile Include="cadMaterialForm.cpp" />
+    <ClCompile Include="DataBase.cpp" />
     <ClCompile Include="EmprestimoForm.cpp" />
     <ClCompile Include="Amigo.cpp" />
     <ClCompile Include="Emprestimo.cpp" />
@@ -116,6 +117,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Amigo.h" />
+    <ClInclude Include="DataBase.h" />
     <ClInclude Include="Emprestimo.h" />
     <ClInclude Include="EnumTipoMidia.h" />
     <ClInclude Include="Livro.h" />
@@ -123,7 +125,7 @@
     <ClInclude Include="MidiaAudio.h" />
     <ClInclude Include="MidiaDados.h" />
     <ClInclude Include="MidiaFilme.h" />
-  	<ClInclude Include="AboutForm.h">
+    <ClInclude Include="AboutForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="cadAmigoForm.h">
@@ -145,7 +147,7 @@
     <ResourceCompile Include="app.rc" />
   </ItemGroup>
   <ItemGroup>
-      <EmbeddedResource Include="AboutForm.resx">
+    <EmbeddedResource Include="AboutForm.resx">
       <DependentUpon>AboutForm.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="cadAmigoForm.resx">

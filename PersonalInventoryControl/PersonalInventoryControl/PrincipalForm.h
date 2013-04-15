@@ -1,7 +1,5 @@
 #pragma once
-#include "AboutForm.h"
-#include "cadMaterialForm.h"
-#include "EmprestimoForm.h"
+#include "stdafx.h"
 
 namespace PersonalInventoryControl {
 
@@ -322,6 +320,8 @@ private: System::Void novoToolStripMenuItem1_Click(System::Object^  sender, Syst
 			 cadMat->Show();
 		 }
 private: System::Void toolStripBtnCadUser_Click(System::Object^  sender, System::EventArgs^  e) {
+			 cadAmigoForm ^amigo_form = gcnew cadAmigoForm();
+			 amigo_form->Show();
 		 }
 private: System::Void toolStripEmprestimo_Click(System::Object^  sender, System::EventArgs^  e) {
 			 EmprestimoForm ^emp = gcnew EmprestimoForm();

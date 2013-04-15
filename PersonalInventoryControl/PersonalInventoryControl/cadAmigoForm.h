@@ -21,6 +21,12 @@ namespace PersonalInventoryControl {
 			//
 			//TODO: Add the constructor code here
 			//
+			DataBase *database = new DataBase();
+			database->inicializar();
+			int amigo_id = 1;
+			// convertendo <string> to System::String
+			this->txtBox_cad_user_nome->Text = gcnew String(database->buscar_amigo(amigo_id).getNome().c_str());
+
 		}
 
 	protected:
@@ -35,13 +41,19 @@ namespace PersonalInventoryControl {
 			}
 		}
 	private: System::Windows::Forms::GroupBox^  groupBox1;
+	private: System::Windows::Forms::ComboBox^  comBox_cad_user_gen;
+	private: System::Windows::Forms::TextBox^  txtBox_cad_user_end;
 	protected: 
-	private: System::Windows::Forms::ComboBox^  comboBox1;
-	private: System::Windows::Forms::TextBox^  textBox5;
-	private: System::Windows::Forms::TextBox^  textBox4;
-	private: System::Windows::Forms::TextBox^  textBox3;
-	private: System::Windows::Forms::TextBox^  textBox2;
-	private: System::Windows::Forms::TextBox^  textBox1;
+
+
+	private: System::Windows::Forms::TextBox^  txtBox_cad_user_telef;
+
+	private: System::Windows::Forms::TextBox^  txtBox_cad_user_email;
+
+	private: System::Windows::Forms::TextBox^  txtBox_cad_user_sobnome;
+
+	private: System::Windows::Forms::TextBox^  txtBox_cad_user_nome;
+
 	private: System::Windows::Forms::Label^  label7;
 	private: System::Windows::Forms::Label^  label6;
 	private: System::Windows::Forms::Label^  label5;
@@ -66,12 +78,12 @@ namespace PersonalInventoryControl {
 		void InitializeComponent(void)
 		{
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
-			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
-			this->textBox5 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox4 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->comBox_cad_user_gen = (gcnew System::Windows::Forms::ComboBox());
+			this->txtBox_cad_user_end = (gcnew System::Windows::Forms::TextBox());
+			this->txtBox_cad_user_telef = (gcnew System::Windows::Forms::TextBox());
+			this->txtBox_cad_user_email = (gcnew System::Windows::Forms::TextBox());
+			this->txtBox_cad_user_sobnome = (gcnew System::Windows::Forms::TextBox());
+			this->txtBox_cad_user_nome = (gcnew System::Windows::Forms::TextBox());
 			this->label7 = (gcnew System::Windows::Forms::Label());
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->label5 = (gcnew System::Windows::Forms::Label());
@@ -87,12 +99,12 @@ namespace PersonalInventoryControl {
 			// 
 			// groupBox1
 			// 
-			this->groupBox1->Controls->Add(this->comboBox1);
-			this->groupBox1->Controls->Add(this->textBox5);
-			this->groupBox1->Controls->Add(this->textBox4);
-			this->groupBox1->Controls->Add(this->textBox3);
-			this->groupBox1->Controls->Add(this->textBox2);
-			this->groupBox1->Controls->Add(this->textBox1);
+			this->groupBox1->Controls->Add(this->comBox_cad_user_gen);
+			this->groupBox1->Controls->Add(this->txtBox_cad_user_end);
+			this->groupBox1->Controls->Add(this->txtBox_cad_user_telef);
+			this->groupBox1->Controls->Add(this->txtBox_cad_user_email);
+			this->groupBox1->Controls->Add(this->txtBox_cad_user_sobnome);
+			this->groupBox1->Controls->Add(this->txtBox_cad_user_nome);
 			this->groupBox1->Controls->Add(this->label7);
 			this->groupBox1->Controls->Add(this->label6);
 			this->groupBox1->Controls->Add(this->label5);
@@ -106,49 +118,49 @@ namespace PersonalInventoryControl {
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Dados Pessoais";
 			// 
-			// comboBox1
+			// comBox_cad_user_gen
 			// 
-			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(2) {L"Masculino", L"Feminino"});
-			this->comboBox1->Location = System::Drawing::Point(76, 107);
-			this->comboBox1->Name = L"comboBox1";
-			this->comboBox1->Size = System::Drawing::Size(151, 21);
-			this->comboBox1->TabIndex = 11;
+			this->comBox_cad_user_gen->FormattingEnabled = true;
+			this->comBox_cad_user_gen->Items->AddRange(gcnew cli::array< System::Object^  >(2) {L"Masculino", L"Feminino"});
+			this->comBox_cad_user_gen->Location = System::Drawing::Point(76, 107);
+			this->comBox_cad_user_gen->Name = L"comBox_cad_user_gen";
+			this->comBox_cad_user_gen->Size = System::Drawing::Size(151, 21);
+			this->comBox_cad_user_gen->TabIndex = 11;
 			// 
-			// textBox5
+			// txtBox_cad_user_end
 			// 
-			this->textBox5->Location = System::Drawing::Point(76, 161);
-			this->textBox5->Name = L"textBox5";
-			this->textBox5->Size = System::Drawing::Size(219, 20);
-			this->textBox5->TabIndex = 10;
+			this->txtBox_cad_user_end->Location = System::Drawing::Point(76, 161);
+			this->txtBox_cad_user_end->Name = L"txtBox_cad_user_end";
+			this->txtBox_cad_user_end->Size = System::Drawing::Size(219, 20);
+			this->txtBox_cad_user_end->TabIndex = 10;
 			// 
-			// textBox4
+			// txtBox_cad_user_telef
 			// 
-			this->textBox4->Location = System::Drawing::Point(76, 134);
-			this->textBox4->Name = L"textBox4";
-			this->textBox4->Size = System::Drawing::Size(151, 20);
-			this->textBox4->TabIndex = 9;
+			this->txtBox_cad_user_telef->Location = System::Drawing::Point(76, 134);
+			this->txtBox_cad_user_telef->Name = L"txtBox_cad_user_telef";
+			this->txtBox_cad_user_telef->Size = System::Drawing::Size(151, 20);
+			this->txtBox_cad_user_telef->TabIndex = 9;
 			// 
-			// textBox3
+			// txtBox_cad_user_email
 			// 
-			this->textBox3->Location = System::Drawing::Point(75, 80);
-			this->textBox3->Name = L"textBox3";
-			this->textBox3->Size = System::Drawing::Size(152, 20);
-			this->textBox3->TabIndex = 8;
+			this->txtBox_cad_user_email->Location = System::Drawing::Point(75, 80);
+			this->txtBox_cad_user_email->Name = L"txtBox_cad_user_email";
+			this->txtBox_cad_user_email->Size = System::Drawing::Size(152, 20);
+			this->txtBox_cad_user_email->TabIndex = 8;
 			// 
-			// textBox2
+			// txtBox_cad_user_sobnome
 			// 
-			this->textBox2->Location = System::Drawing::Point(75, 53);
-			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(152, 20);
-			this->textBox2->TabIndex = 7;
+			this->txtBox_cad_user_sobnome->Location = System::Drawing::Point(75, 53);
+			this->txtBox_cad_user_sobnome->Name = L"txtBox_cad_user_sobnome";
+			this->txtBox_cad_user_sobnome->Size = System::Drawing::Size(152, 20);
+			this->txtBox_cad_user_sobnome->TabIndex = 7;
 			// 
-			// textBox1
+			// txtBox_cad_user_nome
 			// 
-			this->textBox1->Location = System::Drawing::Point(75, 26);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(152, 20);
-			this->textBox1->TabIndex = 6;
+			this->txtBox_cad_user_nome->Location = System::Drawing::Point(75, 26);
+			this->txtBox_cad_user_nome->Name = L"txtBox_cad_user_nome";
+			this->txtBox_cad_user_nome->Size = System::Drawing::Size(152, 20);
+			this->txtBox_cad_user_nome->TabIndex = 6;
 			// 
 			// label7
 			// 

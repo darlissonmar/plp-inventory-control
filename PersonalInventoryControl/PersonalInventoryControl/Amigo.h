@@ -9,6 +9,7 @@ class Amigo
 {
 
 public:
+	Amigo(int id, string nome, string sobrenome,string email,string telefone,string genero,string endereco);
 	Amigo();
 	~Amigo();
 

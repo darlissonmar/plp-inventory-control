@@ -1,5 +1,16 @@
 #include "stdafx.h"
 
+Amigo::Amigo(int id, string nome, string sobrenome,string email,string telefone,string genero,string endereco)
+{
+	this->id = id;
+	this->nome = nome;
+	this->sobrenome = sobrenome;
+	this->email = email;
+	this->telefone = telefone;
+	this->genero = genero;
+	this->endereco = endereco;
+}
+
 Amigo::Amigo()
 {
 }
