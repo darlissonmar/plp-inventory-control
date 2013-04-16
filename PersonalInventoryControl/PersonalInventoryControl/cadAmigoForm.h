@@ -21,11 +21,15 @@ namespace PersonalInventoryControl {
 			//
 			//TODO: Add the constructor code here
 			//
-			DataBase *database = new DataBase();
+			DataBase *database = DataBase::getInstance();
+			ControllerAmigo* controller = new ControllerAmigo();
 			database->inicializar();
-			int amigo_id = 1;
+			string amigoNome = "Joao";
 			// convertendo <string> to System::String
-			this->txtBox_cad_user_nome->Text = gcnew String(database->buscar_amigo(amigo_id).getNome().c_str());
+
+			//TODO Quando o amigo nao exite na DataBase o valor de retorno é NULL causando uma excecao caso
+			//se tente capturar o nome
+			this->txtBox_cad_user_nome->Text = gcnew String(controller->buscar(amigoNome)->getNome().c_str());
 
 		}
 

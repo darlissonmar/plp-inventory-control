@@ -89,12 +89,11 @@
     </ClCompile>
     <ClCompile Include="gerenciarAmigosForm.cpp">
       <Filter>Source Files</Filter>
+    <ClCompile Include="ControllerAmigo.cpp">
+      <Filter>Core\control</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="stdafx.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -148,6 +147,14 @@
     </ClInclude>
     <ClInclude Include="gerenciarEmprestimosForm.h">
       <Filter>Header Files</Filter>
+    <ClInclude Include="ICrud.h">
+      <Filter>Core\control</Filter>
+    </ClInclude>
+    <ClInclude Include="ControllerAmigo.h">
+      <Filter>Core\control</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

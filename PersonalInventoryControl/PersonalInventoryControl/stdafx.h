@@ -12,6 +12,8 @@
 #include "MidiaFilme.h"
 #include "Emprestimo.h"
 #include "DataBase.h"
+#include "ICrud.h"
+#include "ControllerAmigo.h"
 
 #include "AboutForm.h"
 #include "cadMaterialForm.h"

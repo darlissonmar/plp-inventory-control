@@ -1,50 +1,65 @@
 #include "StdAfx.h"
 
+DataBase* DataBase::dataBaseInstance=0;
+
+DataBase* DataBase::getInstance()
+{
+	if(!dataBaseInstance)
+		dataBaseInstance = new DataBase();
+	return dataBaseInstance;
+}
+
 DataBase::DataBase(void)
 {
-	this->amigos = new hash_map<int, Amigo>;
-	this->emprestimos = new hash_map<int, Emprestimo>;
-	this->midias_audio = new hash_map<int, MidiaAudio>;
-	this->midias_filme = new hash_map<int, MidiaFilme>;
-	this->midias_dados = new hash_map<int, MidiaDados>;
+	this->amigos = new hash_map<int, Amigo *>;
+	this->emprestimos = new hash_map<int, Emprestimo *>;
+	this->midias_audio = new hash_map<int, MidiaAudio *>;
+	this->midias_filme = new hash_map<int, MidiaFilme *>;
+	this->midias_dados = new hash_map<int, MidiaDados *>;
+
+	this->amigo_db_indice=1;
+	this->material_db_indice=1;
+	this->emprestimo_db_indice=1;
+
+	inicializar();
 	
 }
 
 DataBase::~DataBase( void )
 {
+	delete(amigos);
+	delete(emprestimos);
+	delete(midias_dados);
+	delete(midias_audio);
+	delete(midias_filme);
+}
 
+void DataBase::insertAmigo(Amigo* amigo){
+	if(amigo){
+		amigo->setId(amigo_db_indice++);
+		this->amigos->insert(ParAmigo(amigo->getId(), amigo));
+	}else{
+		throw new exception;
+	}
 }
 
 void DataBase::inicializar( void )
 {
-	Amigo *amigo1 = new Amigo(1,"Joao", "dos Santos", "joao@jmail.com","2123-1234","Rua das mangueiras", "Masculino");
-	Amigo *amigo2 = new Amigo(2,"Pedro", "da Silva", "pedro@jmail.com","2123-4321","Rua das Laranjeiras", "Masculino");
-
-
-
-	typedef pair <const int, Amigo> par_amigo;
-
-	try
-	{
-		this->amigos->insert(par_amigo(amigo1->getId(),*amigo1));
-		this->amigos->insert(par_amigo(amigo2->getId(),*amigo2));
-	}
-	catch (exception e)
-	{
-		System::Console::WriteLine("Aconteceu um erro!!");
-	}
-}
-	//FIXME: Metodo do controller amigo
-Amigo DataBase::buscar_amigo( int amigo_id )
-{	
-	Amigo *amigo_retorno = new Amigo();
+	Amigo *amigo1 = new Amigo(amigo_db_indice++,"Joao", "dos Santos", "joao@jmail.com","2123-1234","Rua das mangueiras", "Masculino");
+	Amigo *amigo2 = new Amigo(amigo_db_indice++,"Pedro", "da Silva", "pedro@jmail.com","2123-4321","Rua das Laranjeiras", "Masculino");
 	
 	try
 	{
-		*amigo_retorno = this->amigos->at(amigo_id);
+		this->amigos->insert(ParAmigo(amigo1->getId(),amigo1));
+		this->amigos->insert(ParAmigo(amigo2->getId(),amigo2));
 	}
-		catch (exception e)
+	catch (exception e)
 	{
+		System::Console::WriteLine((wchar_t)e.what());
+		System::Console::WriteLine("ERROR: DataBase::inicializar()");
 	}
-		return *amigo_retorno;
+}
+
+hash_map<int, Amigo *> * DataBase::getAmigos(){
+	return this->amigos;
 }
