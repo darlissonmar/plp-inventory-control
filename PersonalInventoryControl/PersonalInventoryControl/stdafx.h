@@ -19,7 +19,9 @@
 #include "cadMaterialForm.h"
 #include "EmprestimoForm.h"
 #include "cadAmigoForm.h" 
-
+#include "gerenciarAmigosForm.h"
+#include "gerenciarEmprestimosForm.h"
+#include "gerenciarMateriaisForm.h"
 
 
 // TODO: reference additional headers your program requires here

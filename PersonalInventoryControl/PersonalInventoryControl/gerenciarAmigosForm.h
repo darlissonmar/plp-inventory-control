@@ -1,5 +1,7 @@
 #pragma once
 
+#include "stdafx.h"
+
 namespace PersonalInventoryControl {
 
 	using namespace System;
@@ -38,7 +40,8 @@ namespace PersonalInventoryControl {
 	private: System::Windows::Forms::Label^  label1;
 	private: System::Windows::Forms::Button^  button1;
 	private: System::Windows::Forms::Button^  button2;
-	private: System::Windows::Forms::Button^  button3;
+	private: System::Windows::Forms::Button^  ger_amigo_btn_cadastrar;
+
 	private: System::Windows::Forms::DataGridView^  dataGridView1;
 	private: System::Windows::Forms::Button^  button4;
 	private: System::Windows::Forms::Label^  label2;
@@ -62,7 +65,7 @@ namespace PersonalInventoryControl {
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
-			this->button3 = (gcnew System::Windows::Forms::Button());
+			this->ger_amigo_btn_cadastrar = (gcnew System::Windows::Forms::Button());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->label2 = (gcnew System::Windows::Forms::Label());
@@ -96,7 +99,7 @@ namespace PersonalInventoryControl {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(6, 51);
+			this->button1->Location = System::Drawing::Point(8, 51);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(75, 23);
 			this->button1->TabIndex = 1;
@@ -112,14 +115,15 @@ namespace PersonalInventoryControl {
 			this->button2->Text = L"Alterar";
 			this->button2->UseVisualStyleBackColor = true;
 			// 
-			// button3
+			// ger_amigo_btn_cadastrar
 			// 
-			this->button3->Location = System::Drawing::Point(190, 51);
-			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(75, 23);
-			this->button3->TabIndex = 3;
-			this->button3->Text = L"Cadastrar";
-			this->button3->UseVisualStyleBackColor = true;
+			this->ger_amigo_btn_cadastrar->Location = System::Drawing::Point(190, 51);
+			this->ger_amigo_btn_cadastrar->Name = L"ger_amigo_btn_cadastrar";
+			this->ger_amigo_btn_cadastrar->Size = System::Drawing::Size(75, 23);
+			this->ger_amigo_btn_cadastrar->TabIndex = 3;
+			this->ger_amigo_btn_cadastrar->Text = L"Cadastrar";
+			this->ger_amigo_btn_cadastrar->UseVisualStyleBackColor = true;
+			this->ger_amigo_btn_cadastrar->Click += gcnew System::EventHandler(this, &gerenciarAmigosForm::ger_amigo_btn_cadastrar_Click);
 			// 
 			// dataGridView1
 			// 
@@ -166,13 +170,14 @@ namespace PersonalInventoryControl {
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->button4);
 			this->Controls->Add(this->dataGridView1);
-			this->Controls->Add(this->button3);
+			this->Controls->Add(this->ger_amigo_btn_cadastrar);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->panel1);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
 			this->MaximizeBox = false;
 			this->Name = L"gerenciarAmigosForm";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Gerenciamento de amigos";
 			this->panel1->ResumeLayout(false);
 			this->panel1->PerformLayout();
@@ -182,5 +187,10 @@ namespace PersonalInventoryControl {
 
 		}
 #pragma endregion
-	};
+
+private: System::Void ger_amigo_btn_cadastrar_Click(System::Object^  sender, System::EventArgs^  e) {
+			 cadAmigoForm ^amigo_form = gcnew cadAmigoForm();
+			 amigo_form->Show();
+		 }
+};
 }

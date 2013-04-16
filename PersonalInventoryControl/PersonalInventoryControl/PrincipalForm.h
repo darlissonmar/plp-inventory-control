@@ -35,48 +35,30 @@ namespace PersonalInventoryControl {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::MenuStrip^  menuStrip1;
+	private: System::Windows::Forms::MenuStrip^  menu_principal;
+	protected: 
+
 	protected: 
 
 
 
 	private: System::Windows::Forms::ToolStripMenuItem^  ajudaToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  sobreToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^  cadastrosToolStripMenuItem;
-
-
-
-
+	private: System::Windows::Forms::ToolStripMenuItem^  menu_prin_cadastros;
 	private: System::Windows::Forms::ToolStripMenuItem^  materialToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^  novoToolStripMenuItem1;
-	private: System::Windows::Forms::ToolStripMenuItem^  editarToolStripMenuItem1;
-	private: System::Windows::Forms::ToolStripMenuItem^  removerToolStripMenuItem1;
+	private: System::Windows::Forms::ToolStripMenuItem^  menu_p_cad_mat_mid_audio;
+	private: System::Windows::Forms::ToolStripMenuItem^  menu_p_cad_mat_mid_dados;
+	private: System::Windows::Forms::ToolStripMenuItem^  menu_p_cad_mat_mid_filme;
 	private: System::Windows::Forms::ToolStrip^  toolStrip1;
-	private: System::Windows::Forms::ToolStripButton^  toolStripCadUser;
-
-
+	private: System::Windows::Forms::ToolStripButton^  toolStrip_btn_cad_amigo;
 	private: System::Windows::Forms::ToolStripSeparator^  toolStripSeparator1;
-	private: System::Windows::Forms::ToolStripButton^  toolStripButton2;
-
+	private: System::Windows::Forms::ToolStripButton^  toolStrip_btn_cad_material;
 	private: System::Windows::Forms::ToolStripSeparator^  toolStripSeparator2;
-
-
-
-
-
-
-
-
-
-	private: System::Windows::Forms::ToolStripMenuItem^  relatóriosToolStripMenuItem;
-
+	private: System::Windows::Forms::ToolStripMenuItem^  relatoriosToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  amigosToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^  livroToolStripMenuItem1;
-	private: System::Windows::Forms::ToolStripButton^  toolStripEmprestimo;
+	private: System::Windows::Forms::ToolStripMenuItem^  menu_p_cad_mat_livro;
+	private: System::Windows::Forms::ToolStripButton^  toolStrip_btn_novo_emprestimo;
 	private: System::Windows::Forms::ToolStripSeparator^  toolStripSeparator3;
-
-
-
 	private: System::Windows::Forms::StatusStrip^  statusStrip1;
 	private: System::Windows::Forms::ToolStripStatusLabel^  toolStripStatusLabel1;
 	private: System::Windows::Forms::Timer^  timer1;
@@ -84,18 +66,11 @@ namespace PersonalInventoryControl {
 	private: System::Windows::Forms::ToolStripMenuItem^  amigosMaisPontuaisToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  itemMaisEmprestadoToolStripMenuItem;
 	private: System::Windows::Forms::Panel^  panel1;
-	private: System::Windows::Forms::ToolStripMenuItem^  empréstimosToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^  emprestimosToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  realizarNovoToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  devoluçãoToolStripMenuItem;
 
 	private: System::ComponentModel::IContainer^  components;
-
-
-
-
-
-
-
 
 	private:
 		/// <summary>
@@ -112,23 +87,26 @@ namespace PersonalInventoryControl {
 		{
 			this->components = (gcnew System::ComponentModel::Container());
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(PrincipalForm::typeid));
-			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
-			this->cadastrosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->menu_principal = (gcnew System::Windows::Forms::MenuStrip());
+			this->menu_prin_cadastros = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->amigosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->materialToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->novoToolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->editarToolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->removerToolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->livroToolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->relatóriosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->menu_p_cad_mat_mid_audio = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->menu_p_cad_mat_mid_dados = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->menu_p_cad_mat_mid_filme = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->menu_p_cad_mat_livro = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->relatoriosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->ajudaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->sobreToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->emprestimosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->realizarNovoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->devoluçãoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->toolStrip1 = (gcnew System::Windows::Forms::ToolStrip());
-			this->toolStripCadUser = (gcnew System::Windows::Forms::ToolStripButton());
+			this->toolStrip_btn_cad_amigo = (gcnew System::Windows::Forms::ToolStripButton());
 			this->toolStripSeparator1 = (gcnew System::Windows::Forms::ToolStripSeparator());
-			this->toolStripButton2 = (gcnew System::Windows::Forms::ToolStripButton());
+			this->toolStrip_btn_cad_material = (gcnew System::Windows::Forms::ToolStripButton());
 			this->toolStripSeparator2 = (gcnew System::Windows::Forms::ToolStripSeparator());
-			this->toolStripEmprestimo = (gcnew System::Windows::Forms::ToolStripButton());
+			this->toolStrip_btn_novo_emprestimo = (gcnew System::Windows::Forms::ToolStripButton());
 			this->toolStripSeparator3 = (gcnew System::Windows::Forms::ToolStripSeparator());
 			this->toolStripDropDownButton1 = (gcnew System::Windows::Forms::ToolStripDropDownButton());
 			this->amigosMaisPontuaisToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -137,31 +115,28 @@ namespace PersonalInventoryControl {
 			this->toolStripStatusLabel1 = (gcnew System::Windows::Forms::ToolStripStatusLabel());
 			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
-			this->empréstimosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->realizarNovoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->devoluçãoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->menuStrip1->SuspendLayout();
+			this->menu_principal->SuspendLayout();
 			this->toolStrip1->SuspendLayout();
 			this->statusStrip1->SuspendLayout();
 			this->SuspendLayout();
 			// 
-			// menuStrip1
+			// menu_principal
 			// 
-			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(4) {this->cadastrosToolStripMenuItem, 
-				this->relatóriosToolStripMenuItem, this->ajudaToolStripMenuItem, this->empréstimosToolStripMenuItem});
-			this->menuStrip1->Location = System::Drawing::Point(0, 0);
-			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(808, 24);
-			this->menuStrip1->TabIndex = 1;
-			this->menuStrip1->Text = L"menuStrip1";
+			this->menu_principal->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(4) {this->menu_prin_cadastros, 
+				this->relatoriosToolStripMenuItem, this->ajudaToolStripMenuItem, this->emprestimosToolStripMenuItem});
+			this->menu_principal->Location = System::Drawing::Point(0, 0);
+			this->menu_principal->Name = L"menu_principal";
+			this->menu_principal->Size = System::Drawing::Size(808, 24);
+			this->menu_principal->TabIndex = 1;
+			this->menu_principal->Text = L"menu_principal";
 			// 
-			// cadastrosToolStripMenuItem
+			// menu_prin_cadastros
 			// 
-			this->cadastrosToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {this->amigosToolStripMenuItem, 
+			this->menu_prin_cadastros->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {this->amigosToolStripMenuItem, 
 				this->materialToolStripMenuItem});
-			this->cadastrosToolStripMenuItem->Name = L"cadastrosToolStripMenuItem";
-			this->cadastrosToolStripMenuItem->Size = System::Drawing::Size(71, 20);
-			this->cadastrosToolStripMenuItem->Text = L"&Cadastros";
+			this->menu_prin_cadastros->Name = L"menu_prin_cadastros";
+			this->menu_prin_cadastros->Size = System::Drawing::Size(71, 20);
+			this->menu_prin_cadastros->Text = L"&Cadastros";
 			// 
 			// amigosToolStripMenuItem
 			// 
@@ -171,42 +146,45 @@ namespace PersonalInventoryControl {
 			// 
 			// materialToolStripMenuItem
 			// 
-			this->materialToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(4) {this->novoToolStripMenuItem1, 
-				this->editarToolStripMenuItem1, this->removerToolStripMenuItem1, this->livroToolStripMenuItem1});
+			this->materialToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(4) {this->menu_p_cad_mat_mid_audio, 
+				this->menu_p_cad_mat_mid_dados, this->menu_p_cad_mat_mid_filme, this->menu_p_cad_mat_livro});
 			this->materialToolStripMenuItem->Name = L"materialToolStripMenuItem";
 			this->materialToolStripMenuItem->Size = System::Drawing::Size(152, 22);
 			this->materialToolStripMenuItem->Text = L"Material";
 			// 
-			// novoToolStripMenuItem1
+			// menu_p_cad_mat_mid_audio
 			// 
-			this->novoToolStripMenuItem1->Name = L"novoToolStripMenuItem1";
-			this->novoToolStripMenuItem1->Size = System::Drawing::Size(156, 22);
-			this->novoToolStripMenuItem1->Text = L"Mídia de Audio";
-			this->novoToolStripMenuItem1->Click += gcnew System::EventHandler(this, &PrincipalForm::novoToolStripMenuItem1_Click);
+			this->menu_p_cad_mat_mid_audio->Name = L"menu_p_cad_mat_mid_audio";
+			this->menu_p_cad_mat_mid_audio->Size = System::Drawing::Size(156, 22);
+			this->menu_p_cad_mat_mid_audio->Text = L"Mídia de Audio";
+			this->menu_p_cad_mat_mid_audio->Click += gcnew System::EventHandler(this, &PrincipalForm::menu_p_cad_mat_mid_audio_Click);
 			// 
-			// editarToolStripMenuItem1
+			// menu_p_cad_mat_mid_dados
 			// 
-			this->editarToolStripMenuItem1->Name = L"editarToolStripMenuItem1";
-			this->editarToolStripMenuItem1->Size = System::Drawing::Size(156, 22);
-			this->editarToolStripMenuItem1->Text = L"Mídia de Dados";
+			this->menu_p_cad_mat_mid_dados->Name = L"menu_p_cad_mat_mid_dados";
+			this->menu_p_cad_mat_mid_dados->Size = System::Drawing::Size(156, 22);
+			this->menu_p_cad_mat_mid_dados->Text = L"Mídia de Dados";
+			this->menu_p_cad_mat_mid_dados->Click += gcnew System::EventHandler(this, &PrincipalForm::menu_p_cad_mat_mid_dados_Click);
 			// 
-			// removerToolStripMenuItem1
+			// menu_p_cad_mat_mid_filme
 			// 
-			this->removerToolStripMenuItem1->Name = L"removerToolStripMenuItem1";
-			this->removerToolStripMenuItem1->Size = System::Drawing::Size(156, 22);
-			this->removerToolStripMenuItem1->Text = L"Mídia de Filme";
+			this->menu_p_cad_mat_mid_filme->Name = L"menu_p_cad_mat_mid_filme";
+			this->menu_p_cad_mat_mid_filme->Size = System::Drawing::Size(156, 22);
+			this->menu_p_cad_mat_mid_filme->Text = L"Mídia de Filme";
+			this->menu_p_cad_mat_mid_filme->Click += gcnew System::EventHandler(this, &PrincipalForm::menu_p_cad_mat_mid_filme_Click);
 			// 
-			// livroToolStripMenuItem1
+			// menu_p_cad_mat_livro
 			// 
-			this->livroToolStripMenuItem1->Name = L"livroToolStripMenuItem1";
-			this->livroToolStripMenuItem1->Size = System::Drawing::Size(156, 22);
-			this->livroToolStripMenuItem1->Text = L"Livro";
+			this->menu_p_cad_mat_livro->Name = L"menu_p_cad_mat_livro";
+			this->menu_p_cad_mat_livro->Size = System::Drawing::Size(156, 22);
+			this->menu_p_cad_mat_livro->Text = L"Livro";
+			this->menu_p_cad_mat_livro->Click += gcnew System::EventHandler(this, &PrincipalForm::menu_p_cad_mat_livro_Click);
 			// 
-			// relatóriosToolStripMenuItem
+			// relatoriosToolStripMenuItem
 			// 
-			this->relatóriosToolStripMenuItem->Name = L"relatóriosToolStripMenuItem";
-			this->relatóriosToolStripMenuItem->Size = System::Drawing::Size(71, 20);
-			this->relatóriosToolStripMenuItem->Text = L"Relatórios";
+			this->relatoriosToolStripMenuItem->Name = L"relatoriosToolStripMenuItem";
+			this->relatoriosToolStripMenuItem->Size = System::Drawing::Size(71, 20);
+			this->relatoriosToolStripMenuItem->Text = L"Relatórios";
 			// 
 			// ajudaToolStripMenuItem
 			// 
@@ -222,74 +200,95 @@ namespace PersonalInventoryControl {
 			this->sobreToolStripMenuItem->Text = L"Sobre o programa";
 			this->sobreToolStripMenuItem->Click += gcnew System::EventHandler(this, &PrincipalForm::sobreToolStripMenuItem_Click);
 			// 
+			// emprestimosToolStripMenuItem
+			// 
+			this->emprestimosToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {this->realizarNovoToolStripMenuItem, 
+				this->devoluçãoToolStripMenuItem});
+			this->emprestimosToolStripMenuItem->Name = L"emprestimosToolStripMenuItem";
+			this->emprestimosToolStripMenuItem->Size = System::Drawing::Size(88, 20);
+			this->emprestimosToolStripMenuItem->Text = L"Empréstimos";
+			// 
+			// realizarNovoToolStripMenuItem
+			// 
+			this->realizarNovoToolStripMenuItem->Name = L"realizarNovoToolStripMenuItem";
+			this->realizarNovoToolStripMenuItem->Size = System::Drawing::Size(144, 22);
+			this->realizarNovoToolStripMenuItem->Text = L"Realizar novo";
+			// 
+			// devoluçãoToolStripMenuItem
+			// 
+			this->devoluçãoToolStripMenuItem->Name = L"devoluçãoToolStripMenuItem";
+			this->devoluçãoToolStripMenuItem->Size = System::Drawing::Size(144, 22);
+			this->devoluçãoToolStripMenuItem->Text = L"Devolução";
+			// 
 			// toolStrip1
 			// 
 			this->toolStrip1->AutoSize = false;
 			this->toolStrip1->BackColor = System::Drawing::SystemColors::ControlLight;
-			this->toolStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(7) {this->toolStripCadUser, 
-				this->toolStripSeparator1, this->toolStripButton2, this->toolStripSeparator2, this->toolStripEmprestimo, this->toolStripSeparator3, 
-				this->toolStripDropDownButton1});
+			this->toolStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(7) {this->toolStrip_btn_cad_amigo, 
+				this->toolStripSeparator1, this->toolStrip_btn_cad_material, this->toolStripSeparator2, this->toolStrip_btn_novo_emprestimo, 
+				this->toolStripSeparator3, this->toolStripDropDownButton1});
 			this->toolStrip1->Location = System::Drawing::Point(0, 24);
 			this->toolStrip1->Name = L"toolStrip1";
 			this->toolStrip1->Size = System::Drawing::Size(808, 57);
 			this->toolStrip1->TabIndex = 2;
 			this->toolStrip1->Text = L"barraAcessoRapido";
 			// 
-			// toolStripCadUser
+			// toolStrip_btn_cad_amigo
 			// 
-			this->toolStripCadUser->AutoSize = false;
-			this->toolStripCadUser->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
-			this->toolStripCadUser->Image = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"toolStripCadUser.Image")));
-			this->toolStripCadUser->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->toolStripCadUser->ImageScaling = System::Windows::Forms::ToolStripItemImageScaling::None;
-			this->toolStripCadUser->ImageTransparentColor = System::Drawing::Color::Magenta;
-			this->toolStripCadUser->Name = L"toolStripCadUser";
-			this->toolStripCadUser->Size = System::Drawing::Size(50, 49);
-			this->toolStripCadUser->Text = L"Cadastrar Amigo";
-			this->toolStripCadUser->TextAlign = System::Drawing::ContentAlignment::TopRight;
-			this->toolStripCadUser->TextImageRelation = System::Windows::Forms::TextImageRelation::TextAboveImage;
-			this->toolStripCadUser->ToolTipText = L"Cadastrar Amigo";
-			this->toolStripCadUser->Click += gcnew System::EventHandler(this, &PrincipalForm::toolStripBtnCadUser_Click);
+			this->toolStrip_btn_cad_amigo->AutoSize = false;
+			this->toolStrip_btn_cad_amigo->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
+			this->toolStrip_btn_cad_amigo->Image = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"toolStrip_btn_cad_amigo.Image")));
+			this->toolStrip_btn_cad_amigo->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			this->toolStrip_btn_cad_amigo->ImageScaling = System::Windows::Forms::ToolStripItemImageScaling::None;
+			this->toolStrip_btn_cad_amigo->ImageTransparentColor = System::Drawing::Color::Magenta;
+			this->toolStrip_btn_cad_amigo->Name = L"toolStrip_btn_cad_amigo";
+			this->toolStrip_btn_cad_amigo->Size = System::Drawing::Size(50, 49);
+			this->toolStrip_btn_cad_amigo->Text = L"Cadastro de  Amigo";
+			this->toolStrip_btn_cad_amigo->TextAlign = System::Drawing::ContentAlignment::TopRight;
+			this->toolStrip_btn_cad_amigo->TextImageRelation = System::Windows::Forms::TextImageRelation::TextAboveImage;
+			this->toolStrip_btn_cad_amigo->ToolTipText = L"Cadastro de  Amigo";
+			this->toolStrip_btn_cad_amigo->Click += gcnew System::EventHandler(this, &PrincipalForm::toolStrip_btn_cad_amigo_Click);
 			// 
 			// toolStripSeparator1
 			// 
 			this->toolStripSeparator1->Name = L"toolStripSeparator1";
-			this->toolStripSeparator1->Size = System::Drawing::Size(6, 60);
+			this->toolStripSeparator1->Size = System::Drawing::Size(6, 57);
 			// 
-			// toolStripButton2
+			// toolStrip_btn_cad_material
 			// 
-			this->toolStripButton2->AutoSize = false;
-			this->toolStripButton2->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
-			this->toolStripButton2->Image = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"toolStripButton2.Image")));
-			this->toolStripButton2->ImageScaling = System::Windows::Forms::ToolStripItemImageScaling::None;
-			this->toolStripButton2->ImageTransparentColor = System::Drawing::Color::Magenta;
-			this->toolStripButton2->Name = L"toolStripButton2";
-			this->toolStripButton2->Size = System::Drawing::Size(50, 49);
-			this->toolStripButton2->Text = L"toolStripButton2";
-			this->toolStripButton2->ToolTipText = L"Cadastrar Material";
+			this->toolStrip_btn_cad_material->AutoSize = false;
+			this->toolStrip_btn_cad_material->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
+			this->toolStrip_btn_cad_material->Image = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"toolStrip_btn_cad_material.Image")));
+			this->toolStrip_btn_cad_material->ImageScaling = System::Windows::Forms::ToolStripItemImageScaling::None;
+			this->toolStrip_btn_cad_material->ImageTransparentColor = System::Drawing::Color::Magenta;
+			this->toolStrip_btn_cad_material->Name = L"toolStrip_btn_cad_material";
+			this->toolStrip_btn_cad_material->Size = System::Drawing::Size(50, 49);
+			this->toolStrip_btn_cad_material->Text = L"Cadastro de material";
+			this->toolStrip_btn_cad_material->ToolTipText = L"Cadastro de material";
+			this->toolStrip_btn_cad_material->Click += gcnew System::EventHandler(this, &PrincipalForm::toolStrip_btn_cad_material_Click);
 			// 
 			// toolStripSeparator2
 			// 
 			this->toolStripSeparator2->Name = L"toolStripSeparator2";
-			this->toolStripSeparator2->Size = System::Drawing::Size(6, 60);
+			this->toolStripSeparator2->Size = System::Drawing::Size(6, 57);
 			// 
-			// toolStripEmprestimo
+			// toolStrip_btn_novo_emprestimo
 			// 
-			this->toolStripEmprestimo->AutoSize = false;
-			this->toolStripEmprestimo->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
-			this->toolStripEmprestimo->Image = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"toolStripEmprestimo.Image")));
-			this->toolStripEmprestimo->ImageScaling = System::Windows::Forms::ToolStripItemImageScaling::None;
-			this->toolStripEmprestimo->ImageTransparentColor = System::Drawing::Color::Magenta;
-			this->toolStripEmprestimo->Name = L"toolStripEmprestimo";
-			this->toolStripEmprestimo->Size = System::Drawing::Size(54, 49);
-			this->toolStripEmprestimo->Text = L"Realizar empréstimo";
-			this->toolStripEmprestimo->ToolTipText = L"Realizar Empréstimo";
-			this->toolStripEmprestimo->Click += gcnew System::EventHandler(this, &PrincipalForm::toolStripEmprestimo_Click);
+			this->toolStrip_btn_novo_emprestimo->AutoSize = false;
+			this->toolStrip_btn_novo_emprestimo->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
+			this->toolStrip_btn_novo_emprestimo->Image = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"toolStrip_btn_novo_emprestimo.Image")));
+			this->toolStrip_btn_novo_emprestimo->ImageScaling = System::Windows::Forms::ToolStripItemImageScaling::None;
+			this->toolStrip_btn_novo_emprestimo->ImageTransparentColor = System::Drawing::Color::Magenta;
+			this->toolStrip_btn_novo_emprestimo->Name = L"toolStrip_btn_novo_emprestimo";
+			this->toolStrip_btn_novo_emprestimo->Size = System::Drawing::Size(54, 49);
+			this->toolStrip_btn_novo_emprestimo->Text = L"Novo Empréstimo";
+			this->toolStrip_btn_novo_emprestimo->ToolTipText = L"Novo Empréstimo";
+			this->toolStrip_btn_novo_emprestimo->Click += gcnew System::EventHandler(this, &PrincipalForm::toolStrip_btn_novo_emprestimo_Click);
 			// 
 			// toolStripSeparator3
 			// 
 			this->toolStripSeparator3->Name = L"toolStripSeparator3";
-			this->toolStripSeparator3->Size = System::Drawing::Size(6, 60);
+			this->toolStripSeparator3->Size = System::Drawing::Size(6, 57);
 			// 
 			// toolStripDropDownButton1
 			// 
@@ -346,26 +345,6 @@ namespace PersonalInventoryControl {
 			this->panel1->Size = System::Drawing::Size(808, 308);
 			this->panel1->TabIndex = 4;
 			// 
-			// empréstimosToolStripMenuItem
-			// 
-			this->empréstimosToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {this->realizarNovoToolStripMenuItem, 
-				this->devoluçãoToolStripMenuItem});
-			this->empréstimosToolStripMenuItem->Name = L"empréstimosToolStripMenuItem";
-			this->empréstimosToolStripMenuItem->Size = System::Drawing::Size(88, 20);
-			this->empréstimosToolStripMenuItem->Text = L"Empréstimos";
-			// 
-			// realizarNovoToolStripMenuItem
-			// 
-			this->realizarNovoToolStripMenuItem->Name = L"realizarNovoToolStripMenuItem";
-			this->realizarNovoToolStripMenuItem->Size = System::Drawing::Size(152, 22);
-			this->realizarNovoToolStripMenuItem->Text = L"Realizar novo";
-			// 
-			// devoluçãoToolStripMenuItem
-			// 
-			this->devoluçãoToolStripMenuItem->Name = L"devoluçãoToolStripMenuItem";
-			this->devoluçãoToolStripMenuItem->Size = System::Drawing::Size(152, 22);
-			this->devoluçãoToolStripMenuItem->Text = L"Devolução";
-			// 
 			// PrincipalForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -374,15 +353,15 @@ namespace PersonalInventoryControl {
 			this->Controls->Add(this->panel1);
 			this->Controls->Add(this->statusStrip1);
 			this->Controls->Add(this->toolStrip1);
-			this->Controls->Add(this->menuStrip1);
+			this->Controls->Add(this->menu_principal);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
-			this->MainMenuStrip = this->menuStrip1;
+			this->MainMenuStrip = this->menu_principal;
 			this->MaximizeBox = false;
 			this->Name = L"PrincipalForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Personal Inventory Control v. 0.1";
-			this->menuStrip1->ResumeLayout(false);
-			this->menuStrip1->PerformLayout();
+			this->menu_principal->ResumeLayout(false);
+			this->menu_principal->PerformLayout();
 			this->toolStrip1->ResumeLayout(false);
 			this->toolStrip1->PerformLayout();
 			this->statusStrip1->ResumeLayout(false);
@@ -391,25 +370,51 @@ namespace PersonalInventoryControl {
 			this->PerformLayout();
 
 		}
-
+	// Clicar no Ajuda->sobre
 	private: System::Void sobreToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 				 AboutForm ^about = gcnew AboutForm();
 				 about->Show();
 			 }
-private: System::Void splitContainer1_Panel1_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e) {
+	
+	// Clicar no cadastro de material barra de acesso rapido
+	private: System::Void toolStrip_btn_cad_material_Click(System::Object^  sender, System::EventArgs^  e) {
+			gerenciarMateriaisForm ^materiais_form = gcnew gerenciarMateriaisForm();
+			materiais_form->Show();
 		 }
-private: System::Void novoToolStripMenuItem1_Click(System::Object^  sender, System::EventArgs^  e) {
+	private: System::Void toolStrip_btn_novo_emprestimo_Click(System::Object^  sender, System::EventArgs^  e) {
+			 gerenciarEmprestimosForm ^emprestimos_form = gcnew gerenciarEmprestimosForm();
+			 emprestimos_form->Show();
+		 }
+
+	// Clicar cadastro de amigo na barra de acesso rapido
+	private: System::Void toolStrip_btn_cad_amigo_Click(System::Object^  sender, System::EventArgs^  e) {
+				 gerenciarAmigosForm ^amigo_form = gcnew gerenciarAmigosForm();
+				 amigo_form->Show();
+			 }
+
+	// Clicar munu->principal->cadastro->material: MIDIA AUDIO 
+	private: System::Void menu_p_cad_mat_mid_audio_Click(System::Object^  sender, System::EventArgs^  e) {
+				 cadMaterialForm ^cadMat = gcnew cadMaterialForm();
+				 cadMat->selecionaMidAudioTab();
+				 cadMat->Show();
+			 }
+	// Clicar munu->principal->cadastro->material: MIDIA DADOS
+	private: System::Void menu_p_cad_mat_mid_dados_Click(System::Object^  sender, System::EventArgs^  e) {
 			 cadMaterialForm ^cadMat = gcnew cadMaterialForm();
-			 cadMat->selecionaMidAudioTab();
+			 cadMat->selecionaMidDadosTab();
 			 cadMat->Show();
 		 }
-private: System::Void toolStripBtnCadUser_Click(System::Object^  sender, System::EventArgs^  e) {
-			 cadAmigoForm ^amigo_form = gcnew cadAmigoForm();
-			 amigo_form->Show();
+	// Clicar munu->principal->cadastro->material: MIDIA FILME
+	private: System::Void menu_p_cad_mat_mid_filme_Click(System::Object^  sender, System::EventArgs^  e) {
+			 cadMaterialForm ^cadMat = gcnew cadMaterialForm();
+			 cadMat->selecionaMidFilmeTab();
+			 cadMat->Show();
 		 }
-private: System::Void toolStripEmprestimo_Click(System::Object^  sender, System::EventArgs^  e) {
-			 EmprestimoForm ^emp = gcnew EmprestimoForm();
-			 emp->Show();
+	// Clicar munu->principal->cadastro->material: LIVRO
+	private: System::Void menu_p_cad_mat_livro_Click(System::Object^  sender, System::EventArgs^  e) {
+			 cadMaterialForm ^cadMat = gcnew cadMaterialForm();
+			 cadMat->selecionaLivroTab();
+			 cadMat->Show();
 		 }
 };
 }

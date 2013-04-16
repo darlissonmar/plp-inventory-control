@@ -24,6 +24,9 @@ namespace PersonalInventoryControl {
 		}
 
 		void selecionaMidAudioTab(void);
+		void selecionaMidDadosTab(void);
+		void selecionaMidFilmeTab(void);
+		void selecionaLivroTab(void);
 
 	protected:
 		/// <summary>
@@ -868,9 +871,9 @@ private: System::Windows::Forms::Label^  label25;
 				static_cast<System::Byte>(0)));
 			this->label2->Location = System::Drawing::Point(4, 65);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(198, 13);
+			this->label2->Size = System::Drawing::Size(10, 13);
 			this->label2->TabIndex = 2;
-			this->label2->Text = L"Selecione abaixo a categoria do material";
+			this->label2->Text = L" ";
 			// 
 			// cadMaterialForm
 			// 

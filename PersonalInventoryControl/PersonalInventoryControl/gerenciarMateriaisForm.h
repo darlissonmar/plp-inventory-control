@@ -96,7 +96,7 @@ namespace PersonalInventoryControl {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(6, 51);
+			this->button1->Location = System::Drawing::Point(8, 51);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(75, 23);
 			this->button1->TabIndex = 1;
@@ -173,6 +173,7 @@ namespace PersonalInventoryControl {
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
 			this->MaximizeBox = false;
 			this->Name = L"gerenciarMateriaisForm";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Gerenciamento de materiais";
 			this->panel1->ResumeLayout(false);
 			this->panel1->PerformLayout();
