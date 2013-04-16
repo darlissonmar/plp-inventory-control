@@ -258,11 +258,11 @@ private: System::Windows::Forms::Label^  label25;
 			// 
 			// btn_cad_livro
 			// 
-			this->btn_cad_livro->Location = System::Drawing::Point(406, 215);
+			this->btn_cad_livro->Location = System::Drawing::Point(372, 215);
 			this->btn_cad_livro->Name = L"btn_cad_livro";
-			this->btn_cad_livro->Size = System::Drawing::Size(75, 23);
+			this->btn_cad_livro->Size = System::Drawing::Size(109, 23);
 			this->btn_cad_livro->TabIndex = 2;
-			this->btn_cad_livro->Text = L"Cadastrar";
+			this->btn_cad_livro->Text = L"Efetuar operação";
 			this->btn_cad_livro->UseVisualStyleBackColor = true;
 			// 
 			// groupBox1
@@ -414,11 +414,11 @@ private: System::Windows::Forms::Label^  label25;
 			// 
 			// btn_cad_mid_audio
 			// 
-			this->btn_cad_mid_audio->Location = System::Drawing::Point(406, 215);
+			this->btn_cad_mid_audio->Location = System::Drawing::Point(372, 215);
 			this->btn_cad_mid_audio->Name = L"btn_cad_mid_audio";
-			this->btn_cad_mid_audio->Size = System::Drawing::Size(75, 23);
+			this->btn_cad_mid_audio->Size = System::Drawing::Size(109, 23);
 			this->btn_cad_mid_audio->TabIndex = 1;
-			this->btn_cad_mid_audio->Text = L"Cadastrar";
+			this->btn_cad_mid_audio->Text = L"Efetuar operação";
 			this->btn_cad_mid_audio->UseVisualStyleBackColor = true;
 			// 
 			// groupBox2
@@ -590,11 +590,11 @@ private: System::Windows::Forms::Label^  label25;
 			// 
 			// btn_cad_mid_filme
 			// 
-			this->btn_cad_mid_filme->Location = System::Drawing::Point(406, 215);
+			this->btn_cad_mid_filme->Location = System::Drawing::Point(372, 215);
 			this->btn_cad_mid_filme->Name = L"btn_cad_mid_filme";
-			this->btn_cad_mid_filme->Size = System::Drawing::Size(75, 23);
+			this->btn_cad_mid_filme->Size = System::Drawing::Size(109, 23);
 			this->btn_cad_mid_filme->TabIndex = 1;
-			this->btn_cad_mid_filme->Text = L"Cadastrar";
+			this->btn_cad_mid_filme->Text = L"Efetuar operação";
 			this->btn_cad_mid_filme->UseVisualStyleBackColor = true;
 			// 
 			// groupBox3
@@ -748,11 +748,11 @@ private: System::Windows::Forms::Label^  label25;
 			// 
 			// btn_cad_mid_dados
 			// 
-			this->btn_cad_mid_dados->Location = System::Drawing::Point(406, 215);
+			this->btn_cad_mid_dados->Location = System::Drawing::Point(372, 215);
 			this->btn_cad_mid_dados->Name = L"btn_cad_mid_dados";
-			this->btn_cad_mid_dados->Size = System::Drawing::Size(75, 23);
+			this->btn_cad_mid_dados->Size = System::Drawing::Size(109, 23);
 			this->btn_cad_mid_dados->TabIndex = 1;
-			this->btn_cad_mid_dados->Text = L"Cadastrar";
+			this->btn_cad_mid_dados->Text = L"Efetuar operação";
 			this->btn_cad_mid_dados->UseVisualStyleBackColor = true;
 			// 
 			// groupBox4
@@ -841,7 +841,8 @@ private: System::Windows::Forms::Label^  label25;
 			// 
 			// panel1
 			// 
-			this->panel1->BackColor = System::Drawing::SystemColors::ControlDark;
+			this->panel1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(252)), static_cast<System::Int32>(static_cast<System::Byte>(88)), 
+				static_cast<System::Int32>(static_cast<System::Byte>(16)));
 			this->panel1->Controls->Add(this->label1);
 			this->panel1->Location = System::Drawing::Point(4, 4);
 			this->panel1->Name = L"panel1";
@@ -879,6 +880,7 @@ private: System::Windows::Forms::Label^  label25;
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->panel1);
 			this->Controls->Add(this->tabMaterial);
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
 			this->MaximizeBox = false;
 			this->Name = L"cadMaterialForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;

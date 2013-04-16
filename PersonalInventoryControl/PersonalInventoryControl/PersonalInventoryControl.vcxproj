@@ -76,14 +76,20 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <Reference Include="*Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="*Microsoft.VisualBasic, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="*System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
     <Reference Include="*System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
     <Reference Include="*System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
     <Reference Include="*System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="*System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
     <Reference Include="*System.Web.Services, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="*System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
     <Reference Include="*System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
     <Reference Include="*System.Xml, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
     <Reference Include="Microsoft.ReportViewer.Common" />
     <Reference Include="Microsoft.ReportViewer.WinForms" />
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -104,6 +110,9 @@
     <ClCompile Include="EmprestimoForm.cpp" />
     <ClCompile Include="Amigo.cpp" />
     <ClCompile Include="Emprestimo.cpp" />
+    <ClCompile Include="gerenciarAmigosForm.cpp" />
+    <ClCompile Include="gerenciarEmprestimosForm.cpp" />
+    <ClCompile Include="gerenciarMateriaisForm.cpp" />
     <ClCompile Include="Livro.cpp" />
     <ClCompile Include="Material.cpp" />
     <ClCompile Include="MidiaAudio.cpp" />
@@ -120,6 +129,15 @@
     <ClInclude Include="DataBase.h" />
     <ClInclude Include="Emprestimo.h" />
     <ClInclude Include="EnumTipoMidia.h" />
+    <ClInclude Include="gerenciarAmigosForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="gerenciarEmprestimosForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="gerenciarMateriaisForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Livro.h" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="MidiaAudio.h" />
@@ -158,6 +176,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EmprestimoForm.resx">
       <DependentUpon>EmprestimoForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gerenciarAmigosForm.resx">
+      <DependentUpon>gerenciarAmigosForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gerenciarEmprestimosForm.resx">
+      <DependentUpon>gerenciarEmprestimosForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gerenciarMateriaisForm.resx">
+      <DependentUpon>gerenciarMateriaisForm.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PrincipalForm.resX">
       <DependentUpon>PrincipalForm.h</DependentUpon>

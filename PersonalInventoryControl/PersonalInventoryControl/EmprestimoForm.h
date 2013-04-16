@@ -102,7 +102,8 @@ namespace PersonalInventoryControl {
 			// 
 			// panel1
 			// 
-			this->panel1->BackColor = System::Drawing::SystemColors::ControlDark;
+			this->panel1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(252)), static_cast<System::Int32>(static_cast<System::Byte>(88)), 
+				static_cast<System::Int32>(static_cast<System::Byte>(16)));
 			this->panel1->Controls->Add(this->label1);
 			this->panel1->Dock = System::Windows::Forms::DockStyle::Top;
 			this->panel1->ForeColor = System::Drawing::SystemColors::ControlText;
@@ -237,11 +238,11 @@ namespace PersonalInventoryControl {
 			// 
 			// btn_emprestar
 			// 
-			this->btn_emprestar->Location = System::Drawing::Point(552, 262);
+			this->btn_emprestar->Location = System::Drawing::Point(516, 262);
 			this->btn_emprestar->Name = L"btn_emprestar";
-			this->btn_emprestar->Size = System::Drawing::Size(75, 23);
+			this->btn_emprestar->Size = System::Drawing::Size(111, 23);
 			this->btn_emprestar->TabIndex = 11;
-			this->btn_emprestar->Text = L"Emprestar";
+			this->btn_emprestar->Text = L"Efetuar operação";
 			this->btn_emprestar->UseVisualStyleBackColor = true;
 			// 
 			// panel_status
@@ -279,6 +280,7 @@ namespace PersonalInventoryControl {
 			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->panel1);
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
 			this->MaximizeBox = false;
 			this->Name = L"EmprestimoForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;

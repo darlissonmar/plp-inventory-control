@@ -81,6 +81,15 @@
     <ClCompile Include="DataBase.cpp">
       <Filter>Core\db</Filter>
     </ClCompile>
+    <ClCompile Include="gerenciarEmprestimosForm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gerenciarMateriaisForm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gerenciarAmigosForm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -130,6 +139,15 @@
     </ClInclude>
     <ClInclude Include="DataBase.h">
       <Filter>Core\db</Filter>
+    </ClInclude>
+    <ClInclude Include="gerenciarAmigosForm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gerenciarMateriaisForm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gerenciarEmprestimosForm.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

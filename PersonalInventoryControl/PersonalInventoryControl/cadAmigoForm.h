@@ -218,11 +218,13 @@ namespace PersonalInventoryControl {
 			// 
 			// panel1
 			// 
-			this->panel1->BackColor = System::Drawing::SystemColors::ControlDark;
+			this->panel1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(252)), static_cast<System::Int32>(static_cast<System::Byte>(88)), 
+				static_cast<System::Int32>(static_cast<System::Byte>(16)));
 			this->panel1->Controls->Add(this->label1);
-			this->panel1->Location = System::Drawing::Point(-1, 0);
+			this->panel1->Dock = System::Windows::Forms::DockStyle::Top;
+			this->panel1->Location = System::Drawing::Point(0, 0);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(325, 43);
+			this->panel1->Size = System::Drawing::Size(321, 43);
 			this->panel1->TabIndex = 1;
 			// 
 			// label1
@@ -233,19 +235,19 @@ namespace PersonalInventoryControl {
 			this->label1->ForeColor = System::Drawing::SystemColors::ControlLightLight;
 			this->label1->Location = System::Drawing::Point(3, 7);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(270, 25);
+			this->label1->Size = System::Drawing::Size(187, 25);
 			this->label1->TabIndex = 0;
-			this->label1->Text = L"Cadastro de novo Amigo";
+			this->label1->Text = L"Cadastrar Amigo";
 			// 
 			// button1
 			// 
 			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->button1->Location = System::Drawing::Point(124, 245);
+			this->button1->Location = System::Drawing::Point(98, 245);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(75, 23);
+			this->button1->Size = System::Drawing::Size(110, 23);
 			this->button1->TabIndex = 2;
-			this->button1->Text = L"Cadastrar";
+			this->button1->Text = L"Efetuar operação";
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &cadAmigoForm::button1_Click);
 			// 
@@ -257,10 +259,11 @@ namespace PersonalInventoryControl {
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->panel1);
 			this->Controls->Add(this->groupBox1);
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
 			this->MaximizeBox = false;
 			this->Name = L"cadAmigoForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
-			this->Text = L"Cadastro de Amigo";
+			this->Text = L"Cadastrar Amigo";
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
 			this->panel1->ResumeLayout(false);
