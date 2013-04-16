@@ -6,10 +6,11 @@ class Emprestimo
 
 public:
 	Emprestimo(Amigo* amigo, Material* material);
+	Emprestimo(int id, long dataEmprestimo, long dataDevolucao, int prazoDias, bool atrasado, Amigo* amigo, Material* material);
 	~Emprestimo();
 
-	const Amigo* getAmigo() const;
-	const Material* getMaterial() const;
+	Amigo* getAmigo();
+	Material* getMaterial();
 
 	const int getId() const;
 	void setId(int id);
@@ -19,8 +20,8 @@ public:
 	void setDataDevolucao(long dataDevolucao);
 	const int getPrazoDias() const;
 	void setPrazoDias(int prazoDias);
-
-
+	bool isAtrasado();
+	void setAtrasado(bool atrasado);
 private:
 
 	Amigo* amigo;
@@ -30,6 +31,7 @@ private:
 	long dataEmprestimo;
 	long dataDevolucao;
 	int prazoDias;
+	bool atrasado;
 };
 
 #endif // EMPRESTIMO_H

@@ -14,9 +14,6 @@ typedef pair <const int, MidiaDados *> ParMidiaDados;
 typedef pair <const int, Livro *> ParLivro;
 
 
-
-
-
 class DataBase
 {
 public:
@@ -26,7 +23,11 @@ public:
 	void inicializar(void);
 
 	hash_map<int, Amigo *> *getAmigos();
+	hash_map<int, Emprestimo *> *getEmprestimos();
+	
 	void insertAmigo(Amigo* amigo);
+	void insertEmprestimo(Emprestimo* emprestimo);
+
 
 private:
 	static DataBase* dataBaseInstance;

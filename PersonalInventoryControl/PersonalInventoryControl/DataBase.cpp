@@ -43,6 +43,15 @@ void DataBase::insertAmigo(Amigo* amigo){
 	}
 }
 
+void DataBase::insertEmprestimo(Emprestimo* emprestimo){
+	if(emprestimo){
+		emprestimo->setId(emprestimo_db_indice++);
+		this->emprestimos->insert(ParEmprestimo(emprestimo->getId(), emprestimo));
+	}else{
+		throw new exception;
+	}
+}
+
 void DataBase::inicializar( void )
 {
 	Amigo *amigo1 = new Amigo(amigo_db_indice++,"Joao", "dos Santos", "joao@jmail.com","2123-1234","Rua das mangueiras", "Masculino");
@@ -62,4 +71,8 @@ void DataBase::inicializar( void )
 
 hash_map<int, Amigo *> * DataBase::getAmigos(){
 	return this->amigos;
+}
+
+hash_map<int, Emprestimo *> * DataBase::getEmprestimos(){
+	return this->emprestimos;
 }

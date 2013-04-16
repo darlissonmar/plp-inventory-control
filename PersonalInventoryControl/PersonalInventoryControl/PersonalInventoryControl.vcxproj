@@ -107,6 +107,7 @@
     <ClCompile Include="cadAmigoForm.cpp" />
     <ClCompile Include="cadMaterialForm.cpp" />
     <ClCompile Include="ControllerAmigo.cpp" />
+    <ClCompile Include="ControllerEmprestimo.cpp" />
     <ClCompile Include="DataBase.cpp" />
     <ClCompile Include="EmprestimoForm.cpp" />
     <ClCompile Include="Amigo.cpp" />
@@ -128,6 +129,7 @@
   <ItemGroup>
     <ClInclude Include="Amigo.h" />
     <ClInclude Include="ControllerAmigo.h" />
+    <ClInclude Include="ControllerEmprestimo.h" />
     <ClInclude Include="DataBase.h" />
     <ClInclude Include="Emprestimo.h" />
     <ClInclude Include="EnumTipoMidia.h" />

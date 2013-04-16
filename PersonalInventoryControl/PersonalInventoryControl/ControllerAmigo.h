@@ -7,12 +7,13 @@ class ControllerAmigo : public ICrud<Amigo>
 {
 public:
 	ControllerAmigo(void);
+	~ControllerAmigo(void);
 
 	list<Amigo *> * buscarTodos();
 	list<Amigo *> * buscarPontuais();
-	list<Amigo *> * buscarImontuais();
-	list<Amigo *> * buscarMaisPontuais();
-	list<Amigo *> * buscarMaisImpontuais();
+	list<Amigo *> * buscarImpontuais();
+	Amigo * buscarMaisPontual();
+	Amigo * buscarMaisImpontual();
 
 	bool adicionar(Amigo* element);
 	bool atualizar(Amigo* element);

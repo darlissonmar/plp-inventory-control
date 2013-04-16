@@ -5,6 +5,10 @@ ControllerAmigo::ControllerAmigo(void)
 	this->dataBase = DataBase::getInstance();
 }
 
+ControllerAmigo::~ControllerAmigo(void){
+
+}
+
 bool ControllerAmigo::adicionar(Amigo* element)
 {
 	try
@@ -77,8 +81,106 @@ list<Amigo *> * ControllerAmigo::buscarTodos(){
 		returnedList->push_back(it->second);
 	}
 
-
 	return returnedList;
 
 }
 
+list<Amigo *> * ControllerAmigo::buscarImpontuais(){
+	list<Amigo *> * returnedList= new list<Amigo *>();
+
+	hash_map<const int, Emprestimo*>::const_iterator it;
+
+	for(it= dataBase->getEmprestimos()->begin(); it != dataBase->getEmprestimos()->end(); it++){
+		if(it->second->isAtrasado()){
+			returnedList->push_back(it->second->getAmigo());			
+		}
+	}
+	returnedList->sort();
+	returnedList->unique();
+	return returnedList;
+
+}
+
+list<Amigo *> * ControllerAmigo::buscarPontuais(){
+	
+	list<Amigo *> * returnedList= buscarTodos();
+
+	hash_map<const int, Emprestimo*>::const_iterator it;
+	for(it= dataBase->getEmprestimos()->begin(); it != dataBase->getEmprestimos()->end(); it++){
+		if(it->second->isAtrasado()){
+			returnedList->remove(it->second->getAmigo());			
+		}
+	}
+	
+	return returnedList;
+
+}
+
+Amigo * ControllerAmigo::buscarMaisImpontual(){
+	list<Amigo *> * returnedList= new list<Amigo *>();
+
+	hash_map<const int, Emprestimo*>::const_iterator it;
+
+	for(it= dataBase->getEmprestimos()->begin(); it != dataBase->getEmprestimos()->end(); it++){
+		if(it->second->isAtrasado()){
+			returnedList->push_back(it->second->getAmigo());			
+		}
+	}
+	
+	returnedList->sort();
+
+	int numRepeticoes=0, maiorNumRepeticoes=0;
+	Amigo* returnedAmigo;
+	
+	list<Amigo *>::iterator listI, listJ;
+
+	for(listI= returnedList->begin(); listI != returnedList->end(); listI++){
+		returnedAmigo= *listI;//Evita retorno nulo em caso de não repetição
+		for(listJ= returnedList->begin(); listJ != returnedList->end(); listJ++){
+			if(listI==listJ)
+				numRepeticoes++;
+		}
+
+		if(numRepeticoes>maiorNumRepeticoes){
+			maiorNumRepeticoes=numRepeticoes;
+			returnedAmigo = *listI;
+		}
+		numRepeticoes=0;
+	}	
+	return returnedAmigo;
+
+}
+
+Amigo * ControllerAmigo::buscarMaisPontual(){
+	list<Amigo *> * returnedList= new list<Amigo *>();	
+
+	hash_map<const int, Emprestimo*>::const_iterator it;
+	for(it= dataBase->getEmprestimos()->begin(); it != dataBase->getEmprestimos()->end(); it++){
+		if(it->second->isAtrasado())
+			continue;
+		returnedList->push_back(it->second->getAmigo());		
+	}
+
+	returnedList->sort();
+
+	int numRepeticoes=0, maiorNumRepeticoes=0;
+	Amigo* returnedAmigo;
+
+	list<Amigo *>::iterator listI, listJ;
+
+	for(listI= returnedList->begin(); listI != returnedList->end(); listI++){
+		returnedAmigo= *listI;//Evita retorno nulo em caso de não repetição
+		for(listJ= returnedList->begin(); listJ != returnedList->end(); listJ++){
+			if(listI==listJ)
+				numRepeticoes++;
+		}
+
+		if(numRepeticoes>maiorNumRepeticoes){
+			maiorNumRepeticoes=numRepeticoes;
+			returnedAmigo = *listI;
+		}
+		numRepeticoes=0;
+	}	
+	return returnedAmigo;
+
+}

@@ -14,6 +14,7 @@
 #include "DataBase.h"
 #include "ICrud.h"
 #include "ControllerAmigo.h"
+#include "ControllerEmprestimo.h"
 
 #include "AboutForm.h"
 #include "cadMaterialForm.h"

@@ -22,12 +22,6 @@
     <ClCompile Include="MidiaFilme.cpp">
       <Filter>model\impl</Filter>
     </ClCompile>
-    <ClCompile Include="ControllerAmigo.cpp">
-      <Filter>controller</Filter>
-    </ClCompile>
-    <ClCompile Include="DataBase.cpp">
-      <Filter>db</Filter>
-    </ClCompile>
     <ClCompile Include="AboutForm.cpp">
       <Filter>form_impl</Filter>
     </ClCompile>
@@ -58,6 +52,15 @@
     <ClCompile Include="AssemblyInfo.cpp">
       <Filter>resource</Filter>
     </ClCompile>
+    <ClCompile Include="DataBase.cpp">
+      <Filter>db\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="ControllerAmigo.cpp">
+      <Filter>controller\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="ControllerEmprestimo.cpp">
+      <Filter>controller\impl</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="gerenciarAmigosForm.h" />
@@ -76,9 +79,6 @@
       <Filter>model</Filter>
     </ClInclude>
     <ClInclude Include="EnumTipoMidia.h">
-      <Filter>model</Filter>
-    </ClInclude>
-    <ClInclude Include="ICrud.h">
       <Filter>model</Filter>
     </ClInclude>
     <ClInclude Include="Livro.h">
@@ -104,6 +104,12 @@
     </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>resource</Filter>
+    </ClInclude>
+    <ClInclude Include="ICrud.h">
+      <Filter>controller</Filter>
+    </ClInclude>
+    <ClInclude Include="ControllerEmprestimo.h">
+      <Filter>controller</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -140,6 +146,12 @@
     </Filter>
     <Filter Include="resource">
       <UniqueIdentifier>{47f26d6a-705a-493e-8d6b-da2f0ae989b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="db\impl">
+      <UniqueIdentifier>{262f4d4b-f17a-4cc3-81cd-e310a4435817}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="controller\impl">
+      <UniqueIdentifier>{9b895c80-e4e6-436b-b4a2-88701768e57c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
