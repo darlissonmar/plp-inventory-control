@@ -1,6 +1,6 @@
 #pragma once
 #include "stdafx.h"
-
+#include "gerenciarAmigosForm.h"
 namespace PersonalInventoryControl {
 
 	using namespace System;
@@ -22,7 +22,11 @@ namespace PersonalInventoryControl {
 			//
 			//TODO: Add the constructor code here
 			//
+			this->database = DataBase::getInstance();
+			
 		}
+	
+	DataBase *database;
 
 	protected:
 		/// <summary>
@@ -36,11 +40,6 @@ namespace PersonalInventoryControl {
 			}
 		}
 	private: System::Windows::Forms::MenuStrip^  menu_principal;
-	protected: 
-
-	protected: 
-
-
 
 	private: System::Windows::Forms::ToolStripMenuItem^  ajudaToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  sobreToolStripMenuItem;
@@ -123,7 +122,7 @@ namespace PersonalInventoryControl {
 			// menu_principal
 			// 
 			this->menu_principal->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(4) {this->menu_prin_cadastros, 
-				this->relatoriosToolStripMenuItem, this->ajudaToolStripMenuItem, this->emprestimosToolStripMenuItem});
+				this->emprestimosToolStripMenuItem, this->relatoriosToolStripMenuItem, this->ajudaToolStripMenuItem});
 			this->menu_principal->Location = System::Drawing::Point(0, 0);
 			this->menu_principal->Name = L"menu_principal";
 			this->menu_principal->Size = System::Drawing::Size(808, 24);
@@ -141,7 +140,7 @@ namespace PersonalInventoryControl {
 			// amigosToolStripMenuItem
 			// 
 			this->amigosToolStripMenuItem->Name = L"amigosToolStripMenuItem";
-			this->amigosToolStripMenuItem->Size = System::Drawing::Size(152, 22);
+			this->amigosToolStripMenuItem->Size = System::Drawing::Size(117, 22);
 			this->amigosToolStripMenuItem->Text = L"Amigos";
 			// 
 			// materialToolStripMenuItem
@@ -149,7 +148,7 @@ namespace PersonalInventoryControl {
 			this->materialToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(4) {this->menu_p_cad_mat_mid_audio, 
 				this->menu_p_cad_mat_mid_dados, this->menu_p_cad_mat_mid_filme, this->menu_p_cad_mat_livro});
 			this->materialToolStripMenuItem->Name = L"materialToolStripMenuItem";
-			this->materialToolStripMenuItem->Size = System::Drawing::Size(152, 22);
+			this->materialToolStripMenuItem->Size = System::Drawing::Size(117, 22);
 			this->materialToolStripMenuItem->Text = L"Material";
 			// 
 			// menu_p_cad_mat_mid_audio
@@ -211,13 +210,13 @@ namespace PersonalInventoryControl {
 			// realizarNovoToolStripMenuItem
 			// 
 			this->realizarNovoToolStripMenuItem->Name = L"realizarNovoToolStripMenuItem";
-			this->realizarNovoToolStripMenuItem->Size = System::Drawing::Size(144, 22);
+			this->realizarNovoToolStripMenuItem->Size = System::Drawing::Size(152, 22);
 			this->realizarNovoToolStripMenuItem->Text = L"Realizar novo";
 			// 
 			// devoluçãoToolStripMenuItem
 			// 
 			this->devoluçãoToolStripMenuItem->Name = L"devoluçãoToolStripMenuItem";
-			this->devoluçãoToolStripMenuItem->Size = System::Drawing::Size(144, 22);
+			this->devoluçãoToolStripMenuItem->Size = System::Drawing::Size(152, 22);
 			this->devoluçãoToolStripMenuItem->Text = L"Devolução";
 			// 
 			// toolStrip1
@@ -417,5 +416,6 @@ namespace PersonalInventoryControl {
 			 cadMat->Show();
 		 }
 };
+
 }
 

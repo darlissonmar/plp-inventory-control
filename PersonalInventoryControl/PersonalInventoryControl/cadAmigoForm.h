@@ -1,5 +1,7 @@
 #pragma once
 
+#include "stdafx.h"
+
 namespace PersonalInventoryControl {
 
 	using namespace System;
@@ -14,23 +16,18 @@ namespace PersonalInventoryControl {
 	/// </summary>
 	public ref class cadAmigoForm : public System::Windows::Forms::Form
 	{
+		
 	public:
-		cadAmigoForm(void)
+		DataGridView ^_grid_gerencia_amigo;
+		cadAmigoForm(DataGridView ^gerencia_amigo)
 		{
 			InitializeComponent();
-			//
-			//TODO: Add the constructor code here
-			//
-			DataBase *database = DataBase::getInstance();
-			ControllerAmigo* controller = new ControllerAmigo();
-			database->inicializar();
-			string amigoNome = "Joao";
-			// convertendo <string> to System::String
+			_grid_gerencia_amigo = gerencia_amigo;
+		}
 
-			//TODO Quando o amigo nao exite na DataBase o valor de retorno é NULL causando uma excecao caso
-			//se tente capturar o nome
-			this->txtBox_cad_user_nome->Text = gcnew String(controller->buscar(amigoNome)->getNome().c_str());
-
+		cadAmigoForm()
+		{
+			InitializeComponent();
 		}
 
 	protected:
@@ -66,7 +63,8 @@ namespace PersonalInventoryControl {
 	private: System::Windows::Forms::Label^  label2;
 	private: System::Windows::Forms::Panel^  panel1;
 	private: System::Windows::Forms::Label^  label1;
-	private: System::Windows::Forms::Button^  button1;
+	private: System::Windows::Forms::Button^  bt_cad_amigo;
+
 
 	private:
 		/// <summary>
@@ -96,7 +94,7 @@ namespace PersonalInventoryControl {
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->bt_cad_amigo = (gcnew System::Windows::Forms::Button());
 			this->groupBox1->SuspendLayout();
 			this->panel1->SuspendLayout();
 			this->SuspendLayout();
@@ -243,24 +241,24 @@ namespace PersonalInventoryControl {
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Cadastrar Amigo";
 			// 
-			// button1
+			// bt_cad_amigo
 			// 
-			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+			this->bt_cad_amigo->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->button1->Location = System::Drawing::Point(98, 245);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(110, 23);
-			this->button1->TabIndex = 2;
-			this->button1->Text = L"Efetuar operação";
-			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &cadAmigoForm::button1_Click);
+			this->bt_cad_amigo->Location = System::Drawing::Point(98, 245);
+			this->bt_cad_amigo->Name = L"bt_cad_amigo";
+			this->bt_cad_amigo->Size = System::Drawing::Size(110, 23);
+			this->bt_cad_amigo->TabIndex = 2;
+			this->bt_cad_amigo->Text = L"Efetuar operação";
+			this->bt_cad_amigo->UseVisualStyleBackColor = true;
+			this->bt_cad_amigo->Click += gcnew System::EventHandler(this, &cadAmigoForm::bt_cad_amigo_Click);
 			// 
 			// cadAmigoForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(321, 274);
-			this->Controls->Add(this->button1);
+			this->Controls->Add(this->bt_cad_amigo);
 			this->Controls->Add(this->panel1);
 			this->Controls->Add(this->groupBox1);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
@@ -276,7 +274,34 @@ namespace PersonalInventoryControl {
 
 		}
 #pragma endregion
-	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
-			 }
+
+private: System::Void bt_cad_amigo_Click(System::Object^  sender, System::EventArgs^  e) {
+			  ControllerAmigo* controller = new ControllerAmigo();
+			  Amigo *amigo = new Amigo(1,
+					SystemToStdString(this->txtBox_cad_user_nome->Text),
+					SystemToStdString(this->txtBox_cad_user_sobnome->Text),
+					SystemToStdString(this->txtBox_cad_user_email->Text),
+					SystemToStdString(this->txtBox_cad_user_telef->Text),
+					SystemToStdString(this->comBox_cad_user_gen->Text),
+					SystemToStdString(this->txtBox_cad_user_end->Text));
+					
+			  if(controller->adicionar(amigo)){
+				  MessageBox::Show("Amigo cadastrado com sucesso", "Sucesso",
+				  MessageBoxButtons::OK, MessageBoxIcon::Information);
+				  this->_grid_gerencia_amigo->Refresh();
+				  this->Close();
+			  }
+		 }
+
+	inline string SystemToStdString(System::String ^input){
+				 std::string output=""; 
+				 using namespace System::Runtime::InteropServices;
+				 using namespace System;
+
+				 const char* charString = ( const char* )( Marshal::StringToHGlobalAnsi( input ) ).ToPointer (); 
+				 output = charString; 
+				 Marshal::FreeHGlobal ( IntPtr ( ( void* ) charString ) );
+				 return output;
+		 }
 };
 }

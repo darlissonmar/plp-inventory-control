@@ -2,6 +2,7 @@
 
 #include "stdafx.h"
 
+
 namespace PersonalInventoryControl {
 
 	using namespace System;
@@ -17,12 +18,14 @@ namespace PersonalInventoryControl {
 	public ref class gerenciarAmigosForm : public System::Windows::Forms::Form
 	{
 	public:
+		
 		gerenciarAmigosForm(void)
 		{
 			InitializeComponent();
 			//
 			//TODO: Add the constructor code here
 			//
+			carregar_dadosAmigos();
 		}
 
 	protected:
@@ -41,11 +44,18 @@ namespace PersonalInventoryControl {
 	private: System::Windows::Forms::Button^  button1;
 	private: System::Windows::Forms::Button^  button2;
 	private: System::Windows::Forms::Button^  ger_amigo_btn_cadastrar;
+	private: System::Windows::Forms::DataGridView^  data_grid_amigos;
 
-	private: System::Windows::Forms::DataGridView^  dataGridView1;
+
 	private: System::Windows::Forms::Button^  button4;
 	private: System::Windows::Forms::Label^  label2;
 	private: System::Windows::Forms::TextBox^  textBox1;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  tb_amigo_col_id;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  tb_amigo_col_nome;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  tb_amigo_col_sobrenome;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  tb_amigo_col_email;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  tb_amigo_col_sexo;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  tb_amigo_col_telefone;
 	protected: 
 
 	private:
@@ -66,12 +76,18 @@ namespace PersonalInventoryControl {
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->ger_amigo_btn_cadastrar = (gcnew System::Windows::Forms::Button());
-			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->data_grid_amigos = (gcnew System::Windows::Forms::DataGridView());
+			this->tb_amigo_col_id = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->tb_amigo_col_nome = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->tb_amigo_col_sobrenome = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->tb_amigo_col_email = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->tb_amigo_col_sexo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->tb_amigo_col_telefone = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->panel1->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->dataGridView1))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->data_grid_amigos))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// panel1
@@ -125,16 +141,59 @@ namespace PersonalInventoryControl {
 			this->ger_amigo_btn_cadastrar->UseVisualStyleBackColor = true;
 			this->ger_amigo_btn_cadastrar->Click += gcnew System::EventHandler(this, &gerenciarAmigosForm::ger_amigo_btn_cadastrar_Click);
 			// 
-			// dataGridView1
+			// data_grid_amigos
 			// 
-			this->dataGridView1->AllowUserToAddRows = false;
-			this->dataGridView1->AllowUserToDeleteRows = false;
-			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Location = System::Drawing::Point(8, 85);
-			this->dataGridView1->Name = L"dataGridView1";
-			this->dataGridView1->ReadOnly = true;
-			this->dataGridView1->Size = System::Drawing::Size(625, 138);
-			this->dataGridView1->TabIndex = 4;
+			this->data_grid_amigos->AllowUserToAddRows = false;
+			this->data_grid_amigos->AllowUserToDeleteRows = false;
+			this->data_grid_amigos->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->data_grid_amigos->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(6) {this->tb_amigo_col_id, 
+				this->tb_amigo_col_nome, this->tb_amigo_col_sobrenome, this->tb_amigo_col_email, this->tb_amigo_col_sexo, this->tb_amigo_col_telefone});
+			this->data_grid_amigos->Location = System::Drawing::Point(8, 85);
+			this->data_grid_amigos->Name = L"data_grid_amigos";
+			this->data_grid_amigos->ReadOnly = true;
+			this->data_grid_amigos->Size = System::Drawing::Size(625, 138);
+			this->data_grid_amigos->TabIndex = 4;
+			// 
+			// tb_amigo_col_id
+			// 
+			this->tb_amigo_col_id->HeaderText = L"id";
+			this->tb_amigo_col_id->Name = L"tb_amigo_col_id";
+			this->tb_amigo_col_id->ReadOnly = true;
+			this->tb_amigo_col_id->Width = 30;
+			// 
+			// tb_amigo_col_nome
+			// 
+			this->tb_amigo_col_nome->HeaderText = L"Nome";
+			this->tb_amigo_col_nome->Name = L"tb_amigo_col_nome";
+			this->tb_amigo_col_nome->ReadOnly = true;
+			this->tb_amigo_col_nome->Width = 120;
+			// 
+			// tb_amigo_col_sobrenome
+			// 
+			this->tb_amigo_col_sobrenome->HeaderText = L"Sobrenome";
+			this->tb_amigo_col_sobrenome->Name = L"tb_amigo_col_sobrenome";
+			this->tb_amigo_col_sobrenome->ReadOnly = true;
+			this->tb_amigo_col_sobrenome->Width = 120;
+			// 
+			// tb_amigo_col_email
+			// 
+			this->tb_amigo_col_email->HeaderText = L"Email";
+			this->tb_amigo_col_email->Name = L"tb_amigo_col_email";
+			this->tb_amigo_col_email->ReadOnly = true;
+			this->tb_amigo_col_email->Width = 120;
+			// 
+			// tb_amigo_col_sexo
+			// 
+			this->tb_amigo_col_sexo->HeaderText = L"Sexo";
+			this->tb_amigo_col_sexo->Name = L"tb_amigo_col_sexo";
+			this->tb_amigo_col_sexo->ReadOnly = true;
+			this->tb_amigo_col_sexo->Width = 95;
+			// 
+			// tb_amigo_col_telefone
+			// 
+			this->tb_amigo_col_telefone->HeaderText = L"Telefone";
+			this->tb_amigo_col_telefone->Name = L"tb_amigo_col_telefone";
+			this->tb_amigo_col_telefone->ReadOnly = true;
 			// 
 			// button4
 			// 
@@ -169,7 +228,7 @@ namespace PersonalInventoryControl {
 			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->button4);
-			this->Controls->Add(this->dataGridView1);
+			this->Controls->Add(this->data_grid_amigos);
 			this->Controls->Add(this->ger_amigo_btn_cadastrar);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
@@ -181,16 +240,37 @@ namespace PersonalInventoryControl {
 			this->Text = L"Gerenciamento de amigos";
 			this->panel1->ResumeLayout(false);
 			this->panel1->PerformLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->dataGridView1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->data_grid_amigos))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
 
-private: System::Void ger_amigo_btn_cadastrar_Click(System::Object^  sender, System::EventArgs^  e) {
-			 cadAmigoForm ^amigo_form = gcnew cadAmigoForm();
+	private: System::Void ger_amigo_btn_cadastrar_Click(System::Object^  sender, System::EventArgs^  e) {
+			 cadAmigoForm ^amigo_form = gcnew cadAmigoForm(this->data_grid_amigos);
 			 amigo_form->Show();
 		 }
+   
+	 
+	public: void carregar_dadosAmigos(){
+				 ControllerAmigo* controller = new ControllerAmigo();
+				 list<Amigo*> *amigos = controller->buscarTodos();
+				
+				 for each (Amigo *it in *amigos)
+				 {
+					 array<String^>^row1 = 
+						 gcnew array<String^>{
+							 gcnew String(Convert::ToString(it->getId())),
+								 gcnew String(it->getNome().c_str()),
+								 gcnew String(it->getSobrenome().c_str()),
+								 gcnew String(it->getEmail().c_str()),
+								 gcnew String(it->getGenero().c_str()),
+								 gcnew String(it->getTelefone().c_str())
+					 };
+					 this->data_grid_amigos->Rows->Add(row1);
+				 }		 
+			 }
+	
 };
 }

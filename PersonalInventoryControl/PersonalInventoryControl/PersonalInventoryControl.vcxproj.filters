@@ -1,182 +1,150 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="Core">
-      <UniqueIdentifier>{b765fe58-fbf7-432a-ae0e-71e7674441a1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\control">
-      <UniqueIdentifier>{1dbd098e-babb-4711-a0e7-ad2c9d832ef4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\model">
-      <UniqueIdentifier>{a7828155-eeed-41d5-96b6-0ba7aae8e1f8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\interface">
-      <UniqueIdentifier>{ffa1b9b0-2f5a-4f26-893b-8d0a3aa29d65}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\db">
-      <UniqueIdentifier>{d4cd049d-2bda-4111-8dcd-1e2483492024}</UniqueIdentifier>
-    </Filter>
+    <ClCompile Include="Amigo.cpp">
+      <Filter>model\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="Emprestimo.cpp">
+      <Filter>model\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="Livro.cpp">
+      <Filter>model\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="Material.cpp">
+      <Filter>model\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="MidiaAudio.cpp">
+      <Filter>model\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="MidiaDados.cpp">
+      <Filter>model\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="MidiaFilme.cpp">
+      <Filter>model\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="ControllerAmigo.cpp">
+      <Filter>controller</Filter>
+    </ClCompile>
+    <ClCompile Include="DataBase.cpp">
+      <Filter>db</Filter>
+    </ClCompile>
+    <ClCompile Include="AboutForm.cpp">
+      <Filter>form_impl</Filter>
+    </ClCompile>
+    <ClCompile Include="cadAmigoForm.cpp">
+      <Filter>form_impl</Filter>
+    </ClCompile>
+    <ClCompile Include="cadMaterialForm.cpp">
+      <Filter>form_impl</Filter>
+    </ClCompile>
+    <ClCompile Include="EmprestimoForm.cpp">
+      <Filter>form_impl</Filter>
+    </ClCompile>
+    <ClCompile Include="gerenciarAmigosForm.cpp">
+      <Filter>form_impl</Filter>
+    </ClCompile>
+    <ClCompile Include="gerenciarEmprestimosForm.cpp">
+      <Filter>form_impl</Filter>
+    </ClCompile>
+    <ClCompile Include="gerenciarMateriaisForm.cpp">
+      <Filter>form_impl</Filter>
+    </ClCompile>
+    <ClCompile Include="PersonalInventoryControl.cpp">
+      <Filter>form_impl</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>form_impl</Filter>
+    </ClCompile>
+    <ClCompile Include="AssemblyInfo.cpp">
+      <Filter>resource</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="gerenciarAmigosForm.h" />
+    <ClInclude Include="gerenciarEmprestimosForm.h" />
+    <ClInclude Include="gerenciarMateriaisForm.h" />
+    <ClInclude Include="AboutForm.h" />
+    <ClInclude Include="cadAmigoForm.h" />
+    <ClInclude Include="cadMaterialForm.h" />
+    <ClInclude Include="EmprestimoForm.h" />
+    <ClInclude Include="PrincipalForm.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="Amigo.h">
+      <Filter>model</Filter>
+    </ClInclude>
+    <ClInclude Include="Emprestimo.h">
+      <Filter>model</Filter>
+    </ClInclude>
+    <ClInclude Include="EnumTipoMidia.h">
+      <Filter>model</Filter>
+    </ClInclude>
+    <ClInclude Include="ICrud.h">
+      <Filter>model</Filter>
+    </ClInclude>
+    <ClInclude Include="Livro.h">
+      <Filter>model</Filter>
+    </ClInclude>
+    <ClInclude Include="Material.h">
+      <Filter>model</Filter>
+    </ClInclude>
+    <ClInclude Include="MidiaAudio.h">
+      <Filter>model</Filter>
+    </ClInclude>
+    <ClInclude Include="MidiaDados.h">
+      <Filter>model</Filter>
+    </ClInclude>
+    <ClInclude Include="MidiaFilme.h">
+      <Filter>model</Filter>
+    </ClInclude>
+    <ClInclude Include="ControllerAmigo.h">
+      <Filter>controller</Filter>
+    </ClInclude>
+    <ClInclude Include="DataBase.h">
+      <Filter>db</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>resource</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AboutForm.resx" />
+    <EmbeddedResource Include="cadAmigoForm.resx" />
+    <EmbeddedResource Include="cadMaterialForm.resx" />
+    <EmbeddedResource Include="EmprestimoForm.resx" />
+    <EmbeddedResource Include="gerenciarAmigosForm.resx" />
+    <EmbeddedResource Include="gerenciarEmprestimosForm.resx" />
+    <EmbeddedResource Include="gerenciarMateriaisForm.resx" />
+    <EmbeddedResource Include="PrincipalForm.resX" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
     <None Include="app.ico">
-      <Filter>Resource Files</Filter>
+      <Filter>resource</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="PersonalInventoryControl.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="AssemblyInfo.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="stdafx.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Material.cpp">
-      <Filter>Core\model</Filter>
-    </ClCompile>
-    <ClCompile Include="Livro.cpp">
-      <Filter>Core\model</Filter>
-    </ClCompile>
-    <ClCompile Include="MidiaAudio.cpp">
-      <Filter>Core\model</Filter>
-    </ClCompile>
-    <ClCompile Include="MidiaFilme.cpp">
-      <Filter>Core\model</Filter>
-    </ClCompile>
-    <ClCompile Include="MidiaDados.cpp">
-      <Filter>Core\model</Filter>
-    </ClCompile>
-    <ClCompile Include="Amigo.cpp">
-      <Filter>Core\model</Filter>
-    </ClCompile>
-    <ClCompile Include="Emprestimo.cpp">
-      <Filter>Core\model</Filter>
-    </ClCompile>
-    <ClCompile Include="AboutForm.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="cadAmigoForm.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="cadMaterialForm.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="EmprestimoForm.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="DataBase.cpp">
-      <Filter>Core\db</Filter>
-    </ClCompile>
-    <ClCompile Include="gerenciarEmprestimosForm.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="gerenciarMateriaisForm.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="gerenciarAmigosForm.cpp">
-      <Filter>Source Files</Filter>
-    <ClCompile Include="ControllerAmigo.cpp">
-      <Filter>Core\control</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="resource.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AboutForm.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="cadAmigoForm.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="cadMaterialForm.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PrincipalForm.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="EmprestimoForm.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Material.h">
-      <Filter>Core\model</Filter>
-    </ClInclude>
-    <ClInclude Include="Livro.h">
-      <Filter>Core\model</Filter>
-    </ClInclude>
-    <ClInclude Include="MidiaAudio.h">
-      <Filter>Core\model</Filter>
-    </ClInclude>
-    <ClInclude Include="MidiaFilme.h">
-      <Filter>Core\model</Filter>
-    </ClInclude>
-    <ClInclude Include="EnumTipoMidia.h">
-      <Filter>Core\model</Filter>
-    </ClInclude>
-    <ClInclude Include="MidiaDados.h">
-      <Filter>Core\model</Filter>
-    </ClInclude>
-    <ClInclude Include="Amigo.h">
-      <Filter>Core\model</Filter>
-    </ClInclude>
-    <ClInclude Include="Emprestimo.h">
-      <Filter>Core\model</Filter>
-    </ClInclude>
-    <ClInclude Include="DataBase.h">
-      <Filter>Core\db</Filter>
-    </ClInclude>
-    <ClInclude Include="gerenciarAmigosForm.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="gerenciarMateriaisForm.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="gerenciarEmprestimosForm.h">
-      <Filter>Header Files</Filter>
-    <ClInclude Include="ICrud.h">
-      <Filter>Core\control</Filter>
-    </ClInclude>
-    <ClInclude Include="ControllerAmigo.h">
-      <Filter>Core\control</Filter>
-    </ClInclude>
-    <ClInclude Include="stdafx.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
+    <Filter Include="model">
+      <UniqueIdentifier>{54efdb0b-5b97-400d-913b-bd90817cef9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="model\impl">
+      <UniqueIdentifier>{70f18644-c9f8-47c1-b0c7-8c16e1b60c25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="controller">
+      <UniqueIdentifier>{9c248376-33c7-42cd-ad95-8f56f5dd2a83}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="db">
+      <UniqueIdentifier>{be25236b-b63c-4a4e-94ca-c4e4515a531e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="form_impl">
+      <UniqueIdentifier>{f38c269c-b311-4867-93eb-b220e95ef1a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource">
+      <UniqueIdentifier>{47f26d6a-705a-493e-8d6b-da2f0ae989b0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="app.rc">
-      <Filter>Resource Files</Filter>
+      <Filter>resource</Filter>
     </ResourceCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="AboutForm.resx">
-      <Filter>Resource Files</Filter>
-    </EmbeddedResource>
-    <EmbeddedResource Include="cadAmigoForm.resx">
-      <Filter>Resource Files</Filter>
-    </EmbeddedResource>
-    <EmbeddedResource Include="cadMaterialForm.resx">
-      <Filter>Resource Files</Filter>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PrincipalForm.resX">
-      <Filter>Resource Files</Filter>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EmprestimoForm.resx">
-      <Filter>Resource Files</Filter>
-    </EmbeddedResource>
   </ItemGroup>
 </Project>
