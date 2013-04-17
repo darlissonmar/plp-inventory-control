@@ -246,7 +246,7 @@ namespace PersonalInventoryControl {
 							 gcnew String(it->getTelefone().c_str())
 							 };
 				 
-					 if(it->getId() > data_grid_amigos->RowCount)  
+					 //if(it->getId() > data_grid_amigos->RowCount)  Why this? If the map keys are not sorted, some elements will not be showed
 						 this->data_grid_amigos->Rows->Add(row1);
 				 }		 
 			 }
@@ -256,8 +256,7 @@ namespace PersonalInventoryControl {
 					 String^ nome_chave = data_grid_amigos->SelectedRows[0]->Cells[1]->Value->ToString();
 					 if(!System::String::IsNullOrEmpty(nome_chave))
 					 { // nome nao vazio
-						Amigo* amigo = new Amigo();	
-						amigo = controller->buscar(SystemToStdString(nome_chave));//pegar amigo da coluna
+						Amigo* amigo = controller->buscar(SystemToStdString(nome_chave));//pegar amigo da coluna
 						cadAmigoForm ^amigo_form = gcnew cadAmigoForm(COD_EDITAR,amigo);
 						amigo_form->Show();
 					 } else {

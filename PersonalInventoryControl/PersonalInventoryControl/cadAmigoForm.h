@@ -289,7 +289,7 @@ namespace PersonalInventoryControl {
 					switch(this->_codigo_operacao)
 						{
 							case COD_CADASTRAR: 
-								 if(controller->adicionar(get_amigoDoForm()))
+								 if(controller->adicionar(get_amigoDoForm(false)))
 								 {
 									MessageBox::Show("Amigo cadastrado com sucesso", "Sucesso",
 									MessageBoxButtons::OK, MessageBoxIcon::Information);
@@ -297,7 +297,7 @@ namespace PersonalInventoryControl {
 								 } break; //cadastrar
 
 							case COD_EDITAR:
-								if(controller->atualizar(get_amigoDoForm()))
+								if(controller->atualizar(get_amigoDoForm(true)))
 								{
 									MessageBox::Show("Amigo editado com sucesso", "Sucesso",
 									MessageBoxButtons::OK, MessageBoxIcon::Information);
@@ -324,16 +324,29 @@ namespace PersonalInventoryControl {
 			}
 
 		public: 
-			Amigo* get_amigoDoForm(){
+			Amigo* get_amigoDoForm(bool editando){
 
-			Amigo *amigo = new Amigo(1,
-				SystemToStdString(this->txtBox_cad_user_nome->Text),
-				SystemToStdString(this->txtBox_cad_user_sobnome->Text),
-				SystemToStdString(this->txtBox_cad_user_email->Text),
-				SystemToStdString(this->txtBox_cad_user_telef->Text),
-				SystemToStdString(this->comBox_cad_user_gen->Text),
-				SystemToStdString(this->txtBox_cad_user_end->Text));
-			
+
+			Amigo *amigo;
+			if (editando){
+				_amigo->setNome(SystemToStdString(this->txtBox_cad_user_nome->Text));
+				_amigo->setSobrenome(SystemToStdString(this->txtBox_cad_user_sobnome->Text));
+				_amigo->setEmail(SystemToStdString(this->txtBox_cad_user_email->Text));
+				_amigo->setTelefone(SystemToStdString(this->txtBox_cad_user_telef->Text));
+				_amigo->setGenero(SystemToStdString(this->comBox_cad_user_gen->Text));
+				_amigo->setEndereco(SystemToStdString(this->txtBox_cad_user_end->Text));
+
+				amigo = _amigo;
+			}else{
+				amigo = new Amigo(1,
+					SystemToStdString(this->txtBox_cad_user_nome->Text),
+					SystemToStdString(this->txtBox_cad_user_sobnome->Text),
+					SystemToStdString(this->txtBox_cad_user_email->Text),
+					SystemToStdString(this->txtBox_cad_user_telef->Text),
+					SystemToStdString(this->comBox_cad_user_gen->Text),
+					SystemToStdString(this->txtBox_cad_user_end->Text));
+			}
+
 			return amigo;
 			}
 		private: 
