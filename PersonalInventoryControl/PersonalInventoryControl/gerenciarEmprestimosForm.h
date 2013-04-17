@@ -48,6 +48,8 @@ namespace PersonalInventoryControl {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  dt_grid_emp_col_mat;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  dt_grid_emp_col_data_emp;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  dt_grid_emp_col_data_dev;
+	private: System::Windows::Forms::Button^  ger_emp_btn_remover;
+
 
 
 
@@ -85,6 +87,7 @@ namespace PersonalInventoryControl {
 			this->dt_grid_emp_col_mat = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dt_grid_emp_col_data_emp = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dt_grid_emp_col_data_dev = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->ger_emp_btn_remover = (gcnew System::Windows::Forms::Button());
 			this->panel1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->data_grid_emprestimos))->BeginInit();
 			this->SuspendLayout();
@@ -188,11 +191,21 @@ namespace PersonalInventoryControl {
 			this->dt_grid_emp_col_data_dev->ReadOnly = true;
 			this->dt_grid_emp_col_data_dev->Width = 120;
 			// 
+			// ger_emp_btn_remover
+			// 
+			this->ger_emp_btn_remover->Location = System::Drawing::Point(558, 51);
+			this->ger_emp_btn_remover->Name = L"ger_emp_btn_remover";
+			this->ger_emp_btn_remover->Size = System::Drawing::Size(75, 23);
+			this->ger_emp_btn_remover->TabIndex = 5;
+			this->ger_emp_btn_remover->Text = L"Remover";
+			this->ger_emp_btn_remover->UseVisualStyleBackColor = true;
+			// 
 			// gerenciarEmprestimosForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(640, 243);
+			this->Controls->Add(this->ger_emp_btn_remover);
 			this->Controls->Add(this->data_grid_emprestimos);
 			this->Controls->Add(this->ger_emp_btn_novo);
 			this->Controls->Add(this->ger_emp_btn_alterar);

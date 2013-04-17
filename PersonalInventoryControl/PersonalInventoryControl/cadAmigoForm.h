@@ -33,17 +33,20 @@ namespace PersonalInventoryControl {
 
 			switch(codigo)
 			{
-				case COD_CADASTRAR: break; //visualiza dados no form
 				case COD_EDITAR:
-					visualizar_amigoNoForm(_amigo);
+					editar_amigoNoForm(_amigo);
 					break; // alterar dados do form
-				case COD_VISUALIZAR: break; //visualiza
+
+				case COD_VISUALIZAR: 
+					visualizar_amigoNoForm(_amigo);
+					break; //visualiza
 				default: break;
 			}
 		}
 		
 		cadAmigoForm()
 		{
+			controller = new ControllerAmigo();
 			InitializeComponent();
 		}
 
@@ -288,15 +291,7 @@ namespace PersonalInventoryControl {
 				{
 					switch(this->_codigo_operacao)
 						{
-							case COD_CADASTRAR: 
-								 if(controller->adicionar(get_amigoDoForm(false)))
-								 {
-									MessageBox::Show("Amigo cadastrado com sucesso", "Sucesso",
-									MessageBoxButtons::OK, MessageBoxIcon::Information);
-									this->Close();
-								 } break; //cadastrar
-
-							case COD_EDITAR:
+					case COD_EDITAR:
 								if(controller->atualizar(get_amigoDoForm(true)))
 								{
 									MessageBox::Show("Amigo editado com sucesso", "Sucesso",
@@ -308,7 +303,28 @@ namespace PersonalInventoryControl {
 								this->Close();
 								break; //visualizar
 
-							default: break;
+							default: 
+								if( !System::String::IsNullOrEmpty(this->txtBox_cad_user_nome->Text) ||
+									!System::String::IsNullOrEmpty(this->txtBox_cad_user_sobnome->Text) ||
+									!System::String::IsNullOrEmpty(this->txtBox_cad_user_email->Text) ||
+									!System::String::IsNullOrEmpty(this->txtBox_cad_user_telef->Text) ||
+									!System::String::IsNullOrEmpty(this->txtBox_cad_user_end->Text) ||
+									!System::String::IsNullOrEmpty(this->comBox_cad_user_gen->Text)
+									)
+								{
+									
+									if(controller->adicionar(get_amigoDoForm(false)))
+									{
+										MessageBox::Show("Amigo cadastrado com sucesso", "Sucesso",
+										MessageBoxButtons::OK, MessageBoxIcon::Information);
+										this->Close();
+									} 
+								} else 
+								{
+									MessageBox::Show("Preencha os campos", "Aviso",
+										MessageBoxButtons::OK, MessageBoxIcon::Warning);
+								}
+								break; //cadastrarbreak;
 					}
 			  }
 		 
@@ -353,6 +369,7 @@ namespace PersonalInventoryControl {
 			void visualizar_amigoNoForm(Amigo *amigo)
 			{
 				this->lb_titulo->Text = gcnew String("Detalhes Amigo");
+				this->bt_cad_amigo->Text = gcnew String("Fechar");
 				set_amigoNoForm(amigo);
 			}
 

@@ -37,15 +37,19 @@ namespace PersonalInventoryControl {
 	private: System::Windows::Forms::Panel^  panel1;
 	private: System::Windows::Forms::Label^  label1;
 	private: System::Windows::Forms::Button^  ger_materiais_btn_detalhes;
+	private: System::Windows::Forms::Button^  ger_materiais_btn_alterar;
+	private: System::Windows::Forms::Button^  ger_materiais_btn_cadastrar;
 
-	private: System::Windows::Forms::Button^  button2;
-	private: System::Windows::Forms::Button^  button3;
+
+
 	private: System::Windows::Forms::DataGridView^  data_grid_materiais;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  dt_grid_mat_col_id;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  dt_grid_emp_col_tipo;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  dt_grid_emp_col_titulo;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  dt_grid_emp_col_ano;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  dt_grid_emp_col_status;
+	private: System::Windows::Forms::Button^  ger_materiais_btn_remover;
+
 
 
 
@@ -68,14 +72,15 @@ namespace PersonalInventoryControl {
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->ger_materiais_btn_detalhes = (gcnew System::Windows::Forms::Button());
-			this->button2 = (gcnew System::Windows::Forms::Button());
-			this->button3 = (gcnew System::Windows::Forms::Button());
+			this->ger_materiais_btn_alterar = (gcnew System::Windows::Forms::Button());
+			this->ger_materiais_btn_cadastrar = (gcnew System::Windows::Forms::Button());
 			this->data_grid_materiais = (gcnew System::Windows::Forms::DataGridView());
 			this->dt_grid_mat_col_id = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dt_grid_emp_col_tipo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dt_grid_emp_col_titulo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dt_grid_emp_col_ano = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dt_grid_emp_col_status = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->ger_materiais_btn_remover = (gcnew System::Windows::Forms::Button());
 			this->panel1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->data_grid_materiais))->BeginInit();
 			this->SuspendLayout();
@@ -112,23 +117,23 @@ namespace PersonalInventoryControl {
 			this->ger_materiais_btn_detalhes->Text = L"Detalhes";
 			this->ger_materiais_btn_detalhes->UseVisualStyleBackColor = true;
 			// 
-			// button2
+			// ger_materiais_btn_alterar
 			// 
-			this->button2->Location = System::Drawing::Point(97, 51);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(75, 23);
-			this->button2->TabIndex = 2;
-			this->button2->Text = L"Alterar";
-			this->button2->UseVisualStyleBackColor = true;
+			this->ger_materiais_btn_alterar->Location = System::Drawing::Point(97, 51);
+			this->ger_materiais_btn_alterar->Name = L"ger_materiais_btn_alterar";
+			this->ger_materiais_btn_alterar->Size = System::Drawing::Size(75, 23);
+			this->ger_materiais_btn_alterar->TabIndex = 2;
+			this->ger_materiais_btn_alterar->Text = L"Alterar";
+			this->ger_materiais_btn_alterar->UseVisualStyleBackColor = true;
 			// 
-			// button3
+			// ger_materiais_btn_cadastrar
 			// 
-			this->button3->Location = System::Drawing::Point(190, 51);
-			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(75, 23);
-			this->button3->TabIndex = 3;
-			this->button3->Text = L"Cadastrar";
-			this->button3->UseVisualStyleBackColor = true;
+			this->ger_materiais_btn_cadastrar->Location = System::Drawing::Point(190, 51);
+			this->ger_materiais_btn_cadastrar->Name = L"ger_materiais_btn_cadastrar";
+			this->ger_materiais_btn_cadastrar->Size = System::Drawing::Size(75, 23);
+			this->ger_materiais_btn_cadastrar->TabIndex = 3;
+			this->ger_materiais_btn_cadastrar->Text = L"Cadastrar";
+			this->ger_materiais_btn_cadastrar->UseVisualStyleBackColor = true;
 			// 
 			// data_grid_materiais
 			// 
@@ -179,14 +184,24 @@ namespace PersonalInventoryControl {
 			this->dt_grid_emp_col_status->ReadOnly = true;
 			this->dt_grid_emp_col_status->Width = 120;
 			// 
+			// ger_materiais_btn_remover
+			// 
+			this->ger_materiais_btn_remover->Location = System::Drawing::Point(558, 51);
+			this->ger_materiais_btn_remover->Name = L"ger_materiais_btn_remover";
+			this->ger_materiais_btn_remover->Size = System::Drawing::Size(75, 23);
+			this->ger_materiais_btn_remover->TabIndex = 5;
+			this->ger_materiais_btn_remover->Text = L"Remover";
+			this->ger_materiais_btn_remover->UseVisualStyleBackColor = true;
+			// 
 			// gerenciarMateriaisForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(640, 243);
+			this->Controls->Add(this->ger_materiais_btn_remover);
 			this->Controls->Add(this->data_grid_materiais);
-			this->Controls->Add(this->button3);
-			this->Controls->Add(this->button2);
+			this->Controls->Add(this->ger_materiais_btn_cadastrar);
+			this->Controls->Add(this->ger_materiais_btn_alterar);
 			this->Controls->Add(this->ger_materiais_btn_detalhes);
 			this->Controls->Add(this->panel1);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;

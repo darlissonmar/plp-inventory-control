@@ -6,6 +6,7 @@
 #define COD_CADASTRAR 1
 #define COD_EDITAR 2
 #define COD_VISUALIZAR 3
+#define COD_REMOVER 4
 
 
 #include "Amigo.h"
