@@ -110,6 +110,7 @@
     <ClCompile Include="ControllerEmprestimo.cpp" />
     <ClCompile Include="ControllerLivro.cpp" />
     <ClCompile Include="ControllerMidiaAudio.cpp" />
+    <ClCompile Include="ControllerMidiaFilme.cpp" />
     <ClCompile Include="DataBase.cpp" />
     <ClCompile Include="EmprestimoForm.cpp" />
     <ClCompile Include="Amigo.cpp" />
@@ -134,6 +135,7 @@
     <ClInclude Include="ControllerEmprestimo.h" />
     <ClInclude Include="ControllerLivro.h" />
     <ClInclude Include="ControllerMidiaAudio.h" />
+    <ClInclude Include="ControllerMidiaFilme.h" />
     <ClInclude Include="DataBase.h" />
     <ClInclude Include="Emprestimo.h" />
     <ClInclude Include="EnumTipoMidia.h" />

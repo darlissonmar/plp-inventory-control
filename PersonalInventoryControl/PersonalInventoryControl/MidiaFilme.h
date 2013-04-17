@@ -10,13 +10,14 @@ class MidiaFilme : public Material
 
 public:
 	MidiaFilme(EnumTipoMidia::Tipo tipoMidia);
+	MidiaFilme(int id, bool disponivel, string titulo, int ano, 
+		string genero, string atores, string produtor, string diretor, EnumTipoMidia::Tipo tipoMidia);
 	~MidiaFilme();
 
 	const string getGenero() const;
 	void setGenero(string genero);
-	const list<string> getAtores() const;
-	void adicionarAtor(string ator);
-	void removerAtor(string ator);
+	const string getAtores() const;
+	void setAtores(string atores);
 	const string getProdutor() const;
 	void setProdutor(string produtor);
 	const string getDiretor() const;
@@ -29,7 +30,7 @@ public:
 
 private:
 	string genero;
-	list<string> atores;
+	string atores;
 	string produtor;
 	string diretor;
 

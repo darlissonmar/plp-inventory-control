@@ -1,5 +1,5 @@
 #pragma once
-class ControllerMidiaAudio
+class ControllerMidiaAudio : public ICrud<MidiaAudio> 
 {
 public:
 	ControllerMidiaAudio(void);

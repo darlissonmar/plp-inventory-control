@@ -67,6 +67,7 @@
     <ClCompile Include="ControllerMidiaAudio.cpp">
       <Filter>controller\impl</Filter>
     </ClCompile>
+    <ClCompile Include="ControllerMidiaFilme.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="gerenciarAmigosForm.h" />
@@ -123,6 +124,7 @@
     <ClInclude Include="ControllerMidiaAudio.h">
       <Filter>controller</Filter>
     </ClInclude>
+    <ClInclude Include="ControllerMidiaFilme.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AboutForm.resx" />

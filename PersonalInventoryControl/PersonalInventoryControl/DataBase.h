@@ -26,6 +26,8 @@ public:
 	hash_map<int, Emprestimo *> *getEmprestimos();
 	hash_map<int, Livro *> *getLivros();
 	hash_map<int, MidiaAudio *> *getMidiasAudio();
+	hash_map<int, MidiaFilme *> *getMidiasFilme();
+
 
 
 	
@@ -33,7 +35,7 @@ public:
 	void insertEmprestimo(Emprestimo* emprestimo);
 	void insertLivro(Livro* livro);
 	void insertMidiaAudio(MidiaAudio* midiaAudio);
-
+	void insertMidiaFilme(MidiaFilme* midiaFilme);
 
 private:
 	static DataBase* dataBaseInstance;

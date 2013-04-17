@@ -2,6 +2,17 @@
 
 MidiaFilme::MidiaFilme(EnumTipoMidia::Tipo tipoMidia):tipoMidia(tipoMidia)
 {
+	this->setDisponivel(true);
+}
+
+MidiaFilme::MidiaFilme(int id, bool disponivel, string titulo, int ano, 
+	string genero, string atores, string produtor, string diretor, EnumTipoMidia::Tipo tipoMidia):
+		genero(genero), atores(atores), produtor(produtor), diretor(diretor), tipoMidia(tipoMidia)
+{
+	this->setId(id);
+	this->setDisponivel(disponivel);
+	this->setTitulo(titulo);
+	this->setAno(ano);
 }
 
 MidiaFilme::~MidiaFilme()
@@ -18,19 +29,14 @@ void MidiaFilme::setGenero(string genero)
 	this->genero = genero;
 }
 
-const list< string > MidiaFilme::getAtores() const
+const string MidiaFilme::getAtores() const
 {
 	return this->atores;
 }
 
-void MidiaFilme::adicionarAtor(string ator)
+void MidiaFilme::setAtores(string atores)
 {
-	this->atores.push_back(ator);
-}
-
-void MidiaFilme::removerAtor(string ator)
-{
-	this->atores.remove(ator);
+	this->atores=atores;
 }
 
 const string MidiaFilme::getProdutor() const

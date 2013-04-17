@@ -17,6 +17,7 @@
 #include "ControllerEmprestimo.h"
 #include "ControllerLivro.h"
 #include "ControllerMidiaAudio.h"
+#include "ControllerMidiaFilme.h"
 
 #include "AboutForm.h"
 #include "cadMaterialForm.h"
