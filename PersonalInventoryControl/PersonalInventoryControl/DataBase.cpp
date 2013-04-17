@@ -85,6 +85,15 @@ void DataBase::insertMidiaFilme(MidiaFilme* midiaFilme){
 	}
 }
 
+void DataBase::insertMidiaDados(MidiaDados* midiaDados){
+	if(midiaDados){
+		midiaDados->setId(midiadados_db_indice++);
+		this->midias_dados->insert(ParMidiaDados(midiaDados->getId(), midiaDados));
+	}else{
+		throw new exception;
+	}
+}
+
 void DataBase::inicializar( void )
 {
 	Amigo *amigo1 = new Amigo(amigo_db_indice++,"Joao", "dos Santos", "joao@jmail.com","2123-1234","Rua das mangueiras", "Masculino");
@@ -120,4 +129,8 @@ hash_map<int, MidiaAudio *> * DataBase::getMidiasAudio(){
 
 hash_map<int, MidiaFilme *> * DataBase::getMidiasFilme(){
 	return this->midias_filme;
+}
+
+hash_map<int, MidiaDados *> * DataBase::getMidiasDados(){
+	return this->midias_dados;
 }

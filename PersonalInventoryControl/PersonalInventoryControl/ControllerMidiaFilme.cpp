@@ -1,5 +1,4 @@
-#include "StdAfx.h"
-#include "ControllerMidiaFilme.h"
+#include "stdafx.h"
 
 
 ControllerMidiaFilme::ControllerMidiaFilme(void)

@@ -67,7 +67,12 @@
     <ClCompile Include="ControllerMidiaAudio.cpp">
       <Filter>controller\impl</Filter>
     </ClCompile>
-    <ClCompile Include="ControllerMidiaFilme.cpp" />
+    <ClCompile Include="ControllerMidiaDados.cpp">
+      <Filter>controller\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="ControllerMidiaFilme.cpp">
+      <Filter>controller\impl</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="gerenciarAmigosForm.h" />
@@ -124,7 +129,12 @@
     <ClInclude Include="ControllerMidiaAudio.h">
       <Filter>controller</Filter>
     </ClInclude>
-    <ClInclude Include="ControllerMidiaFilme.h" />
+    <ClInclude Include="ControllerMidiaFilme.h">
+      <Filter>controller</Filter>
+    </ClInclude>
+    <ClInclude Include="ControllerMidiaDados.h">
+      <Filter>controller\impl</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AboutForm.resx" />

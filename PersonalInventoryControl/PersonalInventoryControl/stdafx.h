@@ -18,8 +18,10 @@
 #include "ControllerLivro.h"
 #include "ControllerMidiaAudio.h"
 #include "ControllerMidiaFilme.h"
+#include "ControllerMidiaDados.h"
 
 #include "AboutForm.h"
+
 #include "cadMaterialForm.h"
 #include "EmprestimoForm.h"
 #include "cadAmigoForm.h" 
