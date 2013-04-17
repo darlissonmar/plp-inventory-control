@@ -1,6 +1,6 @@
 #pragma once
 #include "stdafx.h"
-#include "gerenciarAmigosForm.h"
+
 namespace PersonalInventoryControl {
 
 	using namespace System;

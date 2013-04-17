@@ -1,6 +1,7 @@
 #pragma once
 
 #include "stdafx.h"
+#include "String_utils.h"
 
 namespace PersonalInventoryControl {
 
@@ -17,14 +18,30 @@ namespace PersonalInventoryControl {
 	public ref class cadAmigoForm : public System::Windows::Forms::Form
 	{
 		
-	public:
-		DataGridView ^_grid_gerencia_amigo;
-		cadAmigoForm(DataGridView ^gerencia_amigo)
-		{
-			InitializeComponent();
-			_grid_gerencia_amigo = gerencia_amigo;
-		}
+	private:
+		ControllerAmigo* controller;
+		int _codigo_operacao;
+		Amigo *_amigo;
 
+	public:	
+		cadAmigoForm(int codigo, Amigo *amigo)
+		{			
+			InitializeComponent();	
+			controller = new ControllerAmigo(); 
+			_amigo = amigo;
+			_codigo_operacao = codigo;
+
+			switch(codigo)
+			{
+				case COD_CADASTRAR: break; //visualiza dados no form
+				case COD_EDITAR:
+					visualizar_amigoNoForm(_amigo);
+					break; // alterar dados do form
+				case COD_VISUALIZAR: break; //visualiza
+				default: break;
+			}
+		}
+		
 		cadAmigoForm()
 		{
 			InitializeComponent();
@@ -44,17 +61,10 @@ namespace PersonalInventoryControl {
 	private: System::Windows::Forms::GroupBox^  groupBox1;
 	private: System::Windows::Forms::ComboBox^  comBox_cad_user_gen;
 	private: System::Windows::Forms::TextBox^  txtBox_cad_user_end;
-	protected: 
-
-
 	private: System::Windows::Forms::TextBox^  txtBox_cad_user_telef;
-
 	private: System::Windows::Forms::TextBox^  txtBox_cad_user_email;
-
 	private: System::Windows::Forms::TextBox^  txtBox_cad_user_sobnome;
-
 	private: System::Windows::Forms::TextBox^  txtBox_cad_user_nome;
-
 	private: System::Windows::Forms::Label^  label7;
 	private: System::Windows::Forms::Label^  label6;
 	private: System::Windows::Forms::Label^  label5;
@@ -62,9 +72,9 @@ namespace PersonalInventoryControl {
 	private: System::Windows::Forms::Label^  label3;
 	private: System::Windows::Forms::Label^  label2;
 	private: System::Windows::Forms::Panel^  panel1;
-	private: System::Windows::Forms::Label^  label1;
-	private: System::Windows::Forms::Button^  bt_cad_amigo;
+	private: System::Windows::Forms::Label^  lb_titulo;
 
+	private: System::Windows::Forms::Button^  bt_cad_amigo;
 
 	private:
 		/// <summary>
@@ -93,7 +103,7 @@ namespace PersonalInventoryControl {
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
-			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->lb_titulo = (gcnew System::Windows::Forms::Label());
 			this->bt_cad_amigo = (gcnew System::Windows::Forms::Button());
 			this->groupBox1->SuspendLayout();
 			this->panel1->SuspendLayout();
@@ -222,24 +232,24 @@ namespace PersonalInventoryControl {
 			// 
 			this->panel1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(252)), static_cast<System::Int32>(static_cast<System::Byte>(88)), 
 				static_cast<System::Int32>(static_cast<System::Byte>(16)));
-			this->panel1->Controls->Add(this->label1);
+			this->panel1->Controls->Add(this->lb_titulo);
 			this->panel1->Dock = System::Windows::Forms::DockStyle::Top;
 			this->panel1->Location = System::Drawing::Point(0, 0);
 			this->panel1->Name = L"panel1";
 			this->panel1->Size = System::Drawing::Size(321, 43);
 			this->panel1->TabIndex = 1;
 			// 
-			// label1
+			// lb_titulo
 			// 
-			this->label1->AutoSize = true;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
+			this->lb_titulo->AutoSize = true;
+			this->lb_titulo->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->label1->ForeColor = System::Drawing::SystemColors::ControlLightLight;
-			this->label1->Location = System::Drawing::Point(3, 7);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(187, 25);
-			this->label1->TabIndex = 0;
-			this->label1->Text = L"Cadastrar Amigo";
+			this->lb_titulo->ForeColor = System::Drawing::SystemColors::ControlLightLight;
+			this->lb_titulo->Location = System::Drawing::Point(3, 7);
+			this->lb_titulo->Name = L"lb_titulo";
+			this->lb_titulo->Size = System::Drawing::Size(187, 25);
+			this->lb_titulo->TabIndex = 0;
+			this->lb_titulo->Text = L"Cadastrar Amigo";
 			// 
 			// bt_cad_amigo
 			// 
@@ -271,37 +281,73 @@ namespace PersonalInventoryControl {
 			this->panel1->ResumeLayout(false);
 			this->panel1->PerformLayout();
 			this->ResumeLayout(false);
-
 		}
 #pragma endregion
 
-private: System::Void bt_cad_amigo_Click(System::Object^  sender, System::EventArgs^  e) {
-			  ControllerAmigo* controller = new ControllerAmigo();
-			  Amigo *amigo = new Amigo(1,
-					SystemToStdString(this->txtBox_cad_user_nome->Text),
-					SystemToStdString(this->txtBox_cad_user_sobnome->Text),
-					SystemToStdString(this->txtBox_cad_user_email->Text),
-					SystemToStdString(this->txtBox_cad_user_telef->Text),
-					SystemToStdString(this->comBox_cad_user_gen->Text),
-					SystemToStdString(this->txtBox_cad_user_end->Text));
-					
-			  if(controller->adicionar(amigo)){
-				  MessageBox::Show("Amigo cadastrado com sucesso", "Sucesso",
-				  MessageBoxButtons::OK, MessageBoxIcon::Information);
-				  this->_grid_gerencia_amigo->Refresh();
-				  this->Close();
+		public: System::Void bt_cad_amigo_Click(System::Object^  sender, System::EventArgs^  e)
+				{
+					switch(this->_codigo_operacao)
+						{
+							case COD_CADASTRAR: 
+								 if(controller->adicionar(get_amigoDoForm()))
+								 {
+									MessageBox::Show("Amigo cadastrado com sucesso", "Sucesso",
+									MessageBoxButtons::OK, MessageBoxIcon::Information);
+									this->Close();
+								 } break; //cadastrar
+
+							case COD_EDITAR:
+								if(controller->atualizar(get_amigoDoForm()))
+								{
+									MessageBox::Show("Amigo editado com sucesso", "Sucesso",
+									MessageBoxButtons::OK, MessageBoxIcon::Information);
+									this->Close();
+								}	break; //editar
+							
+							case COD_VISUALIZAR:  				  
+								this->Close();
+								break; //visualizar
+
+							default: break;
+					}
 			  }
-		 }
+		 
+		public: 
+			void set_amigoNoForm(Amigo *amigo)
+			{
+				this->txtBox_cad_user_nome->Text = gcnew String(amigo->getNome().c_str());
+				this->txtBox_cad_user_sobnome->Text = gcnew String(amigo->getSobrenome().c_str());
+				this->txtBox_cad_user_email->Text = gcnew String(amigo->getEmail().c_str());
+				this->txtBox_cad_user_telef->Text = gcnew String(amigo->getTelefone().c_str());
+				this->comBox_cad_user_gen->Text = gcnew String(amigo->getGenero().c_str());
+				this->txtBox_cad_user_end->Text = gcnew String(amigo->getEndereco().c_str());
+			}
 
-	inline string SystemToStdString(System::String ^input){
-				 std::string output=""; 
-				 using namespace System::Runtime::InteropServices;
-				 using namespace System;
+		public: 
+			Amigo* get_amigoDoForm(){
 
-				 const char* charString = ( const char* )( Marshal::StringToHGlobalAnsi( input ) ).ToPointer (); 
-				 output = charString; 
-				 Marshal::FreeHGlobal ( IntPtr ( ( void* ) charString ) );
-				 return output;
-		 }
-};
-}
+			Amigo *amigo = new Amigo(1,
+				SystemToStdString(this->txtBox_cad_user_nome->Text),
+				SystemToStdString(this->txtBox_cad_user_sobnome->Text),
+				SystemToStdString(this->txtBox_cad_user_email->Text),
+				SystemToStdString(this->txtBox_cad_user_telef->Text),
+				SystemToStdString(this->comBox_cad_user_gen->Text),
+				SystemToStdString(this->txtBox_cad_user_end->Text));
+			
+			return amigo;
+			}
+		private: 
+			void visualizar_amigoNoForm(Amigo *amigo)
+			{
+				this->lb_titulo->Text = gcnew String("Detalhes Amigo");
+				set_amigoNoForm(amigo);
+			}
+
+		private:
+			void editar_amigoNoForm(Amigo *amigo)
+			{
+				this->lb_titulo->Text = gcnew String("Editar Amigo");
+				set_amigoNoForm(amigo);
+			}
+		};
+	}

@@ -135,6 +135,7 @@
     <ClInclude Include="ControllerMidiaDados.h">
       <Filter>controller\impl</Filter>
     </ClInclude>
+    <ClInclude Include="String_utils.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AboutForm.resx" />

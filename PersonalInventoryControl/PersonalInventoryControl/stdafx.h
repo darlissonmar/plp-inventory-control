@@ -3,6 +3,11 @@
 // are changed infrequently
 #pragma once
 
+#define COD_CADASTRAR 1
+#define COD_EDITAR 2
+#define COD_VISUALIZAR 3
+
+
 #include "Amigo.h"
 #include "EnumTipoMidia.h"
 #include "Livro.h"
@@ -24,10 +29,9 @@
 
 #include "cadMaterialForm.h"
 #include "EmprestimoForm.h"
-#include "cadAmigoForm.h" 
 #include "gerenciarAmigosForm.h"
+#include "cadAmigoForm.h"
 #include "gerenciarEmprestimosForm.h"
 #include "gerenciarMateriaisForm.h"
-
 
 // TODO: reference additional headers your program requires here

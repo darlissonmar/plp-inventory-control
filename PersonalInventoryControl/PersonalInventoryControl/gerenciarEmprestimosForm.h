@@ -36,13 +36,27 @@ namespace PersonalInventoryControl {
 		}
 	private: System::Windows::Forms::Panel^  panel1;
 	private: System::Windows::Forms::Label^  label1;
-	private: System::Windows::Forms::Button^  button1;
-	private: System::Windows::Forms::Button^  button2;
-	private: System::Windows::Forms::Button^  button3;
-	private: System::Windows::Forms::DataGridView^  dataGridView1;
-	private: System::Windows::Forms::Label^  label2;
-	private: System::Windows::Forms::TextBox^  textBox1;
-	private: System::Windows::Forms::Button^  ger_emp_btn_pesquisar;
+	private: System::Windows::Forms::Button^  ger_emp_btn_detalhes;
+	private: System::Windows::Forms::Button^  ger_emp_btn_alterar;
+	private: System::Windows::Forms::Button^  ger_emp_btn_novo;
+
+
+
+	private: System::Windows::Forms::DataGridView^  data_grid_emprestimos;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  dt_grid_emp_col_id;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  dt_grid_emp_col_amigo;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  dt_grid_emp_col_mat;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  dt_grid_emp_col_data_emp;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  dt_grid_emp_col_data_dev;
+
+
+
+
+
+
+
+
+
 
 
 	protected: 
@@ -62,15 +76,17 @@ namespace PersonalInventoryControl {
 		{
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->button2 = (gcnew System::Windows::Forms::Button());
-			this->button3 = (gcnew System::Windows::Forms::Button());
-			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
-			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
-			this->ger_emp_btn_pesquisar = (gcnew System::Windows::Forms::Button());
+			this->ger_emp_btn_detalhes = (gcnew System::Windows::Forms::Button());
+			this->ger_emp_btn_alterar = (gcnew System::Windows::Forms::Button());
+			this->ger_emp_btn_novo = (gcnew System::Windows::Forms::Button());
+			this->data_grid_emprestimos = (gcnew System::Windows::Forms::DataGridView());
+			this->dt_grid_emp_col_id = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dt_grid_emp_col_amigo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dt_grid_emp_col_mat = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dt_grid_emp_col_data_emp = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dt_grid_emp_col_data_dev = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->panel1->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->dataGridView1))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->data_grid_emprestimos))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// panel1
@@ -96,81 +112,91 @@ namespace PersonalInventoryControl {
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Empréstimos";
 			// 
-			// button1
+			// ger_emp_btn_detalhes
 			// 
-			this->button1->Location = System::Drawing::Point(8, 51);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(75, 23);
-			this->button1->TabIndex = 1;
-			this->button1->Text = L"Visualizar";
-			this->button1->UseVisualStyleBackColor = true;
+			this->ger_emp_btn_detalhes->Location = System::Drawing::Point(8, 51);
+			this->ger_emp_btn_detalhes->Name = L"ger_emp_btn_detalhes";
+			this->ger_emp_btn_detalhes->Size = System::Drawing::Size(75, 23);
+			this->ger_emp_btn_detalhes->TabIndex = 1;
+			this->ger_emp_btn_detalhes->Text = L"Detalhes";
+			this->ger_emp_btn_detalhes->UseVisualStyleBackColor = true;
 			// 
-			// button2
+			// ger_emp_btn_alterar
 			// 
-			this->button2->Location = System::Drawing::Point(97, 51);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(75, 23);
-			this->button2->TabIndex = 2;
-			this->button2->Text = L"Alterar";
-			this->button2->UseVisualStyleBackColor = true;
+			this->ger_emp_btn_alterar->Location = System::Drawing::Point(97, 51);
+			this->ger_emp_btn_alterar->Name = L"ger_emp_btn_alterar";
+			this->ger_emp_btn_alterar->Size = System::Drawing::Size(75, 23);
+			this->ger_emp_btn_alterar->TabIndex = 2;
+			this->ger_emp_btn_alterar->Text = L"Alterar";
+			this->ger_emp_btn_alterar->UseVisualStyleBackColor = true;
 			// 
-			// button3
+			// ger_emp_btn_novo
 			// 
-			this->button3->Location = System::Drawing::Point(190, 51);
-			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(75, 23);
-			this->button3->TabIndex = 3;
-			this->button3->Text = L"Novo";
-			this->button3->UseVisualStyleBackColor = true;
+			this->ger_emp_btn_novo->Location = System::Drawing::Point(190, 51);
+			this->ger_emp_btn_novo->Name = L"ger_emp_btn_novo";
+			this->ger_emp_btn_novo->Size = System::Drawing::Size(75, 23);
+			this->ger_emp_btn_novo->TabIndex = 3;
+			this->ger_emp_btn_novo->Text = L"Novo";
+			this->ger_emp_btn_novo->UseVisualStyleBackColor = true;
 			// 
-			// dataGridView1
+			// data_grid_emprestimos
 			// 
-			this->dataGridView1->AllowUserToAddRows = false;
-			this->dataGridView1->AllowUserToDeleteRows = false;
-			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Location = System::Drawing::Point(8, 85);
-			this->dataGridView1->Name = L"dataGridView1";
-			this->dataGridView1->ReadOnly = true;
-			this->dataGridView1->Size = System::Drawing::Size(625, 138);
-			this->dataGridView1->TabIndex = 4;
+			this->data_grid_emprestimos->AllowUserToAddRows = false;
+			this->data_grid_emprestimos->AllowUserToDeleteRows = false;
+			this->data_grid_emprestimos->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->data_grid_emprestimos->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {this->dt_grid_emp_col_id, 
+				this->dt_grid_emp_col_amigo, this->dt_grid_emp_col_mat, this->dt_grid_emp_col_data_emp, this->dt_grid_emp_col_data_dev});
+			this->data_grid_emprestimos->Location = System::Drawing::Point(8, 85);
+			this->data_grid_emprestimos->Name = L"data_grid_emprestimos";
+			this->data_grid_emprestimos->ReadOnly = true;
+			this->data_grid_emprestimos->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
+			this->data_grid_emprestimos->Size = System::Drawing::Size(625, 138);
+			this->data_grid_emprestimos->TabIndex = 4;
 			// 
-			// label2
+			// dt_grid_emp_col_id
 			// 
-			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(323, 56);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(35, 13);
-			this->label2->TabIndex = 5;
-			this->label2->Text = L"Título";
+			this->dt_grid_emp_col_id->HeaderText = L"id";
+			this->dt_grid_emp_col_id->Name = L"dt_grid_emp_col_id";
+			this->dt_grid_emp_col_id->ReadOnly = true;
+			this->dt_grid_emp_col_id->Width = 30;
 			// 
-			// textBox1
+			// dt_grid_emp_col_amigo
 			// 
-			this->textBox1->Location = System::Drawing::Point(364, 53);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(183, 20);
-			this->textBox1->TabIndex = 6;
+			this->dt_grid_emp_col_amigo->HeaderText = L"Amigo";
+			this->dt_grid_emp_col_amigo->Name = L"dt_grid_emp_col_amigo";
+			this->dt_grid_emp_col_amigo->ReadOnly = true;
+			this->dt_grid_emp_col_amigo->Width = 155;
 			// 
-			// ger_emp_btn_pesquisar
+			// dt_grid_emp_col_mat
 			// 
-			this->ger_emp_btn_pesquisar->Location = System::Drawing::Point(558, 51);
-			this->ger_emp_btn_pesquisar->Name = L"ger_emp_btn_pesquisar";
-			this->ger_emp_btn_pesquisar->Size = System::Drawing::Size(75, 23);
-			this->ger_emp_btn_pesquisar->TabIndex = 7;
-			this->ger_emp_btn_pesquisar->Text = L"Pesquisar";
-			this->ger_emp_btn_pesquisar->UseVisualStyleBackColor = true;
+			this->dt_grid_emp_col_mat->HeaderText = L"Material";
+			this->dt_grid_emp_col_mat->Name = L"dt_grid_emp_col_mat";
+			this->dt_grid_emp_col_mat->ReadOnly = true;
+			this->dt_grid_emp_col_mat->Width = 155;
+			// 
+			// dt_grid_emp_col_data_emp
+			// 
+			this->dt_grid_emp_col_data_emp->HeaderText = L"Emprestado em";
+			this->dt_grid_emp_col_data_emp->Name = L"dt_grid_emp_col_data_emp";
+			this->dt_grid_emp_col_data_emp->ReadOnly = true;
+			this->dt_grid_emp_col_data_emp->Width = 120;
+			// 
+			// dt_grid_emp_col_data_dev
+			// 
+			this->dt_grid_emp_col_data_dev->HeaderText = L"Devolução em";
+			this->dt_grid_emp_col_data_dev->Name = L"dt_grid_emp_col_data_dev";
+			this->dt_grid_emp_col_data_dev->ReadOnly = true;
+			this->dt_grid_emp_col_data_dev->Width = 120;
 			// 
 			// gerenciarEmprestimosForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(640, 243);
-			this->Controls->Add(this->ger_emp_btn_pesquisar);
-			this->Controls->Add(this->textBox1);
-			this->Controls->Add(this->label2);
-			this->Controls->Add(this->dataGridView1);
-			this->Controls->Add(this->button3);
-			this->Controls->Add(this->button2);
-			this->Controls->Add(this->button1);
+			this->Controls->Add(this->data_grid_emprestimos);
+			this->Controls->Add(this->ger_emp_btn_novo);
+			this->Controls->Add(this->ger_emp_btn_alterar);
+			this->Controls->Add(this->ger_emp_btn_detalhes);
 			this->Controls->Add(this->panel1);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
 			this->MaximizeBox = false;
@@ -179,9 +205,8 @@ namespace PersonalInventoryControl {
 			this->Text = L"Gerenciamento de empréstimos";
 			this->panel1->ResumeLayout(false);
 			this->panel1->PerformLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->dataGridView1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->data_grid_emprestimos))->EndInit();
 			this->ResumeLayout(false);
-			this->PerformLayout();
 
 		}
 #pragma endregion

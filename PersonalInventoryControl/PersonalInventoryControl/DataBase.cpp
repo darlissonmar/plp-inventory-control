@@ -96,8 +96,8 @@ void DataBase::insertMidiaDados(MidiaDados* midiaDados){
 
 void DataBase::inicializar( void )
 {
-	Amigo *amigo1 = new Amigo(amigo_db_indice++,"Joao", "dos Santos", "joao@jmail.com","2123-1234","Rua das mangueiras", "Masculino");
-	Amigo *amigo2 = new Amigo(amigo_db_indice++,"Pedro", "da Silva", "pedro@jmail.com","2123-4321","Rua das Laranjeiras", "Masculino");
+	Amigo *amigo1 = new Amigo(amigo_db_indice++,"Joao", "dos Santos", "joao@jmail.com","2123-1234","Masculino","Rua das mangueiras");
+	Amigo *amigo2 = new Amigo(amigo_db_indice++,"Pedro", "da Silva", "pedro@jmail.com","2123-4321", "Masculino", "Rua das Laranjeiras");
 	
 	try
 	{
