@@ -2,6 +2,18 @@
 
 MidiaAudio::MidiaAudio(EnumTipoMidia::Tipo tipoMidia):tipoMidia(tipoMidia)
 {
+	this->setDisponivel(true);
+}
+
+MidiaAudio::MidiaAudio(int id, bool disponivel, string titulo, int ano, string album, 
+	string artista, int volume, string genero, string gravadora, EnumTipoMidia::Tipo tipoMidia):
+	album(album), artista(artista), volume(volume), genero(genero), gravadora(gravadora), tipoMidia(tipoMidia)
+{
+	this->setId(id);
+	this->setDisponivel(disponivel);
+	this->setTitulo(titulo);
+	this->setAno(ano);
+
 }
 
 MidiaAudio::~MidiaAudio()

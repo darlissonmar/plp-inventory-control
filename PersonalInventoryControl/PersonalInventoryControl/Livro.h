@@ -6,8 +6,9 @@
 class Livro: public Material
 {
 public:
-    Livro();
-    ~Livro();
+	Livro();
+    Livro(int id, bool disponivel, string titulo, int ano, string autor, string area, int edicao, string editora, int volume);
+	~Livro();
 
     const string getAutor() const;
     void setAutor(string autor);

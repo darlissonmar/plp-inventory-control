@@ -99,7 +99,7 @@ bool ControllerEmprestimo::atualizar(Emprestimo* element)
 	}catch (exception e)
 	{
 		System::Console::WriteLine((wchar_t)e.what());
-		System::Console::WriteLine("ERROR: ControllerEmprestimo::deletar(int idObj)");
+		System::Console::WriteLine("ERROR: ControllerEmprestimo::atualizar(Emprestimo* element)");
 		return false;
 	}
 }

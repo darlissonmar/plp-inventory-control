@@ -33,7 +33,7 @@ bool ControllerAmigo::atualizar(Amigo* element)
 	}catch (exception e)
 	{
 		System::Console::WriteLine((wchar_t)e.what());
-		System::Console::WriteLine("ERROR: ControllerAmigo::deletar(int idObj)");
+		System::Console::WriteLine("ERROR: ControllerAmigo::atualizar(Amigo* element)");
 		return false;
 	}
 }

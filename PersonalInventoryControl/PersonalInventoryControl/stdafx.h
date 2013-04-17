@@ -15,6 +15,8 @@
 #include "ICrud.h"
 #include "ControllerAmigo.h"
 #include "ControllerEmprestimo.h"
+#include "ControllerLivro.h"
+#include "ControllerMidiaAudio.h"
 
 #include "AboutForm.h"
 #include "cadMaterialForm.h"

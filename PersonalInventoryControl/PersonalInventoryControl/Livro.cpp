@@ -4,8 +4,19 @@ Livro::Livro()
 {
 }
 
+Livro::Livro(int id, bool disponivel, string titulo, int ano, string autor, string area, int edicao, string editora, int volume):
+		autor(autor), area(area), edicao(edicao), editora(editora), volume(volume)
+{
+	this->setId(id);
+	this->setTitulo(titulo);
+	this->setDisponivel(disponivel);
+	this->setAno(ano);
+}
+
+
 Livro::~Livro()
 {
+	this->setDisponivel(true);
 }
 
 

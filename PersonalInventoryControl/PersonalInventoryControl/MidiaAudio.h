@@ -9,6 +9,7 @@ class MidiaAudio : public Material
 
 public:
      MidiaAudio(EnumTipoMidia::Tipo tipoMidia);
+	 MidiaAudio(int id, bool disponivel, string titulo, int ano, string album, string artista, int volume, string genero, string gravadora, EnumTipoMidia::Tipo tipoMidia);
     ~MidiaAudio();
     
      const string getAlbum() const;
