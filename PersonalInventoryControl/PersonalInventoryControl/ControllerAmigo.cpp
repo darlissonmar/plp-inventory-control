@@ -80,6 +80,7 @@ list<Amigo *> * ControllerAmigo::buscarTodos(){
 	for(it= dataBase->getAmigos()->begin(); it != dataBase->getAmigos()->end(); it++){
 		returnedList->push_back(it->second);
 	}
+	
 
 	return returnedList;
 

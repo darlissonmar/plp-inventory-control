@@ -11,6 +11,68 @@ ControllerEmprestimo::~ControllerEmprestimo(void)
 {
 }
 
+list<Emprestimo *> * ControllerEmprestimo::buscarTodos(){
+	list<Emprestimo *> * returnedList= new list<Emprestimo *>();
+
+	hash_map<const int, Emprestimo*>::const_iterator it;
+
+	for(it= dataBase->getEmprestimos()->begin(); it != dataBase->getEmprestimos()->end(); it++){
+		returnedList->push_back(it->second);
+	}
+
+	return returnedList;
+
+}
+
+list<Emprestimo *> * ControllerEmprestimo::buscarEmpAbertos(){
+	list<Emprestimo *> * returnedList= new list<Emprestimo *>();
+
+	hash_map<const int, Emprestimo*>::const_iterator it;
+
+	for(it= dataBase->getEmprestimos()->begin(); it != dataBase->getEmprestimos()->end(); it++){
+		if(it->second->getDataDevolucao().length()==0){
+			returnedList->push_back(it->second);			
+		}
+	}
+	returnedList->sort();
+	returnedList->unique();
+	return returnedList;
+
+}
+
+list<Emprestimo *> * ControllerEmprestimo::buscarEmpFechados(){
+	list<Emprestimo *> * returnedList= new list<Emprestimo *>();
+
+	hash_map<const int, Emprestimo*>::const_iterator it;
+
+	for(it= dataBase->getEmprestimos()->begin(); it != dataBase->getEmprestimos()->end(); it++){
+		if(it->second->getDataDevolucao().length()!=0){
+			returnedList->push_back(it->second);			
+		}
+	}
+	returnedList->sort();
+	returnedList->unique();
+	return returnedList;
+
+}
+
+list<Emprestimo *> * ControllerEmprestimo::buscarEmpVencidos(){
+	list<Emprestimo *> * returnedList= new list<Emprestimo *>();
+
+	hash_map<const int, Emprestimo*>::const_iterator it;
+
+	for(it= dataBase->getEmprestimos()->begin(); it != dataBase->getEmprestimos()->end(); it++){
+		if(it->second->getDataDevolucao().length()==0){
+			returnedList->push_back(it->second);			
+		}
+	}
+	returnedList->sort();
+	returnedList->unique();
+	return returnedList;
+
+}
+
+
 
 bool ControllerEmprestimo::adicionar(Emprestimo* element)
 {

@@ -2,10 +2,11 @@
 
 Emprestimo::Emprestimo(Amigo* amigo, Material* material):amigo(amigo), material(material)
 {
+	this->dataDevolucao="";
 	this->atrasado=false;
 }
 
-Emprestimo::Emprestimo(int id, long dataEmprestimo, long dataDevolucao, int prazoDias, bool atrasado, Amigo* amigo, Material* material):
+Emprestimo::Emprestimo(int id, string dataEmprestimo, string dataDevolucao, int prazoDias, bool atrasado, Amigo* amigo, Material* material):
 id(id), dataEmprestimo(dataEmprestimo), dataDevolucao(dataDevolucao), prazoDias(prazoDias), atrasado(atrasado), amigo(amigo), material(material)
 {	
 }
@@ -34,22 +35,22 @@ void Emprestimo::setId(int id)
 	this->id = id;
 }
 
-const long int Emprestimo::getDataEmprestimo() const
+const string Emprestimo::getDataEmprestimo() const
 {
 	return this->dataEmprestimo;
 }
 
-void Emprestimo::setDataEmprestimo(long int dataEmprestimo)
+void Emprestimo::setDataEmprestimo(string dataEmprestimo)
 {
 	this->dataEmprestimo = dataEmprestimo;
 }
 
-const long int Emprestimo::getDataDevolucao() const
+const string Emprestimo::getDataDevolucao() const
 {
 	return this->dataDevolucao;
 }
 
-void Emprestimo::setDataDevolucao(long int dataDevolucao)
+void Emprestimo::setDataDevolucao(string dataDevolucao)
 {
 	this->dataDevolucao = dataDevolucao;
 }
