@@ -22,8 +22,8 @@ public:
      void setGenero(string genero);
      const string getGravadora() const;
      void setGravadora(string gravadora);
-
-	 const EnumTipoMidia::Tipo getTipoMidia(){return tipoMidia;};
+	 const EnumTipoMidia::Tipo getTipoMidia();
+	 void setTipoMidia(EnumTipoMidia::Tipo tipoMidia);	 
 
 	 //Implementa o metodo puramente virtual
 	 void defAbstract(){return;}

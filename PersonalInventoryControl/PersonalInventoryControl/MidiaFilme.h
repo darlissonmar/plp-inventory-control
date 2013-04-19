@@ -21,9 +21,11 @@ public:
 	const string getProdutor() const;
 	void setProdutor(string produtor);
 	const string getDiretor() const;
-	void setDiretor(string diretor); 
+	void setDiretor(string diretor);
+	const EnumTipoMidia::Tipo getTipoMidia();
+	void setTipoMidia(EnumTipoMidia::Tipo tipoMidia);
 
-	const EnumTipoMidia::Tipo getTipoMidia(){return tipoMidia;};
+	
 
 	//Implementa o metodo puramente virtual
 	void defAbstract(){return;}

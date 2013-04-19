@@ -70,3 +70,12 @@ void MidiaAudio::setGravadora(string gravadora)
     this->gravadora = gravadora;
 }
 
+const EnumTipoMidia::Tipo MidiaAudio::getTipoMidia()
+{
+	return this->tipoMidia;
+}
+
+void MidiaAudio::setTipoMidia(EnumTipoMidia::Tipo tipoMidia)
+{
+	this->tipoMidia = tipoMidia;
+}

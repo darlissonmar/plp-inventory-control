@@ -59,4 +59,13 @@ void MidiaFilme::setDiretor(string diretor)
 	this->diretor = diretor;
 }
 
+const EnumTipoMidia::Tipo MidiaFilme::getTipoMidia()
+{
+	return this->tipoMidia;
+}
+
+void MidiaFilme::setTipoMidia(EnumTipoMidia::Tipo tipoMidia)
+{
+	this->tipoMidia = tipoMidia;
+}
 

@@ -16,8 +16,8 @@ public:
 
 	const string getDescricao();
 	void setDescricao(string descricao);
-
-	const EnumTipoMidia::Tipo getTipoMidia(){return tipoMidia;};
+	const EnumTipoMidia::Tipo getTipoMidia();
+	void setTipoMidia(EnumTipoMidia::Tipo tipoMidia);
 
 	//Implementa o metodo puramente virtual
 	void defAbstract(){return;}

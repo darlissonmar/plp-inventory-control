@@ -27,3 +27,13 @@ void MidiaDados::setDescricao(string descricao)
 {
 	this->descricao = descricao;
 }
+
+const EnumTipoMidia::Tipo MidiaDados::getTipoMidia()
+{
+	return this->tipoMidia;
+}
+
+void MidiaDados::setTipoMidia(EnumTipoMidia::Tipo tipoMidia)
+{
+	this->tipoMidia = tipoMidia;
+}
