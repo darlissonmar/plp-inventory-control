@@ -10,7 +10,10 @@ void PersonalInventoryControl::cadMaterialForm::selecionaMidAudioTab( bool edita
 			this->tabMaterial->TabPages->Remove(this->tabPageMFilme);
 		} else 
 		{
-			this->tabMaterial->Enabled = false;
+			this->btn_cad_livro->Enabled = false;
+			this->btn_cad_mid_filme->Enabled = false;
+			this->btn_cad_mid_audio->Enabled = false;
+			this->btn_cad_mid_dados->Enabled = false;
 			this->tabMaterial->TabPages->Remove(this->tabPageLivro);
 			this->tabMaterial->TabPages->Remove(this->tabPageMDados);
 			this->tabMaterial->TabPages->Remove(this->tabPageMFilme);
@@ -27,7 +30,10 @@ void PersonalInventoryControl::cadMaterialForm::selecionaMidDadosTab( bool edita
 		this->tabMaterial->TabPages->Remove(this->tabPageMFilme);
 	} else 
 	{
-		this->tabMaterial->Enabled = false;
+		this->btn_cad_livro->Enabled = false;
+		this->btn_cad_mid_filme->Enabled = false;
+		this->btn_cad_mid_audio->Enabled = false;
+		this->btn_cad_mid_dados->Enabled = false;
 		this->tabMaterial->TabPages->Remove(this->tabPageLivro);
 		this->tabMaterial->TabPages->Remove(this->tabPageMAudio);
 		this->tabMaterial->TabPages->Remove(this->tabPageMFilme);
@@ -45,7 +51,10 @@ void PersonalInventoryControl::cadMaterialForm::selecionaMidFilmeTab( bool edita
 		this->tabMaterial->TabPages->Remove(this->tabPageMAudio);
 	} else 
 	{
-		this->tabMaterial->Enabled = false;
+		this->btn_cad_livro->Enabled = false;
+		this->btn_cad_mid_filme->Enabled = false;
+		this->btn_cad_mid_audio->Enabled = false;
+		this->btn_cad_mid_dados->Enabled = false;
 		this->tabMaterial->TabPages->Remove(this->tabPageLivro);
 		this->tabMaterial->TabPages->Remove(this->tabPageMDados);
 		this->tabMaterial->TabPages->Remove(this->tabPageMAudio);
@@ -64,7 +73,11 @@ void PersonalInventoryControl::cadMaterialForm::selecionaLivroTab( bool editando
 		this->tabMaterial->TabPages->Remove(this->tabPageMFilme);
 	} else 
 	{
-		this->tabMaterial->Enabled = false;
+		this->btn_cad_livro->Enabled = false;
+		this->btn_cad_mid_filme->Enabled = false;
+		this->btn_cad_mid_audio->Enabled = false;
+		this->btn_cad_mid_dados->Enabled = false;
+
 		this->tabMaterial->TabPages->Remove(this->tabPageMAudio);
 		this->tabMaterial->TabPages->Remove(this->tabPageMDados);
 		this->tabMaterial->TabPages->Remove(this->tabPageMFilme);

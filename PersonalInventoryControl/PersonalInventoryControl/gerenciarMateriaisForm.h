@@ -20,28 +20,7 @@ namespace PersonalInventoryControl {
 		ControllerMidiaAudio* controller_midiaAudio;
 		ControllerMidiaDados* controller_midiaDados;
 		ControllerMidiaFilme* controller_midiaFilme;
-	private: System::Windows::Forms::ContextMenuStrip^  contextMenuStrip1;
-	public: 
-	private: System::Windows::Forms::ToolStripMenuItem^  livroToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^  mídiaDeAudioToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^  mídiaDeFilmeToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^  mídiaDeDadosToolStripMenuItem;
-	private: System::Windows::Forms::GroupBox^  groupBox1;
-
-	public: 
-
-
-
-
-
-	public: 
-
-
-
-
-
-
-			 ControllerLivro* controller_livro;
+		ControllerLivro* controller_livro;
 		
 
 		gerenciarMateriaisForm(void)
@@ -66,6 +45,12 @@ namespace PersonalInventoryControl {
 			}
 		}
 
+	private: System::Windows::Forms::ContextMenuStrip^  contextMenuStrip1;
+	private: System::Windows::Forms::ToolStripMenuItem^  livroToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^  mídiaDeAudioToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^  mídiaDeFilmeToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^  mídiaDeDadosToolStripMenuItem;
+	private: System::Windows::Forms::GroupBox^  groupBox1;
 
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  dt_grid_emp_col_tipo;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  dt_grid_emp_col_titulo;
@@ -168,7 +153,7 @@ namespace PersonalInventoryControl {
 			this->ger_materiais_btn_cadastrar->Name = L"ger_materiais_btn_cadastrar";
 			this->ger_materiais_btn_cadastrar->Size = System::Drawing::Size(75, 23);
 			this->ger_materiais_btn_cadastrar->TabIndex = 3;
-			this->ger_materiais_btn_cadastrar->Text = L"Cadastrar";
+			this->ger_materiais_btn_cadastrar->Text = L"Cadastrar >";
 			this->ger_materiais_btn_cadastrar->UseVisualStyleBackColor = true;
 			this->ger_materiais_btn_cadastrar->Click += gcnew System::EventHandler(this, &gerenciarMateriaisForm::ger_materiais_btn_cadastrar_Click);
 			// 
@@ -184,24 +169,28 @@ namespace PersonalInventoryControl {
 			this->livroToolStripMenuItem->Name = L"livroToolStripMenuItem";
 			this->livroToolStripMenuItem->Size = System::Drawing::Size(156, 22);
 			this->livroToolStripMenuItem->Text = L"Livro";
+			this->livroToolStripMenuItem->Click += gcnew System::EventHandler(this, &gerenciarMateriaisForm::livroToolStripMenuItem_Click);
 			// 
 			// mídiaDeAudioToolStripMenuItem
 			// 
 			this->mídiaDeAudioToolStripMenuItem->Name = L"mídiaDeAudioToolStripMenuItem";
 			this->mídiaDeAudioToolStripMenuItem->Size = System::Drawing::Size(156, 22);
 			this->mídiaDeAudioToolStripMenuItem->Text = L"Mídia de Audio";
+			this->mídiaDeAudioToolStripMenuItem->Click += gcnew System::EventHandler(this, &gerenciarMateriaisForm::mídiaDeAudioToolStripMenuItem_Click);
 			// 
 			// mídiaDeFilmeToolStripMenuItem
 			// 
 			this->mídiaDeFilmeToolStripMenuItem->Name = L"mídiaDeFilmeToolStripMenuItem";
 			this->mídiaDeFilmeToolStripMenuItem->Size = System::Drawing::Size(156, 22);
 			this->mídiaDeFilmeToolStripMenuItem->Text = L"Mídia de Filme";
+			this->mídiaDeFilmeToolStripMenuItem->Click += gcnew System::EventHandler(this, &gerenciarMateriaisForm::mídiaDeFilmeToolStripMenuItem_Click);
 			// 
 			// mídiaDeDadosToolStripMenuItem
 			// 
 			this->mídiaDeDadosToolStripMenuItem->Name = L"mídiaDeDadosToolStripMenuItem";
 			this->mídiaDeDadosToolStripMenuItem->Size = System::Drawing::Size(156, 22);
 			this->mídiaDeDadosToolStripMenuItem->Text = L"Mídia de Dados";
+			this->mídiaDeDadosToolStripMenuItem->Click += gcnew System::EventHandler(this, &gerenciarMateriaisForm::mídiaDeDadosToolStripMenuItem_Click);
 			// 
 			// data_grid_materiais
 			// 
@@ -361,8 +350,6 @@ namespace PersonalInventoryControl {
 						}
 
 					}
-
-	
 	private: System::Void ger_materiais_btn_detalhes_Click(System::Object^  sender, System::EventArgs^  e) {
 				
 				 String^ titulo_material = data_grid_materiais->SelectedRows[0]->Cells[1]->Value->ToString();
@@ -417,7 +404,6 @@ namespace PersonalInventoryControl {
 					 MessageBoxButtons::OK, MessageBoxIcon::Warning);
 				 }
 			 }
-
 	private: System::Void ger_materiais_btn_alterar_Click(System::Object^  sender, System::EventArgs^  e) {
 				 
 				 String^ titulo_material = data_grid_materiais->SelectedRows[0]->Cells[1]->Value->ToString();
@@ -474,8 +460,6 @@ namespace PersonalInventoryControl {
 
 				 this->Close();
 		 }
-
-
 	private: System::Void ger_materiais_btn_cadastrar_Click(System::Object^  sender, System::EventArgs^  e) {
 				 //cadMaterialForm ^material_form = gcnew cadMaterialForm();
 			//	 material_form->Show();
@@ -484,8 +468,85 @@ namespace PersonalInventoryControl {
 		 }
 	private: System::Void ger_materiais_btn_remover_Click(System::Object^  sender, System::EventArgs^  e) {
 
+				 String^ titulo_material = data_grid_materiais->SelectedRows[0]->Cells[1]->Value->ToString();
+				 String^ tipo_material = data_grid_materiais->SelectedRows[0]->Cells[0]->Value->ToString();
+				 String^ pattern = "Audio|Livro|Filme|Dados";
+				 System::Text::RegularExpressions::Regex ^ regex = gcnew System::Text::RegularExpressions::Regex( pattern);
+				 System::Text::RegularExpressions::Match^ match = regex->Match(tipo_material);
+				 String^ tipo_material_split = match->Value;
+
+				 int material_id;
+
+				 if(!System::String::IsNullOrEmpty(titulo_material))
+				 { 
+					 
+					 if(MessageBox::Show ("Tem certeza que deseja remover o material ' "+ titulo_material+" ' ?", "Remover",
+						 MessageBoxButtons::YesNo, MessageBoxIcon::Question)
+						 == System::Windows::Forms::DialogResult::Yes)
+					 {	
+						 
+						 switch( get_codTipoMaterial(tipo_material_split))
+						 {
+						 case COD_AUDIO:
+
+							 material_id = controller_midiaAudio->buscar(String_utils::SystemToStdString(titulo_material))->getId();
+							 
+							 if(controller_midiaAudio->deletar(material_id))
+							 {
+								 MessageBox::Show("Midia de audio removida com sucesso", "Sucesso",
+								 MessageBoxButtons::OK, MessageBoxIcon::Information);
+							 }
+							
+							 break;
+
+						 case COD_DADOS:
+
+							 material_id = controller_midiaDados->buscar(String_utils::SystemToStdString(titulo_material))->getId();
+							
+							 if(controller_midiaDados->deletar(material_id))
+							 {
+								 MessageBox::Show("Midia de Dados removida com sucesso", "Sucesso",
+								 MessageBoxButtons::OK, MessageBoxIcon::Information);
+							 }		
+							 break;
+
+						 case COD_FILME: 
+
+							 material_id = controller_midiaFilme->buscar(String_utils::SystemToStdString(titulo_material))->getId();
+							 
+							 if(controller_midiaFilme->deletar(material_id))
+							 {
+								 MessageBox::Show("Midia de Filme removida com sucesso", "Sucesso",
+								 MessageBoxButtons::OK, MessageBoxIcon::Information);
+							 }
+							 break;
+
+						 case COD_LIVRO:
+
+							 material_id = controller_livro->buscar(String_utils::SystemToStdString(titulo_material))->getId();
+							 
+							 if(controller_livro->deletar(material_id))
+							 {
+								 MessageBox::Show("Livro removido com sucesso", "Sucesso",
+								 MessageBoxButtons::OK, MessageBoxIcon::Information);
+							 }
+							 break;
+
+						 default: 
+							 break;
+						 }
+					 }
+
+				 }
+				 else 
+				 {
+					 MessageBox::Show("Por favor, selecione um amigo!","Erro",
+						 MessageBoxButtons::OK, MessageBoxIcon::Warning);
+				 }
+				 this->data_grid_materiais->Rows->Clear();
+				 carregar_dadosMateriais();
+
 		 }
-	
 	private: String^ getTipoMidia(int codigoTipo)
 					  {
 
@@ -507,7 +568,6 @@ namespace PersonalInventoryControl {
 						  }
 						  return tipo_midia;
 					  }
-
 	private: int get_codTipoMaterial(String^ material_nome)
 			 {
 				 int cod_material;
@@ -517,18 +577,38 @@ namespace PersonalInventoryControl {
 
 				 } else if ( material_nome->Equals("Dados") )
 				 {
-					cod_material = COD_DADOS;
+					 cod_material = COD_DADOS;
 
 				 } else if ( material_nome->Equals("Filme") )
 				 {
-					cod_material = COD_FILME;
+					 cod_material = COD_FILME;
 
 				 } else if ( material_nome->Equals("Livro") )
 				 {
-					cod_material = COD_LIVRO;
+					 cod_material = COD_LIVRO;
 				 }
 
 				 return cod_material;
 			 }
+	private: System::Void mídiaDeAudioToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+			 cadMaterialForm ^cadMat = gcnew cadMaterialForm(COD_CADASTRAR, COD_AUDIO, NULL);
+			 cadMat->Show();
+			 this->Close();
+		 }
+	private: System::Void mídiaDeFilmeToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+			 cadMaterialForm ^cadMat = gcnew cadMaterialForm(COD_CADASTRAR, COD_FILME, NULL);
+			 cadMat->Show();
+			 this->Close();
+		 }
+	private: System::Void mídiaDeDadosToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+			 cadMaterialForm ^cadMat = gcnew cadMaterialForm(COD_CADASTRAR, COD_DADOS, NULL);
+			 cadMat->Show();
+			 this->Close();
+		 }
+	private: System::Void livroToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+			 cadMaterialForm ^cadMat = gcnew cadMaterialForm(COD_CADASTRAR, COD_LIVRO, NULL);
+			 cadMat->Show();
+			 this->Close();
+		 }
 };
 }

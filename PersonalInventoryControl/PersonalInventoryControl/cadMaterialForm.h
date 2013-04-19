@@ -38,8 +38,8 @@ namespace PersonalInventoryControl {
 			switch(cod_operacao)
 			{
 			case COD_CADASTRAR:
-				
-				break; 
+					cadastrar_material(cod_material);
+				    break; 
 
 			case COD_EDITAR: 
 					editar_material(cod_material, material);
@@ -951,9 +951,7 @@ private: System::Void btn_cad_livro_Click(System::Object^  sender, System::Event
 										break;
 						 
 						 case COD_EDITAR: 
-									// pegar o titulo e buscar o id isDisponivel()
-								 
-								
+																	
 								 if(controller_livro->atualizar(get_livroDoForm(true)))
 									 {
 										MessageBox::Show("Livro atualizado com sucesso", "Sucesso",
@@ -977,12 +975,171 @@ private: System::Void btn_cad_livro_Click(System::Object^  sender, System::Event
 							 MessageBoxButtons::OK, MessageBoxIcon::Warning);
 					 }
 			 }
-
 private: System::Void btn_cad_mid_audio_Click(System::Object^  sender, System::EventArgs^  e) {
+
+			 if( 
+				 !System::String::IsNullOrEmpty(this->txtBox_Maudio_titulo->Text) ||
+				 !System::String::IsNullOrEmpty(this->txtBox_Maudio_artista->Text) ||
+				 !System::String::IsNullOrEmpty(this->txtBox_Maudio_ano->Text) ||
+				 !System::String::IsNullOrEmpty(this->txtBox_Maudio_album->Text) ||
+				 !System::String::IsNullOrEmpty(this->txtBox_Maudio_genero->Text) ||
+				 !System::String::IsNullOrEmpty(this->txtBox_Maudio_vol->Text) ||
+				 !System::String::IsNullOrEmpty(this->txtBox_Maudio_gravad->Text)
+				 )
+			 {	
+
+				 switch(_COD_OPERACAO)
+				 {
+				 case COD_CADASTRAR: 
+
+					 if(controller_midiaAudio->adicionar(get_midiaAudioDoForm(false)))
+					 {
+						 MessageBox::Show("Midia de Audio cadastrada com sucesso", "Sucesso",
+							 MessageBoxButtons::OK, MessageBoxIcon::Information);
+						 this->Close();
+					 }
+					 else 
+					 {
+						 MessageBox::Show("Ocorreu um erro durante a operacao", "Erro",
+							 MessageBoxButtons::OK, MessageBoxIcon::Error);
+						 this->Close();
+
+					 }
+					 break;
+
+				 case COD_EDITAR: 
+
+					 if(controller_midiaAudio->atualizar(get_midiaAudioDoForm(true)))
+					 {
+						 MessageBox::Show("Midia de Audio atualizada com sucesso", "Sucesso",
+							 MessageBoxButtons::OK, MessageBoxIcon::Information);
+						 this->Close();
+					 }
+					 else 
+					 {
+						 MessageBox::Show("Ocorreu um erro durante a operacao", "Erro",
+							 MessageBoxButtons::OK, MessageBoxIcon::Error);
+						 this->Close();
+					 }
+					 break;
+				 default:
+					 break;
+				 }
+			 }
+			 else 
+			 {
+				 MessageBox::Show("Preencha os campos", "Aviso",
+					 MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			 }
 		 }
 private: System::Void btn_cad_mid_filme_Click(System::Object^  sender, System::EventArgs^  e) {
+
+			 if( 
+				 !System::String::IsNullOrEmpty(this->txtBox_Mfilme_titulo->Text) ||
+				 !System::String::IsNullOrEmpty(this->txtBox_Mfilme_genero->Text) ||
+				 !System::String::IsNullOrEmpty(this->txtBox_Mfilme_atores->Text) ||
+				 !System::String::IsNullOrEmpty(this->txtBox_Mfilme_diretor->Text) ||
+				 !System::String::IsNullOrEmpty(this->txtBox_Mfilme_ano->Text) ||
+				 !System::String::IsNullOrEmpty(this->txtBox_Mfilme_produtor->Text)
+				 )
+			 {	
+
+				 switch(_COD_OPERACAO)
+				 {
+				 case COD_CADASTRAR: 
+
+					 if(controller_midiaFilme->adicionar(get_midiaFilmeDoForm(false)))
+					 {
+						 MessageBox::Show("Midia de Filme cadastrada com sucesso", "Sucesso",
+							 MessageBoxButtons::OK, MessageBoxIcon::Information);
+						 this->Close();
+					 }
+					 else 
+					 {
+						 MessageBox::Show("Ocorreu um erro durante a operacao", "Erro",
+							 MessageBoxButtons::OK, MessageBoxIcon::Error);
+						 this->Close();
+
+					 }
+					 break;
+
+				 case COD_EDITAR: 
+
+					 if(controller_midiaFilme->atualizar(get_midiaFilmeDoForm(true)))
+					 {
+						 MessageBox::Show("Midia de Filme atualizada com sucesso", "Sucesso",
+							 MessageBoxButtons::OK, MessageBoxIcon::Information);
+						 this->Close();
+					 }
+					 else 
+					 {
+						 MessageBox::Show("Ocorreu um erro durante a operacao", "Erro",
+							 MessageBoxButtons::OK, MessageBoxIcon::Error);
+						 this->Close();
+					 }
+					 break;
+				 default:
+					 break;
+				 }
+			 }
+			 else 
+			 {
+				 MessageBox::Show("Preencha os campos", "Aviso",
+					 MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			 }
 		 }
 private: System::Void btn_cad_mid_dados_Click(System::Object^  sender, System::EventArgs^  e) {
+
+			 if( 
+				 !System::String::IsNullOrEmpty(this->txtBox_Mdados_titulo->Text) ||
+				 !System::String::IsNullOrEmpty(this->txtBox_Mdados_ano->Text) ||
+				 !System::String::IsNullOrEmpty(this->txtBox_Mdados_descr->Text)
+				 )
+			 {	
+
+				 switch(_COD_OPERACAO)
+				 {
+				 case COD_CADASTRAR: 
+
+					 if(controller_midiaDados->adicionar(get_midiaDadosDoForm(false)))
+					 {
+						 MessageBox::Show("Midia de Dados cadastrada com sucesso", "Sucesso",
+							 MessageBoxButtons::OK, MessageBoxIcon::Information);
+						 this->Close();
+					 }
+					 else 
+					 {
+						 MessageBox::Show("Ocorreu um erro durante a operacao", "Erro",
+							 MessageBoxButtons::OK, MessageBoxIcon::Error);
+						 this->Close();
+
+					 }
+					 break;
+
+				 case COD_EDITAR: 
+
+					 if(controller_midiaDados->atualizar(get_midiaDadosDoForm(true)))
+					 {
+						 MessageBox::Show("Midia de Dados atualizada com sucesso", "Sucesso",
+							 MessageBoxButtons::OK, MessageBoxIcon::Information);
+						 this->Close();
+					 }
+					 else 
+					 {
+						 MessageBox::Show("Ocorreu um erro durante a operacao", "Erro",
+							 MessageBoxButtons::OK, MessageBoxIcon::Error);
+						 this->Close();
+					 }
+					 break;
+				 default:
+					 break;
+				 }
+			 }
+			 else 
+			 {
+				 MessageBox::Show("Preencha os campos", "Aviso",
+					 MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			 }
 		 }
 
 private: void detalhes_material(int codigo_material, Material* material)
@@ -1057,34 +1214,31 @@ private: void editar_material(int codigo_material, Material* material)
 			 }
 		 }
 
-private: void cadastrar_material(int codigo_material, Material* material)
+private: void cadastrar_material(int codigo_material)
 		 {
 			 switch(codigo_material)
 			 {
 
 			 case COD_AUDIO:
-				 this->titulo_label->Text = "Detalhes da Midia de Audio";
-				 selecionaMidAudioTab(false);
-				 set_midiaAudioNoForm((MidiaAudio*) material);
+				 this->titulo_label->Text = "Cadastro de Midia de Audio";
+				 selecionaMidAudioTab(true);
 
 				 break;
 
 			 case COD_DADOS:
-				 this->titulo_label->Text = "Detalhes da Midia de Dados";
-				 selecionaMidDadosTab(false);
-				 set_midiaDadosNoForm((MidiaDados*) material); 	
+				 this->titulo_label->Text = "Cadastro de Midia de Dados";
+				 selecionaMidDadosTab(true);
 				 break;
 
 			 case COD_FILME: 
-				 this->titulo_label->Text = "Detalhes da Midia de Filme";
-				 selecionaMidFilmeTab(false);
-				 set_midiaFilmeNoForm((MidiaFilme*) material);
+				 this->titulo_label->Text = "Cadastro de Midia de Filme";
+				 selecionaMidFilmeTab(true);
 				 break;
 
 			 case COD_LIVRO:
-				 this->titulo_label->Text = "Detalhes do Livro";
-				 selecionaLivroTab(false);
-				 set_livroNoForm((Livro*) material);
+				 this->titulo_label->Text = "Cadastro de Livro";
+				 selecionaLivroTab(true);
+				
 				 break;
 
 			 default: 
@@ -1154,28 +1308,62 @@ private: MidiaAudio* get_midiaAudioDoForm(bool editando)
 
 		 }
 
-private: MidiaDados* get_midiaDadosDoForm()
+private: MidiaDados* get_midiaDadosDoForm(bool editando)
 		 {
-			 MidiaDados* midia_dados = new MidiaDados(1, true, 
-				 String_utils::SystemToStdString(this->txtBox_Mdados_titulo->Text),
-				 Convert::ToInt32(this->txtBox_Mdados_ano->Text),
-				 String_utils::SystemToStdString(this->txtBox_Mdados_descr->Text),
-				 get_enumTipoMaterial(this->comBox_Mdados_tipo_mid->Text));
+			 
+			 MidiaDados* midia_dados;		 
+			 MidiaDados* _midia_dados = (MidiaDados*) _material;
+
+			 if(editando)
+			 {
+				_midia_dados->setTitulo(String_utils::SystemToStdString(this->txtBox_Mdados_titulo->Text));
+				_midia_dados->setAno(Convert::ToInt32(this->txtBox_Mdados_ano->Text));
+				_midia_dados->setDescricao(String_utils::SystemToStdString(this->txtBox_Mdados_descr->Text));
+				_midia_dados->setTipoMidia(get_enumTipoMaterial(this->comBox_Mdados_tipo_mid->Text));
+				
+				midia_dados = _midia_dados;
+
+			 } else 
+			 {
+				 midia_dados = new MidiaDados(1, true, 
+					 String_utils::SystemToStdString(this->txtBox_Mdados_titulo->Text),
+					 Convert::ToInt32(this->txtBox_Mdados_ano->Text),
+					 String_utils::SystemToStdString(this->txtBox_Mdados_descr->Text),
+					 get_enumTipoMaterial(this->comBox_Mdados_tipo_mid->Text));
+			 }
 
 			 return midia_dados;
 		 }
 
-private: MidiaFilme* get_midiaFilmeDoForm()
+private: MidiaFilme* get_midiaFilmeDoForm(bool editando)
 		 {
-			 MidiaFilme* midia_filme = new MidiaFilme(1,true, 
-				 String_utils::SystemToStdString(this->txtBox_Mfilme_titulo->Text),
-				 Convert::ToInt32(this->txtBox_Mfilme_ano->Text),
-				 String_utils::SystemToStdString(this->txtBox_Mfilme_genero->Text),
-				 String_utils::SystemToStdString(this->txtBox_Mfilme_atores->Text),
-				 String_utils::SystemToStdString(this->txtBox_Mfilme_produtor->Text),
-				 String_utils::SystemToStdString(this->txtBox_Mfilme_diretor->Text),
-				 get_enumTipoMaterial(this->comBox_MFilme_tipo_mid->Text));
+			 
+			 MidiaFilme* midia_filme;		 
+			 MidiaFilme* _midia_filme = (MidiaFilme*) _material;
 
+			 if(editando)
+			 {
+				 _midia_filme->setTitulo(String_utils::SystemToStdString(this->txtBox_Mfilme_titulo->Text));
+				 _midia_filme->setAno(Convert::ToInt32(this->txtBox_Mfilme_ano->Text));
+				 _midia_filme->setGenero(String_utils::SystemToStdString(this->txtBox_Mfilme_genero->Text));
+				 _midia_filme->setAtores(String_utils::SystemToStdString(this->txtBox_Mfilme_atores->Text));
+				 _midia_filme->setProdutor(String_utils::SystemToStdString(this->txtBox_Mfilme_produtor->Text));
+				 _midia_filme->setDiretor(String_utils::SystemToStdString(this->txtBox_Mfilme_diretor->Text));
+				 _midia_filme->setTipoMidia(get_enumTipoMaterial(this->comBox_MFilme_tipo_mid->Text));
+				 
+				 midia_filme = _midia_filme;
+
+			 } else 
+			 {
+				 midia_filme = new MidiaFilme(1, true, 
+					 String_utils::SystemToStdString(this->txtBox_Mfilme_titulo->Text),
+					 Convert::ToInt32(this->txtBox_Mfilme_ano->Text),
+					 String_utils::SystemToStdString(this->txtBox_Mfilme_genero->Text),
+					 String_utils::SystemToStdString(this->txtBox_Mfilme_atores->Text),
+					 String_utils::SystemToStdString(this->txtBox_Mfilme_produtor->Text),
+					 String_utils::SystemToStdString(this->txtBox_Mfilme_diretor->Text),
+					 get_enumTipoMaterial(this->comBox_MFilme_tipo_mid->Text));
+			 }
 			 return midia_filme;
 		 }
 
@@ -1241,7 +1429,7 @@ private: EnumTipoMidia::Tipo  get_enumTipoMaterial(String^ tipo_material)
 			 return material_tipo;
 		 }
 
-	private: String^ get_stringTipoMidia(EnumTipoMidia::Tipo _tipo_midia)
+private: String^ get_stringTipoMidia(EnumTipoMidia::Tipo _tipo_midia)
 		 {
 
 			 String^ tipo_midia;
