@@ -393,25 +393,25 @@ namespace PersonalInventoryControl {
 
 	// Clicar munu->principal->cadastro->material: MIDIA AUDIO 
 	private: System::Void menu_p_cad_mat_mid_audio_Click(System::Object^  sender, System::EventArgs^  e) {
-				 cadMaterialForm ^cadMat = gcnew cadMaterialForm();
+				 cadMaterialForm ^cadMat = gcnew cadMaterialForm(COD_CADASTRAR, COD_AUDIO);
 				 cadMat->selecionaMidAudioTab();
 				 cadMat->Show();
 			 }
 	// Clicar munu->principal->cadastro->material: MIDIA DADOS
 	private: System::Void menu_p_cad_mat_mid_dados_Click(System::Object^  sender, System::EventArgs^  e) {
-			 cadMaterialForm ^cadMat = gcnew cadMaterialForm();
+			 cadMaterialForm ^cadMat = gcnew cadMaterialForm(COD_CADASTRAR,COD_DADOS);
 			 cadMat->selecionaMidDadosTab();
 			 cadMat->Show();
 		 }
 	// Clicar munu->principal->cadastro->material: MIDIA FILME
 	private: System::Void menu_p_cad_mat_mid_filme_Click(System::Object^  sender, System::EventArgs^  e) {
-			 cadMaterialForm ^cadMat = gcnew cadMaterialForm();
+			 cadMaterialForm ^cadMat = gcnew cadMaterialForm(COD_CADASTRAR, COD_FILME);
 			 cadMat->selecionaMidFilmeTab();
 			 cadMat->Show();
 		 }
 	// Clicar munu->principal->cadastro->material: LIVRO
 	private: System::Void menu_p_cad_mat_livro_Click(System::Object^  sender, System::EventArgs^  e) {
-			 cadMaterialForm ^cadMat = gcnew cadMaterialForm();
+			 cadMaterialForm ^cadMat = gcnew cadMaterialForm(COD_CADASTRAR, COD_LIVRO);
 			 cadMat->selecionaLivroTab();
 			 cadMat->Show();
 		 }

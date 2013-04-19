@@ -1,7 +1,7 @@
 #pragma once
 
 #include "stdafx.h"
-#include "String_utils.h"
+
 
 namespace PersonalInventoryControl {
 
@@ -22,6 +22,7 @@ namespace PersonalInventoryControl {
 		ControllerAmigo* controller;
 		int _codigo_operacao;
 		Amigo *_amigo;
+		DataGridView^ _data_grid_amigos;
 
 	public:	
 		cadAmigoForm(int codigo, Amigo *amigo)
@@ -44,10 +45,11 @@ namespace PersonalInventoryControl {
 			}
 		}
 		
-		cadAmigoForm()
+		cadAmigoForm(DataGridView^ data_grid_amigos)
 		{
 			controller = new ControllerAmigo();
 			InitializeComponent();
+			_data_grid_amigos = data_grid_amigos;
 		}
 
 	protected:
@@ -284,6 +286,7 @@ namespace PersonalInventoryControl {
 			this->panel1->ResumeLayout(false);
 			this->panel1->PerformLayout();
 			this->ResumeLayout(false);
+
 		}
 #pragma endregion
 
@@ -312,9 +315,20 @@ namespace PersonalInventoryControl {
 									!System::String::IsNullOrEmpty(this->comBox_cad_user_gen->Text)
 									)
 								{
-									
-									if(controller->adicionar(get_amigoDoForm(false)))
+									Amigo* amigo_to_grid = get_amigoDoForm(false);
+									if(controller->adicionar(amigo_to_grid))
 									{
+										
+									array<String^>^row1 = 
+										gcnew array<String^>{
+										gcnew String(amigo_to_grid->getNome().c_str()),
+										gcnew String(amigo_to_grid->getSobrenome().c_str()),
+										gcnew String(amigo_to_grid->getEmail().c_str()),
+										gcnew String(amigo_to_grid->getGenero().c_str()),
+										gcnew String(amigo_to_grid->getTelefone().c_str())
+										};
+										this->_data_grid_amigos->Rows->Add(row1);
+										
 										MessageBox::Show("Amigo cadastrado com sucesso", "Sucesso",
 										MessageBoxButtons::OK, MessageBoxIcon::Information);
 										this->Close();
@@ -331,7 +345,7 @@ namespace PersonalInventoryControl {
 		public: 
 			void set_amigoNoForm(Amigo *amigo)
 			{
-				this->txtBox_cad_user_nome->Text = gcnew String(amigo->getNome().c_str());
+				this->txtBox_cad_user_nome->Text = gcnew String (amigo->getNome().c_str());
 				this->txtBox_cad_user_sobnome->Text = gcnew String(amigo->getSobrenome().c_str());
 				this->txtBox_cad_user_email->Text = gcnew String(amigo->getEmail().c_str());
 				this->txtBox_cad_user_telef->Text = gcnew String(amigo->getTelefone().c_str());
@@ -339,38 +353,40 @@ namespace PersonalInventoryControl {
 				this->txtBox_cad_user_end->Text = gcnew String(amigo->getEndereco().c_str());
 			}
 
-		public: 
+		private: 
 			Amigo* get_amigoDoForm(bool editando){
-
 
 			Amigo *amigo;
 			if (editando){
-				_amigo->setNome(SystemToStdString(this->txtBox_cad_user_nome->Text));
-				_amigo->setSobrenome(SystemToStdString(this->txtBox_cad_user_sobnome->Text));
-				_amigo->setEmail(SystemToStdString(this->txtBox_cad_user_email->Text));
-				_amigo->setTelefone(SystemToStdString(this->txtBox_cad_user_telef->Text));
-				_amigo->setGenero(SystemToStdString(this->comBox_cad_user_gen->Text));
-				_amigo->setEndereco(SystemToStdString(this->txtBox_cad_user_end->Text));
+				_amigo->setNome(String_utils::SystemToStdString(this->txtBox_cad_user_nome->Text));
+				_amigo->setSobrenome(String_utils::SystemToStdString(this->txtBox_cad_user_sobnome->Text));
+				_amigo->setEmail(String_utils::SystemToStdString(this->txtBox_cad_user_email->Text));
+				_amigo->setTelefone(String_utils::SystemToStdString(this->txtBox_cad_user_telef->Text));
+				_amigo->setGenero(String_utils::SystemToStdString(this->comBox_cad_user_gen->Text));
+				_amigo->setEndereco(String_utils::SystemToStdString(this->txtBox_cad_user_end->Text));
 
 				amigo = _amigo;
 			}else{
 				amigo = new Amigo(1,
-					SystemToStdString(this->txtBox_cad_user_nome->Text),
-					SystemToStdString(this->txtBox_cad_user_sobnome->Text),
-					SystemToStdString(this->txtBox_cad_user_email->Text),
-					SystemToStdString(this->txtBox_cad_user_telef->Text),
-					SystemToStdString(this->comBox_cad_user_gen->Text),
-					SystemToStdString(this->txtBox_cad_user_end->Text));
+					String_utils::SystemToStdString(this->txtBox_cad_user_nome->Text),
+					String_utils::SystemToStdString(this->txtBox_cad_user_sobnome->Text),
+					String_utils::SystemToStdString(this->txtBox_cad_user_email->Text),
+					String_utils::SystemToStdString(this->txtBox_cad_user_telef->Text),
+					String_utils::SystemToStdString(this->comBox_cad_user_gen->Text),
+					String_utils::SystemToStdString(this->txtBox_cad_user_end->Text));
 			}
 
 			return amigo;
 			}
+
 		private: 
 			void visualizar_amigoNoForm(Amigo *amigo)
 			{
 				this->lb_titulo->Text = gcnew String("Detalhes Amigo");
 				this->bt_cad_amigo->Text = gcnew String("Fechar");
 				set_amigoNoForm(amigo);
+				set_formReadOnly();
+				
 			}
 
 		private:
@@ -378,6 +394,14 @@ namespace PersonalInventoryControl {
 			{
 				this->lb_titulo->Text = gcnew String("Editar Amigo");
 				set_amigoNoForm(amigo);
+			}
+			void set_formReadOnly(){
+				this->txtBox_cad_user_nome->ReadOnly = true;
+				this->txtBox_cad_user_sobnome->ReadOnly = true;
+				this->txtBox_cad_user_email->ReadOnly = true;
+				this->txtBox_cad_user_telef->ReadOnly = true; 
+				this->comBox_cad_user_gen->Enabled = false; //DropDownStyle = ComboBoxStyle::Simple;
+				this->txtBox_cad_user_end->ReadOnly = true;
 			}
 		};
 	}

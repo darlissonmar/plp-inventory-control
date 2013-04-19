@@ -104,6 +104,8 @@
   <ItemGroup>
     <ClCompile Include="AboutForm.cpp" />
     <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="buscar_material_form.cpp" />
+    <ClCompile Include="Busca_amigo_form.cpp" />
     <ClCompile Include="cadAmigoForm.cpp" />
     <ClCompile Include="cadMaterialForm.cpp" />
     <ClCompile Include="ControllerAmigo.cpp" />
@@ -129,9 +131,16 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="String_utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Amigo.h" />
+    <ClInclude Include="buscar_material_form.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="Busca_amigo_form.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="ControllerAmigo.h" />
     <ClInclude Include="ControllerEmprestimo.h" />
     <ClInclude Include="ControllerLivro.h" />
@@ -181,6 +190,12 @@
   <ItemGroup>
     <EmbeddedResource Include="AboutForm.resx">
       <DependentUpon>AboutForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="buscar_material_form.resx">
+      <DependentUpon>buscar_material_form.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Busca_amigo_form.resx">
+      <DependentUpon>Busca_amigo_form.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="cadAmigoForm.resx">
       <DependentUpon>cadAmigoForm.h</DependentUpon>

@@ -7,6 +7,10 @@
 #define COD_EDITAR 2
 #define COD_VISUALIZAR 3
 #define COD_REMOVER 4
+#define COD_LIVRO 1
+#define COD_AUDIO 2
+#define COD_DADOS 3
+#define COD_FILME 4
 
 
 #include "Amigo.h"
@@ -26,13 +30,18 @@
 #include "ControllerMidiaFilme.h"
 #include "ControllerMidiaDados.h"
 
-#include "AboutForm.h"
 
+#include "AboutForm.h"
+#include "String_utils.h"
+#include "buscar_material_form.h"
+#include "Busca_amigo_form.h"
 #include "cadMaterialForm.h"
 #include "EmprestimoForm.h"
 #include "gerenciarAmigosForm.h"
 #include "cadAmigoForm.h"
 #include "gerenciarEmprestimosForm.h"
 #include "gerenciarMateriaisForm.h"
+
+
 
 // TODO: reference additional headers your program requires here

@@ -99,10 +99,38 @@ void DataBase::inicializar( void )
 	Amigo *amigo1 = new Amigo(amigo_db_indice++,"Joao", "dos Santos", "joao@jmail.com","2123-1234","Masculino","Rua das mangueiras");
 	Amigo *amigo2 = new Amigo(amigo_db_indice++,"Pedro", "da Silva", "pedro@jmail.com","2123-4321", "Masculino", "Rua das Laranjeiras");
 	
+	Livro *livro1 = new Livro(livro_db_indice++, true,"Game of Thrones: Gelo e Fogo", 2010, "Gerger Martin", "Ficção",1,"Winterfel",1);
+	Livro *livro2 = new Livro(livro_db_indice++, false,"Senhor dos Aneis: A Sociedade do Anel", 2010, "J.K Tolkien", "Ficção",1,"Terra Media",1);
+
+	MidiaAudio *midia_audio1 = new MidiaAudio(midiaaudio_db_indice++,true,"Cd Legiao", 1998,"Mais do Mesmo", "Legiao Urbana",1,"Rock","Sony Music",EnumTipoMidia::CD);
+	MidiaAudio *midia_audio2 = new MidiaAudio(midiaaudio_db_indice++,true,"Dvd Paralamas", 1999,"Alagados", "Paralamans do Sucesso",1,"Rock","Universal Music",EnumTipoMidia::DVD);
+	MidiaAudio *midia_audio3 = new MidiaAudio(midiaaudio_db_indice++,true,"Bluray Paralamas", 2011,"Alagados", "Paralamans do Sucesso",1,"Rock","Universal Music",EnumTipoMidia::BLURAY);
+	MidiaAudio *midia_audio4 = new MidiaAudio(midiaaudio_db_indice++,true,"Bluray Paralamas", 2011,"Alagados", "Paralamans do Sucesso",1,"Rock","Universal Music",EnumTipoMidia::BLURAY);
+
+	
+
 	try
 	{
+		// Adicionando amigos
 		this->amigos->insert(ParAmigo(amigo1->getId(),amigo1));
 		this->amigos->insert(ParAmigo(amigo2->getId(),amigo2));
+		
+		// Adicionando Livros
+		this->livros->insert(ParLivro(livro1->getId(), livro1));
+		this->livros->insert(ParLivro(livro2->getId(), livro2));
+
+		// Adicionando midia audio
+		this->midias_audio->insert(ParMidiaAudio(midia_audio1->getId(), midia_audio1));
+		this->midias_audio->insert(ParMidiaAudio(midia_audio2->getId(), midia_audio2));
+		this->midias_audio->insert(ParMidiaAudio(midia_audio3->getId(), midia_audio3));
+		this->midias_audio->insert(ParMidiaAudio(midia_audio4->getId(), midia_audio4));
+		
+		// Adicionando midia filme
+		
+		// Adicionando midia dados
+
+		// Adicionando Emprestimos
+
 	}
 	catch (exception e)
 	{

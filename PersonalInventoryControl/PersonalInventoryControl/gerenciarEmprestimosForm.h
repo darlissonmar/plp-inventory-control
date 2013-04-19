@@ -141,6 +141,7 @@ namespace PersonalInventoryControl {
 			this->ger_emp_btn_novo->TabIndex = 3;
 			this->ger_emp_btn_novo->Text = L"Novo";
 			this->ger_emp_btn_novo->UseVisualStyleBackColor = true;
+			this->ger_emp_btn_novo->Click += gcnew System::EventHandler(this, &gerenciarEmprestimosForm::ger_emp_btn_novo_Click);
 			// 
 			// data_grid_emprestimos
 			// 
@@ -223,5 +224,10 @@ namespace PersonalInventoryControl {
 
 		}
 #pragma endregion
-	};
+	private: System::Void ger_emp_btn_novo_Click(System::Object^  sender, System::EventArgs^  e) {
+				 EmprestimoForm ^form_emprestimo = gcnew EmprestimoForm();
+				 this->Close();
+				 form_emprestimo->Show();
+			 }
+};
 }

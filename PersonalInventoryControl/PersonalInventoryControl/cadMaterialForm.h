@@ -1,4 +1,5 @@
 #pragma once
+#include "stdafx.h"
 
 namespace PersonalInventoryControl {
 
@@ -15,12 +16,41 @@ namespace PersonalInventoryControl {
 	public ref class cadMaterialForm : public System::Windows::Forms::Form
 	{
 	public:
-		cadMaterialForm(void)
+		ControllerMidiaAudio* controller_midiaAudio;
+		ControllerMidiaDados* controller_midiaDados;
+		ControllerMidiaFilme* controller_midiaFilme;
+		ControllerLivro* controller_livro;
+		int _COD_MATERIAL;
+		cadMaterialForm(int cod_operacao, int cod_material)
 		{
 			InitializeComponent();
 			//
 			//TODO: Add the constructor code here
 			//
+			controller_midiaAudio = new ControllerMidiaAudio();
+			controller_midiaDados = new ControllerMidiaDados();
+			controller_midiaFilme = new ControllerMidiaFilme();
+			controller_livro = new ControllerLivro();
+			//_COD_MATERIAL = cod_material;
+			
+			switch(cod_operacao)
+			{
+			case COD_CADASTRAR:
+				//cadastrar_material(codigo_material) //editar_amigoNoForm(_amigo);
+				break; // alterar dados do form
+
+			case COD_EDITAR: 
+				//editar_material(codigo_material);visualizar_amigoNoForm(_amigo);
+				break; //visualiza
+
+			case COD_VISUALIZAR: 
+					visualizar_material(cod_material);
+				break; //visualiza
+
+
+			default: break;
+			}
+
 		}
 
 		void selecionaMidAudioTab(void);
@@ -64,35 +94,20 @@ namespace PersonalInventoryControl {
 	private: System::Windows::Forms::GroupBox^  groupBox4;
 	private: System::Windows::Forms::TextBox^  txtBox_livro_editora;
 	private: System::Windows::Forms::TextBox^  txtBox_livro_vol;
-
-
 	private: System::Windows::Forms::TextBox^  txtBox_livro_edicao;
-
 	private: System::Windows::Forms::TextBox^  txtBox_livro_Area;
 	private: System::Windows::Forms::TextBox^  txtBox_livro_ano;
-
-
 	private: System::Windows::Forms::TextBox^  txtBox_livro_autor;
-
 	private: System::Windows::Forms::TextBox^  txtBox_livro_titulo;
-
 	private: System::Windows::Forms::Button^  btn_cad_livro;
 	private: System::Windows::Forms::Button^  btn_cad_mid_audio;
-
 	private: System::Windows::Forms::TextBox^  txtBox_Maudio_album;
 	private: System::Windows::Forms::TextBox^  txtBox_Maudio_vol;
-
-
 	private: System::Windows::Forms::TextBox^  txtBox_Maudio_genero;
 	private: System::Windows::Forms::TextBox^  txtBox_Maudio_gravad;
 	private: System::Windows::Forms::TextBox^  txtBox_Maudio_ano;
-
-
-
 	private: System::Windows::Forms::TextBox^  txtBox_Maudio_artista;
-
 	private: System::Windows::Forms::TextBox^  txtBox_Maudio_titulo;
-
 	private: System::Windows::Forms::Label^  label17;
 	private: System::Windows::Forms::Label^  label16;
 	private: System::Windows::Forms::Label^  label15;
@@ -104,21 +119,12 @@ namespace PersonalInventoryControl {
 	private: System::Windows::Forms::ComboBox^  comBox_TipoMidia;
 	private: System::Windows::Forms::Button^  btn_cad_mid_filme;
 	private: System::Windows::Forms::TextBox^  txtBox_Mfilme_diretor;
-
-
 	private: System::Windows::Forms::TextBox^  txtBox_Mfilme_produtor;
-
 	private: System::Windows::Forms::TextBox^  txtBox_Mfilme_atores;
-
 	private: System::Windows::Forms::TextBox^  txtBox_Mfilme_ano;
-
 	private: System::Windows::Forms::TextBox^  txtBox_Mfilme_genero;
-
 	private: System::Windows::Forms::TextBox^  txtBox_Mfilme_titulo;
 	private: System::Windows::Forms::ComboBox^  comBox_MFilme_tipo_mid;
-
-
-
 	private: System::Windows::Forms::Label^  label24;
 	private: System::Windows::Forms::Label^  label23;
 	private: System::Windows::Forms::Label^  label22;
@@ -126,19 +132,15 @@ namespace PersonalInventoryControl {
 	private: System::Windows::Forms::Label^  label20;
 	private: System::Windows::Forms::Label^  label19;
 	private: System::Windows::Forms::Label^  label18;
-private: System::Windows::Forms::Button^  btn_cad_mid_dados;
-private: System::Windows::Forms::ComboBox^  comBox_Mdados_tipo_mid;
-
-private: System::Windows::Forms::TextBox^  txtBox_Mdados_descr;
-
-private: System::Windows::Forms::TextBox^  txtBox_Mdados_ano;
-
-private: System::Windows::Forms::TextBox^  txtBox_Mdados_titulo;
-
-private: System::Windows::Forms::Label^  label28;
-private: System::Windows::Forms::Label^  label27;
-private: System::Windows::Forms::Label^  label26;
-private: System::Windows::Forms::Label^  label25;
+	private: System::Windows::Forms::Button^  btn_cad_mid_dados;
+	private: System::Windows::Forms::ComboBox^  comBox_Mdados_tipo_mid;
+	private: System::Windows::Forms::TextBox^  txtBox_Mdados_descr;
+	private: System::Windows::Forms::TextBox^  txtBox_Mdados_ano;
+	private: System::Windows::Forms::TextBox^  txtBox_Mdados_titulo;
+	private: System::Windows::Forms::Label^  label28;
+	private: System::Windows::Forms::Label^  label27;
+	private: System::Windows::Forms::Label^  label26;
+	private: System::Windows::Forms::Label^  label25;
 
 
 	private:
@@ -267,6 +269,7 @@ private: System::Windows::Forms::Label^  label25;
 			this->btn_cad_livro->TabIndex = 2;
 			this->btn_cad_livro->Text = L"Efetuar operação";
 			this->btn_cad_livro->UseVisualStyleBackColor = true;
+			this->btn_cad_livro->Click += gcnew System::EventHandler(this, &cadMaterialForm::btn_cad_livro_Click);
 			// 
 			// groupBox1
 			// 
@@ -423,6 +426,7 @@ private: System::Windows::Forms::Label^  label25;
 			this->btn_cad_mid_audio->TabIndex = 1;
 			this->btn_cad_mid_audio->Text = L"Efetuar operação";
 			this->btn_cad_mid_audio->UseVisualStyleBackColor = true;
+			this->btn_cad_mid_audio->Click += gcnew System::EventHandler(this, &cadMaterialForm::btn_cad_mid_audio_Click);
 			// 
 			// groupBox2
 			// 
@@ -452,7 +456,7 @@ private: System::Windows::Forms::Label^  label25;
 			// comBox_TipoMidia
 			// 
 			this->comBox_TipoMidia->FormattingEnabled = true;
-			this->comBox_TipoMidia->Items->AddRange(gcnew cli::array< System::Object^  >(3) {L"CD", L"DVD", L"Blu-Ray"});
+			this->comBox_TipoMidia->Items->AddRange(gcnew cli::array< System::Object^  >(3) {L"CD", L"DVD", L"Blu-ray"});
 			this->comBox_TipoMidia->Location = System::Drawing::Point(341, 27);
 			this->comBox_TipoMidia->Name = L"comBox_TipoMidia";
 			this->comBox_TipoMidia->Size = System::Drawing::Size(72, 21);
@@ -599,6 +603,7 @@ private: System::Windows::Forms::Label^  label25;
 			this->btn_cad_mid_filme->TabIndex = 1;
 			this->btn_cad_mid_filme->Text = L"Efetuar operação";
 			this->btn_cad_mid_filme->UseVisualStyleBackColor = true;
+			this->btn_cad_mid_filme->Click += gcnew System::EventHandler(this, &cadMaterialForm::btn_cad_mid_filme_Click);
 			// 
 			// groupBox3
 			// 
@@ -668,7 +673,7 @@ private: System::Windows::Forms::Label^  label25;
 			// comBox_MFilme_tipo_mid
 			// 
 			this->comBox_MFilme_tipo_mid->FormattingEnabled = true;
-			this->comBox_MFilme_tipo_mid->Items->AddRange(gcnew cli::array< System::Object^  >(2) {L"DVD", L"Blu-Ray"});
+			this->comBox_MFilme_tipo_mid->Items->AddRange(gcnew cli::array< System::Object^  >(3) {L"CD", L"DVD", L"Blu-ray"});
 			this->comBox_MFilme_tipo_mid->Location = System::Drawing::Point(345, 27);
 			this->comBox_MFilme_tipo_mid->Name = L"comBox_MFilme_tipo_mid";
 			this->comBox_MFilme_tipo_mid->Size = System::Drawing::Size(72, 21);
@@ -757,6 +762,7 @@ private: System::Windows::Forms::Label^  label25;
 			this->btn_cad_mid_dados->TabIndex = 1;
 			this->btn_cad_mid_dados->Text = L"Efetuar operação";
 			this->btn_cad_mid_dados->UseVisualStyleBackColor = true;
+			this->btn_cad_mid_dados->Click += gcnew System::EventHandler(this, &cadMaterialForm::btn_cad_mid_dados_Click);
 			// 
 			// groupBox4
 			// 
@@ -778,7 +784,7 @@ private: System::Windows::Forms::Label^  label25;
 			// comBox_Mdados_tipo_mid
 			// 
 			this->comBox_Mdados_tipo_mid->FormattingEnabled = true;
-			this->comBox_Mdados_tipo_mid->Items->AddRange(gcnew cli::array< System::Object^  >(3) {L"CD", L"DVD", L"Blu-Ray"});
+			this->comBox_Mdados_tipo_mid->Items->AddRange(gcnew cli::array< System::Object^  >(3) {L"CD", L"DVD", L"Blu-ray"});
 			this->comBox_Mdados_tipo_mid->Location = System::Drawing::Point(345, 27);
 			this->comBox_Mdados_tipo_mid->Name = L"comBox_Mdados_tipo_mid";
 			this->comBox_Mdados_tipo_mid->Size = System::Drawing::Size(72, 21);
@@ -909,5 +915,219 @@ private: System::Windows::Forms::Label^  label25;
 		}
 #pragma endregion
 
-};
+private: System::Void btn_cad_livro_Click(System::Object^  sender, System::EventArgs^  e) {
+			
+				if( 
+					!System::String::IsNullOrEmpty(this->txtBox_livro_ano->Text) ||
+					!System::String::IsNullOrEmpty(this->txtBox_livro_Area->Text) ||
+					!System::String::IsNullOrEmpty(this->txtBox_livro_autor->Text) ||
+					!System::String::IsNullOrEmpty(this->txtBox_livro_edicao->Text) ||
+					!System::String::IsNullOrEmpty(this->txtBox_livro_editora->Text) ||
+					!System::String::IsNullOrEmpty(this->txtBox_livro_vol->Text) ||
+					!System::String::IsNullOrEmpty(this->txtBox_livro_titulo->Text)
+					 )
+					 {
+
+						 if(controller_livro->adicionar(get_livroDoForm()))
+						 {
+							 MessageBox::Show("Livro cadastrado com sucessor", "Sucesso",
+							 MessageBoxButtons::OK, MessageBoxIcon::Information);
+							 this->Close();
+						 } 
+					 } else 
+					 {
+						 MessageBox::Show("Preencha os campos", "Aviso",
+							 MessageBoxButtons::OK, MessageBoxIcon::Warning);
+					 }
+			 }
+private: System::Void btn_cad_mid_audio_Click(System::Object^  sender, System::EventArgs^  e) {
+		 }
+private: System::Void btn_cad_mid_filme_Click(System::Object^  sender, System::EventArgs^  e) {
+		 }
+private: System::Void btn_cad_mid_dados_Click(System::Object^  sender, System::EventArgs^  e) {
+		 }
+private: Livro* get_livroDoForm()
+			 {
+				 
+				Livro* livro = new Livro(1, true,
+					 String_utils::SystemToStdString(this->txtBox_livro_titulo->Text),
+					 Convert::ToInt32(this->txtBox_livro_ano->Text),
+					 String_utils::SystemToStdString(this->txtBox_livro_autor->Text),
+					 String_utils::SystemToStdString(this->txtBox_livro_Area->Text),
+					 Convert::ToInt32(this->txtBox_livro_edicao->Text),
+					 String_utils::SystemToStdString(this->txtBox_livro_editora->Text),
+					 Convert::ToInt32(this->txtBox_livro_vol->Text));
+
+				  return livro;
+			 }
+
+private: void visualizar_material(int codigo_material)
+		 {
+			 switch(codigo_material)
+			 {
+			 
+			 case COD_AUDIO:
+
+				 selecionaMidAudioTab();
+				 
+				
+				 break;
+
+			 case COD_DADOS:
+
+				 selecionaMidDadosTab();
+				 	
+				 break;
+
+			 case COD_FILME: 
+				 selecionaMidFilmeTab();
+				
+				 break;
+
+			 case COD_LIVRO:
+
+				 selecionaLivroTab();
+				 break;
+
+			 default: 
+				 break;
+			 
+			 }
+
+		}
+
+private: void editar_Material(int codigo_material)
+		 {
+			 switch( codigo_material )
+			 {
+
+			 }
+		 }
+
+private: MidiaAudio* get_midiaAudioDoForm()
+		 {
+			 MidiaAudio* midia_audio = new MidiaAudio(1, true, 
+				 String_utils::SystemToStdString(this->txtBox_Maudio_titulo->Text),
+				 Convert::ToInt32(this->txtBox_Maudio_ano->Text),
+				 String_utils::SystemToStdString(this->txtBox_Maudio_album->Text),
+				 String_utils::SystemToStdString(this->txtBox_Maudio_artista->Text),
+				 Convert::ToInt32(this->txtBox_Maudio_vol->Text),
+				 String_utils::SystemToStdString(this->txtBox_Maudio_genero->Text),
+				 String_utils::SystemToStdString(this->txtBox_Maudio_gravad->Text),
+				 get_enumTipoMaterial(this->comBox_TipoMidia->Text));
+
+			 return midia_audio;
+
+		 }
+
+private: MidiaDados* get_midiaDadosDoForm()
+		 {
+			 MidiaDados* midia_dados = new MidiaDados(1, true, 
+				 String_utils::SystemToStdString(this->txtBox_Mdados_titulo->Text),
+				 Convert::ToInt32(this->txtBox_Mdados_ano->Text),
+				 String_utils::SystemToStdString(this->txtBox_Mdados_descr->Text),
+				 get_enumTipoMaterial(this->comBox_Mdados_tipo_mid->Text));
+
+			 return midia_dados;
+		 }
+
+private: MidiaFilme* get_midiaFilmeDoForm()
+		 {
+			 MidiaFilme* midia_filme = new MidiaFilme(1,true, 
+				 String_utils::SystemToStdString(this->txtBox_Mfilme_titulo->Text),
+				 Convert::ToInt32(this->txtBox_Mfilme_ano->Text),
+				 String_utils::SystemToStdString(this->txtBox_Mfilme_genero->Text),
+				 String_utils::SystemToStdString(this->txtBox_Mfilme_atores->Text),
+				 String_utils::SystemToStdString(this->txtBox_Mfilme_produtor->Text),
+				 String_utils::SystemToStdString(this->txtBox_Mfilme_diretor->Text),
+				 get_enumTipoMaterial(this->comBox_MFilme_tipo_mid->Text));
+
+			 return midia_filme;
+		 }
+
+private: void set_livroNoForm(Livro* livro)
+		 {
+			this->txtBox_livro_titulo->Text		=	gcnew String(livro->getTitulo().c_str());
+			this->txtBox_livro_ano->Text		=	Convert::ToString(livro->getAno());	
+			this->txtBox_livro_autor->Text		=	gcnew String(livro->getAutor().c_str());
+			this->txtBox_livro_Area->Text		=	gcnew String(livro->getArea().c_str());
+			this->txtBox_livro_edicao->Text		=	Convert::ToString(livro->getEdicao());
+			this->txtBox_livro_editora->Text	=	gcnew String(livro->getEditora().c_str());
+			this->txtBox_livro_vol->Text		=	Convert::ToString(livro->getVolume());
+		 }
+private: void set_midiaAudioNoForm(MidiaAudio* midia_audio)
+		 {
+			 this->txtBox_Maudio_titulo->Text	=	gcnew String(midia_audio->getTitulo().c_str());
+			 this->txtBox_Maudio_ano->Text		=	Convert::ToString(midia_audio->getAno());
+			 this->txtBox_Maudio_album->Text	=	gcnew String(midia_audio->getAlbum().c_str());
+			 this->txtBox_Maudio_artista->Text	=	gcnew String(midia_audio->getArtista().c_str());
+			 this->txtBox_Maudio_vol->Text		=	Convert::ToString(midia_audio->getVolume());
+			 this->txtBox_Maudio_genero->Text	=	gcnew String(midia_audio->getGenero().c_str());
+			 this->txtBox_Maudio_gravad->Text	=	gcnew String(midia_audio->getGravadora().c_str());
+			 this->comBox_TipoMidia->Text		=	get_stringTipoMidia(midia_audio->getTipoMidia());
+
+		 }
+
+private: void set_midiaDadosNoForm(MidiaDados* midia_dados)
+		 {
+			 this->txtBox_Mdados_titulo->Text	= gcnew String(midia_dados->getTitulo().c_str());
+			 this->txtBox_Mdados_ano->Text		= Convert::ToString(midia_dados->getAno());
+			 this->txtBox_Mdados_descr->Text	= gcnew String(midia_dados->getDescricao().c_str());
+			 this->comBox_Mdados_tipo_mid->Text = get_stringTipoMidia(midia_dados->getTipoMidia());
+		 }
+
+private: void set_midiaFilmeNoForm(MidiaFilme* midia_filme)
+		 {
+			     this->txtBox_Mfilme_titulo->Text	= gcnew String(midia_filme->getTitulo().c_str());
+				 this->txtBox_Mfilme_ano->Text		= Convert::ToString(midia_filme->getAno());
+				 this->txtBox_Mfilme_genero->Text	= gcnew String(midia_filme->getGenero().c_str());
+				 this->txtBox_Mfilme_atores->Text	= gcnew String(midia_filme->getAtores().c_str());
+				 this->txtBox_Mfilme_produtor->Text	= gcnew String(midia_filme->getProdutor().c_str());
+				 this->txtBox_Mfilme_diretor->Text	= gcnew String(midia_filme->getDiretor().c_str());
+				 this->comBox_MFilme_tipo_mid->Text	= get_stringTipoMidia(midia_filme->getTipoMidia());
+
+		 }
+
+private: EnumTipoMidia::Tipo  get_enumTipoMaterial(String^ tipo_material)
+		 {
+			 EnumTipoMidia::Tipo material_tipo;
+			 if( tipo_material->Equals("CD") )
+			 {
+				 material_tipo = EnumTipoMidia::CD;
+
+			 } else if ( tipo_material->Equals("DVD") )
+			 {
+				 material_tipo = EnumTipoMidia::DVD;
+
+			 } else if ( tipo_material->Equals("Blu-ray") )
+			 {
+				 material_tipo = EnumTipoMidia::BLURAY;
+
+			 } 
+			 return material_tipo;
+		 }
+
+	private: String^ get_stringTipoMidia(EnumTipoMidia::Tipo _tipo_midia)
+		 {
+
+			 String^ tipo_midia;
+
+			 switch(_tipo_midia)
+			 {
+			 case EnumTipoMidia::CD: 
+				 tipo_midia = gcnew String("CD");
+				 break;
+			 case EnumTipoMidia::DVD:
+				 tipo_midia = gcnew String("DVD");
+				 break;
+			 case EnumTipoMidia::BLURAY: 
+				 tipo_midia = gcnew String("Blu-ray");
+				 break;
+			 default: 
+				 break;
+			 }
+			 return tipo_midia;
+		 }
+
+	};
 }

@@ -1,5 +1,5 @@
 #pragma once
-
+#include "stdafx.h"
 namespace PersonalInventoryControl {
 
 	using namespace System;
@@ -15,12 +15,25 @@ namespace PersonalInventoryControl {
 	public ref class EmprestimoForm : public System::Windows::Forms::Form
 	{
 	public:
+		ControllerAmigo* controller_amigo;
+		ControllerLivro* controller_livro;
+		ControllerMidiaAudio* controller_midiaAudio;
+		ControllerMidiaDados* controller_midiaDados;
+		ControllerMidiaFilme* controller_midiaFilme;
+		ControllerEmprestimo* cont_emprestimo;
+
 		EmprestimoForm(void)
 		{
 			InitializeComponent();
 			//
 			//TODO: Add the constructor code here
 			//
+			controller_midiaAudio = new ControllerMidiaAudio();
+			controller_midiaDados = new ControllerMidiaDados();
+			controller_midiaFilme = new ControllerMidiaFilme();
+			controller_livro = new ControllerLivro();
+			cont_emprestimo = new ControllerEmprestimo();
+			controller_amigo = new ControllerAmigo();
 		}
 
 	protected:
@@ -38,22 +51,12 @@ namespace PersonalInventoryControl {
 	protected: 
 	private: System::Windows::Forms::Label^  label1;
 	private: System::Windows::Forms::Label^  label2;
-	private: System::Windows::Forms::TextBox^  textBox1;
+	private: System::Windows::Forms::TextBox^  textBox_amigo;
 	private: System::Windows::Forms::Button^  btn_busca_amigo;
-
 	private: System::Windows::Forms::Label^  label3;
-
-
-
-
 	private: System::Windows::Forms::DataGridView^  dataGridEmprestimo;
-
-
-
-
-	private: System::Windows::Forms::TextBox^  textBox2;
+	private: System::Windows::Forms::TextBox^  textBox_material;
 	private: System::Windows::Forms::Button^  btn_busca_material;
-
 	private: System::Windows::Forms::DateTimePicker^  dateTimePicker1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  col_id;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  col_titulo;
@@ -80,7 +83,7 @@ namespace PersonalInventoryControl {
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox_amigo = (gcnew System::Windows::Forms::TextBox());
 			this->btn_busca_amigo = (gcnew System::Windows::Forms::Button());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->dataGridEmprestimo = (gcnew System::Windows::Forms::DataGridView());
@@ -88,7 +91,7 @@ namespace PersonalInventoryControl {
 			this->col_titulo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->tipo = (gcnew System::Windows::Forms::DataGridViewComboBoxColumn());
 			this->col_ano = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox_material = (gcnew System::Windows::Forms::TextBox());
 			this->btn_busca_material = (gcnew System::Windows::Forms::Button());
 			this->dateTimePicker1 = (gcnew System::Windows::Forms::DateTimePicker());
 			this->label4 = (gcnew System::Windows::Forms::Label());
@@ -133,13 +136,13 @@ namespace PersonalInventoryControl {
 			this->label2->TabIndex = 1;
 			this->label2->Text = L"Amigo";
 			// 
-			// textBox1
+			// textBox_amigo
 			// 
-			this->textBox1->Location = System::Drawing::Point(118, 69);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->ReadOnly = true;
-			this->textBox1->Size = System::Drawing::Size(264, 20);
-			this->textBox1->TabIndex = 2;
+			this->textBox_amigo->Location = System::Drawing::Point(118, 69);
+			this->textBox_amigo->Name = L"textBox_amigo";
+			this->textBox_amigo->ReadOnly = true;
+			this->textBox_amigo->Size = System::Drawing::Size(264, 20);
+			this->textBox_amigo->TabIndex = 2;
 			// 
 			// btn_busca_amigo
 			// 
@@ -149,6 +152,7 @@ namespace PersonalInventoryControl {
 			this->btn_busca_amigo->TabIndex = 3;
 			this->btn_busca_amigo->Text = L"Buscar";
 			this->btn_busca_amigo->UseVisualStyleBackColor = true;
+			this->btn_busca_amigo->Click += gcnew System::EventHandler(this, &EmprestimoForm::btn_busca_amigo_Click);
 			// 
 			// label3
 			// 
@@ -200,13 +204,13 @@ namespace PersonalInventoryControl {
 			this->col_ano->Name = L"col_ano";
 			this->col_ano->ReadOnly = true;
 			// 
-			// textBox2
+			// textBox_material
 			// 
-			this->textBox2->Location = System::Drawing::Point(118, 103);
-			this->textBox2->Name = L"textBox2";
-			this->textBox2->ReadOnly = true;
-			this->textBox2->Size = System::Drawing::Size(264, 20);
-			this->textBox2->TabIndex = 7;
+			this->textBox_material->Location = System::Drawing::Point(118, 103);
+			this->textBox_material->Name = L"textBox_material";
+			this->textBox_material->ReadOnly = true;
+			this->textBox_material->Size = System::Drawing::Size(264, 20);
+			this->textBox_material->TabIndex = 7;
 			// 
 			// btn_busca_material
 			// 
@@ -216,6 +220,7 @@ namespace PersonalInventoryControl {
 			this->btn_busca_material->TabIndex = 8;
 			this->btn_busca_material->Text = L"Buscar";
 			this->btn_busca_material->UseVisualStyleBackColor = true;
+			this->btn_busca_material->Click += gcnew System::EventHandler(this, &EmprestimoForm::btn_busca_material_Click);
 			// 
 			// dateTimePicker1
 			// 
@@ -244,6 +249,7 @@ namespace PersonalInventoryControl {
 			this->btn_emprestar->TabIndex = 11;
 			this->btn_emprestar->Text = L"Efetuar operação";
 			this->btn_emprestar->UseVisualStyleBackColor = true;
+			this->btn_emprestar->Click += gcnew System::EventHandler(this, &EmprestimoForm::btn_emprestar_Click);
 			// 
 			// panel_status
 			// 
@@ -273,11 +279,11 @@ namespace PersonalInventoryControl {
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->dateTimePicker1);
 			this->Controls->Add(this->btn_busca_material);
-			this->Controls->Add(this->textBox2);
+			this->Controls->Add(this->textBox_material);
 			this->Controls->Add(this->dataGridEmprestimo);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->btn_busca_amigo);
-			this->Controls->Add(this->textBox1);
+			this->Controls->Add(this->textBox_amigo);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->panel1);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
@@ -295,5 +301,47 @@ namespace PersonalInventoryControl {
 
 		}
 #pragma endregion
-	};
+
+	private: System::Void btn_busca_amigo_Click(System::Object^  sender, System::EventArgs^  e) {
+
+				 Busca_amigo_form^ busca_amigo = gcnew Busca_amigo_form(this->textBox_amigo);
+				 busca_amigo->Show();
+			 }
+
+	private: System::Void btn_busca_material_Click(System::Object^  sender, System::EventArgs^  e) {
+				buscar_material_form^ busca_material = gcnew buscar_material_form(this->textBox_material,this->dataGridEmprestimo);
+				busca_material->Show();
+		 }
+	private: System::Void btn_emprestar_Click(System::Object^  sender, System::EventArgs^  e) {
+				 
+				 Amigo* amigo = controller_amigo->buscar(String_utils::SystemToStdString(this->textBox_amigo->Text));
+
+				 Livro* livro = controller_livro->buscar(String_utils::SystemToStdString(this->textBox_material->Text));//pegar amigo da coluna
+				 MidiaAudio* midia_audio = controller_midiaAudio->buscar(String_utils::SystemToStdString(this->textBox_material->Text));
+				 MidiaFilme* midia_filme = controller_midiaFilme->buscar(String_utils::SystemToStdString(this->textBox_material->Text));
+				 MidiaDados* midia_dados = controller_midiaDados->buscar(String_utils::SystemToStdString(this->textBox_material->Text));
+				 Emprestimo* emprestimo;
+
+				 if(livro != NULL)
+				 {
+					emprestimo = new Emprestimo(1, "","",4,false,amigo,(Material*) livro);
+				 }
+				 else if (midia_audio != NULL)
+				 {
+					emprestimo = new Emprestimo(1, "","",4,false,amigo,(Material*)midia_dados);
+				 }
+				 else if (midia_dados != NULL)
+				 {
+					emprestimo = new Emprestimo(1, "","",4,false,amigo,(Material*) midia_dados);
+				 }
+				 else if (midia_filme != NULL)
+				 {
+					 emprestimo = new Emprestimo(1, "","",4,false,amigo,(Material*) midia_filme);
+				 }
+				
+				 cont_emprestimo->adicionar(emprestimo);
+				 this->Close();
+
+			 }
+};
 }

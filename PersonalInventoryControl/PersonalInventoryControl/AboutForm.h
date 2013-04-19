@@ -42,7 +42,6 @@ namespace PersonalInventoryControl {
 	private: System::Windows::Forms::Label^  label2;
 	private: System::Windows::Forms::Label^  label1;
 	private: System::Windows::Forms::LinkLabel^  linkLabel1;
-
 	private: System::Windows::Forms::Label^  label5;
 	private: System::Windows::Forms::Label^  label12;
 	private: System::Windows::Forms::Label^  label11;
@@ -51,12 +50,7 @@ namespace PersonalInventoryControl {
 	private: System::Windows::Forms::Label^  label8;
 	private: System::Windows::Forms::Label^  label7;
 	private: System::Windows::Forms::Label^  label6;
-
-	protected: 
-
-
-
-
+	
 	private:
 		/// <summary>
 		/// Required designer variable.
@@ -277,8 +271,6 @@ namespace PersonalInventoryControl {
 
 		}
 #pragma endregion
-	private: System::Void btn_AboutForm_ok_Click(System::Object^  sender, System::EventArgs^  e) {
-				this->Close();
-			 }
+	private: System::Void btn_AboutForm_ok_Click(System::Object^  sender, System::EventArgs^  e);
 };
 }

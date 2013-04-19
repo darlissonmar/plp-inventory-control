@@ -19,7 +19,7 @@ namespace PersonalInventoryControl {
 	public ref class gerenciarAmigosForm : public System::Windows::Forms::Form
 	{
 	private:
-		ControllerAmigo *controller;
+		ControllerAmigo *controller_amigo;
 		
 	public:
 		
@@ -29,8 +29,9 @@ namespace PersonalInventoryControl {
 			//
 			//TODO: Add the constructor code here
 			//
+			controller_amigo = new ControllerAmigo();
 			carregar_dadosAmigos();
-			controller = new ControllerAmigo();
+			
 		}
 
 	protected:
@@ -52,13 +53,12 @@ namespace PersonalInventoryControl {
 	private: System::Windows::Forms::Button^  ger_amigo_btn_alterar;
 	private: System::Windows::Forms::Button^  ger_amigo_btn_cadastrar;
 	private: System::Windows::Forms::DataGridView^  data_grid_amigos;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^  tb_amigo_col_id;
+	private: System::Windows::Forms::Button^  ger_amigo_btn_remover;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  tb_amigo_col_nome;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  tb_amigo_col_sobrenome;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  tb_amigo_col_email;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  tb_amigo_col_sexo;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  tb_amigo_col_telefone;
-	private: System::Windows::Forms::Button^  ger_amigo_btn_remover;
 
 
 	private:
@@ -74,13 +74,13 @@ namespace PersonalInventoryControl {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->ger_amigos_btn_detalhes = (gcnew System::Windows::Forms::Button());
 			this->ger_amigo_btn_alterar = (gcnew System::Windows::Forms::Button());
 			this->ger_amigo_btn_cadastrar = (gcnew System::Windows::Forms::Button());
 			this->data_grid_amigos = (gcnew System::Windows::Forms::DataGridView());
-			this->tb_amigo_col_id = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->tb_amigo_col_nome = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->tb_amigo_col_sobrenome = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->tb_amigo_col_email = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
@@ -149,29 +149,35 @@ namespace PersonalInventoryControl {
 			this->data_grid_amigos->AllowUserToAddRows = false;
 			this->data_grid_amigos->AllowUserToDeleteRows = false;
 			this->data_grid_amigos->AllowUserToOrderColumns = true;
+			this->data_grid_amigos->BackgroundColor = System::Drawing::SystemColors::Control;
+			this->data_grid_amigos->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
+			this->data_grid_amigos->CellBorderStyle = System::Windows::Forms::DataGridViewCellBorderStyle::Raised;
 			this->data_grid_amigos->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->data_grid_amigos->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(6) {this->tb_amigo_col_id, 
-				this->tb_amigo_col_nome, this->tb_amigo_col_sobrenome, this->tb_amigo_col_email, this->tb_amigo_col_sexo, this->tb_amigo_col_telefone});
+			this->data_grid_amigos->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {this->tb_amigo_col_nome, 
+				this->tb_amigo_col_sobrenome, this->tb_amigo_col_email, this->tb_amigo_col_sexo, this->tb_amigo_col_telefone});
+			dataGridViewCellStyle1->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle1->BackColor = System::Drawing::SystemColors::Window;
+			dataGridViewCellStyle1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, 
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			dataGridViewCellStyle1->ForeColor = System::Drawing::SystemColors::ControlText;
+			dataGridViewCellStyle1->SelectionBackColor = System::Drawing::SystemColors::MenuHighlight;
+			dataGridViewCellStyle1->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle1->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
+			this->data_grid_amigos->DefaultCellStyle = dataGridViewCellStyle1;
 			this->data_grid_amigos->Location = System::Drawing::Point(8, 85);
 			this->data_grid_amigos->Name = L"data_grid_amigos";
 			this->data_grid_amigos->ReadOnly = true;
 			this->data_grid_amigos->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
 			this->data_grid_amigos->Size = System::Drawing::Size(625, 138);
 			this->data_grid_amigos->TabIndex = 4;
-			// 
-			// tb_amigo_col_id
-			// 
-			this->tb_amigo_col_id->HeaderText = L"id";
-			this->tb_amigo_col_id->Name = L"tb_amigo_col_id";
-			this->tb_amigo_col_id->ReadOnly = true;
-			this->tb_amigo_col_id->Width = 30;
+			this->data_grid_amigos->RowsAdded += gcnew System::Windows::Forms::DataGridViewRowsAddedEventHandler(this, &gerenciarAmigosForm::data_grid_amigos_RowsAdded);
 			// 
 			// tb_amigo_col_nome
 			// 
 			this->tb_amigo_col_nome->HeaderText = L"Nome";
 			this->tb_amigo_col_nome->Name = L"tb_amigo_col_nome";
 			this->tb_amigo_col_nome->ReadOnly = true;
-			this->tb_amigo_col_nome->Width = 120;
+			this->tb_amigo_col_nome->Width = 140;
 			// 
 			// tb_amigo_col_sobrenome
 			// 
@@ -185,7 +191,7 @@ namespace PersonalInventoryControl {
 			this->tb_amigo_col_email->HeaderText = L"Email";
 			this->tb_amigo_col_email->Name = L"tb_amigo_col_email";
 			this->tb_amigo_col_email->ReadOnly = true;
-			this->tb_amigo_col_email->Width = 120;
+			this->tb_amigo_col_email->Width = 130;
 			// 
 			// tb_amigo_col_sexo
 			// 
@@ -234,43 +240,18 @@ namespace PersonalInventoryControl {
 		}
 
 #pragma endregion
-
 	
 	public: System::Void ger_amigo_btn_cadastrar_Click(System::Object^  sender, System::EventArgs^  e)
 			{
-				cadAmigoForm ^amigo_form = gcnew cadAmigoForm();
-				this->Close();
+				cadAmigoForm ^amigo_form = gcnew cadAmigoForm(this->data_grid_amigos);
 				amigo_form->Show();
 			}
- 	 
-	public: void carregar_dadosAmigos()
-			{
-				ControllerAmigo* controller = new ControllerAmigo();
-				list<Amigo*> *amigos = controller->buscarTodos();
-				
-				 for each (Amigo *it in *amigos)
+	private: System::Void ger_amigo_btn_alterar_Click(System::Object^  sender, System::EventArgs^  e)
 				 {
-					 array<String^>^row1 = 
-						gcnew array<String^>{
-							gcnew String(Convert::ToString(it->getId())),
-							 gcnew String(it->getNome().c_str()),
-							 gcnew String(it->getSobrenome().c_str()),
-							 gcnew String(it->getEmail().c_str()),
-							 gcnew String(it->getGenero().c_str()),
-							 gcnew String(it->getTelefone().c_str())
-							 };
-				 
-					 //if(it->getId() > data_grid_amigos->RowCount)  Why this? If the map keys are not sorted, some elements will not be showed
-						 this->data_grid_amigos->Rows->Add(row1);
-				 }		 
-			 }
-
-		private: System::Void ger_amigo_btn_alterar_Click(System::Object^  sender, System::EventArgs^  e)
-				 {
-					 String^ nome_chave = data_grid_amigos->SelectedRows[0]->Cells[1]->Value->ToString();
+					 String^ nome_chave = data_grid_amigos->SelectedRows[0]->Cells[0]->Value->ToString();
 					 if(!System::String::IsNullOrEmpty(nome_chave))
 					 { // nome nao vazio
-						Amigo* amigo = controller->buscar(SystemToStdString(nome_chave));//pegar amigo da coluna
+						Amigo* amigo = controller_amigo->buscar(String_utils::SystemToStdString(nome_chave));//pegar amigo da coluna
 						cadAmigoForm ^amigo_form = gcnew cadAmigoForm(COD_EDITAR,amigo);
 						amigo_form->Show();
 					 } else {
@@ -280,13 +261,13 @@ namespace PersonalInventoryControl {
 
 					this->Close();
 				 }
-		private: System::Void ger_amigos_btn_detalhes_Click(System::Object^  sender, System::EventArgs^  e) {
+	private: System::Void ger_amigos_btn_detalhes_Click(System::Object^  sender, System::EventArgs^  e) {
 					 
-					 String^ nome_chave = data_grid_amigos->SelectedRows[0]->Cells[1]->Value->ToString();
+					 String^ nome_chave = data_grid_amigos->SelectedRows[0]->Cells[0]->Value->ToString();
 					 if(!System::String::IsNullOrEmpty(nome_chave))
 					 { // nome nao vazio
 						 Amigo* amigo = new Amigo();	
-						 amigo = controller->buscar(SystemToStdString(nome_chave));//pegar amigo da coluna
+						 amigo = controller_amigo->buscar(String_utils::SystemToStdString(nome_chave));//pegar amigo da coluna
 						 cadAmigoForm ^amigo_form = gcnew cadAmigoForm(COD_VISUALIZAR,amigo);
 						 amigo_form->Show();
 					 } else {
@@ -296,23 +277,22 @@ namespace PersonalInventoryControl {
 
 					 this->Close();
 					 }
-private: System::Void ger_amigo_btn_remover_Click(System::Object^  sender, System::EventArgs^  e) {
+	private: System::Void ger_amigo_btn_remover_Click(System::Object^  sender, System::EventArgs^  e) {
 			 
-			 String^ nome_chave = data_grid_amigos->SelectedRows[0]->Cells[1]->Value->ToString();
-			 int amigo_id = Convert::ToUInt32(data_grid_amigos->SelectedRows[0]->Cells[0]->Value->ToString()) ;
+			 String^ nome_chave = data_grid_amigos->SelectedRows[0]->Cells[0]->Value->ToString();
 			 if(!System::String::IsNullOrEmpty(nome_chave))
 			 { // nome nao vazio
 				
-				 if(MessageBox::Show ("Tem certeza que deseja remover "+nome_chave+"?", "Remover",
+				 if(MessageBox::Show ("Tem certeza que deseja remover o seu amigo'"+nome_chave+"'?", "Remover",
 					 MessageBoxButtons::YesNo, MessageBoxIcon::Question)
 					 == System::Windows::Forms::DialogResult::Yes)
 				{	
-					
-					if(controller->deletar(amigo_id))
+					int amigo_id = controller_amigo->buscar(String_utils::SystemToStdString(nome_chave))->getId();
+					if(controller_amigo->deletar(amigo_id))
 						{
 							MessageBox::Show("Amigo removido com sucesso", "Sucesso",
 							MessageBoxButtons::OK, MessageBoxIcon::Information);
-							}
+						}
 				}
 			 }
 			 else 
@@ -320,8 +300,40 @@ private: System::Void ger_amigo_btn_remover_Click(System::Object^  sender, Syste
 					MessageBox::Show("Por favor, selecione um amigo!","Erro",
 					MessageBoxButtons::OK, MessageBoxIcon::Warning);
 					 }
-
-			 this->Close();
+			 this->data_grid_amigos->Rows->Clear();
+			carregar_dadosAmigos();
 		 }
-	 };
+	public: void carregar_dadosAmigos()
+					 {
+						 
+						 list<Amigo*> *amigos = this->controller_amigo->buscarTodos();
+
+						 for each (Amigo *it in *amigos)
+						 {
+							 array<String^>^row1 = 
+								 gcnew array<String^>{
+										 gcnew String(it->getNome().c_str()),
+										 gcnew String(it->getSobrenome().c_str()),
+										 gcnew String(it->getEmail().c_str()),
+										 gcnew String(it->getGenero().c_str()),
+										 gcnew String(it->getTelefone().c_str())
+							 };
+							 this->data_grid_amigos->Rows->Add(row1);
+						 }	
+
+						 if(this->data_grid_amigos->Rows->Count == 0)
+						 {
+							 this->ger_amigo_btn_alterar->Enabled = false;
+							 this->ger_amigos_btn_detalhes->Enabled = false;
+							this->ger_amigo_btn_remover->Enabled = false;	
+						 }
+					 }
+	
+		private: System::Void data_grid_amigos_RowsAdded(System::Object^  sender,	
+					 System::Windows::Forms::DataGridViewRowsAddedEventArgs^  e) {
+						 this->ger_amigo_btn_alterar->Enabled = true;
+						 this->ger_amigos_btn_detalhes->Enabled = true;
+						 this->ger_amigo_btn_remover->Enabled = true;
+				 }
+};
 	}
