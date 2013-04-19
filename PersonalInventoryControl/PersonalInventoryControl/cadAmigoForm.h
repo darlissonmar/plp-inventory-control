@@ -19,35 +19,27 @@ namespace PersonalInventoryControl {
 	{
 		
 	private:
-		ControllerAmigo* controller;
+		ControllerAmigo* controller_amigo;
 		int _codigo_operacao;
 		Amigo *_amigo;
 		DataGridView^ _data_grid_amigos;
 
 	public:	
-		cadAmigoForm(int codigo, Amigo *amigo)
-		{			
-			InitializeComponent();	
-			controller = new ControllerAmigo(); 
-			_amigo = amigo;
-			_codigo_operacao = codigo;
-
-			switch(codigo)
-			{
-				case COD_EDITAR:
-					editar_amigoNoForm(_amigo);
-					break; // alterar dados do form
-
-				case COD_VISUALIZAR: 
-					visualizar_amigoNoForm(_amigo);
-					break; //visualiza
-				default: break;
-			}
-		}
 		
+		cadAmigoForm(DataGridView^ data_grid_amigos, Amigo *amigo)
+		{			
+			controller_amigo = new ControllerAmigo();
+			InitializeComponent();	 
+			_amigo = amigo;
+			_codigo_operacao = COD_EDITAR;
+			_data_grid_amigos = data_grid_amigos;
+			editar_amigoNoForm(_amigo);
+		}
+	
+	public:		
 		cadAmigoForm(DataGridView^ data_grid_amigos)
 		{
-			controller = new ControllerAmigo();
+			controller_amigo = new ControllerAmigo();
 			InitializeComponent();
 			_data_grid_amigos = data_grid_amigos;
 		}
@@ -78,7 +70,6 @@ namespace PersonalInventoryControl {
 	private: System::Windows::Forms::Label^  label2;
 	private: System::Windows::Forms::Panel^  panel1;
 	private: System::Windows::Forms::Label^  lb_titulo;
-
 	private: System::Windows::Forms::Button^  bt_cad_amigo;
 
 	private:
@@ -291,12 +282,29 @@ namespace PersonalInventoryControl {
 #pragma endregion
 
 		public: System::Void bt_cad_amigo_Click(System::Object^  sender, System::EventArgs^  e)
-				{
+				{	
+					Amigo* amigo_to_grid;
 					switch(this->_codigo_operacao)
 						{
 					case COD_EDITAR:
-								if(controller->atualizar(get_amigoDoForm(true)))
-								{
+							amigo_to_grid = get_amigoDoForm(true);
+							if(controller_amigo->atualizar(amigo_to_grid))
+							
+							{
+								int index_remove = this->_data_grid_amigos->SelectedRows[0]->Cells[0]->RowIndex;
+								this->_data_grid_amigos->Rows->RemoveAt(index_remove);
+								
+								array<String^>^row1 = 
+								gcnew array<String^>{
+									gcnew String(amigo_to_grid->getNome().c_str()),
+									gcnew String(amigo_to_grid->getSobrenome().c_str()),
+									gcnew String(amigo_to_grid->getEmail().c_str()),
+									gcnew String(amigo_to_grid->getGenero().c_str()),
+									gcnew String(amigo_to_grid->getTelefone().c_str())
+									};
+									
+								this->_data_grid_amigos->Rows->Add(row1);									
+														
 									MessageBox::Show("Amigo editado com sucesso", "Sucesso",
 									MessageBoxButtons::OK, MessageBoxIcon::Information);
 									this->Close();
@@ -315,10 +323,10 @@ namespace PersonalInventoryControl {
 									!System::String::IsNullOrEmpty(this->comBox_cad_user_gen->Text)
 									)
 								{
-									Amigo* amigo_to_grid = get_amigoDoForm(false);
-									if(controller->adicionar(amigo_to_grid))
+									amigo_to_grid = get_amigoDoForm(false);
+									if(controller_amigo->adicionar(amigo_to_grid))
 									{
-										
+									
 									array<String^>^row1 = 
 										gcnew array<String^>{
 										gcnew String(amigo_to_grid->getNome().c_str()),
@@ -377,16 +385,6 @@ namespace PersonalInventoryControl {
 			}
 
 			return amigo;
-			}
-
-		private: 
-			void visualizar_amigoNoForm(Amigo *amigo)
-			{
-				this->lb_titulo->Text = gcnew String("Detalhes Amigo");
-				this->bt_cad_amigo->Text = gcnew String("Fechar");
-				set_amigoNoForm(amigo);
-				set_formReadOnly();
-				
 			}
 
 		private:

@@ -1,30 +1,73 @@
 #include "StdAfx.h"
 #include "cadMaterialForm.h"
 
-void PersonalInventoryControl::cadMaterialForm::selecionaMidAudioTab( void )
+void PersonalInventoryControl::cadMaterialForm::selecionaMidAudioTab( bool editando )
 {
-	this->tabMaterial->TabPages->Remove(this->tabPageLivro);
-	this->tabMaterial->TabPages->Remove(this->tabPageMDados);
-	this->tabMaterial->TabPages->Remove(this->tabPageMFilme);
+	if( editando ) 
+		{
+			this->tabMaterial->TabPages->Remove(this->tabPageLivro);
+			this->tabMaterial->TabPages->Remove(this->tabPageMDados);
+			this->tabMaterial->TabPages->Remove(this->tabPageMFilme);
+		} else 
+		{
+			this->tabMaterial->Enabled = false;
+			this->tabMaterial->TabPages->Remove(this->tabPageLivro);
+			this->tabMaterial->TabPages->Remove(this->tabPageMDados);
+			this->tabMaterial->TabPages->Remove(this->tabPageMFilme);
+		}
 }
 
-void PersonalInventoryControl::cadMaterialForm::selecionaMidDadosTab( void )
+void PersonalInventoryControl::cadMaterialForm::selecionaMidDadosTab( bool editando )
 {
-	this->tabMaterial->TabPages->Remove(this->tabPageLivro);
-	this->tabMaterial->TabPages->Remove(this->tabPageMAudio);
-	this->tabMaterial->TabPages->Remove(this->tabPageMFilme);
+	
+	if( editando ) 
+	{	
+		this->tabMaterial->TabPages->Remove(this->tabPageLivro);
+		this->tabMaterial->TabPages->Remove(this->tabPageMAudio);
+		this->tabMaterial->TabPages->Remove(this->tabPageMFilme);
+	} else 
+	{
+		this->tabMaterial->Enabled = false;
+		this->tabMaterial->TabPages->Remove(this->tabPageLivro);
+		this->tabMaterial->TabPages->Remove(this->tabPageMAudio);
+		this->tabMaterial->TabPages->Remove(this->tabPageMFilme);
+	}
+
+	
 }
 
-void PersonalInventoryControl::cadMaterialForm::selecionaMidFilmeTab( void )
+void PersonalInventoryControl::cadMaterialForm::selecionaMidFilmeTab( bool editando )
 {
-	this->tabMaterial->TabPages->Remove(this->tabPageLivro);
-	this->tabMaterial->TabPages->Remove(this->tabPageMDados);
-	this->tabMaterial->TabPages->Remove(this->tabPageMAudio);
+	if( editando ) 
+	{	
+		this->tabMaterial->TabPages->Remove(this->tabPageLivro);
+		this->tabMaterial->TabPages->Remove(this->tabPageMDados);
+		this->tabMaterial->TabPages->Remove(this->tabPageMAudio);
+	} else 
+	{
+		this->tabMaterial->Enabled = false;
+		this->tabMaterial->TabPages->Remove(this->tabPageLivro);
+		this->tabMaterial->TabPages->Remove(this->tabPageMDados);
+		this->tabMaterial->TabPages->Remove(this->tabPageMAudio);
+	}
+	
+
 }
 
-void PersonalInventoryControl::cadMaterialForm::selecionaLivroTab( void )
+void PersonalInventoryControl::cadMaterialForm::selecionaLivroTab( bool editando )
 {
-	this->tabMaterial->TabPages->Remove(this->tabPageMAudio);
-	this->tabMaterial->TabPages->Remove(this->tabPageMDados);
-	this->tabMaterial->TabPages->Remove(this->tabPageMFilme);
+	
+	if( editando ) 
+	{	
+		this->tabMaterial->TabPages->Remove(this->tabPageMAudio);
+		this->tabMaterial->TabPages->Remove(this->tabPageMDados);
+		this->tabMaterial->TabPages->Remove(this->tabPageMFilme);
+	} else 
+	{
+		this->tabMaterial->Enabled = false;
+		this->tabMaterial->TabPages->Remove(this->tabPageMAudio);
+		this->tabMaterial->TabPages->Remove(this->tabPageMDados);
+		this->tabMaterial->TabPages->Remove(this->tabPageMFilme);
+	}
+	
 }

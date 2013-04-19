@@ -51,18 +51,6 @@ namespace PersonalInventoryControl {
 	private: System::Windows::Forms::Button^  ger_emp_btn_remover;
 
 
-
-
-
-
-
-
-
-
-
-
-	protected: 
-
 	private:
 		/// <summary>
 		/// Required designer variable.

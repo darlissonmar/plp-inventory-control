@@ -26,6 +26,7 @@ namespace PersonalInventoryControl {
 	private: System::Windows::Forms::ToolStripMenuItem^  mídiaDeAudioToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  mídiaDeFilmeToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  mídiaDeDadosToolStripMenuItem;
+	private: System::Windows::Forms::GroupBox^  groupBox1;
 
 	public: 
 
@@ -109,9 +110,11 @@ namespace PersonalInventoryControl {
 			this->dt_grid_emp_col_ano = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dt_grid_emp_col_status = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->ger_materiais_btn_remover = (gcnew System::Windows::Forms::Button());
+			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->panel1->SuspendLayout();
 			this->contextMenuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->data_grid_materiais))->BeginInit();
+			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// panel1
@@ -122,7 +125,7 @@ namespace PersonalInventoryControl {
 			this->panel1->Dock = System::Windows::Forms::DockStyle::Top;
 			this->panel1->Location = System::Drawing::Point(0, 0);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(640, 36);
+			this->panel1->Size = System::Drawing::Size(752, 36);
 			this->panel1->TabIndex = 0;
 			// 
 			// label1
@@ -139,7 +142,7 @@ namespace PersonalInventoryControl {
 			// 
 			// ger_materiais_btn_detalhes
 			// 
-			this->ger_materiais_btn_detalhes->Location = System::Drawing::Point(8, 51);
+			this->ger_materiais_btn_detalhes->Location = System::Drawing::Point(640, 88);
 			this->ger_materiais_btn_detalhes->Name = L"ger_materiais_btn_detalhes";
 			this->ger_materiais_btn_detalhes->Size = System::Drawing::Size(75, 23);
 			this->ger_materiais_btn_detalhes->TabIndex = 1;
@@ -149,7 +152,7 @@ namespace PersonalInventoryControl {
 			// 
 			// ger_materiais_btn_alterar
 			// 
-			this->ger_materiais_btn_alterar->Location = System::Drawing::Point(97, 51);
+			this->ger_materiais_btn_alterar->Location = System::Drawing::Point(640, 59);
 			this->ger_materiais_btn_alterar->Name = L"ger_materiais_btn_alterar";
 			this->ger_materiais_btn_alterar->Size = System::Drawing::Size(75, 23);
 			this->ger_materiais_btn_alterar->TabIndex = 2;
@@ -161,7 +164,7 @@ namespace PersonalInventoryControl {
 			// 
 			this->ger_materiais_btn_cadastrar->AllowDrop = true;
 			this->ger_materiais_btn_cadastrar->ContextMenuStrip = this->contextMenuStrip1;
-			this->ger_materiais_btn_cadastrar->Location = System::Drawing::Point(190, 51);
+			this->ger_materiais_btn_cadastrar->Location = System::Drawing::Point(640, 30);
 			this->ger_materiais_btn_cadastrar->Name = L"ger_materiais_btn_cadastrar";
 			this->ger_materiais_btn_cadastrar->Size = System::Drawing::Size(75, 23);
 			this->ger_materiais_btn_cadastrar->TabIndex = 3;
@@ -206,15 +209,15 @@ namespace PersonalInventoryControl {
 			this->data_grid_materiais->AllowUserToDeleteRows = false;
 			this->data_grid_materiais->BackgroundColor = System::Drawing::SystemColors::ControlLight;
 			this->data_grid_materiais->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->data_grid_materiais->CellBorderStyle = System::Windows::Forms::DataGridViewCellBorderStyle::Sunken;
+			this->data_grid_materiais->CellBorderStyle = System::Windows::Forms::DataGridViewCellBorderStyle::None;
 			this->data_grid_materiais->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->data_grid_materiais->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {this->dt_grid_emp_col_tipo, 
 				this->dt_grid_emp_col_titulo, this->dt_grid_emp_col_ano, this->dt_grid_emp_col_status});
-			this->data_grid_materiais->Location = System::Drawing::Point(8, 85);
+			this->data_grid_materiais->Location = System::Drawing::Point(17, 72);
 			this->data_grid_materiais->Name = L"data_grid_materiais";
 			this->data_grid_materiais->ReadOnly = true;
 			this->data_grid_materiais->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-			this->data_grid_materiais->Size = System::Drawing::Size(625, 138);
+			this->data_grid_materiais->Size = System::Drawing::Size(625, 214);
 			this->data_grid_materiais->TabIndex = 4;
 			// 
 			// dt_grid_emp_col_tipo
@@ -247,7 +250,7 @@ namespace PersonalInventoryControl {
 			// 
 			// ger_materiais_btn_remover
 			// 
-			this->ger_materiais_btn_remover->Location = System::Drawing::Point(558, 51);
+			this->ger_materiais_btn_remover->Location = System::Drawing::Point(640, 221);
 			this->ger_materiais_btn_remover->Name = L"ger_materiais_btn_remover";
 			this->ger_materiais_btn_remover->Size = System::Drawing::Size(75, 23);
 			this->ger_materiais_btn_remover->TabIndex = 5;
@@ -255,17 +258,27 @@ namespace PersonalInventoryControl {
 			this->ger_materiais_btn_remover->UseVisualStyleBackColor = true;
 			this->ger_materiais_btn_remover->Click += gcnew System::EventHandler(this, &gerenciarMateriaisForm::ger_materiais_btn_remover_Click);
 			// 
+			// groupBox1
+			// 
+			this->groupBox1->Controls->Add(this->ger_materiais_btn_cadastrar);
+			this->groupBox1->Controls->Add(this->ger_materiais_btn_remover);
+			this->groupBox1->Controls->Add(this->ger_materiais_btn_alterar);
+			this->groupBox1->Controls->Add(this->ger_materiais_btn_detalhes);
+			this->groupBox1->Location = System::Drawing::Point(8, 42);
+			this->groupBox1->Name = L"groupBox1";
+			this->groupBox1->Size = System::Drawing::Size(732, 258);
+			this->groupBox1->TabIndex = 6;
+			this->groupBox1->TabStop = false;
+			this->groupBox1->Text = L"Lista de Materiais";
+			// 
 			// gerenciarMateriaisForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(640, 243);
-			this->Controls->Add(this->ger_materiais_btn_remover);
+			this->ClientSize = System::Drawing::Size(752, 313);
 			this->Controls->Add(this->data_grid_materiais);
-			this->Controls->Add(this->ger_materiais_btn_cadastrar);
-			this->Controls->Add(this->ger_materiais_btn_alterar);
-			this->Controls->Add(this->ger_materiais_btn_detalhes);
 			this->Controls->Add(this->panel1);
+			this->Controls->Add(this->groupBox1);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
 			this->MaximizeBox = false;
 			this->Name = L"gerenciarMateriaisForm";
@@ -275,6 +288,7 @@ namespace PersonalInventoryControl {
 			this->panel1->PerformLayout();
 			this->contextMenuStrip1->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->data_grid_materiais))->EndInit();
+			this->groupBox1->ResumeLayout(false);
 			this->ResumeLayout(false);
 
 		}
@@ -371,25 +385,25 @@ namespace PersonalInventoryControl {
 					 case COD_AUDIO:
 
 						 midia_audio = controller_midiaAudio->buscar(String_utils::SystemToStdString(titulo_material));
-						 material_form = gcnew cadMaterialForm(COD_VISUALIZAR,COD_AUDIO);
+						 material_form = gcnew cadMaterialForm(COD_VISUALIZAR,COD_AUDIO, (Material*) midia_audio);
 						 break;
 
 					 case COD_DADOS:
 
 						 midia_dados = controller_midiaDados->buscar(String_utils::SystemToStdString(titulo_material));
-						 material_form = gcnew cadMaterialForm(COD_VISUALIZAR,COD_DADOS);		
+						 material_form = gcnew cadMaterialForm(COD_VISUALIZAR,COD_DADOS,(Material*) midia_dados);		
 						 break;
 
 					 case COD_FILME: 
 						
 						 midia_filme = controller_midiaFilme->buscar(String_utils::SystemToStdString(titulo_material));
-						 material_form = gcnew cadMaterialForm(COD_VISUALIZAR,COD_FILME);
+						 material_form = gcnew cadMaterialForm(COD_VISUALIZAR,COD_FILME, (Material*) midia_filme);
 						 break;
 
 					 case COD_LIVRO:
 
 						 livro = controller_livro->buscar(String_utils::SystemToStdString(titulo_material));
-						 material_form = gcnew cadMaterialForm(COD_VISUALIZAR,COD_LIVRO);
+						 material_form = gcnew cadMaterialForm(COD_VISUALIZAR,COD_LIVRO, (Material*) livro);
 						 break;
 
 					 default: 
@@ -402,13 +416,66 @@ namespace PersonalInventoryControl {
 					 MessageBox::Show("Por favor, selecione um item!","Erro",
 					 MessageBoxButtons::OK, MessageBoxIcon::Warning);
 				 }
-				 
-				 this->Close();
 			 }
 
 	private: System::Void ger_materiais_btn_alterar_Click(System::Object^  sender, System::EventArgs^  e) {
+				 
+				 String^ titulo_material = data_grid_materiais->SelectedRows[0]->Cells[1]->Value->ToString();
+				 String^ tipo_material = data_grid_materiais->SelectedRows[0]->Cells[0]->Value->ToString();
+				 String^ pattern = "Audio|Livro|Filme|Dados";
+				 System::Text::RegularExpressions::Regex ^ regex = gcnew System::Text::RegularExpressions::Regex( pattern);
+				 System::Text::RegularExpressions::Match^ match = regex->Match(tipo_material);
+				 String^ tipo_material_split = match->Value;
 
+				 MidiaAudio* midia_audio;
+				 MidiaDados* midia_dados;
+				 MidiaFilme* midia_filme;
+				 Livro* livro;
+				 cadMaterialForm ^material_form;
+
+				 if(!System::String::IsNullOrEmpty(titulo_material))
+				 { 
+					 switch( get_codTipoMaterial(tipo_material_split))
+					 {
+					 case COD_AUDIO:
+
+						 midia_audio = controller_midiaAudio->buscar(String_utils::SystemToStdString(titulo_material));
+						 material_form = gcnew cadMaterialForm(COD_EDITAR,COD_AUDIO, (Material*) midia_audio);
+						 break;
+
+					 case COD_DADOS:
+
+						 midia_dados = controller_midiaDados->buscar(String_utils::SystemToStdString(titulo_material));
+						 material_form = gcnew cadMaterialForm(COD_EDITAR,COD_DADOS,(Material*) midia_dados);		
+						 break;
+
+					 case COD_FILME: 
+
+						 midia_filme = controller_midiaFilme->buscar(String_utils::SystemToStdString(titulo_material));
+						 material_form = gcnew cadMaterialForm(COD_EDITAR,COD_FILME, (Material*) midia_filme);
+						 break;
+
+					 case COD_LIVRO:
+
+						 livro = controller_livro->buscar(String_utils::SystemToStdString(titulo_material));
+						 material_form = gcnew cadMaterialForm(COD_EDITAR,COD_LIVRO, (Material*) livro);
+						 break;
+
+					 default: 
+						 break;
+					 }
+
+					 material_form->Show();
+
+				 } else {
+					 MessageBox::Show("Por favor, selecione um item!","Erro",
+						 MessageBoxButtons::OK, MessageBoxIcon::Warning);
+				 }
+
+				 this->Close();
 		 }
+
+
 	private: System::Void ger_materiais_btn_cadastrar_Click(System::Object^  sender, System::EventArgs^  e) {
 				 //cadMaterialForm ^material_form = gcnew cadMaterialForm();
 			//	 material_form->Show();

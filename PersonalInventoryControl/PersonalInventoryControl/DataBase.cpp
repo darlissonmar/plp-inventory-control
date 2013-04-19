@@ -107,6 +107,9 @@ void DataBase::inicializar( void )
 	MidiaAudio *midia_audio3 = new MidiaAudio(midiaaudio_db_indice++,true,"Bluray Paralamas", 2011,"Alagados", "Paralamans do Sucesso",1,"Rock","Universal Music",EnumTipoMidia::BLURAY);
 	MidiaAudio *midia_audio4 = new MidiaAudio(midiaaudio_db_indice++,true,"Bluray Paralamas", 2011,"Alagados", "Paralamans do Sucesso",1,"Rock","Universal Music",EnumTipoMidia::BLURAY);
 
+	MidiaFilme *midia_filme1 = new MidiaFilme(midiafilme_db_indice++, true,"Avatar", 2009,"Ficção Científica ","Sam Worthington, Sigourney Weaver", "James Cameron", "James Cameron",EnumTipoMidia::DVD);
+
+	MidiaDados *midia_dados1 = new MidiaDados(midiadados_db_indice++,true, "Material da aula de PLP",2013, "Este DVD contem as aulas de PLP", EnumTipoMidia::DVD);
 	
 
 	try
@@ -126,9 +129,9 @@ void DataBase::inicializar( void )
 		this->midias_audio->insert(ParMidiaAudio(midia_audio4->getId(), midia_audio4));
 		
 		// Adicionando midia filme
-		
+		this->midias_filme->insert(ParMidiaFilme(midia_filme1->getId(), midia_filme1));
 		// Adicionando midia dados
-
+		this->midias_dados->insert(ParMidiaDados(midia_dados1->getId(),midia_dados1));
 		// Adicionando Emprestimos
 
 	}

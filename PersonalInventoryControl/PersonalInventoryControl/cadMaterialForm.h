@@ -20,8 +20,10 @@ namespace PersonalInventoryControl {
 		ControllerMidiaDados* controller_midiaDados;
 		ControllerMidiaFilme* controller_midiaFilme;
 		ControllerLivro* controller_livro;
-		int _COD_MATERIAL;
-		cadMaterialForm(int cod_operacao, int cod_material)
+		int _COD_OPERACAO;
+		Material* _material;
+		
+		cadMaterialForm(int cod_operacao, int cod_material, Material* material)
 		{
 			InitializeComponent();
 			//
@@ -31,21 +33,21 @@ namespace PersonalInventoryControl {
 			controller_midiaDados = new ControllerMidiaDados();
 			controller_midiaFilme = new ControllerMidiaFilme();
 			controller_livro = new ControllerLivro();
-			//_COD_MATERIAL = cod_material;
-			
+			_COD_OPERACAO = cod_operacao;
+			_material = material;
 			switch(cod_operacao)
 			{
 			case COD_CADASTRAR:
-				//cadastrar_material(codigo_material) //editar_amigoNoForm(_amigo);
-				break; // alterar dados do form
+				
+				break; 
 
 			case COD_EDITAR: 
-				//editar_material(codigo_material);visualizar_amigoNoForm(_amigo);
-				break; //visualiza
+					editar_material(cod_material, material);
+					break; 
 
 			case COD_VISUALIZAR: 
-					visualizar_material(cod_material);
-				break; //visualiza
+					detalhes_material(cod_material, material);
+				break; 
 
 
 			default: break;
@@ -53,10 +55,10 @@ namespace PersonalInventoryControl {
 
 		}
 
-		void selecionaMidAudioTab(void);
-		void selecionaMidDadosTab(void);
-		void selecionaMidFilmeTab(void);
-		void selecionaLivroTab(void);
+		void selecionaMidAudioTab(bool);
+		void selecionaMidDadosTab(bool);
+		void selecionaMidFilmeTab(bool);
+		void selecionaLivroTab(bool);
 
 	protected:
 		/// <summary>
@@ -79,7 +81,8 @@ namespace PersonalInventoryControl {
 	private: System::Windows::Forms::TabPage^  tabPageMFilme;
 	private: System::Windows::Forms::TabPage^  tabPageMDados;
 	private: System::Windows::Forms::Panel^  panel1;
-	private: System::Windows::Forms::Label^  label1;
+	private: System::Windows::Forms::Label^  titulo_label;
+
 	private: System::Windows::Forms::Label^  label2;
 	private: System::Windows::Forms::GroupBox^  groupBox1;
 	private: System::Windows::Forms::Label^  label3;
@@ -222,7 +225,7 @@ namespace PersonalInventoryControl {
 			this->label26 = (gcnew System::Windows::Forms::Label());
 			this->label25 = (gcnew System::Windows::Forms::Label());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
-			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->titulo_label = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->tabMaterial->SuspendLayout();
 			this->tabPageLivro->SuspendLayout();
@@ -852,23 +855,23 @@ namespace PersonalInventoryControl {
 			// 
 			this->panel1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(252)), static_cast<System::Int32>(static_cast<System::Byte>(88)), 
 				static_cast<System::Int32>(static_cast<System::Byte>(16)));
-			this->panel1->Controls->Add(this->label1);
+			this->panel1->Controls->Add(this->titulo_label);
 			this->panel1->Location = System::Drawing::Point(4, 4);
 			this->panel1->Name = L"panel1";
 			this->panel1->Size = System::Drawing::Size(510, 54);
 			this->panel1->TabIndex = 1;
 			// 
-			// label1
+			// titulo_label
 			// 
-			this->label1->AutoSize = true;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
+			this->titulo_label->AutoSize = true;
+			this->titulo_label->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->label1->ForeColor = System::Drawing::SystemColors::ControlLightLight;
-			this->label1->Location = System::Drawing::Point(8, 15);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(232, 25);
-			this->label1->TabIndex = 0;
-			this->label1->Text = L"Cadastro de Material";
+			this->titulo_label->ForeColor = System::Drawing::SystemColors::ControlLightLight;
+			this->titulo_label->Location = System::Drawing::Point(8, 15);
+			this->titulo_label->Name = L"titulo_label";
+			this->titulo_label->Size = System::Drawing::Size(232, 25);
+			this->titulo_label->TabIndex = 0;
+			this->titulo_label->Text = L"Cadastro de Material";
 			// 
 			// label2
 			// 
@@ -926,67 +929,89 @@ private: System::Void btn_cad_livro_Click(System::Object^  sender, System::Event
 					!System::String::IsNullOrEmpty(this->txtBox_livro_vol->Text) ||
 					!System::String::IsNullOrEmpty(this->txtBox_livro_titulo->Text)
 					 )
-					 {
-
-						 if(controller_livro->adicionar(get_livroDoForm()))
+					 {	
+						 
+						 switch(_COD_OPERACAO)
 						 {
-							 MessageBox::Show("Livro cadastrado com sucessor", "Sucesso",
-							 MessageBoxButtons::OK, MessageBoxIcon::Information);
-							 this->Close();
-						 } 
-					 } else 
+						 case COD_CADASTRAR: 
+								 
+							 if(controller_livro->adicionar(get_livroDoForm(false)))
+								 {
+										MessageBox::Show("Livro cadastrado com sucesso", "Sucesso",
+										MessageBoxButtons::OK, MessageBoxIcon::Information);
+										this->Close();
+								 }
+							 else 
+								 {
+										MessageBox::Show("Ocorreu um erro durante a operacao", "Erro",
+										MessageBoxButtons::OK, MessageBoxIcon::Error);
+										this->Close();
+					
+								 }
+										break;
+						 
+						 case COD_EDITAR: 
+									// pegar o titulo e buscar o id isDisponivel()
+								 
+								
+								 if(controller_livro->atualizar(get_livroDoForm(true)))
+									 {
+										MessageBox::Show("Livro atualizado com sucesso", "Sucesso",
+										MessageBoxButtons::OK, MessageBoxIcon::Information);
+										this->Close();
+									}
+									else 
+									{
+										MessageBox::Show("Ocorreu um erro durante a operacao", "Erro",
+										MessageBoxButtons::OK, MessageBoxIcon::Error);
+										this->Close();
+									}
+										break;
+						 default:
+										break;
+						 }
+					}
+				else 
 					 {
 						 MessageBox::Show("Preencha os campos", "Aviso",
 							 MessageBoxButtons::OK, MessageBoxIcon::Warning);
 					 }
 			 }
+
 private: System::Void btn_cad_mid_audio_Click(System::Object^  sender, System::EventArgs^  e) {
 		 }
 private: System::Void btn_cad_mid_filme_Click(System::Object^  sender, System::EventArgs^  e) {
 		 }
 private: System::Void btn_cad_mid_dados_Click(System::Object^  sender, System::EventArgs^  e) {
 		 }
-private: Livro* get_livroDoForm()
-			 {
-				 
-				Livro* livro = new Livro(1, true,
-					 String_utils::SystemToStdString(this->txtBox_livro_titulo->Text),
-					 Convert::ToInt32(this->txtBox_livro_ano->Text),
-					 String_utils::SystemToStdString(this->txtBox_livro_autor->Text),
-					 String_utils::SystemToStdString(this->txtBox_livro_Area->Text),
-					 Convert::ToInt32(this->txtBox_livro_edicao->Text),
-					 String_utils::SystemToStdString(this->txtBox_livro_editora->Text),
-					 Convert::ToInt32(this->txtBox_livro_vol->Text));
 
-				  return livro;
-			 }
-
-private: void visualizar_material(int codigo_material)
+private: void detalhes_material(int codigo_material, Material* material)
 		 {
 			 switch(codigo_material)
 			 {
 			 
 			 case COD_AUDIO:
-
-				 selecionaMidAudioTab();
-				 
-				
+				 this->titulo_label->Text = "Detalhes da Midia de Audio";
+				 selecionaMidAudioTab(false);
+				 set_midiaAudioNoForm((MidiaAudio*) material);
 				 break;
 
 			 case COD_DADOS:
-
-				 selecionaMidDadosTab();
-				 	
+				 this->titulo_label->Text = "Detalhes da Midia de Dados";
+				 selecionaMidDadosTab(false);
+				 set_midiaDadosNoForm((MidiaDados*) material); 	
 				 break;
 
 			 case COD_FILME: 
-				 selecionaMidFilmeTab();
-				
+				 this->titulo_label->Text = "Detalhes da Midia de Filme";
+				 selecionaMidFilmeTab(false);
+				 set_midiaFilmeNoForm((MidiaFilme*) material);
 				 break;
 
 			 case COD_LIVRO:
-
-				 selecionaLivroTab();
+				 this->titulo_label->Text = "Detalhes do Livro";
+				 selecionaLivroTab(false);
+				 set_livroNoForm((Livro*) material);
 				 break;
 
 			 default: 
@@ -996,26 +1021,135 @@ private: void visualizar_material(int codigo_material)
 
 		}
 
-private: void editar_Material(int codigo_material)
+private: void editar_material(int codigo_material, Material* material)
 		 {
-			 switch( codigo_material )
+			 switch(codigo_material)
 			 {
+
+			 case COD_AUDIO:
+				 this->titulo_label->Text = "Editando Midia de Audio";
+				 selecionaMidAudioTab(true);
+				 set_midiaAudioNoForm((MidiaAudio*) material);
+
+				 break;
+
+			 case COD_DADOS:
+				 this->titulo_label->Text = "Editando Midia de Dados";
+				 selecionaMidDadosTab(true);
+				 set_midiaDadosNoForm((MidiaDados*) material); 	
+				 break;
+
+			 case COD_FILME: 
+				 this->titulo_label->Text = "Editando Midia de Filme";
+				 selecionaMidFilmeTab(true);
+				 set_midiaFilmeNoForm((MidiaFilme*) material);
+				 break;
+
+			 case COD_LIVRO:
+				 this->titulo_label->Text = "Editando Livro";
+				 selecionaLivroTab(true);
+				 set_livroNoForm((Livro*) material);
+				 break;
+
+			 default: 
+				 break;
 
 			 }
 		 }
 
-private: MidiaAudio* get_midiaAudioDoForm()
+private: void cadastrar_material(int codigo_material, Material* material)
 		 {
-			 MidiaAudio* midia_audio = new MidiaAudio(1, true, 
-				 String_utils::SystemToStdString(this->txtBox_Maudio_titulo->Text),
-				 Convert::ToInt32(this->txtBox_Maudio_ano->Text),
-				 String_utils::SystemToStdString(this->txtBox_Maudio_album->Text),
-				 String_utils::SystemToStdString(this->txtBox_Maudio_artista->Text),
-				 Convert::ToInt32(this->txtBox_Maudio_vol->Text),
-				 String_utils::SystemToStdString(this->txtBox_Maudio_genero->Text),
-				 String_utils::SystemToStdString(this->txtBox_Maudio_gravad->Text),
-				 get_enumTipoMaterial(this->comBox_TipoMidia->Text));
+			 switch(codigo_material)
+			 {
 
+			 case COD_AUDIO:
+				 this->titulo_label->Text = "Detalhes da Midia de Audio";
+				 selecionaMidAudioTab(false);
+				 set_midiaAudioNoForm((MidiaAudio*) material);
+
+				 break;
+
+			 case COD_DADOS:
+				 this->titulo_label->Text = "Detalhes da Midia de Dados";
+				 selecionaMidDadosTab(false);
+				 set_midiaDadosNoForm((MidiaDados*) material); 	
+				 break;
+
+			 case COD_FILME: 
+				 this->titulo_label->Text = "Detalhes da Midia de Filme";
+				 selecionaMidFilmeTab(false);
+				 set_midiaFilmeNoForm((MidiaFilme*) material);
+				 break;
+
+			 case COD_LIVRO:
+				 this->titulo_label->Text = "Detalhes do Livro";
+				 selecionaLivroTab(false);
+				 set_livroNoForm((Livro*) material);
+				 break;
+
+			 default: 
+				 break;
+
+			 }
+		 }
+
+private: Livro* get_livroDoForm(bool editando)
+		 {
+
+			 Livro* livro;
+			 Livro* _livro = (Livro*) _material;
+
+			 if (editando){
+				 _livro->setTitulo(String_utils::SystemToStdString(this->txtBox_livro_titulo->Text));
+				 _livro->setAno(Convert::ToInt32(this->txtBox_livro_ano->Text));
+				 _livro->setArea(String_utils::SystemToStdString(this->txtBox_livro_Area->Text));
+				 _livro->setAutor(String_utils::SystemToStdString(this->txtBox_livro_autor->Text));
+				 _livro->setEdicao(Convert::ToInt32(this->txtBox_livro_edicao->Text));
+				 _livro->setEditora(String_utils::SystemToStdString(this->txtBox_livro_editora->Text));
+				 _livro->setVolume(Convert::ToInt32(this->txtBox_livro_vol->Text));
+				 livro = _livro;
+
+			 }else{
+				 livro = new Livro(1, true,
+					 String_utils::SystemToStdString(this->txtBox_livro_titulo->Text),
+					 Convert::ToInt32(this->txtBox_livro_ano->Text),
+					 String_utils::SystemToStdString(this->txtBox_livro_autor->Text),
+					 String_utils::SystemToStdString(this->txtBox_livro_Area->Text),
+					 Convert::ToInt32(this->txtBox_livro_edicao->Text),
+					 String_utils::SystemToStdString(this->txtBox_livro_editora->Text),
+					 Convert::ToInt32(this->txtBox_livro_vol->Text)); 
+			 }
+			 return livro;		 
+		 }
+private: MidiaAudio* get_midiaAudioDoForm(bool editando)
+		 {
+			 MidiaAudio* midia_audio;		 
+			 MidiaAudio* _midia_audio = (MidiaAudio*) _material;
+				
+			 if(editando)
+				{
+					_midia_audio->setTitulo(String_utils::SystemToStdString(this->txtBox_Maudio_titulo->Text));
+					_midia_audio->setAno(Convert::ToInt32(this->txtBox_Maudio_ano->Text));
+					_midia_audio->setAlbum(String_utils::SystemToStdString(this->txtBox_Maudio_album->Text));
+					_midia_audio->setArtista(String_utils::SystemToStdString(this->txtBox_Maudio_artista->Text));
+					_midia_audio->setVolume(Convert::ToInt32(this->txtBox_Maudio_vol->Text));
+					_midia_audio->setGenero(String_utils::SystemToStdString(this->txtBox_Maudio_genero->Text));
+					_midia_audio->setGravadora(String_utils::SystemToStdString(this->txtBox_Maudio_gravad->Text));
+					_midia_audio->setTipoMidia(get_enumTipoMaterial(this->comBox_TipoMidia->Text));
+					midia_audio = _midia_audio;
+
+				} else 
+				{
+				 midia_audio = new MidiaAudio(1, true, 
+					 String_utils::SystemToStdString(this->txtBox_Maudio_titulo->Text),
+					 Convert::ToInt32(this->txtBox_Maudio_ano->Text),
+					 String_utils::SystemToStdString(this->txtBox_Maudio_album->Text),
+					 String_utils::SystemToStdString(this->txtBox_Maudio_artista->Text),
+					 Convert::ToInt32(this->txtBox_Maudio_vol->Text),
+					 String_utils::SystemToStdString(this->txtBox_Maudio_genero->Text),
+					 String_utils::SystemToStdString(this->txtBox_Maudio_gravad->Text),
+					 get_enumTipoMaterial(this->comBox_TipoMidia->Text));
+				}
 			 return midia_audio;
 
 		 }
