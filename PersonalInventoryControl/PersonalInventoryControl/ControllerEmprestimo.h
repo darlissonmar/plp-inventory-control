@@ -16,6 +16,7 @@ public:
 	bool atualizar(Emprestimo* element);
 	bool deletar(int idObj);
 	Emprestimo* buscar(string attr);
+	Emprestimo* buscarPorMatTitulo(string attr);
 
 
 

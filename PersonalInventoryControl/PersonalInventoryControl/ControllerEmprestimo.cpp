@@ -137,3 +137,23 @@ Emprestimo* ControllerEmprestimo::buscar(string attr){
 	}
 }
 
+Emprestimo* ControllerEmprestimo::buscarPorMatTitulo(string attr){
+	try
+	{
+		hash_map<const int, Emprestimo*>::const_iterator it;
+
+		for(it= dataBase->getEmprestimos()->begin(); it != dataBase->getEmprestimos()->end(); it++){
+			if(it->second->getMaterial()->getTitulo()==attr)
+				return it->second;
+		}
+
+		return NULL;
+	}
+	catch (exception e)
+	{
+		System::Console::WriteLine((wchar_t)e.what());
+		System::Console::WriteLine("ERROR: ControllerEmprestimo::buscar(string attr)");
+		return NULL;
+	}
+}
+

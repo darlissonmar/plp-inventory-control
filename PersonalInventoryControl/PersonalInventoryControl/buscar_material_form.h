@@ -21,9 +21,11 @@ namespace PersonalInventoryControl {
 		ControllerMidiaFilme* controller_midiaFilme;
 		ControllerLivro* controller_livro;
 		TextBox^ _text_box_material;
-		DataGridView^ _data_grid_emprestimo;
+		Label^ _COD_MATERIAL;
+	
+	public: 
 
-		buscar_material_form( TextBox^ text_box_material, DataGridView^ data_grid_emprestimo)
+		buscar_material_form( TextBox^ text_box_material, Label^ codigo_material)
 		{
 			InitializeComponent();
 
@@ -34,7 +36,8 @@ namespace PersonalInventoryControl {
 
 			carregar_dadosMateriais();
 			_text_box_material = text_box_material;
-			_data_grid_emprestimo = data_grid_emprestimo;
+			_COD_MATERIAL = codigo_material;
+			
 			//
 			//TODO: Add the constructor code here
 			//
@@ -61,12 +64,12 @@ namespace PersonalInventoryControl {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::DataGridView^  dataGridView1;
-	protected: 
+
+	private: System::Windows::Forms::DataGridView^  dataGridView1; 
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  col_material_tipo;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  col_material_nome;
 	private: System::Windows::Forms::Label^  label1;
-	private: System::Windows::Forms::Button^  btn_busca_material;
+
 
 	private:
 		/// <summary>
@@ -85,7 +88,6 @@ namespace PersonalInventoryControl {
 			this->col_material_tipo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->col_material_nome = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->btn_busca_material = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -93,15 +95,25 @@ namespace PersonalInventoryControl {
 			// 
 			this->dataGridView1->AllowUserToAddRows = false;
 			this->dataGridView1->AllowUserToDeleteRows = false;
+			this->dataGridView1->AllowUserToOrderColumns = true;
+			this->dataGridView1->AllowUserToResizeColumns = false;
+			this->dataGridView1->AllowUserToResizeRows = false;
+			this->dataGridView1->BackgroundColor = System::Drawing::SystemColors::Control;
+			this->dataGridView1->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
+			this->dataGridView1->CellBorderStyle = System::Windows::Forms::DataGridViewCellBorderStyle::None;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(2) {this->col_material_tipo, 
 				this->col_material_nome});
-			this->dataGridView1->Location = System::Drawing::Point(9, 57);
+			this->dataGridView1->Location = System::Drawing::Point(9, 32);
+			this->dataGridView1->MultiSelect = false;
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->ReadOnly = true;
+			this->dataGridView1->RowHeadersVisible = false;
+			this->dataGridView1->RowHeadersWidthSizeMode = System::Windows::Forms::DataGridViewRowHeadersWidthSizeMode::DisableResizing;
 			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-			this->dataGridView1->Size = System::Drawing::Size(317, 151);
+			this->dataGridView1->Size = System::Drawing::Size(442, 173);
 			this->dataGridView1->TabIndex = 0;
+			this->dataGridView1->CellDoubleClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &buscar_material_form::dataGridView1_CellDoubleClick);
 			// 
 			// col_material_tipo
 			// 
@@ -115,39 +127,31 @@ namespace PersonalInventoryControl {
 			this->col_material_nome->HeaderText = L"Titulo";
 			this->col_material_nome->Name = L"col_material_nome";
 			this->col_material_nome->ReadOnly = true;
-			this->col_material_nome->Width = 150;
+			this->col_material_nome->ToolTipText = L"material";
+			this->col_material_nome->Width = 320;
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(12, 32);
+			this->label1->Location = System::Drawing::Point(12, 9);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(130, 13);
+			this->label1->Size = System::Drawing::Size(244, 13);
 			this->label1->TabIndex = 1;
-			this->label1->Text = L"Selecione o material abixo";
-			// 
-			// btn_busca_material
-			// 
-			this->btn_busca_material->Location = System::Drawing::Point(127, 224);
-			this->btn_busca_material->Name = L"btn_busca_material";
-			this->btn_busca_material->Size = System::Drawing::Size(75, 23);
-			this->btn_busca_material->TabIndex = 2;
-			this->btn_busca_material->Text = L"Selecionar";
-			this->btn_busca_material->UseVisualStyleBackColor = true;
-			this->btn_busca_material->Click += gcnew System::EventHandler(this, &buscar_material_form::btn_busca_material_Click);
+			this->label1->Text = L"Dê um clique duplo sobre o item para selecioná-lo.";
 			// 
 			// buscar_material_form
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(338, 259);
-			this->Controls->Add(this->btn_busca_material);
+			this->ClientSize = System::Drawing::Size(460, 213);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->dataGridView1);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
+			this->MaximizeBox = false;
+			this->MinimizeBox = false;
 			this->Name = L"buscar_material_form";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
-			this->Text = L"buscar_material_form";
+			this->Text = L"Materiais disponíveis";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->dataGridView1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
@@ -155,7 +159,7 @@ namespace PersonalInventoryControl {
 		}
 #pragma endregion
 
-		public: void carregar_dadosMateriais()
+	public: void carregar_dadosMateriais()
 				{
 					list<Livro*> *livros = controller_livro->buscarDisponiveis();
 					list<MidiaAudio*> *midias_audio = controller_midiaAudio->buscarDisponiveis();
@@ -229,48 +233,97 @@ namespace PersonalInventoryControl {
 				 }
 				 return tipo_midia;
 			 }
-	private: System::Void btn_busca_material_Click(System::Object^  sender, System::EventArgs^  e) {
-				 String^ nome_chave = this->dataGridView1->SelectedRows[0]->Cells[1]->Value->ToString();
-				
-				 if(!System::String::IsNullOrEmpty(nome_chave))
-				 { // nome nao vazio
 
-					Livro* livro = controller_livro->buscar(String_utils::SystemToStdString(nome_chave));//pegar amigo da coluna
-					MidiaAudio* midia_audio = controller_midiaAudio->buscar(String_utils::SystemToStdString(nome_chave));
-					MidiaFilme* midia_filme = controller_midiaFilme->buscar(String_utils::SystemToStdString(nome_chave));
-					MidiaDados* midia_dados = controller_midiaDados->buscar(String_utils::SystemToStdString(nome_chave));
+	private: System::Void dataGridView1_CellDoubleClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
+			
+			 String^ titulo_material = dataGridView1->SelectedRows[0]->Cells[1]->Value->ToString();
+			 String^ tipo_material = dataGridView1->SelectedRows[0]->Cells[0]->Value->ToString();
+			 String^ pattern = "Audio|Livro|Filme|Dados";
+			 System::Text::RegularExpressions::Regex ^ regex = gcnew System::Text::RegularExpressions::Regex( pattern);
+			 System::Text::RegularExpressions::Match^ match = regex->Match(tipo_material);
+			 String^ tipo_material_split = match->Value;
 
-					if(livro != NULL)
-					{
-						_text_box_material->Text = gcnew String(livro->getTitulo().c_str());
-						array<String^>^row1 = 
-							gcnew array<String^>{
-							gcnew String("1"),
-							gcnew String(livro->getTitulo().c_str()),
-							gcnew String("Livro"),
-							gcnew String(Convert::ToString(livro->getAno()))
-						};
+			 if(!System::String::IsNullOrEmpty(titulo_material))
+				 { 
+					 switch( get_codTipoMaterial(tipo_material_split))
+					 {
+					 case COD_AUDIO:
+						 
+						 _text_box_material->Text 
+												= gcnew String(controller_midiaAudio
+												->buscar(String_utils::SystemToStdString(titulo_material))
+												->getTitulo().c_str());
+						 
+						_COD_MATERIAL->Text = Convert::ToString(COD_AUDIO);
+						 
+						 break;
+
+					 case COD_DADOS:
 						
-						_data_grid_emprestimo->Rows->Add(row1);
-					}
-					else if (midia_audio != NULL)
-						{
-							_text_box_material->Text = gcnew String(midia_audio->getTitulo().c_str());
-						}
-					else if (midia_dados != NULL)
-						{
-							_text_box_material->Text = gcnew String(midia_dados->getTitulo().c_str());
-						}
-					else if (midia_filme != NULL)
-						{
-							_text_box_material->Text = gcnew String(midia_filme->getTitulo().c_str());
-						}
+						 _text_box_material->Text 
+												= gcnew String(controller_midiaDados
+												->buscar(String_utils::SystemToStdString(titulo_material))
+												->getTitulo().c_str());
 
-				 } else {
-					 MessageBox::Show("Por favor, selecione um amigo!","Erro",
-						 MessageBoxButtons::OK, MessageBoxIcon::Warning);
-				 }
-				 this->Close();
+						 _COD_MATERIAL->Text = Convert::ToString(COD_DADOS);
+								
+						 break;
+
+					 case COD_FILME: 
+						
+						 _text_box_material->Text 
+												 = gcnew String(controller_midiaFilme
+												->buscar(String_utils::SystemToStdString(titulo_material))
+												->getTitulo().c_str());
+						
+						  _COD_MATERIAL->Text = Convert::ToString(COD_FILME);
+						 
+						 break;
+
+					 case COD_LIVRO:
+						 
+						 _text_box_material->Text 
+												= gcnew String(controller_livro
+												->buscar(String_utils::SystemToStdString(titulo_material))
+												->getTitulo().c_str());
+
+						_COD_MATERIAL->Text = Convert::ToString(COD_LIVRO);
+						  
+
+						 break;
+
+					 default: 
+						 break;
+					 }
+			 } else {
+				 MessageBox::Show("Por favor, selecione um material!","Erro",
+					 MessageBoxButtons::OK, MessageBoxIcon::Warning);
 			 }
+
+			 this->Close();
+		 }
+
+	private: int get_codTipoMaterial(String^ material_nome)
+					  {
+						  int cod_material;
+						  if( material_nome->Equals("Audio") )
+						  {
+							  cod_material = COD_AUDIO;
+
+						  } else if ( material_nome->Equals("Dados") )
+						  {
+							  cod_material = COD_DADOS;
+
+						  } else if ( material_nome->Equals("Filme") )
+						  {
+							  cod_material = COD_FILME;
+
+						  } else if ( material_nome->Equals("Livro") )
+						  {
+							  cod_material = COD_LIVRO;
+						  }
+
+						  return cod_material;
+					  }
 };
 }

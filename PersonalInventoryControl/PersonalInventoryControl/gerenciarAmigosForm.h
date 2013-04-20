@@ -49,16 +49,10 @@ namespace PersonalInventoryControl {
 
 	private: System::Windows::Forms::Panel^  panel1;
 	private: System::Windows::Forms::Label^  label1;
-
 	private: System::Windows::Forms::Button^  ger_amigo_btn_alterar;
 	private: System::Windows::Forms::Button^  ger_amigo_btn_cadastrar;
 	private: System::Windows::Forms::DataGridView^  data_grid_amigos;
 	private: System::Windows::Forms::Button^  ger_amigo_btn_remover;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^  tb_amigo_col_nome;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^  tb_amigo_col_sobrenome;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^  tb_amigo_col_email;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^  tb_amigo_col_sexo;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^  tb_amigo_col_telefone;
 	private: System::Windows::Forms::GroupBox^  groupBox1;
 	private: System::Windows::Forms::GroupBox^  groupBox2;
 	private: System::Windows::Forms::Label^  lb_telefone;
@@ -73,7 +67,11 @@ namespace PersonalInventoryControl {
 	private: System::Windows::Forms::Label^  label4;
 	private: System::Windows::Forms::Label^  lb_nome;
 	private: System::Windows::Forms::Label^  label2;
-
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  tb_amigo_col_nome;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  tb_amigo_col_sobrenome;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  tb_amigo_col_email;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  tb_amigo_col_sexo;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  tb_amigo_col_telefone;
 
 
 	private:
@@ -95,11 +93,6 @@ namespace PersonalInventoryControl {
 			this->ger_amigo_btn_alterar = (gcnew System::Windows::Forms::Button());
 			this->ger_amigo_btn_cadastrar = (gcnew System::Windows::Forms::Button());
 			this->data_grid_amigos = (gcnew System::Windows::Forms::DataGridView());
-			this->tb_amigo_col_nome = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->tb_amigo_col_sobrenome = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->tb_amigo_col_email = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->tb_amigo_col_sexo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->tb_amigo_col_telefone = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->ger_amigo_btn_remover = (gcnew System::Windows::Forms::Button());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
@@ -115,8 +108,14 @@ namespace PersonalInventoryControl {
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->lb_nome = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->tb_amigo_col_nome = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->tb_amigo_col_sobrenome = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->tb_amigo_col_email = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->tb_amigo_col_sexo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->tb_amigo_col_telefone = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->panel1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->data_grid_amigos))->BeginInit();
+			this->groupBox1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -170,7 +169,7 @@ namespace PersonalInventoryControl {
 			this->data_grid_amigos->AllowUserToOrderColumns = true;
 			this->data_grid_amigos->BackgroundColor = System::Drawing::SystemColors::Control;
 			this->data_grid_amigos->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->data_grid_amigos->CellBorderStyle = System::Windows::Forms::DataGridViewCellBorderStyle::None;
+			this->data_grid_amigos->CellBorderStyle = System::Windows::Forms::DataGridViewCellBorderStyle::SingleHorizontal;
 			this->data_grid_amigos->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->data_grid_amigos->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {this->tb_amigo_col_nome, 
 				this->tb_amigo_col_sobrenome, this->tb_amigo_col_email, this->tb_amigo_col_sexo, this->tb_amigo_col_telefone});
@@ -184,51 +183,20 @@ namespace PersonalInventoryControl {
 			dataGridViewCellStyle1->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
 			this->data_grid_amigos->DefaultCellStyle = dataGridViewCellStyle1;
 			this->data_grid_amigos->Location = System::Drawing::Point(20, 69);
+			this->data_grid_amigos->MultiSelect = false;
 			this->data_grid_amigos->Name = L"data_grid_amigos";
 			this->data_grid_amigos->ReadOnly = true;
+			this->data_grid_amigos->RowHeadersVisible = false;
+			this->data_grid_amigos->RowHeadersWidthSizeMode = System::Windows::Forms::DataGridViewRowHeadersWidthSizeMode::DisableResizing;
 			this->data_grid_amigos->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-			this->data_grid_amigos->Size = System::Drawing::Size(625, 110);
+			this->data_grid_amigos->Size = System::Drawing::Size(625, 128);
 			this->data_grid_amigos->TabIndex = 4;
 			this->data_grid_amigos->RowsAdded += gcnew System::Windows::Forms::DataGridViewRowsAddedEventHandler(this, &gerenciarAmigosForm::data_grid_amigos_RowsAdded);
 			this->data_grid_amigos->SelectionChanged += gcnew System::EventHandler(this, &gerenciarAmigosForm::data_grid_amigos_SelectionChanged);
 			// 
-			// tb_amigo_col_nome
-			// 
-			this->tb_amigo_col_nome->HeaderText = L"Nome";
-			this->tb_amigo_col_nome->Name = L"tb_amigo_col_nome";
-			this->tb_amigo_col_nome->ReadOnly = true;
-			this->tb_amigo_col_nome->Width = 140;
-			// 
-			// tb_amigo_col_sobrenome
-			// 
-			this->tb_amigo_col_sobrenome->HeaderText = L"Sobrenome";
-			this->tb_amigo_col_sobrenome->Name = L"tb_amigo_col_sobrenome";
-			this->tb_amigo_col_sobrenome->ReadOnly = true;
-			this->tb_amigo_col_sobrenome->Width = 120;
-			// 
-			// tb_amigo_col_email
-			// 
-			this->tb_amigo_col_email->HeaderText = L"Email";
-			this->tb_amigo_col_email->Name = L"tb_amigo_col_email";
-			this->tb_amigo_col_email->ReadOnly = true;
-			this->tb_amigo_col_email->Width = 130;
-			// 
-			// tb_amigo_col_sexo
-			// 
-			this->tb_amigo_col_sexo->HeaderText = L"Sexo";
-			this->tb_amigo_col_sexo->Name = L"tb_amigo_col_sexo";
-			this->tb_amigo_col_sexo->ReadOnly = true;
-			this->tb_amigo_col_sexo->Width = 95;
-			// 
-			// tb_amigo_col_telefone
-			// 
-			this->tb_amigo_col_telefone->HeaderText = L"Telefone";
-			this->tb_amigo_col_telefone->Name = L"tb_amigo_col_telefone";
-			this->tb_amigo_col_telefone->ReadOnly = true;
-			// 
 			// ger_amigo_btn_remover
 			// 
-			this->ger_amigo_btn_remover->Location = System::Drawing::Point(651, 156);
+			this->ger_amigo_btn_remover->Location = System::Drawing::Point(639, 106);
 			this->ger_amigo_btn_remover->Name = L"ger_amigo_btn_remover";
 			this->ger_amigo_btn_remover->Size = System::Drawing::Size(75, 23);
 			this->ger_amigo_btn_remover->TabIndex = 5;
@@ -238,6 +206,7 @@ namespace PersonalInventoryControl {
 			// 
 			// groupBox1
 			// 
+			this->groupBox1->Controls->Add(this->ger_amigo_btn_remover);
 			this->groupBox1->Location = System::Drawing::Point(12, 44);
 			this->groupBox1->Name = L"groupBox1";
 			this->groupBox1->Size = System::Drawing::Size(728, 159);
@@ -247,7 +216,7 @@ namespace PersonalInventoryControl {
 			// 
 			// groupBox2
 			// 
-			this->groupBox2->BackColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->groupBox2->BackColor = System::Drawing::SystemColors::Info;
 			this->groupBox2->Controls->Add(this->lb_telefone);
 			this->groupBox2->Controls->Add(this->label12);
 			this->groupBox2->Controls->Add(this->lb_endereco);
@@ -375,13 +344,46 @@ namespace PersonalInventoryControl {
 			this->label2->TabIndex = 0;
 			this->label2->Text = L"Nome:";
 			// 
+			// tb_amigo_col_nome
+			// 
+			this->tb_amigo_col_nome->HeaderText = L"Nome";
+			this->tb_amigo_col_nome->Name = L"tb_amigo_col_nome";
+			this->tb_amigo_col_nome->ReadOnly = true;
+			this->tb_amigo_col_nome->Width = 140;
+			// 
+			// tb_amigo_col_sobrenome
+			// 
+			this->tb_amigo_col_sobrenome->HeaderText = L"Sobrenome";
+			this->tb_amigo_col_sobrenome->Name = L"tb_amigo_col_sobrenome";
+			this->tb_amigo_col_sobrenome->ReadOnly = true;
+			this->tb_amigo_col_sobrenome->Width = 120;
+			// 
+			// tb_amigo_col_email
+			// 
+			this->tb_amigo_col_email->HeaderText = L"Email";
+			this->tb_amigo_col_email->Name = L"tb_amigo_col_email";
+			this->tb_amigo_col_email->ReadOnly = true;
+			this->tb_amigo_col_email->Width = 150;
+			// 
+			// tb_amigo_col_sexo
+			// 
+			this->tb_amigo_col_sexo->HeaderText = L"Sexo";
+			this->tb_amigo_col_sexo->Name = L"tb_amigo_col_sexo";
+			this->tb_amigo_col_sexo->ReadOnly = true;
+			// 
+			// tb_amigo_col_telefone
+			// 
+			this->tb_amigo_col_telefone->HeaderText = L"Telefone";
+			this->tb_amigo_col_telefone->Name = L"tb_amigo_col_telefone";
+			this->tb_amigo_col_telefone->ReadOnly = true;
+			this->tb_amigo_col_telefone->Width = 110;
+			// 
 			// gerenciarAmigosForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(752, 334);
 			this->Controls->Add(this->groupBox2);
-			this->Controls->Add(this->ger_amigo_btn_remover);
 			this->Controls->Add(this->data_grid_amigos);
 			this->Controls->Add(this->ger_amigo_btn_cadastrar);
 			this->Controls->Add(this->ger_amigo_btn_alterar);
@@ -395,6 +397,7 @@ namespace PersonalInventoryControl {
 			this->panel1->ResumeLayout(false);
 			this->panel1->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->data_grid_amigos))->EndInit();
+			this->groupBox1->ResumeLayout(false);
 			this->groupBox2->ResumeLayout(false);
 			this->groupBox2->PerformLayout();
 			this->ResumeLayout(false);
@@ -456,14 +459,14 @@ namespace PersonalInventoryControl {
 							MessageBoxButtons::OK, MessageBoxIcon::Information);
 						}
 				}
+				 this->data_grid_amigos->Rows->Clear();
+				 carregar_dadosAmigos();
 			 }
 			 else 
 				 {
 					MessageBox::Show("Por favor, selecione um amigo!","Erro",
 					MessageBoxButtons::OK, MessageBoxIcon::Warning);
 					 }
-			 this->data_grid_amigos->Rows->Clear();
-			carregar_dadosAmigos();
 		 }
 	private: System::Void data_grid_amigos_RowsAdded(System::Object^  sender,	
 					 System::Windows::Forms::DataGridViewRowsAddedEventArgs^  e) {

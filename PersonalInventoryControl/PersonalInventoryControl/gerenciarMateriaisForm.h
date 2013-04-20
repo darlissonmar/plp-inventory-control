@@ -20,9 +20,8 @@ namespace PersonalInventoryControl {
 		ControllerMidiaAudio* controller_midiaAudio;
 		ControllerMidiaDados* controller_midiaDados;
 		ControllerMidiaFilme* controller_midiaFilme;
-		ControllerLivro* controller_livro;
+        ControllerLivro* controller_livro;
 		
-
 		gerenciarMateriaisForm(void)
 		{
 			InitializeComponent();
@@ -51,7 +50,6 @@ namespace PersonalInventoryControl {
 	private: System::Windows::Forms::ToolStripMenuItem^  mídiaDeFilmeToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  mídiaDeDadosToolStripMenuItem;
 	private: System::Windows::Forms::GroupBox^  groupBox1;
-
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  dt_grid_emp_col_tipo;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  dt_grid_emp_col_titulo;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  dt_grid_emp_col_ano;
@@ -90,12 +88,12 @@ namespace PersonalInventoryControl {
 			this->mídiaDeFilmeToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->mídiaDeDadosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->data_grid_materiais = (gcnew System::Windows::Forms::DataGridView());
+			this->ger_materiais_btn_remover = (gcnew System::Windows::Forms::Button());
+			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->dt_grid_emp_col_tipo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dt_grid_emp_col_titulo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dt_grid_emp_col_ano = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dt_grid_emp_col_status = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->ger_materiais_btn_remover = (gcnew System::Windows::Forms::Button());
-			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->panel1->SuspendLayout();
 			this->contextMenuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->data_grid_materiais))->BeginInit();
@@ -196,50 +194,25 @@ namespace PersonalInventoryControl {
 			// 
 			this->data_grid_materiais->AllowUserToAddRows = false;
 			this->data_grid_materiais->AllowUserToDeleteRows = false;
-			this->data_grid_materiais->BackgroundColor = System::Drawing::SystemColors::ControlLight;
+			this->data_grid_materiais->BackgroundColor = System::Drawing::SystemColors::Control;
 			this->data_grid_materiais->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->data_grid_materiais->CellBorderStyle = System::Windows::Forms::DataGridViewCellBorderStyle::None;
+			this->data_grid_materiais->CellBorderStyle = System::Windows::Forms::DataGridViewCellBorderStyle::SingleHorizontal;
 			this->data_grid_materiais->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->data_grid_materiais->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {this->dt_grid_emp_col_tipo, 
 				this->dt_grid_emp_col_titulo, this->dt_grid_emp_col_ano, this->dt_grid_emp_col_status});
 			this->data_grid_materiais->Location = System::Drawing::Point(17, 72);
+			this->data_grid_materiais->MultiSelect = false;
 			this->data_grid_materiais->Name = L"data_grid_materiais";
 			this->data_grid_materiais->ReadOnly = true;
+			this->data_grid_materiais->RowHeadersVisible = false;
+			this->data_grid_materiais->RowHeadersWidthSizeMode = System::Windows::Forms::DataGridViewRowHeadersWidthSizeMode::DisableResizing;
 			this->data_grid_materiais->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
 			this->data_grid_materiais->Size = System::Drawing::Size(625, 214);
 			this->data_grid_materiais->TabIndex = 4;
 			// 
-			// dt_grid_emp_col_tipo
-			// 
-			this->dt_grid_emp_col_tipo->HeaderText = L"Tipo";
-			this->dt_grid_emp_col_tipo->Name = L"dt_grid_emp_col_tipo";
-			this->dt_grid_emp_col_tipo->ReadOnly = true;
-			this->dt_grid_emp_col_tipo->Width = 120;
-			// 
-			// dt_grid_emp_col_titulo
-			// 
-			this->dt_grid_emp_col_titulo->HeaderText = L"Título";
-			this->dt_grid_emp_col_titulo->Name = L"dt_grid_emp_col_titulo";
-			this->dt_grid_emp_col_titulo->ReadOnly = true;
-			this->dt_grid_emp_col_titulo->Width = 250;
-			// 
-			// dt_grid_emp_col_ano
-			// 
-			this->dt_grid_emp_col_ano->HeaderText = L"Ano";
-			this->dt_grid_emp_col_ano->Name = L"dt_grid_emp_col_ano";
-			this->dt_grid_emp_col_ano->ReadOnly = true;
-			this->dt_grid_emp_col_ano->Width = 70;
-			// 
-			// dt_grid_emp_col_status
-			// 
-			this->dt_grid_emp_col_status->HeaderText = L"Disponibilidade";
-			this->dt_grid_emp_col_status->Name = L"dt_grid_emp_col_status";
-			this->dt_grid_emp_col_status->ReadOnly = true;
-			this->dt_grid_emp_col_status->Width = 150;
-			// 
 			// ger_materiais_btn_remover
 			// 
-			this->ger_materiais_btn_remover->Location = System::Drawing::Point(640, 221);
+			this->ger_materiais_btn_remover->Location = System::Drawing::Point(640, 137);
 			this->ger_materiais_btn_remover->Name = L"ger_materiais_btn_remover";
 			this->ger_materiais_btn_remover->Size = System::Drawing::Size(75, 23);
 			this->ger_materiais_btn_remover->TabIndex = 5;
@@ -259,6 +232,34 @@ namespace PersonalInventoryControl {
 			this->groupBox1->TabIndex = 6;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Lista de Materiais";
+			// 
+			// dt_grid_emp_col_tipo
+			// 
+			this->dt_grid_emp_col_tipo->HeaderText = L"Tipo";
+			this->dt_grid_emp_col_tipo->Name = L"dt_grid_emp_col_tipo";
+			this->dt_grid_emp_col_tipo->ReadOnly = true;
+			this->dt_grid_emp_col_tipo->Width = 120;
+			// 
+			// dt_grid_emp_col_titulo
+			// 
+			this->dt_grid_emp_col_titulo->HeaderText = L"Título";
+			this->dt_grid_emp_col_titulo->Name = L"dt_grid_emp_col_titulo";
+			this->dt_grid_emp_col_titulo->ReadOnly = true;
+			this->dt_grid_emp_col_titulo->Width = 280;
+			// 
+			// dt_grid_emp_col_ano
+			// 
+			this->dt_grid_emp_col_ano->HeaderText = L"Ano";
+			this->dt_grid_emp_col_ano->Name = L"dt_grid_emp_col_ano";
+			this->dt_grid_emp_col_ano->ReadOnly = true;
+			this->dt_grid_emp_col_ano->Width = 70;
+			// 
+			// dt_grid_emp_col_status
+			// 
+			this->dt_grid_emp_col_status->HeaderText = L"Disponibilidade";
+			this->dt_grid_emp_col_status->Name = L"dt_grid_emp_col_status";
+			this->dt_grid_emp_col_status->ReadOnly = true;
+			this->dt_grid_emp_col_status->Width = 150;
 			// 
 			// gerenciarMateriaisForm
 			// 
@@ -537,15 +538,14 @@ namespace PersonalInventoryControl {
 						 }
 					 }
 
+					 this->data_grid_materiais->Rows->Clear();
+					 carregar_dadosMateriais();
 				 }
 				 else 
 				 {
 					 MessageBox::Show("Por favor, selecione um amigo!","Erro",
 						 MessageBoxButtons::OK, MessageBoxIcon::Warning);
 				 }
-				 this->data_grid_materiais->Rows->Clear();
-				 carregar_dadosMateriais();
-
 		 }
 	private: String^ getTipoMidia(int codigoTipo)
 					  {
