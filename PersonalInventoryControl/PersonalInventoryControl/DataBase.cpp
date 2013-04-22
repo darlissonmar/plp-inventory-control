@@ -98,27 +98,69 @@ void DataBase::inicializar( void )
 {
 	// Objetos carregados em memoria
 	// Lista de amigos
-	Amigo *amigo1 = new Amigo(amigo_db_indice++,"Joao", "dos Santos", "joao@jmail.com","2123-1234","Masculino","Rua das mangueiras");
-	Amigo *amigo2 = new Amigo(amigo_db_indice++,"Pedro", "da Silva", "pedro@jmail.com","2123-4321", "Masculino", "Rua das Laranjeiras");
+	Amigo *amigo1 = new Amigo(amigo_db_indice++,
+											"Joao", "dos Santos", 
+											"joao@jmail.com","2123-1234",
+											"Masculino",
+											"Rua das mangueiras");
+	Amigo *amigo2 = new Amigo(amigo_db_indice++,
+											"Pedro", "da Silva", 
+											"pedro@jmail.com","2123-4321", 
+											"Masculino", 
+											"Rua das Laranjeiras");
 
 	//Lista de Livros
-	Livro *livro1 = new Livro(livro_db_indice++, true,"Game of Thrones: Gelo e Fogo", 2010, "Gerger Martin", "Ficção",1,"Winterfel",1);
-	Livro *livro2 = new Livro(livro_db_indice++, false,"Senhor dos Aneis: A Sociedade do Anel", 2010, "J.K Tolkien", "Ficção",1,"Terra Media",1);
+	Livro *livro1 = new Livro(livro_db_indice++,	
+											true,"Game of Thrones: Gelo e Fogo", 
+											2010, "George Martin", "Ficção",1,"Winterfel",1);
+
+	Livro *livro2 = new Livro(livro_db_indice++, 
+											true,"Senhor dos Aneis: A Sociedade do Anel", 
+											2010, "J.K Tolkien", "Ficção",1,"Terra Media",1);
 
 	//Lista de Midia de Audio
-	MidiaAudio *midia_audio1 = new MidiaAudio(midiaaudio_db_indice++,true,"Cd Legiao", 1998,"Mais do Mesmo", "Legiao Urbana",1,"Rock","Sony Music",EnumTipoMidia::CD);
-	MidiaAudio *midia_audio2 = new MidiaAudio(midiaaudio_db_indice++,true,"Dvd Paralamas", 1999,"Alagados", "Paralamans do Sucesso",1,"Rock","Universal Music",EnumTipoMidia::DVD);
-	MidiaAudio *midia_audio3 = new MidiaAudio(midiaaudio_db_indice++,true,"Blu-ray Paralamas", 2011,"Alagados", "Paralamans do Sucesso",1,"Rock","Universal Music",EnumTipoMidia::BLURAY);
-	MidiaAudio *midia_audio4 = new MidiaAudio(midiaaudio_db_indice++,true,"Blu-ray Paralamas", 2011,"Alagados", "Paralamans do Sucesso",1,"Rock","Universal Music",EnumTipoMidia::BLURAY);
+	MidiaAudio *midia_audio1 = new MidiaAudio(midiaaudio_db_indice++,
+																false,
+																"Cd Legiao", 1998,"Mais do Mesmo",
+																"Legiao Urbana",1,"Rock","Sony Music",
+																EnumTipoMidia::CD);
+	
+	MidiaAudio *midia_audio2 = new MidiaAudio(midiaaudio_db_indice++,
+																true,
+																"Dvd Paralamas",
+																1999,"Alagados",
+																"Paralamans do Sucesso",
+																1,"Rock","Universal Music",
+																EnumTipoMidia::DVD);
+
+	MidiaAudio *midia_audio3 = new MidiaAudio(midiaaudio_db_indice++,true,
+																"Blu-ray Paralamas", 2011,
+																"Alagados", "Paralamans do Sucesso",
+																1,"Rock","Universal Music",
+																EnumTipoMidia::BLURAY);
+	
+	MidiaAudio *midia_audio4 = new MidiaAudio(midiaaudio_db_indice++,true,
+																"Blu-ray Paralamas", 2011,
+																"Alagados", "Paralamans do Sucesso",
+																1,"Rock","Universal Music",EnumTipoMidia::BLURAY);
 	
 	//Lista de Midia de Filme
-	MidiaFilme *midia_filme1 = new MidiaFilme(midiafilme_db_indice++, true,"Avatar", 2009,"Ficção Científica ","Sam Worthington, Sigourney Weaver", "James Cameron", "James Cameron",EnumTipoMidia::DVD);
+	MidiaFilme *midia_filme1 = new MidiaFilme(midiafilme_db_indice++,
+																true,"Avatar", 2009,"Ficção Científica ",
+																"Sam Worthington, Sigourney Weaver", 
+																"James Cameron", "James Cameron",
+																EnumTipoMidia::DVD);
 	
 	//Lista de Midia de Dados
-	MidiaDados *midia_dados1 = new MidiaDados(midiadados_db_indice++,true, "Material da aula de PLP",2013, "Este DVD contem as aulas de PLP", EnumTipoMidia::DVD);
+	MidiaDados *midia_dados1 = new MidiaDados(midiadados_db_indice++,true, 
+																"Material da aula de PLP",2013, 
+																"Este DVD contem as aulas de PLP", 
+																EnumTipoMidia::DVD);
 	
 	//Lista de Emprestimos 
-	Emprestimo* emprestimo1 = new Emprestimo(emprestimo_db_indice++, "20-04-2013","",4,false,amigo1,(Material*) midia_audio1);
+	Emprestimo* emprestimo1 = new Emprestimo(emprestimo_db_indice++,
+		"20-04-2013","",4,
+		false,amigo1,(Material*) midia_audio1);
 
 	try
 	{

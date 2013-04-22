@@ -84,6 +84,10 @@ namespace PersonalInventoryControl {
 			this->ger_emp_btn_alterar = (gcnew System::Windows::Forms::Button());
 			this->ger_emp_btn_novo = (gcnew System::Windows::Forms::Button());
 			this->data_grid_emprestimos = (gcnew System::Windows::Forms::DataGridView());
+			this->dt_grid_emp_col_amigo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dt_grid_emp_col_mat = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dt_grid_emp_col_data_emp = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dt_grid_emp_col_data_dev = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->ger_emp_btn_remover = (gcnew System::Windows::Forms::Button());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->ger_emp_btn_devolver = (gcnew System::Windows::Forms::Button());
@@ -96,10 +100,6 @@ namespace PersonalInventoryControl {
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->lb_amigo_nome = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->dt_grid_emp_col_amigo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->dt_grid_emp_col_mat = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->dt_grid_emp_col_data_emp = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->dt_grid_emp_col_data_dev = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->panel1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->data_grid_emprestimos))->BeginInit();
 			this->groupBox1->SuspendLayout();
@@ -171,6 +171,34 @@ namespace PersonalInventoryControl {
 			this->data_grid_emprestimos->TabIndex = 4;
 			this->data_grid_emprestimos->SelectionChanged += gcnew System::EventHandler(this, &gerenciarEmprestimosForm::data_grid_emprestimos_SelectionChanged);
 			// 
+			// dt_grid_emp_col_amigo
+			// 
+			this->dt_grid_emp_col_amigo->HeaderText = L"Amigo";
+			this->dt_grid_emp_col_amigo->Name = L"dt_grid_emp_col_amigo";
+			this->dt_grid_emp_col_amigo->ReadOnly = true;
+			this->dt_grid_emp_col_amigo->Width = 120;
+			// 
+			// dt_grid_emp_col_mat
+			// 
+			this->dt_grid_emp_col_mat->HeaderText = L"Material";
+			this->dt_grid_emp_col_mat->Name = L"dt_grid_emp_col_mat";
+			this->dt_grid_emp_col_mat->ReadOnly = true;
+			this->dt_grid_emp_col_mat->Width = 265;
+			// 
+			// dt_grid_emp_col_data_emp
+			// 
+			this->dt_grid_emp_col_data_emp->HeaderText = L"Emprestado em";
+			this->dt_grid_emp_col_data_emp->Name = L"dt_grid_emp_col_data_emp";
+			this->dt_grid_emp_col_data_emp->ReadOnly = true;
+			this->dt_grid_emp_col_data_emp->Width = 120;
+			// 
+			// dt_grid_emp_col_data_dev
+			// 
+			this->dt_grid_emp_col_data_dev->HeaderText = L"Prazo de devolução";
+			this->dt_grid_emp_col_data_dev->Name = L"dt_grid_emp_col_data_dev";
+			this->dt_grid_emp_col_data_dev->ReadOnly = true;
+			this->dt_grid_emp_col_data_dev->Width = 130;
+			// 
 			// ger_emp_btn_remover
 			// 
 			this->ger_emp_btn_remover->Location = System::Drawing::Point(651, 133);
@@ -207,7 +235,7 @@ namespace PersonalInventoryControl {
 			// 
 			// groupBox2
 			// 
-			this->groupBox2->BackColor = System::Drawing::SystemColors::Info;
+			this->groupBox2->BackColor = System::Drawing::SystemColors::Window;
 			this->groupBox2->Controls->Add(this->lb_data_devolucao);
 			this->groupBox2->Controls->Add(this->label8);
 			this->groupBox2->Controls->Add(this->lb_emp_status);
@@ -297,34 +325,6 @@ namespace PersonalInventoryControl {
 			this->label2->Size = System::Drawing::Size(39, 13);
 			this->label2->TabIndex = 0;
 			this->label2->Text = L"Amigo:";
-			// 
-			// dt_grid_emp_col_amigo
-			// 
-			this->dt_grid_emp_col_amigo->HeaderText = L"Amigo";
-			this->dt_grid_emp_col_amigo->Name = L"dt_grid_emp_col_amigo";
-			this->dt_grid_emp_col_amigo->ReadOnly = true;
-			this->dt_grid_emp_col_amigo->Width = 120;
-			// 
-			// dt_grid_emp_col_mat
-			// 
-			this->dt_grid_emp_col_mat->HeaderText = L"Material";
-			this->dt_grid_emp_col_mat->Name = L"dt_grid_emp_col_mat";
-			this->dt_grid_emp_col_mat->ReadOnly = true;
-			this->dt_grid_emp_col_mat->Width = 265;
-			// 
-			// dt_grid_emp_col_data_emp
-			// 
-			this->dt_grid_emp_col_data_emp->HeaderText = L"Emprestado em";
-			this->dt_grid_emp_col_data_emp->Name = L"dt_grid_emp_col_data_emp";
-			this->dt_grid_emp_col_data_emp->ReadOnly = true;
-			this->dt_grid_emp_col_data_emp->Width = 120;
-			// 
-			// dt_grid_emp_col_data_dev
-			// 
-			this->dt_grid_emp_col_data_dev->HeaderText = L"Prazo de devolução";
-			this->dt_grid_emp_col_data_dev->Name = L"dt_grid_emp_col_data_dev";
-			this->dt_grid_emp_col_data_dev->ReadOnly = true;
-			this->dt_grid_emp_col_data_dev->Width = 130;
 			// 
 			// gerenciarEmprestimosForm
 			// 
@@ -431,7 +431,7 @@ namespace PersonalInventoryControl {
 	private: System::Void ger_emp_btn_devolver_Click(System::Object^  sender, System::EventArgs^  e) {
 				
 				 String^ titulo_material = data_grid_emprestimos->SelectedRows[0]->Cells[1]->Value->ToString();
-				
+
 				 if(!System::String::IsNullOrEmpty(titulo_material))
 				 { 
 					 
@@ -449,41 +449,27 @@ namespace PersonalInventoryControl {
 							Emprestimo* emprestimo = controller_emprestimo->buscarPorMatTitulo(String_utils::SystemToStdString(titulo_material));
 														
 							emprestimo->setDataDevolucao(String_utils::SystemToStdString(data_string));
-							// settar o bool atrasado
+							
+							if(get_diasAtrasado(emprestimo) > 0){
+									emprestimo->setAtrasado(true);
+								}
 
 							if(controller_emprestimo->atualizar(emprestimo))
 								{
-									MessageBox::Show("Empréstimo devolvido com sucesso", "Sucesso",
-									 MessageBoxButtons::OK, MessageBoxIcon::Information);
-									} 
-									else
+									
+									if (devolver_material(String_utils::SystemToStdString(titulo_material)))
 										{
-											MessageBox::Show("Ocorreu um erro durante a operação", "Erro",
-											MessageBoxButtons::OK, MessageBoxIcon::Error);
+											MessageBox::Show("Empréstimo devolvido com sucesso", "Sucesso",
+											MessageBoxButtons::OK, MessageBoxIcon::Information);
 											}
+										else
+											{
+												MessageBox::Show("Ocorreu um erro durante a operação", "Erro",
+												MessageBoxButtons::OK, MessageBoxIcon::Error);
+													}
+								}
 						}
-						/* else
-						 {
-							 String^ _data_devolucao;
-
-							 Emprestimo* emprestimo = controller_emprestimo->buscar(String_utils::SystemToStdString(nome_amigo));
-							 
-
-							 // abrir form formSetDataDevolucao(_data_devolucao, emprestimo->getDataEmprestimo());
-							 
-							 emprestimo->setDataDevolucao(String_utils::SystemToStdString(data_hoje->ToString()));
-							 // settar o bool atrasado
-							 if(controller_emprestimo->atualizar(emprestimo))
-								 {
-									 MessageBox::Show("Empréstimo devolvido com sucesso", "Sucesso",
-									 MessageBoxButtons::OK, MessageBoxIcon::Information);
-									 }
-							 		 else
-										 {
-											 MessageBox::Show("Ocorreu um erro durante a operação", "Erro",
-											 MessageBoxButtons::OK, MessageBoxIcon::Error);
-											 }
-							}*/
+						
 					 this->data_grid_emprestimos->Rows->Clear();
 					 carregar_dadosEmprestimos();
 
@@ -581,50 +567,49 @@ namespace PersonalInventoryControl {
 					 this->ger_emp_btn_devolver->Enabled = true;
 					 DateTime^ data_hoje = gcnew DateTime();
 					 data_hoje = DateTime::Now; 
+					 int dia_ano_hoje = data_hoje->DayOfYear;
+					 int dia_ano_emprestimo = get_diaDoAno(gcnew String(emprestimo->getDataEmprestimo().c_str()));
+					 int dia_prazo_devolucao = emprestimo->getPrazoDias();
+										 
+					 if( (dia_ano_emprestimo + dia_prazo_devolucao) < dia_ano_hoje)
+					{
 
-					 int dia_doAnoHj = data_hoje->DayOfYear;
-					 if( 
-						 ( get_diaDoAno(gcnew String(emprestimo->getDataEmprestimo().c_str())) 
-						 + emprestimo->getPrazoDias())
-						 <= dia_doAnoHj)
-					 {
-
-						 int dias_atraso = dia_doAnoHj - (get_diaDoAno(gcnew String(emprestimo->getDataEmprestimo().c_str())) 
-							 + emprestimo->getPrazoDias());
+						 int dias_atraso = dia_ano_hoje - (dia_ano_emprestimo + dia_prazo_devolucao);
 
 						 this->lb_emp_status->Text = "Vencido há " + Convert::ToString(dias_atraso)+" dias";
 						 this->lb_emp_status->Font->Bold;
 						 this->lb_emp_status->ForeColor = System::Drawing::Color::Red;
-					 }
-					 else 
-					 {
-						 this->lb_emp_status->Text = "Normal";
-						 this->lb_emp_status->Font->Bold;
-						 this->lb_emp_status->ForeColor = System::Drawing::Color::Green;								
-					 }
+						 }
+						 else 
+							 {
+							 this->lb_emp_status->Text = "Normal";
+							 this->lb_emp_status->Font->Bold;
+							 this->lb_emp_status->ForeColor = System::Drawing::Color::Green;								
+								}
 
-				 } else 
-					 if(  get_diaDoAno(gcnew String(emprestimo->getDataDevolucao().c_str()))
-						 <= get_diaDoAno(gcnew String(emprestimo->getDataEmprestimo().c_str()))
-						 + emprestimo->getPrazoDias()
-						 )
-					 {			
+					 }
+					else { 
+						
+						int dia_ano_devolucao = get_diaDoAno(gcnew String(emprestimo->getDataDevolucao().c_str()));
+						int dia_ano_emprestimo = get_diaDoAno(gcnew String(emprestimo->getDataEmprestimo().c_str()));
+						int dia_prazo_devolucao = emprestimo->getPrazoDias();
+
+						 if( dia_ano_devolucao <= (dia_ano_emprestimo + dia_prazo_devolucao) )
+							{			
 						 
-						 this->ger_emp_btn_devolver->Enabled = false;
-						 this->lb_emp_status->Text = "Normal" ;
-						 this->lb_emp_status->Font->Bold;
-						 this->lb_emp_status->ForeColor = System::Drawing::Color::Green;
-					 }
-					 else
-					 {
-						 int dias_atraso = get_diaDoAno(gcnew String(emprestimo->getDataDevolucao().c_str())) - 
-							 (get_diaDoAno(gcnew String(emprestimo->getDataEmprestimo().c_str())) 
-							 + emprestimo->getPrazoDias());
-
-						 this->lb_emp_status->Text = "Com atraso de " +Convert::ToString(dias_atraso)+ " dias";
-						 this->lb_emp_status->Font->Bold;
-						 this->lb_emp_status->ForeColor = System::Drawing::Color::Red;
-					 }
+							this->ger_emp_btn_devolver->Enabled = false;
+							this->lb_emp_status->Text = "Normal" ;
+							this->lb_emp_status->Font->Bold;
+							this->lb_emp_status->ForeColor = System::Drawing::Color::Green;
+								}
+								else
+								{
+								int dias_atraso = dia_ano_devolucao - (dia_ano_emprestimo + dia_prazo_devolucao);
+								this->lb_emp_status->Text = "Com atraso de " +Convert::ToString(dias_atraso)+ " dias";
+								this->lb_emp_status->Font->Bold;
+								this->lb_emp_status->ForeColor = System::Drawing::Color::Red;
+						 }
+					}
 			 }	
 	private: void ativa_buttons(bool ativando)
 		{
@@ -687,5 +672,61 @@ namespace PersonalInventoryControl {
 					 }
 				 }
 			 }
+
+	private: int get_diasAtrasado(Emprestimo* emprestimo){
+			 
+				 	int dias_atraso = 0; 
+					
+					int dia_ano_devolucao = get_diaDoAno(gcnew String(emprestimo->getDataDevolucao().c_str()));
+					int dia_ano_emprestimo = get_diaDoAno(gcnew String(emprestimo->getDataEmprestimo().c_str()));
+					int dia_prazo_devolucao = emprestimo->getPrazoDias();
+
+					if( dia_ano_devolucao > (dia_ano_emprestimo + dia_prazo_devolucao))
+						 {
+							 dias_atraso = dia_ano_devolucao - (dia_ano_emprestimo + dia_prazo_devolucao);
+							 }
+
+					return dias_atraso;
+				}
+	private: bool devolver_material(string titulo_material)
+		 {
+
+			 bool devolveu = false;
+			 Livro* livro = controller_livro->buscar(titulo_material);
+			 MidiaAudio* midia_audio = controller_midiaAudio->buscar(titulo_material);
+			 MidiaFilme* midia_filme = controller_midiaFilme->buscar(titulo_material);
+			 MidiaDados* midia_dados = controller_midiaDados->buscar(titulo_material);
+
+
+			 if( livro != NULL )
+			 {
+				 livro->setDisponivel(true);
+				 if(controller_livro->atualizar(livro))
+					 devolveu = true;
+			 }
+			 else if (midia_filme != NULL)
+			 {
+				 midia_filme->setDisponivel(true);
+				 if(controller_midiaFilme->atualizar(midia_filme))
+					 devolveu = true;
+
+			 }
+			 else if ( midia_audio != NULL )
+			 {
+				 midia_audio->setDisponivel(true);
+				 if(controller_midiaAudio->atualizar(midia_audio))
+					 devolveu = true;
+
+			 } 
+			 else if ( midia_dados != NULL)
+			 {
+				 midia_dados->setDisponivel(true);
+				 if(controller_midiaDados->atualizar(midia_dados))
+					 devolveu = true;
+		
+			 }
+
+			 return devolveu;
+		 }
 		};
 	}

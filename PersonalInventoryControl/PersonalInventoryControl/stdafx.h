@@ -6,11 +6,16 @@
 #define COD_CADASTRAR 1
 #define COD_EDITAR 2
 #define COD_VISUALIZAR 3
-#define COD_REMOVER 4
+
+
 #define COD_LIVRO 1
 #define COD_AUDIO 2
 #define COD_DADOS 3
 #define COD_FILME 4
+
+#define COD_RELATORIO_AMIGO 1
+#define COD_RELATORIO_MATERIAL 2
+#define COD_RELATORIO_EMPRESTIMO 3
 
 
 #include "Amigo.h"
@@ -41,6 +46,7 @@
 #include "cadAmigoForm.h"
 #include "gerenciarEmprestimosForm.h"
 #include "gerenciarMateriaisForm.h"
+#include "form_relatorios.h"
 
 
 

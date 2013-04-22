@@ -21,6 +21,7 @@ namespace PersonalInventoryControl {
 		ControllerMidiaDados* controller_midiaDados;
 		ControllerMidiaFilme* controller_midiaFilme;
         ControllerLivro* controller_livro;
+		ControllerEmprestimo* controller_emprestimo;
 		
 		gerenciarMateriaisForm(void)
 		{
@@ -29,6 +30,7 @@ namespace PersonalInventoryControl {
 			controller_midiaDados = new ControllerMidiaDados();
 			controller_midiaFilme = new ControllerMidiaFilme();
 			controller_livro = new ControllerLivro();
+			controller_emprestimo = new ControllerEmprestimo();
 			carregar_dadosMateriais();
 		}
 
@@ -477,9 +479,17 @@ namespace PersonalInventoryControl {
 				 String^ tipo_material_split = match->Value;
 
 				 int material_id;
+				 bool devolvido = true;
+				 Emprestimo* emprestimo = controller_emprestimo->buscarPorMatTitulo(String_utils::SystemToStdString(titulo_material));
+				 
+				 if (emprestimo != NULL){
+					 if(String::IsNullOrEmpty(gcnew String(emprestimo->getDataDevolucao().c_str())))
+						 devolvido = false;
+				 }
 
-				 if(!System::String::IsNullOrEmpty(titulo_material))
+				 if(!System::String::IsNullOrEmpty(titulo_material) && devolvido)
 				 { 
+
 					 
 					 if(MessageBox::Show ("Tem certeza que deseja remover o material ' "+ titulo_material+" ' ?", "Remover",
 						 MessageBoxButtons::YesNo, MessageBoxIcon::Question)
@@ -543,7 +553,7 @@ namespace PersonalInventoryControl {
 				 }
 				 else 
 				 {
-					 MessageBox::Show("Por favor, selecione um amigo!","Erro",
+					 MessageBox::Show("Não é possível remover um material que não foi devolvido!","Erro",
 						 MessageBoxButtons::OK, MessageBoxIcon::Warning);
 				 }
 		 }

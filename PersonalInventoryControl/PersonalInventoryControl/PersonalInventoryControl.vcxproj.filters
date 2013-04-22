@@ -80,6 +80,9 @@
     <ClCompile Include="buscar_material_form.cpp">
       <Filter>form_impl</Filter>
     </ClCompile>
+    <ClCompile Include="form_relatorios.cpp">
+      <Filter>form_impl</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="gerenciarAmigosForm.h" />
@@ -145,6 +148,7 @@
     <ClInclude Include="String_utils.h" />
     <ClInclude Include="Busca_amigo_form.h" />
     <ClInclude Include="buscar_material_form.h" />
+    <ClInclude Include="form_relatorios.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AboutForm.resx" />

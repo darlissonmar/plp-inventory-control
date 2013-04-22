@@ -247,9 +247,9 @@ namespace PersonalInventoryControl {
 				static_cast<System::Byte>(0)));
 			this->label1->Location = System::Drawing::Point(6, 16);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(209, 15);
+			this->label1->Size = System::Drawing::Size(213, 15);
 			this->label1->TabIndex = 0;
-			this->label1->Text = L"Personal Inventory Control v 0.1";
+			this->label1->Text = L"Personal Inventory Control v1.00";
 			// 
 			// AboutForm
 			// 

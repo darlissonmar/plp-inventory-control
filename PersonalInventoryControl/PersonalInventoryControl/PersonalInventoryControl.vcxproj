@@ -118,6 +118,7 @@
     <ClCompile Include="EmprestimoForm.cpp" />
     <ClCompile Include="Amigo.cpp" />
     <ClCompile Include="Emprestimo.cpp" />
+    <ClCompile Include="form_relatorios.cpp" />
     <ClCompile Include="gerenciarAmigosForm.cpp" />
     <ClCompile Include="gerenciarEmprestimosForm.cpp" />
     <ClCompile Include="gerenciarMateriaisForm.cpp" />
@@ -150,6 +151,9 @@
     <ClInclude Include="DataBase.h" />
     <ClInclude Include="Emprestimo.h" />
     <ClInclude Include="EnumTipoMidia.h" />
+    <ClInclude Include="form_relatorios.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="gerenciarAmigosForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -205,6 +209,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EmprestimoForm.resx">
       <DependentUpon>EmprestimoForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_relatorios.resx">
+      <DependentUpon>form_relatorios.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gerenciarAmigosForm.resx">
       <DependentUpon>gerenciarAmigosForm.h</DependentUpon>

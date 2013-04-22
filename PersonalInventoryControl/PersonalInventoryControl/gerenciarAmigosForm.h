@@ -93,6 +93,11 @@ namespace PersonalInventoryControl {
 			this->ger_amigo_btn_alterar = (gcnew System::Windows::Forms::Button());
 			this->ger_amigo_btn_cadastrar = (gcnew System::Windows::Forms::Button());
 			this->data_grid_amigos = (gcnew System::Windows::Forms::DataGridView());
+			this->tb_amigo_col_nome = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->tb_amigo_col_sobrenome = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->tb_amigo_col_email = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->tb_amigo_col_sexo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->tb_amigo_col_telefone = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->ger_amigo_btn_remover = (gcnew System::Windows::Forms::Button());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
@@ -108,11 +113,6 @@ namespace PersonalInventoryControl {
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->lb_nome = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->tb_amigo_col_nome = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->tb_amigo_col_sobrenome = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->tb_amigo_col_email = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->tb_amigo_col_sexo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->tb_amigo_col_telefone = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->panel1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->data_grid_amigos))->BeginInit();
 			this->groupBox1->SuspendLayout();
@@ -194,6 +194,40 @@ namespace PersonalInventoryControl {
 			this->data_grid_amigos->RowsAdded += gcnew System::Windows::Forms::DataGridViewRowsAddedEventHandler(this, &gerenciarAmigosForm::data_grid_amigos_RowsAdded);
 			this->data_grid_amigos->SelectionChanged += gcnew System::EventHandler(this, &gerenciarAmigosForm::data_grid_amigos_SelectionChanged);
 			// 
+			// tb_amigo_col_nome
+			// 
+			this->tb_amigo_col_nome->HeaderText = L"Nome";
+			this->tb_amigo_col_nome->Name = L"tb_amigo_col_nome";
+			this->tb_amigo_col_nome->ReadOnly = true;
+			this->tb_amigo_col_nome->Width = 140;
+			// 
+			// tb_amigo_col_sobrenome
+			// 
+			this->tb_amigo_col_sobrenome->HeaderText = L"Sobrenome";
+			this->tb_amigo_col_sobrenome->Name = L"tb_amigo_col_sobrenome";
+			this->tb_amigo_col_sobrenome->ReadOnly = true;
+			this->tb_amigo_col_sobrenome->Width = 120;
+			// 
+			// tb_amigo_col_email
+			// 
+			this->tb_amigo_col_email->HeaderText = L"Email";
+			this->tb_amigo_col_email->Name = L"tb_amigo_col_email";
+			this->tb_amigo_col_email->ReadOnly = true;
+			this->tb_amigo_col_email->Width = 150;
+			// 
+			// tb_amigo_col_sexo
+			// 
+			this->tb_amigo_col_sexo->HeaderText = L"Sexo";
+			this->tb_amigo_col_sexo->Name = L"tb_amigo_col_sexo";
+			this->tb_amigo_col_sexo->ReadOnly = true;
+			// 
+			// tb_amigo_col_telefone
+			// 
+			this->tb_amigo_col_telefone->HeaderText = L"Telefone";
+			this->tb_amigo_col_telefone->Name = L"tb_amigo_col_telefone";
+			this->tb_amigo_col_telefone->ReadOnly = true;
+			this->tb_amigo_col_telefone->Width = 110;
+			// 
 			// ger_amigo_btn_remover
 			// 
 			this->ger_amigo_btn_remover->Location = System::Drawing::Point(639, 106);
@@ -216,7 +250,7 @@ namespace PersonalInventoryControl {
 			// 
 			// groupBox2
 			// 
-			this->groupBox2->BackColor = System::Drawing::SystemColors::Info;
+			this->groupBox2->BackColor = System::Drawing::SystemColors::Window;
 			this->groupBox2->Controls->Add(this->lb_telefone);
 			this->groupBox2->Controls->Add(this->label12);
 			this->groupBox2->Controls->Add(this->lb_endereco);
@@ -344,44 +378,11 @@ namespace PersonalInventoryControl {
 			this->label2->TabIndex = 0;
 			this->label2->Text = L"Nome:";
 			// 
-			// tb_amigo_col_nome
-			// 
-			this->tb_amigo_col_nome->HeaderText = L"Nome";
-			this->tb_amigo_col_nome->Name = L"tb_amigo_col_nome";
-			this->tb_amigo_col_nome->ReadOnly = true;
-			this->tb_amigo_col_nome->Width = 140;
-			// 
-			// tb_amigo_col_sobrenome
-			// 
-			this->tb_amigo_col_sobrenome->HeaderText = L"Sobrenome";
-			this->tb_amigo_col_sobrenome->Name = L"tb_amigo_col_sobrenome";
-			this->tb_amigo_col_sobrenome->ReadOnly = true;
-			this->tb_amigo_col_sobrenome->Width = 120;
-			// 
-			// tb_amigo_col_email
-			// 
-			this->tb_amigo_col_email->HeaderText = L"Email";
-			this->tb_amigo_col_email->Name = L"tb_amigo_col_email";
-			this->tb_amigo_col_email->ReadOnly = true;
-			this->tb_amigo_col_email->Width = 150;
-			// 
-			// tb_amigo_col_sexo
-			// 
-			this->tb_amigo_col_sexo->HeaderText = L"Sexo";
-			this->tb_amigo_col_sexo->Name = L"tb_amigo_col_sexo";
-			this->tb_amigo_col_sexo->ReadOnly = true;
-			// 
-			// tb_amigo_col_telefone
-			// 
-			this->tb_amigo_col_telefone->HeaderText = L"Telefone";
-			this->tb_amigo_col_telefone->Name = L"tb_amigo_col_telefone";
-			this->tb_amigo_col_telefone->ReadOnly = true;
-			this->tb_amigo_col_telefone->Width = 110;
-			// 
 			// gerenciarAmigosForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->BackColor = System::Drawing::SystemColors::Control;
 			this->ClientSize = System::Drawing::Size(752, 334);
 			this->Controls->Add(this->groupBox2);
 			this->Controls->Add(this->data_grid_amigos);
@@ -391,6 +392,7 @@ namespace PersonalInventoryControl {
 			this->Controls->Add(this->groupBox1);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
 			this->MaximizeBox = false;
+			this->MinimizeBox = false;
 			this->Name = L"gerenciarAmigosForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Gerenciamento de amigos";
@@ -448,7 +450,7 @@ namespace PersonalInventoryControl {
 			 if(!System::String::IsNullOrEmpty(nome_chave))
 			 { // nome nao vazio
 				
-				 if(MessageBox::Show ("Tem certeza que deseja remover o seu amigo'"+nome_chave+"'?", "Remover",
+				 if(MessageBox::Show ("Tem certeza que deseja remover o seu amigo '"+nome_chave+"'?", "Remover",
 					 MessageBoxButtons::YesNo, MessageBoxIcon::Question)
 					 == System::Windows::Forms::DialogResult::Yes)
 				{	
