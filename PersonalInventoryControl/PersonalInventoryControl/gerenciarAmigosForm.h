@@ -20,9 +20,9 @@ namespace PersonalInventoryControl {
 	{
 	private:
 		ControllerAmigo *controller_amigo;
-		
+
 	public:
-		
+
 		gerenciarAmigosForm(void)
 		{
 			InitializeComponent();
@@ -31,7 +31,7 @@ namespace PersonalInventoryControl {
 			//
 			controller_amigo = new ControllerAmigo();
 			carregar_dadosAmigos();
-									
+
 		}
 
 	protected:
@@ -114,14 +114,14 @@ namespace PersonalInventoryControl {
 			this->lb_nome = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->panel1->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->data_grid_amigos))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->data_grid_amigos))->BeginInit();
 			this->groupBox1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// panel1
 			// 
-			this->panel1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(252)), static_cast<System::Int32>(static_cast<System::Byte>(88)), 
+			this->panel1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(252)), static_cast<System::Int32>(static_cast<System::Byte>(88)),
 				static_cast<System::Int32>(static_cast<System::Byte>(16)));
 			this->panel1->Controls->Add(this->label1);
 			this->panel1->Dock = System::Windows::Forms::DockStyle::Top;
@@ -133,7 +133,7 @@ namespace PersonalInventoryControl {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
+			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label1->ForeColor = System::Drawing::SystemColors::ControlLightLight;
 			this->label1->Location = System::Drawing::Point(3, 5);
@@ -171,11 +171,13 @@ namespace PersonalInventoryControl {
 			this->data_grid_amigos->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
 			this->data_grid_amigos->CellBorderStyle = System::Windows::Forms::DataGridViewCellBorderStyle::SingleHorizontal;
 			this->data_grid_amigos->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->data_grid_amigos->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {this->tb_amigo_col_nome, 
-				this->tb_amigo_col_sobrenome, this->tb_amigo_col_email, this->tb_amigo_col_sexo, this->tb_amigo_col_telefone});
+			this->data_grid_amigos->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
+				this->tb_amigo_col_nome,
+					this->tb_amigo_col_sobrenome, this->tb_amigo_col_email, this->tb_amigo_col_sexo, this->tb_amigo_col_telefone
+			});
 			dataGridViewCellStyle1->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
 			dataGridViewCellStyle1->BackColor = System::Drawing::SystemColors::Window;
-			dataGridViewCellStyle1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, 
+			dataGridViewCellStyle1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			dataGridViewCellStyle1->ForeColor = System::Drawing::SystemColors::ControlText;
 			dataGridViewCellStyle1->SelectionBackColor = System::Drawing::SystemColors::MenuHighlight;
@@ -398,7 +400,7 @@ namespace PersonalInventoryControl {
 			this->Text = L"Gerenciamento de amigos";
 			this->panel1->ResumeLayout(false);
 			this->panel1->PerformLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->data_grid_amigos))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->data_grid_amigos))->EndInit();
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox2->ResumeLayout(false);
 			this->groupBox2->PerformLayout();
@@ -407,121 +409,123 @@ namespace PersonalInventoryControl {
 		}
 
 #pragma endregion
-	
+
 	public: System::Void ger_amigo_btn_cadastrar_Click(System::Object^  sender, System::EventArgs^  e)
-			{
-				cadAmigoForm ^amigo_form = gcnew cadAmigoForm(this->data_grid_amigos);
-				amigo_form->Show();
-			}
+	{
+		cadAmigoForm ^amigo_form = gcnew cadAmigoForm(this->data_grid_amigos);
+		amigo_form->Show();
+	}
 	private: System::Void ger_amigo_btn_alterar_Click(System::Object^  sender, System::EventArgs^  e)
-				 {
-					 String^ nome_chave = data_grid_amigos->SelectedRows[0]->Cells[0]->Value->ToString();
-					 if(!System::String::IsNullOrEmpty(nome_chave))
-					 { // nome nao vazio
-						Amigo* amigo = controller_amigo->buscar(String_utils::SystemToStdString(nome_chave));//pegar amigo da coluna
-						cadAmigoForm ^amigo_form = gcnew cadAmigoForm(this->data_grid_amigos, amigo);
-						amigo_form->Show();
-					 } else {
-						 MessageBox::Show("Por favor, selecione um amigo!","Erro",
-							 MessageBoxButtons::OK, MessageBoxIcon::Warning);
-					 }
-				 }
+	{
+		String^ nome_chave = data_grid_amigos->SelectedRows[0]->Cells[0]->Value->ToString();
+		if (!System::String::IsNullOrEmpty(nome_chave))
+		{ // nome nao vazio
+			Amigo* amigo = controller_amigo->buscar(String_utils::SystemToStdString(nome_chave));//pegar amigo da coluna
+			cadAmigoForm ^amigo_form = gcnew cadAmigoForm(this->data_grid_amigos, amigo);
+			amigo_form->Show();
+		}
+		else {
+			MessageBox::Show("Por favor, selecione um amigo!", "Erro",
+				MessageBoxButtons::OK, MessageBoxIcon::Warning);
+		}
+	}
 
-	/*private: System::Void ger_amigos_btn_detalhes_Click(System::Object^  sender, System::EventArgs^  e) {
-					 
-					 String^ nome_chave = data_grid_amigos->SelectedRows[0]->Cells[0]->Value->ToString();
-					 if(!System::String::IsNullOrEmpty(nome_chave))
-					 { // nome nao vazio
-						 Amigo* amigo = new Amigo();	
-						 amigo = controller_amigo->buscar(String_utils::SystemToStdString(nome_chave));//pegar amigo da coluna
-						 cadAmigoForm ^amigo_form = gcnew cadAmigoForm(COD_VISUALIZAR,amigo);
-						 amigo_form->Show();
-					 } else {
-						 MessageBox::Show("Por favor, selecione um amigo!","Erro",
-							 MessageBoxButtons::OK, MessageBoxIcon::Warning);
-					 }
+			 /*private: System::Void ger_amigos_btn_detalhes_Click(System::Object^  sender, System::EventArgs^  e) {
 
-					 this->Close();
-					 }*/
+							  String^ nome_chave = data_grid_amigos->SelectedRows[0]->Cells[0]->Value->ToString();
+							  if(!System::String::IsNullOrEmpty(nome_chave))
+							  { // nome nao vazio
+								  Amigo* amigo = new Amigo();
+								  amigo = controller_amigo->buscar(String_utils::SystemToStdString(nome_chave));//pegar amigo da coluna
+								  cadAmigoForm ^amigo_form = gcnew cadAmigoForm(COD_VISUALIZAR,amigo);
+								  amigo_form->Show();
+							  } else {
+								  MessageBox::Show("Por favor, selecione um amigo!","Erro",
+									  MessageBoxButtons::OK, MessageBoxIcon::Warning);
+							  }
+
+							  this->Close();
+							  }*/
 
 	private: System::Void ger_amigo_btn_remover_Click(System::Object^  sender, System::EventArgs^  e) {
-			 
-			 String^ nome_chave = data_grid_amigos->SelectedRows[0]->Cells[0]->Value->ToString();
-			 if(!System::String::IsNullOrEmpty(nome_chave))
-			 { // nome nao vazio
-				
-				 if(MessageBox::Show ("Tem certeza que deseja remover o seu amigo '"+nome_chave+"'?", "Remover",
-					 MessageBoxButtons::YesNo, MessageBoxIcon::Question)
-					 == System::Windows::Forms::DialogResult::Yes)
-				{	
-					int amigo_id = controller_amigo->buscar(String_utils::SystemToStdString(nome_chave))->getId();
-					if(controller_amigo->deletar(amigo_id))
-						{
-							MessageBox::Show("Amigo removido com sucesso", "Sucesso",
-							MessageBoxButtons::OK, MessageBoxIcon::Information);
-						}
+
+		String^ nome_chave = data_grid_amigos->SelectedRows[0]->Cells[0]->Value->ToString();
+		if (!System::String::IsNullOrEmpty(nome_chave))
+		{ // nome nao vazio
+
+			if (MessageBox::Show("Tem certeza que deseja remover o seu amigo '" + nome_chave + "'?", "Remover",
+				MessageBoxButtons::YesNo, MessageBoxIcon::Question)
+				== System::Windows::Forms::DialogResult::Yes)
+			{
+				int amigo_id = controller_amigo->buscar(String_utils::SystemToStdString(nome_chave))->getId();
+				if (controller_amigo->deletar(amigo_id))
+				{
+					MessageBox::Show("Amigo removido com sucesso", "Sucesso",
+						MessageBoxButtons::OK, MessageBoxIcon::Information);
 				}
-				 this->data_grid_amigos->Rows->Clear();
-				 carregar_dadosAmigos();
-			 }
-			 else 
-				 {
-					MessageBox::Show("Por favor, selecione um amigo!","Erro",
-					MessageBoxButtons::OK, MessageBoxIcon::Warning);
-					 }
-		 }
-	private: System::Void data_grid_amigos_RowsAdded(System::Object^  sender,	
-					 System::Windows::Forms::DataGridViewRowsAddedEventArgs^  e) {
-						 this->ger_amigo_btn_alterar->Enabled = true;
-						 this->ger_amigo_btn_remover->Enabled = true;
-				 }
+			}
+			this->data_grid_amigos->Rows->Clear();
+			carregar_dadosAmigos();
+		}
+		else
+		{
+			MessageBox::Show("Por favor, selecione um amigo!", "Erro",
+				MessageBoxButtons::OK, MessageBoxIcon::Warning);
+		}
+	}
+	private: System::Void data_grid_amigos_RowsAdded(System::Object^  sender,
+		System::Windows::Forms::DataGridViewRowsAddedEventArgs^  e) {
+		this->ger_amigo_btn_alterar->Enabled = true;
+		this->ger_amigo_btn_remover->Enabled = true;
+	}
 	private: System::Void data_grid_amigos_SelectionChanged(System::Object^  sender, System::EventArgs^  e) {
-			 
-			 if(this->data_grid_amigos->SelectedRows->Count > 0){
-			 
-				 String^ nome_chave = data_grid_amigos->SelectedRows[0]->Cells[0]->Value->ToString();
-				 if(!System::String::IsNullOrEmpty(nome_chave))
-					{ // nome nao vazio
-						Amigo* amigo = new Amigo();	
-						amigo = controller_amigo->buscar(String_utils::SystemToStdString(nome_chave));//pegar amigo da coluna
-						
-						this->lb_nome->Text = gcnew String(amigo->getNome().c_str());
-						this->lb_sobrenome->Text = gcnew String(amigo->getSobrenome().c_str());
-						this->lb_email->Text = gcnew String(amigo->getEmail().c_str());
-						this->lb_sexo->Text = gcnew String(amigo->getGenero().c_str());
-						this->lb_telefone->Text = gcnew String(amigo->getTelefone().c_str());
-						this->lb_endereco->Text = gcnew String(amigo->getEndereco().c_str());
-	
-					 } else {
-						 MessageBox::Show("Por favor, selecione um amigo!","Erro",
-						 MessageBoxButtons::OK, MessageBoxIcon::Warning);
-				 }
-			 }
-		 }
+
+		if (this->data_grid_amigos->SelectedRows->Count > 0) {
+
+			String^ nome_chave = data_grid_amigos->SelectedRows[0]->Cells[0]->Value->ToString();
+			if (!System::String::IsNullOrEmpty(nome_chave))
+			{ // nome nao vazio
+				Amigo* amigo = new Amigo();
+				amigo = controller_amigo->buscar(String_utils::SystemToStdString(nome_chave));//pegar amigo da coluna
+
+				this->lb_nome->Text = gcnew String(amigo->getNome().c_str());
+				this->lb_sobrenome->Text = gcnew String(amigo->getSobrenome().c_str());
+				this->lb_email->Text = gcnew String(amigo->getEmail().c_str());
+				this->lb_sexo->Text = gcnew String(amigo->getGenero().c_str());
+				this->lb_telefone->Text = gcnew String(amigo->getTelefone().c_str());
+				this->lb_endereco->Text = gcnew String(amigo->getEndereco().c_str());
+
+			}
+			else {
+				MessageBox::Show("Por favor, selecione um amigo!", "Erro",
+					MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			}
+		}
+	}
 	public: void carregar_dadosAmigos()
-					 {
+	{
 
-						 list<Amigo*> *amigos = this->controller_amigo->buscarTodos();
+		list<Amigo*> *amigos = this->controller_amigo->buscarTodos();
 
-						 for each (Amigo *it in *amigos)
-						 {
-							 array<String^>^row1 = 
-								 gcnew array<String^>{
-									 gcnew String(it->getNome().c_str()),
-										 gcnew String(it->getSobrenome().c_str()),
-										 gcnew String(it->getEmail().c_str()),
-										 gcnew String(it->getGenero().c_str()),
-										 gcnew String(it->getTelefone().c_str())
-							 };
-							 this->data_grid_amigos->Rows->Add(row1);
-						 }	
+		for each (Amigo *it in *amigos)
+		{
+			cli::array<String^>^row1 =
+				gcnew cli::array<String^>{
+				gcnew String(it->getNome().c_str()),
+					gcnew String(it->getSobrenome().c_str()),
+					gcnew String(it->getEmail().c_str()),
+					gcnew String(it->getGenero().c_str()),
+					gcnew String(it->getTelefone().c_str())
+			};
+			this->data_grid_amigos->Rows->Add(row1);
+		}
 
-						 if(this->data_grid_amigos->Rows->Count == 0)
-						 {
-							 this->ger_amigo_btn_alterar->Enabled = false;
-							 this->ger_amigo_btn_remover->Enabled = false;	
-						 }
+		if (this->data_grid_amigos->Rows->Count == 0)
+		{
+			this->ger_amigo_btn_alterar->Enabled = false;
+			this->ger_amigo_btn_remover->Enabled = false;
+		}
 
-					 }
-	 };
+	}
+	};
 }

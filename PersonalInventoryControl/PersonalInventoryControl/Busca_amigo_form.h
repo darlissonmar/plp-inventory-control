@@ -19,8 +19,8 @@ namespace PersonalInventoryControl {
 		ControllerAmigo* controller_amigo;
 		Amigo* _amigo;
 		TextBox^ _text_box_amigo;
-		
-		Busca_amigo_form(TextBox^ text_box_emprestimo )
+
+		Busca_amigo_form(TextBox^ text_box_emprestimo)
 		{
 			InitializeComponent();
 			controller_amigo = new ControllerAmigo();
@@ -65,7 +65,7 @@ namespace PersonalInventoryControl {
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			this->col_name = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->label1 = (gcnew System::Windows::Forms::Label());
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->dataGridView1))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// dataGridView1
@@ -78,7 +78,7 @@ namespace PersonalInventoryControl {
 			this->dataGridView1->BackgroundColor = System::Drawing::SystemColors::Control;
 			this->dataGridView1->CellBorderStyle = System::Windows::Forms::DataGridViewCellBorderStyle::SingleHorizontal;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(1) {this->col_name});
+			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(1) { this->col_name });
 			this->dataGridView1->Location = System::Drawing::Point(4, 34);
 			this->dataGridView1->MultiSelect = false;
 			this->dataGridView1->Name = L"dataGridView1";
@@ -121,7 +121,7 @@ namespace PersonalInventoryControl {
 			this->Name = L"Busca_amigo_form";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Amigos cadastrados";
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->dataGridView1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -129,40 +129,41 @@ namespace PersonalInventoryControl {
 #pragma endregion
 
 	public: void carregar_dadosAmigos()
-				{	
-					
-					list<Amigo*> *amigos = this->controller_amigo->buscarTodos();
+	{
 
-					for each (Amigo *it in *amigos)
-					{
-						array<String^>^row1 = 
-							gcnew array<String^>{
-							gcnew String(it->getNome().c_str()) +" "+ gcnew String(it->getSobrenome().c_str())
-									};
-						this->dataGridView1->Rows->Add(row1);
-					}
-				}
+		list<Amigo*> *amigos = this->controller_amigo->buscarTodos();
+
+		for each (Amigo *it in *amigos)
+		{
+			cli::array<String^>^row1 =
+				gcnew cli::array<String^>{
+				gcnew String(it->getNome().c_str()) + " " + gcnew String(it->getSobrenome().c_str())
+			};
+			this->dataGridView1->Rows->Add(row1);
+		}
+	}
 
 	private: System::Void dataGridView1_CellDoubleClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
-			 String^ nome_chave = this->dataGridView1->SelectedRows[0]->Cells[0]->Value->ToString();
+		String^ nome_chave = this->dataGridView1->SelectedRows[0]->Cells[0]->Value->ToString();
 
-			 String^ pattern = "^(\\S*)";
-			 System::Text::RegularExpressions::Regex ^ regex = gcnew System::Text::RegularExpressions::Regex( pattern);
-			 System::Text::RegularExpressions::Match^ match = regex->Match(nome_chave);
-			 String^ nome_chave_split = match->Value;
+		String^ pattern = "^(\\S*)";
+		System::Text::RegularExpressions::Regex ^ regex = gcnew System::Text::RegularExpressions::Regex(pattern);
+		System::Text::RegularExpressions::Match^ match = regex->Match(nome_chave);
+		String^ nome_chave_split = match->Value;
 
 
-			 if(!System::String::IsNullOrEmpty(nome_chave_split))
-			 { // nome nao vazio
+		if (!System::String::IsNullOrEmpty(nome_chave_split))
+		{ // nome nao vazio
 
-				 _amigo = controller_amigo->buscar(String_utils::SystemToStdString(nome_chave_split));
-				 _text_box_amigo->Text = gcnew String(_amigo->getNome().c_str()) + " " +  gcnew String(_amigo->getSobrenome().c_str());
-			 } else {
-				 MessageBox::Show("Por favor, selecione um amigo!","Erro",
-					 MessageBoxButtons::OK, MessageBoxIcon::Warning);
-			 }
-			 this->Close();
+			_amigo = controller_amigo->buscar(String_utils::SystemToStdString(nome_chave_split));
+			_text_box_amigo->Text = gcnew String(_amigo->getNome().c_str()) + " " + gcnew String(_amigo->getSobrenome().c_str());
+		}
+		else {
+			MessageBox::Show("Por favor, selecione um amigo!", "Erro",
+				MessageBoxButtons::OK, MessageBoxIcon::Warning);
+		}
+		this->Close();
 
-		 }
-};
+	}
+	};
 }

@@ -20,9 +20,9 @@ namespace PersonalInventoryControl {
 		ControllerMidiaAudio* controller_midiaAudio;
 		ControllerMidiaDados* controller_midiaDados;
 		ControllerMidiaFilme* controller_midiaFilme;
-        ControllerLivro* controller_livro;
+		ControllerLivro* controller_livro;
 		ControllerEmprestimo* controller_emprestimo;
-		
+
 		gerenciarMateriaisForm(void)
 		{
 			InitializeComponent();
@@ -98,13 +98,13 @@ namespace PersonalInventoryControl {
 			this->dt_grid_emp_col_status = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->panel1->SuspendLayout();
 			this->contextMenuStrip1->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->data_grid_materiais))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->data_grid_materiais))->BeginInit();
 			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// panel1
 			// 
-			this->panel1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(252)), static_cast<System::Int32>(static_cast<System::Byte>(88)), 
+			this->panel1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(252)), static_cast<System::Int32>(static_cast<System::Byte>(88)),
 				static_cast<System::Int32>(static_cast<System::Byte>(16)));
 			this->panel1->Controls->Add(this->label1);
 			this->panel1->Dock = System::Windows::Forms::DockStyle::Top;
@@ -116,7 +116,7 @@ namespace PersonalInventoryControl {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
+			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label1->ForeColor = System::Drawing::SystemColors::ControlLightLight;
 			this->label1->Location = System::Drawing::Point(3, 5);
@@ -159,8 +159,10 @@ namespace PersonalInventoryControl {
 			// 
 			// contextMenuStrip1
 			// 
-			this->contextMenuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(4) {this->livroToolStripMenuItem, 
-				this->mídiaDeAudioToolStripMenuItem, this->mídiaDeFilmeToolStripMenuItem, this->mídiaDeDadosToolStripMenuItem});
+			this->contextMenuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(4) {
+				this->livroToolStripMenuItem,
+					this->mídiaDeAudioToolStripMenuItem, this->mídiaDeFilmeToolStripMenuItem, this->mídiaDeDadosToolStripMenuItem
+			});
 			this->contextMenuStrip1->Name = L"contextMenuStrip1";
 			this->contextMenuStrip1->Size = System::Drawing::Size(157, 92);
 			// 
@@ -200,8 +202,10 @@ namespace PersonalInventoryControl {
 			this->data_grid_materiais->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
 			this->data_grid_materiais->CellBorderStyle = System::Windows::Forms::DataGridViewCellBorderStyle::SingleHorizontal;
 			this->data_grid_materiais->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->data_grid_materiais->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {this->dt_grid_emp_col_tipo, 
-				this->dt_grid_emp_col_titulo, this->dt_grid_emp_col_ano, this->dt_grid_emp_col_status});
+			this->data_grid_materiais->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {
+				this->dt_grid_emp_col_tipo,
+					this->dt_grid_emp_col_titulo, this->dt_grid_emp_col_ano, this->dt_grid_emp_col_status
+			});
 			this->data_grid_materiais->Location = System::Drawing::Point(17, 72);
 			this->data_grid_materiais->MultiSelect = false;
 			this->data_grid_materiais->Name = L"data_grid_materiais";
@@ -279,346 +283,351 @@ namespace PersonalInventoryControl {
 			this->panel1->ResumeLayout(false);
 			this->panel1->PerformLayout();
 			this->contextMenuStrip1->ResumeLayout(false);
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->data_grid_materiais))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->data_grid_materiais))->EndInit();
 			this->groupBox1->ResumeLayout(false);
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
-	
+
 	private: void carregar_dadosMateriais()
-					{
-						list<Livro*> *livros = controller_livro->buscarTodos();
-						list<MidiaAudio*> *midias_audio = controller_midiaAudio->buscarTodos();
-						list<MidiaDados*> *midias_dados = controller_midiaDados->buscarTodos();
-						list<MidiaFilme*> *midias_filme = controller_midiaFilme->buscarTodos();
-						
-						//Solucao feia, mas funcional
-						// Adicionando Livros para o datagrid
-						for each (Livro *it in *livros)
-						{
-							array<String^>^row1 = 
-								gcnew array<String^>{
-										gcnew String("Livro"),
-										gcnew String(it->getTitulo().c_str()),
-										gcnew String(Convert::ToString(it->getAno())),
-										gcnew String(it->isDisponivel() ? "Disponível" : "Emprestado")
-										};
-							this->data_grid_materiais->Rows->Add(row1);
-						}
-						
-						// Adicionando Midia de audio para o datagrid
-						for each (MidiaAudio *it in *midias_audio)
-						{
-							array<String^>^row1 = 
-								gcnew array<String^>{
-										gcnew String(getTipoMidia(it->getTipoMidia())+" de Audio"),
-										gcnew String(it->getTitulo().c_str()),
-										gcnew String(Convert::ToString(it->getAno())),
-										gcnew String(it->isDisponivel() ? "Disponível" : "Emprestado")
-							};
-							this->data_grid_materiais->Rows->Add(row1);
-						}	
-						// Adicionando midias de dados para o datagrid
-						for each (MidiaDados *it in *midias_dados)
-						{
-							array<String^>^row1 = 
-								gcnew array<String^>{
-										gcnew String(getTipoMidia(it->getTipoMidia())+" de Dados"),
-										gcnew String(it->getTitulo().c_str()),
-										gcnew String(Convert::ToString(it->getAno())),
-										gcnew String(it->isDisponivel() ? "Disponível" : "Emprestado")
-							};
-							this->data_grid_materiais->Rows->Add(row1);
-						}	
+	{
+		list<Livro*> *livros = controller_livro->buscarTodos();
+		list<MidiaAudio*> *midias_audio = controller_midiaAudio->buscarTodos();
+		list<MidiaDados*> *midias_dados = controller_midiaDados->buscarTodos();
+		list<MidiaFilme*> *midias_filme = controller_midiaFilme->buscarTodos();
 
-						// Adicionando midias de Filme para o datagrid
-						for each (MidiaFilme *it in *midias_filme)
-						{
-							array<String^>^row1 = 
-								gcnew array<String^>{
-										gcnew String(getTipoMidia(it->getTipoMidia())+" de Filme"),
-										gcnew String(it->getTitulo().c_str()),
-										gcnew String(Convert::ToString(it->getAno())),
-										gcnew String(it->isDisponivel() ? "Disponível" : "Emprestado")
-							};
-							this->data_grid_materiais->Rows->Add(row1);
-						}
+		//Solucao feia, mas funcional
+		// Adicionando Livros para o datagrid
+		for each (Livro *it in *livros)
+		{
+			cli::array<String^>^row1 =
+				gcnew cli::array<String^>{
+				gcnew String("Livro"),
+					gcnew String(it->getTitulo().c_str()),
+					gcnew String(Convert::ToString(it->getAno())),
+					gcnew String(it->isDisponivel() ? "Disponível" : "Emprestado")
+			};
+			this->data_grid_materiais->Rows->Add(row1);
+		}
 
-						if(this->data_grid_materiais->Rows->Count == 0)
-						{
-							this->ger_materiais_btn_alterar->Enabled = false;
-							this->ger_materiais_btn_detalhes->Enabled = false;
-							this->ger_materiais_btn_remover->Enabled = false;	
-						}
+		// Adicionando Midia de audio para o datagrid
+		for each (MidiaAudio *it in *midias_audio)
+		{
+			cli::array<String^>^row1 =
+				gcnew cli::array<String^>{
+				gcnew String(getTipoMidia(it->getTipoMidia()) + " de Audio"),
+					gcnew String(it->getTitulo().c_str()),
+					gcnew String(Convert::ToString(it->getAno())),
+					gcnew String(it->isDisponivel() ? "Disponível" : "Emprestado")
+			};
+			this->data_grid_materiais->Rows->Add(row1);
+		}
+		// Adicionando midias de dados para o datagrid
+		for each (MidiaDados *it in *midias_dados)
+		{
+			cli::array<String^>^row1 =
+				gcnew cli::array<String^>{
+				gcnew String(getTipoMidia(it->getTipoMidia()) + " de Dados"),
+					gcnew String(it->getTitulo().c_str()),
+					gcnew String(Convert::ToString(it->getAno())),
+					gcnew String(it->isDisponivel() ? "Disponível" : "Emprestado")
+			};
+			this->data_grid_materiais->Rows->Add(row1);
+		}
 
-					}
+		// Adicionando midias de Filme para o datagrid
+		for each (MidiaFilme *it in *midias_filme)
+		{
+			cli::array<String^>^row1 =
+				gcnew cli::array<String^>{
+				gcnew String(getTipoMidia(it->getTipoMidia()) + " de Filme"),
+					gcnew String(it->getTitulo().c_str()),
+					gcnew String(Convert::ToString(it->getAno())),
+					gcnew String(it->isDisponivel() ? "Disponível" : "Emprestado")
+			};
+			this->data_grid_materiais->Rows->Add(row1);
+		}
+
+		if (this->data_grid_materiais->Rows->Count == 0)
+		{
+			this->ger_materiais_btn_alterar->Enabled = false;
+			this->ger_materiais_btn_detalhes->Enabled = false;
+			this->ger_materiais_btn_remover->Enabled = false;
+		}
+
+	}
 	private: System::Void ger_materiais_btn_detalhes_Click(System::Object^  sender, System::EventArgs^  e) {
-				
-				 String^ titulo_material = data_grid_materiais->SelectedRows[0]->Cells[1]->Value->ToString();
-				 String^ tipo_material = data_grid_materiais->SelectedRows[0]->Cells[0]->Value->ToString();
-				 String^ pattern = "Audio|Livro|Filme|Dados";
-				 System::Text::RegularExpressions::Regex ^ regex = gcnew System::Text::RegularExpressions::Regex( pattern);
-				 System::Text::RegularExpressions::Match^ match = regex->Match(tipo_material);
-				 String^ tipo_material_split = match->Value;
-				 
-				 MidiaAudio* midia_audio;
-				 MidiaDados* midia_dados;
-				 MidiaFilme* midia_filme;
-				 Livro* livro;
-				 cadMaterialForm ^material_form;
 
-			    if(!System::String::IsNullOrEmpty(titulo_material))
-				 { 
-					 switch( get_codTipoMaterial(tipo_material_split))
-					 {
-					 case COD_AUDIO:
+		String^ titulo_material = data_grid_materiais->SelectedRows[0]->Cells[1]->Value->ToString();
+		String^ tipo_material = data_grid_materiais->SelectedRows[0]->Cells[0]->Value->ToString();
+		String^ pattern = "Audio|Livro|Filme|Dados";
+		System::Text::RegularExpressions::Regex ^ regex = gcnew System::Text::RegularExpressions::Regex(pattern);
+		System::Text::RegularExpressions::Match^ match = regex->Match(tipo_material);
+		String^ tipo_material_split = match->Value;
 
-						 midia_audio = controller_midiaAudio->buscar(String_utils::SystemToStdString(titulo_material));
-						 material_form = gcnew cadMaterialForm(COD_VISUALIZAR,COD_AUDIO, (Material*) midia_audio);
-						 break;
+		MidiaAudio* midia_audio;
+		MidiaDados* midia_dados;
+		MidiaFilme* midia_filme;
+		Livro* livro;
+		cadMaterialForm ^material_form;
 
-					 case COD_DADOS:
+		if (!System::String::IsNullOrEmpty(titulo_material))
+		{
+			switch (get_codTipoMaterial(tipo_material_split))
+			{
+			case COD_AUDIO:
 
-						 midia_dados = controller_midiaDados->buscar(String_utils::SystemToStdString(titulo_material));
-						 material_form = gcnew cadMaterialForm(COD_VISUALIZAR,COD_DADOS,(Material*) midia_dados);		
-						 break;
+				midia_audio = controller_midiaAudio->buscar(String_utils::SystemToStdString(titulo_material));
+				material_form = gcnew cadMaterialForm(COD_VISUALIZAR, COD_AUDIO, (Material*)midia_audio);
+				break;
 
-					 case COD_FILME: 
-						
-						 midia_filme = controller_midiaFilme->buscar(String_utils::SystemToStdString(titulo_material));
-						 material_form = gcnew cadMaterialForm(COD_VISUALIZAR,COD_FILME, (Material*) midia_filme);
-						 break;
+			case COD_DADOS:
 
-					 case COD_LIVRO:
+				midia_dados = controller_midiaDados->buscar(String_utils::SystemToStdString(titulo_material));
+				material_form = gcnew cadMaterialForm(COD_VISUALIZAR, COD_DADOS, (Material*)midia_dados);
+				break;
 
-						 livro = controller_livro->buscar(String_utils::SystemToStdString(titulo_material));
-						 material_form = gcnew cadMaterialForm(COD_VISUALIZAR,COD_LIVRO, (Material*) livro);
-						 break;
+			case COD_FILME:
 
-					 default: 
-							break;
-					 }
+				midia_filme = controller_midiaFilme->buscar(String_utils::SystemToStdString(titulo_material));
+				material_form = gcnew cadMaterialForm(COD_VISUALIZAR, COD_FILME, (Material*)midia_filme);
+				break;
 
-					 material_form->Show();
+			case COD_LIVRO:
 
-				 } else {
-					 MessageBox::Show("Por favor, selecione um item!","Erro",
-					 MessageBoxButtons::OK, MessageBoxIcon::Warning);
-				 }
-			 }
+				livro = controller_livro->buscar(String_utils::SystemToStdString(titulo_material));
+				material_form = gcnew cadMaterialForm(COD_VISUALIZAR, COD_LIVRO, (Material*)livro);
+				break;
+
+			default:
+				break;
+			}
+
+			material_form->Show();
+
+		}
+		else {
+			MessageBox::Show("Por favor, selecione um item!", "Erro",
+				MessageBoxButtons::OK, MessageBoxIcon::Warning);
+		}
+	}
 	private: System::Void ger_materiais_btn_alterar_Click(System::Object^  sender, System::EventArgs^  e) {
-				 
-				 String^ titulo_material = data_grid_materiais->SelectedRows[0]->Cells[1]->Value->ToString();
-				 String^ tipo_material = data_grid_materiais->SelectedRows[0]->Cells[0]->Value->ToString();
-				 String^ pattern = "Audio|Livro|Filme|Dados";
-				 System::Text::RegularExpressions::Regex ^ regex = gcnew System::Text::RegularExpressions::Regex( pattern);
-				 System::Text::RegularExpressions::Match^ match = regex->Match(tipo_material);
-				 String^ tipo_material_split = match->Value;
 
-				 MidiaAudio* midia_audio;
-				 MidiaDados* midia_dados;
-				 MidiaFilme* midia_filme;
-				 Livro* livro;
-				 cadMaterialForm ^material_form;
+		String^ titulo_material = data_grid_materiais->SelectedRows[0]->Cells[1]->Value->ToString();
+		String^ tipo_material = data_grid_materiais->SelectedRows[0]->Cells[0]->Value->ToString();
+		String^ pattern = "Audio|Livro|Filme|Dados";
+		System::Text::RegularExpressions::Regex ^ regex = gcnew System::Text::RegularExpressions::Regex(pattern);
+		System::Text::RegularExpressions::Match^ match = regex->Match(tipo_material);
+		String^ tipo_material_split = match->Value;
 
-				 if(!System::String::IsNullOrEmpty(titulo_material))
-				 { 
-					 switch( get_codTipoMaterial(tipo_material_split))
-					 {
-					 case COD_AUDIO:
+		MidiaAudio* midia_audio;
+		MidiaDados* midia_dados;
+		MidiaFilme* midia_filme;
+		Livro* livro;
+		cadMaterialForm ^material_form;
 
-						 midia_audio = controller_midiaAudio->buscar(String_utils::SystemToStdString(titulo_material));
-						 material_form = gcnew cadMaterialForm(COD_EDITAR,COD_AUDIO, (Material*) midia_audio);
-						 break;
+		if (!System::String::IsNullOrEmpty(titulo_material))
+		{
+			switch (get_codTipoMaterial(tipo_material_split))
+			{
+			case COD_AUDIO:
 
-					 case COD_DADOS:
+				midia_audio = controller_midiaAudio->buscar(String_utils::SystemToStdString(titulo_material));
+				material_form = gcnew cadMaterialForm(COD_EDITAR, COD_AUDIO, (Material*)midia_audio);
+				break;
 
-						 midia_dados = controller_midiaDados->buscar(String_utils::SystemToStdString(titulo_material));
-						 material_form = gcnew cadMaterialForm(COD_EDITAR,COD_DADOS,(Material*) midia_dados);		
-						 break;
+			case COD_DADOS:
 
-					 case COD_FILME: 
+				midia_dados = controller_midiaDados->buscar(String_utils::SystemToStdString(titulo_material));
+				material_form = gcnew cadMaterialForm(COD_EDITAR, COD_DADOS, (Material*)midia_dados);
+				break;
 
-						 midia_filme = controller_midiaFilme->buscar(String_utils::SystemToStdString(titulo_material));
-						 material_form = gcnew cadMaterialForm(COD_EDITAR,COD_FILME, (Material*) midia_filme);
-						 break;
+			case COD_FILME:
 
-					 case COD_LIVRO:
+				midia_filme = controller_midiaFilme->buscar(String_utils::SystemToStdString(titulo_material));
+				material_form = gcnew cadMaterialForm(COD_EDITAR, COD_FILME, (Material*)midia_filme);
+				break;
 
-						 livro = controller_livro->buscar(String_utils::SystemToStdString(titulo_material));
-						 material_form = gcnew cadMaterialForm(COD_EDITAR,COD_LIVRO, (Material*) livro);
-						 break;
+			case COD_LIVRO:
 
-					 default: 
-						 break;
-					 }
+				livro = controller_livro->buscar(String_utils::SystemToStdString(titulo_material));
+				material_form = gcnew cadMaterialForm(COD_EDITAR, COD_LIVRO, (Material*)livro);
+				break;
 
-					 material_form->Show();
+			default:
+				break;
+			}
 
-				 } else {
-					 MessageBox::Show("Por favor, selecione um item!","Erro",
-						 MessageBoxButtons::OK, MessageBoxIcon::Warning);
-				 }
+			material_form->Show();
 
-				 this->Close();
-		 }
+		}
+		else {
+			MessageBox::Show("Por favor, selecione um item!", "Erro",
+				MessageBoxButtons::OK, MessageBoxIcon::Warning);
+		}
+
+		this->Close();
+	}
 	private: System::Void ger_materiais_btn_cadastrar_Click(System::Object^  sender, System::EventArgs^  e) {
-				 //cadMaterialForm ^material_form = gcnew cadMaterialForm();
-			//	 material_form->Show();
-				 this->contextMenuStrip1->Show(this->ger_materiais_btn_cadastrar,this->ger_materiais_btn_cadastrar->Width,0);
+		//cadMaterialForm ^material_form = gcnew cadMaterialForm();
+   //	 material_form->Show();
+		this->contextMenuStrip1->Show(this->ger_materiais_btn_cadastrar, this->ger_materiais_btn_cadastrar->Width, 0);
 
-		 }
+	}
 	private: System::Void ger_materiais_btn_remover_Click(System::Object^  sender, System::EventArgs^  e) {
 
-				 String^ titulo_material = data_grid_materiais->SelectedRows[0]->Cells[1]->Value->ToString();
-				 String^ tipo_material = data_grid_materiais->SelectedRows[0]->Cells[0]->Value->ToString();
-				 String^ pattern = "Audio|Livro|Filme|Dados";
-				 System::Text::RegularExpressions::Regex ^ regex = gcnew System::Text::RegularExpressions::Regex( pattern);
-				 System::Text::RegularExpressions::Match^ match = regex->Match(tipo_material);
-				 String^ tipo_material_split = match->Value;
+		String^ titulo_material = data_grid_materiais->SelectedRows[0]->Cells[1]->Value->ToString();
+		String^ tipo_material = data_grid_materiais->SelectedRows[0]->Cells[0]->Value->ToString();
+		String^ pattern = "Audio|Livro|Filme|Dados";
+		System::Text::RegularExpressions::Regex ^ regex = gcnew System::Text::RegularExpressions::Regex(pattern);
+		System::Text::RegularExpressions::Match^ match = regex->Match(tipo_material);
+		String^ tipo_material_split = match->Value;
 
-				 int material_id;
-				 bool devolvido = true;
-				 Emprestimo* emprestimo = controller_emprestimo->buscarPorMatTitulo(String_utils::SystemToStdString(titulo_material));
-				 
-				 if (emprestimo != NULL){
-					 if(String::IsNullOrEmpty(gcnew String(emprestimo->getDataDevolucao().c_str())))
-						 devolvido = false;
-				 }
+		int material_id;
+		bool devolvido = true;
+		Emprestimo* emprestimo = controller_emprestimo->buscarPorMatTitulo(String_utils::SystemToStdString(titulo_material));
 
-				 if(!System::String::IsNullOrEmpty(titulo_material) && devolvido)
-				 { 
+		if (emprestimo != NULL) {
+			if (String::IsNullOrEmpty(gcnew String(emprestimo->getDataDevolucao().c_str())))
+				devolvido = false;
+		}
 
-					 
-					 if(MessageBox::Show ("Tem certeza que deseja remover o material ' "+ titulo_material+" ' ?", "Remover",
-						 MessageBoxButtons::YesNo, MessageBoxIcon::Question)
-						 == System::Windows::Forms::DialogResult::Yes)
-					 {	
-						 
-						 switch( get_codTipoMaterial(tipo_material_split))
-						 {
-						 case COD_AUDIO:
+		if (!System::String::IsNullOrEmpty(titulo_material) && devolvido)
+		{
 
-							 material_id = controller_midiaAudio->buscar(String_utils::SystemToStdString(titulo_material))->getId();
-							 
-							 if(controller_midiaAudio->deletar(material_id))
-							 {
-								 MessageBox::Show("Midia de audio removida com sucesso", "Sucesso",
-								 MessageBoxButtons::OK, MessageBoxIcon::Information);
-							 }
-							
-							 break;
 
-						 case COD_DADOS:
+			if (MessageBox::Show("Tem certeza que deseja remover o material ' " + titulo_material + " ' ?", "Remover",
+				MessageBoxButtons::YesNo, MessageBoxIcon::Question)
+				== System::Windows::Forms::DialogResult::Yes)
+			{
 
-							 material_id = controller_midiaDados->buscar(String_utils::SystemToStdString(titulo_material))->getId();
-							
-							 if(controller_midiaDados->deletar(material_id))
-							 {
-								 MessageBox::Show("Midia de Dados removida com sucesso", "Sucesso",
-								 MessageBoxButtons::OK, MessageBoxIcon::Information);
-							 }		
-							 break;
+				switch (get_codTipoMaterial(tipo_material_split))
+				{
+				case COD_AUDIO:
 
-						 case COD_FILME: 
+					material_id = controller_midiaAudio->buscar(String_utils::SystemToStdString(titulo_material))->getId();
 
-							 material_id = controller_midiaFilme->buscar(String_utils::SystemToStdString(titulo_material))->getId();
-							 
-							 if(controller_midiaFilme->deletar(material_id))
-							 {
-								 MessageBox::Show("Midia de Filme removida com sucesso", "Sucesso",
-								 MessageBoxButtons::OK, MessageBoxIcon::Information);
-							 }
-							 break;
+					if (controller_midiaAudio->deletar(material_id))
+					{
+						MessageBox::Show("Midia de audio removida com sucesso", "Sucesso",
+							MessageBoxButtons::OK, MessageBoxIcon::Information);
+					}
 
-						 case COD_LIVRO:
+					break;
 
-							 material_id = controller_livro->buscar(String_utils::SystemToStdString(titulo_material))->getId();
-							 
-							 if(controller_livro->deletar(material_id))
-							 {
-								 MessageBox::Show("Livro removido com sucesso", "Sucesso",
-								 MessageBoxButtons::OK, MessageBoxIcon::Information);
-							 }
-							 break;
+				case COD_DADOS:
 
-						 default: 
-							 break;
-						 }
-					 }
+					material_id = controller_midiaDados->buscar(String_utils::SystemToStdString(titulo_material))->getId();
 
-					 this->data_grid_materiais->Rows->Clear();
-					 carregar_dadosMateriais();
-				 }
-				 else 
-				 {
-					 MessageBox::Show("Não é possível remover um material que não foi devolvido!","Erro",
-						 MessageBoxButtons::OK, MessageBoxIcon::Warning);
-				 }
-		 }
+					if (controller_midiaDados->deletar(material_id))
+					{
+						MessageBox::Show("Midia de Dados removida com sucesso", "Sucesso",
+							MessageBoxButtons::OK, MessageBoxIcon::Information);
+					}
+					break;
+
+				case COD_FILME:
+
+					material_id = controller_midiaFilme->buscar(String_utils::SystemToStdString(titulo_material))->getId();
+
+					if (controller_midiaFilme->deletar(material_id))
+					{
+						MessageBox::Show("Midia de Filme removida com sucesso", "Sucesso",
+							MessageBoxButtons::OK, MessageBoxIcon::Information);
+					}
+					break;
+
+				case COD_LIVRO:
+
+					material_id = controller_livro->buscar(String_utils::SystemToStdString(titulo_material))->getId();
+
+					if (controller_livro->deletar(material_id))
+					{
+						MessageBox::Show("Livro removido com sucesso", "Sucesso",
+							MessageBoxButtons::OK, MessageBoxIcon::Information);
+					}
+					break;
+
+				default:
+					break;
+				}
+			}
+
+			this->data_grid_materiais->Rows->Clear();
+			carregar_dadosMateriais();
+		}
+		else
+		{
+			MessageBox::Show("Não é possível remover um material que não foi devolvido!", "Erro",
+				MessageBoxButtons::OK, MessageBoxIcon::Warning);
+		}
+	}
 	private: String^ getTipoMidia(int codigoTipo)
-					  {
+	{
 
-						  String^ tipo_midia;
+		String^ tipo_midia;
 
-						  switch(codigoTipo)
-						  {
-						  case 1: 
-							  tipo_midia = gcnew String("CD");
-							  break;
-						  case 2:
-							  tipo_midia = gcnew String("DVD");
-							  break;
-						  case 3: 
-							  tipo_midia = gcnew String("Blu-ray");
-							  break;
-						  default: 
-							  break;
-						  }
-						  return tipo_midia;
-					  }
+		switch (codigoTipo)
+		{
+		case 1:
+			tipo_midia = gcnew String("CD");
+			break;
+		case 2:
+			tipo_midia = gcnew String("DVD");
+			break;
+		case 3:
+			tipo_midia = gcnew String("Blu-ray");
+			break;
+		default:
+			break;
+		}
+		return tipo_midia;
+	}
 	private: int get_codTipoMaterial(String^ material_nome)
-			 {
-				 int cod_material;
-				 if( material_nome->Equals("Audio") )
-				 {
-					 cod_material = COD_AUDIO;
+	{
+		int cod_material;
+		if (material_nome->Equals("Audio"))
+		{
+			cod_material = COD_AUDIO;
 
-				 } else if ( material_nome->Equals("Dados") )
-				 {
-					 cod_material = COD_DADOS;
+		}
+		else if (material_nome->Equals("Dados"))
+		{
+			cod_material = COD_DADOS;
 
-				 } else if ( material_nome->Equals("Filme") )
-				 {
-					 cod_material = COD_FILME;
+		}
+		else if (material_nome->Equals("Filme"))
+		{
+			cod_material = COD_FILME;
 
-				 } else if ( material_nome->Equals("Livro") )
-				 {
-					 cod_material = COD_LIVRO;
-				 }
+		}
+		else if (material_nome->Equals("Livro"))
+		{
+			cod_material = COD_LIVRO;
+		}
 
-				 return cod_material;
-			 }
+		return cod_material;
+	}
 	private: System::Void mídiaDeAudioToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-			 cadMaterialForm ^cadMat = gcnew cadMaterialForm(COD_CADASTRAR, COD_AUDIO, NULL);
-			 cadMat->Show();
-			 this->Close();
-		 }
+		cadMaterialForm ^cadMat = gcnew cadMaterialForm(COD_CADASTRAR, COD_AUDIO, NULL);
+		cadMat->Show();
+		this->Close();
+	}
 	private: System::Void mídiaDeFilmeToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-			 cadMaterialForm ^cadMat = gcnew cadMaterialForm(COD_CADASTRAR, COD_FILME, NULL);
-			 cadMat->Show();
-			 this->Close();
-		 }
+		cadMaterialForm ^cadMat = gcnew cadMaterialForm(COD_CADASTRAR, COD_FILME, NULL);
+		cadMat->Show();
+		this->Close();
+	}
 	private: System::Void mídiaDeDadosToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-			 cadMaterialForm ^cadMat = gcnew cadMaterialForm(COD_CADASTRAR, COD_DADOS, NULL);
-			 cadMat->Show();
-			 this->Close();
-		 }
+		cadMaterialForm ^cadMat = gcnew cadMaterialForm(COD_CADASTRAR, COD_DADOS, NULL);
+		cadMat->Show();
+		this->Close();
+	}
 	private: System::Void livroToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-			 cadMaterialForm ^cadMat = gcnew cadMaterialForm(COD_CADASTRAR, COD_LIVRO, NULL);
-			 cadMat->Show();
-			 this->Close();
-		 }
-};
+		cadMaterialForm ^cadMat = gcnew cadMaterialForm(COD_CADASTRAR, COD_LIVRO, NULL);
+		cadMat->Show();
+		this->Close();
+	}
+	};
 }

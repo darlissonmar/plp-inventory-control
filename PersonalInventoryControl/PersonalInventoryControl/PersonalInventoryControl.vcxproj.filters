@@ -161,6 +161,7 @@
     <EmbeddedResource Include="PrincipalForm.resX" />
     <EmbeddedResource Include="buscar_material_form.resx" />
     <EmbeddedResource Include="Busca_amigo_form.resx" />
+    <EmbeddedResource Include="form_relatorios.resx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />

@@ -21,7 +21,7 @@ namespace PersonalInventoryControl {
 		ControllerMidiaDados* controller_midia_dados;
 		ControllerMidiaFilme* controller_midia_filme;
 		ControllerLivro* controller_livro;
-		
+
 		form_relatorios(int codigo_relatorio)
 		{
 			InitializeComponent();
@@ -32,7 +32,7 @@ namespace PersonalInventoryControl {
 			controller_livro = new ControllerLivro();
 			controller_emprestimo = new ControllerEmprestimo();
 
-			switch( codigo_relatorio )
+			switch (codigo_relatorio)
 			{
 			case COD_RELATORIO_AMIGO:
 				seleciona_tabAmigo();
@@ -140,20 +140,20 @@ namespace PersonalInventoryControl {
 			this->TAB_relatorios->SuspendLayout();
 			this->tab_amigos->SuspendLayout();
 			this->groupBox1->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->data_grid_amigos))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->data_grid_amigos))->BeginInit();
 			this->tab_materiais->SuspendLayout();
 			this->groupBox2->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->data_grid_materiais))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->data_grid_materiais))->BeginInit();
 			this->tab_emprestimos->SuspendLayout();
 			this->groupBox3->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->data_grid_emprestimos))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->data_grid_emprestimos))->BeginInit();
 			this->panel1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
+			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label1->ForeColor = System::Drawing::SystemColors::Window;
 			this->label1->Location = System::Drawing::Point(12, 9);
@@ -238,8 +238,10 @@ namespace PersonalInventoryControl {
 			this->data_grid_amigos->BackgroundColor = System::Drawing::SystemColors::Window;
 			this->data_grid_amigos->CellBorderStyle = System::Windows::Forms::DataGridViewCellBorderStyle::SingleHorizontal;
 			this->data_grid_amigos->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->data_grid_amigos->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(2) {this->col_amigo_pos, 
-				this->col_amigo_nome});
+			this->data_grid_amigos->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(2) {
+				this->col_amigo_pos,
+					this->col_amigo_nome
+			});
 			this->data_grid_amigos->Location = System::Drawing::Point(6, 72);
 			this->data_grid_amigos->Name = L"data_grid_amigos";
 			this->data_grid_amigos->ReadOnly = true;
@@ -326,8 +328,10 @@ namespace PersonalInventoryControl {
 			this->data_grid_materiais->BackgroundColor = System::Drawing::SystemColors::Window;
 			this->data_grid_materiais->CellBorderStyle = System::Windows::Forms::DataGridViewCellBorderStyle::SingleHorizontal;
 			this->data_grid_materiais->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->data_grid_materiais->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(3) {this->col_materiais_tipo, 
-				this->col_material_titulo, this->col_material_ano});
+			this->data_grid_materiais->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(3) {
+				this->col_materiais_tipo,
+					this->col_material_titulo, this->col_material_ano
+			});
 			this->data_grid_materiais->Location = System::Drawing::Point(6, 72);
 			this->data_grid_materiais->Name = L"data_grid_materiais";
 			this->data_grid_materiais->ReadOnly = true;
@@ -433,8 +437,10 @@ namespace PersonalInventoryControl {
 			this->data_grid_emprestimos->BackgroundColor = System::Drawing::SystemColors::Window;
 			this->data_grid_emprestimos->CellBorderStyle = System::Windows::Forms::DataGridViewCellBorderStyle::SingleHorizontal;
 			this->data_grid_emprestimos->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->data_grid_emprestimos->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(3) {this->col_emprestimo_amigo, 
-				this->col_emprestimo_mat_titulo, this->col_emprestimo_generica});
+			this->data_grid_emprestimos->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(3) {
+				this->col_emprestimo_amigo,
+					this->col_emprestimo_mat_titulo, this->col_emprestimo_generica
+			});
 			this->data_grid_emprestimos->Location = System::Drawing::Point(6, 72);
 			this->data_grid_emprestimos->Name = L"data_grid_emprestimos";
 			this->data_grid_emprestimos->ReadOnly = true;
@@ -466,7 +472,7 @@ namespace PersonalInventoryControl {
 			// 
 			// panel1
 			// 
-			this->panel1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(252)), static_cast<System::Int32>(static_cast<System::Byte>(88)), 
+			this->panel1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(252)), static_cast<System::Int32>(static_cast<System::Byte>(88)),
 				static_cast<System::Int32>(static_cast<System::Byte>(16)));
 			this->panel1->Controls->Add(this->label1);
 			this->panel1->Dock = System::Windows::Forms::DockStyle::Top;
@@ -491,355 +497,355 @@ namespace PersonalInventoryControl {
 			this->tab_amigos->ResumeLayout(false);
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->data_grid_amigos))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->data_grid_amigos))->EndInit();
 			this->tab_materiais->ResumeLayout(false);
 			this->groupBox2->ResumeLayout(false);
 			this->groupBox2->PerformLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->data_grid_materiais))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->data_grid_materiais))->EndInit();
 			this->tab_emprestimos->ResumeLayout(false);
 			this->groupBox3->ResumeLayout(false);
 			this->groupBox3->PerformLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->data_grid_emprestimos))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->data_grid_emprestimos))->EndInit();
 			this->panel1->ResumeLayout(false);
 			this->panel1->PerformLayout();
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
-	
+
 	private: System::Void btn_gerar_amigo_Click(System::Object^  sender, System::EventArgs^  e) {
-				 
-				 this->data_grid_amigos->Rows->Clear();
-				 int posicao_index = 1;
-				 if (rb_btn_amigos_menos->Checked) 
-					{
-					 list<Amigo*> *amigos = this->controller_amigo->buscarImpontuais();
 
-					 for each (Amigo *it in *amigos)
-					 {
-						 array<String^>^row1 = 
-							 gcnew array<String^>{
-								 Convert::ToString(++posicao_index),
-								 gcnew String(it->getNome().c_str()) + " " + gcnew String(it->getSobrenome().c_str())
-									 
-						 };
-						 this->data_grid_amigos->Rows->Add(row1);
-					 }
+		this->data_grid_amigos->Rows->Clear();
+		int posicao_index = 1;
+		if (rb_btn_amigos_menos->Checked)
+		{
+			list<Amigo*> *amigos = this->controller_amigo->buscarImpontuais();
 
-					 if( this->data_grid_amigos->Rows->Count == 0){
-						 MessageBox::Show("Nenhum amigo impontual foi encontrado", "Resultado",
-							 MessageBoxButtons::OK, MessageBoxIcon::Information);
-					 }
+			for each (Amigo *it in *amigos)
+			{
+				cli::array<String^>^row1 =
+					gcnew cli::array<String^>{
+					Convert::ToString(++posicao_index),
+						gcnew String(it->getNome().c_str()) + " " + gcnew String(it->getSobrenome().c_str())
 
-					}
-					else 
-						{
-							list<Amigo*> *amigos = this->controller_amigo->buscarPontuais();
+				};
+				this->data_grid_amigos->Rows->Add(row1);
+			}
 
-							for each (Amigo *it in *amigos)
-							{
-								array<String^>^row1 = 
-									gcnew array<String^>{
-										Convert::ToString(posicao_index++),
-											gcnew String(it->getNome().c_str()) + " " + gcnew String(it->getSobrenome().c_str())
+			if (this->data_grid_amigos->Rows->Count == 0) {
+				MessageBox::Show("Nenhum amigo impontual foi encontrado", "Resultado",
+					MessageBoxButtons::OK, MessageBoxIcon::Information);
+			}
 
-								};
-								this->data_grid_amigos->Rows->Add(row1);
-							}
-							
-							if( this->data_grid_amigos->Rows->Count == 0){
-								MessageBox::Show("Nenhum amigo pontual foi encontrado", "Resultado",
-									MessageBoxButtons::OK, MessageBoxIcon::Information);
-							}
+		}
+		else
+		{
+			list<Amigo*> *amigos = this->controller_amigo->buscarPontuais();
 
-					 }
-			 }
+			for each (Amigo *it in *amigos)
+			{
+				cli::array<String^>^row1 =
+					gcnew cli::array<String^>{
+					Convert::ToString(posicao_index++),
+						gcnew String(it->getNome().c_str()) + " " + gcnew String(it->getSobrenome().c_str())
+
+				};
+				this->data_grid_amigos->Rows->Add(row1);
+			}
+
+			if (this->data_grid_amigos->Rows->Count == 0) {
+				MessageBox::Show("Nenhum amigo pontual foi encontrado", "Resultado",
+					MessageBoxButtons::OK, MessageBoxIcon::Information);
+			}
+
+		}
+	}
 
 	private: System::Void btn_gerar_material_Click(System::Object^  sender, System::EventArgs^  e) {
-				  
-				  this->data_grid_materiais->Rows->Clear();
 
-				  if (rb_btn_mat_ind->Checked)
-					{
-						list<Livro*> *livros = controller_livro->buscarIndisponiveis();
-						list<MidiaAudio*> *midias_audio = controller_midia_audio->buscarIndisponiveis();
-						list<MidiaDados*> *midias_dados = controller_midia_dados->buscarIndisponiveis();
-						list<MidiaFilme*> *midias_filme = controller_midia_filme->buscarIndisponiveis();
+		this->data_grid_materiais->Rows->Clear();
 
-						for each (Livro *it in *livros)
-						{
-							array<String^>^row1 = 
-								gcnew array<String^>{
-									gcnew String("Livro"),
-										gcnew String(it->getTitulo().c_str()),
-										gcnew String(Convert::ToString(it->getAno()))
-							};
-							this->data_grid_materiais->Rows->Add(row1);
-						}
+		if (rb_btn_mat_ind->Checked)
+		{
+			list<Livro*> *livros = controller_livro->buscarIndisponiveis();
+			list<MidiaAudio*> *midias_audio = controller_midia_audio->buscarIndisponiveis();
+			list<MidiaDados*> *midias_dados = controller_midia_dados->buscarIndisponiveis();
+			list<MidiaFilme*> *midias_filme = controller_midia_filme->buscarIndisponiveis();
 
-						// Adicionando Midia de audio para o datagrid
-						for each (MidiaAudio *it in *midias_audio)
-						{
-							array<String^>^row1 = 
-								gcnew array<String^>{
-									gcnew String(getTipoMidia(it->getTipoMidia())+" de Audio"),
-										gcnew String(it->getTitulo().c_str()),
-										gcnew String(Convert::ToString(it->getAno()))
-							};
-							this->data_grid_materiais->Rows->Add(row1);
-						}	
-						// Adicionando midias de dados para o datagrid
-						for each (MidiaDados *it in *midias_dados)
-						{
-							array<String^>^row1 = 
-								gcnew array<String^>{
-									gcnew String(getTipoMidia(it->getTipoMidia())+" de Dados"),
-										gcnew String(it->getTitulo().c_str()),
-										gcnew String(Convert::ToString(it->getAno()))
-							};
-							this->data_grid_materiais->Rows->Add(row1);
-						}	
+			for each (Livro *it in *livros)
+			{
+				cli::array<String^>^row1 =
+					gcnew cli::array<String^>{
+					gcnew String("Livro"),
+						gcnew String(it->getTitulo().c_str()),
+						gcnew String(Convert::ToString(it->getAno()))
+				};
+				this->data_grid_materiais->Rows->Add(row1);
+			}
 
-						// Adicionando midias de Filme para o datagrid
-						for each (MidiaFilme *it in *midias_filme)
-						{
-							array<String^>^row1 = 
-								gcnew array<String^>{
-									gcnew String(getTipoMidia(it->getTipoMidia())+" de Filme"),
-										gcnew String(it->getTitulo().c_str()),
-										gcnew String(Convert::ToString(it->getAno()))
-							};
-							this->data_grid_materiais->Rows->Add(row1);
-						}
+			// Adicionando Midia de audio para o datagrid
+			for each (MidiaAudio *it in *midias_audio)
+			{
+				cli::array<String^>^row1 =
+					gcnew cli::array<String^>{
+					gcnew String(getTipoMidia(it->getTipoMidia()) + " de Audio"),
+						gcnew String(it->getTitulo().c_str()),
+						gcnew String(Convert::ToString(it->getAno()))
+				};
+				this->data_grid_materiais->Rows->Add(row1);
+			}
+			// Adicionando midias de dados para o datagrid
+			for each (MidiaDados *it in *midias_dados)
+			{
+				cli::array<String^>^row1 =
+					gcnew cli::array<String^>{
+					gcnew String(getTipoMidia(it->getTipoMidia()) + " de Dados"),
+						gcnew String(it->getTitulo().c_str()),
+						gcnew String(Convert::ToString(it->getAno()))
+				};
+				this->data_grid_materiais->Rows->Add(row1);
+			}
 
-						if(this->data_grid_materiais->Rows->Count == 0)
-						{
-							MessageBox::Show("Nenhum material indisponível foi encontrado.", "Resultado",
-							MessageBoxButtons::OK, MessageBoxIcon::Information);
-						}
+			// Adicionando midias de Filme para o datagrid
+			for each (MidiaFilme *it in *midias_filme)
+			{
+				cli::array<String^>^row1 =
+					gcnew cli::array<String^>{
+					gcnew String(getTipoMidia(it->getTipoMidia()) + " de Filme"),
+						gcnew String(it->getTitulo().c_str()),
+						gcnew String(Convert::ToString(it->getAno()))
+				};
+				this->data_grid_materiais->Rows->Add(row1);
+			}
 
-					} 
-					else
-						{
-							list<Livro*> *livros = controller_livro->buscarDisponiveis();
-							list<MidiaAudio*> *midias_audio = controller_midia_audio->buscarDisponiveis();
-							list<MidiaDados*> *midias_dados = controller_midia_dados->buscarDisponiveis();
-							list<MidiaFilme*> *midias_filme = controller_midia_filme->buscarDisponiveis();
+			if (this->data_grid_materiais->Rows->Count == 0)
+			{
+				MessageBox::Show("Nenhum material indisponível foi encontrado.", "Resultado",
+					MessageBoxButtons::OK, MessageBoxIcon::Information);
+			}
 
-							for each (Livro *it in *livros)
-							{
-								array<String^>^row1 = 
-									gcnew array<String^>{
-										gcnew String("Livro"),
-											gcnew String(it->getTitulo().c_str()),
-											gcnew String(Convert::ToString(it->getAno()))
-								};
-								this->data_grid_materiais->Rows->Add(row1);
-							}
+		}
+		else
+		{
+			list<Livro*> *livros = controller_livro->buscarDisponiveis();
+			list<MidiaAudio*> *midias_audio = controller_midia_audio->buscarDisponiveis();
+			list<MidiaDados*> *midias_dados = controller_midia_dados->buscarDisponiveis();
+			list<MidiaFilme*> *midias_filme = controller_midia_filme->buscarDisponiveis();
 
-							// Adicionando Midia de audio para o datagrid
-							for each (MidiaAudio *it in *midias_audio)
-							{
-								array<String^>^row1 = 
-									gcnew array<String^>{
-										gcnew String(getTipoMidia(it->getTipoMidia())+" de Audio"),
-											gcnew String(it->getTitulo().c_str()),
-											gcnew String(Convert::ToString(it->getAno()))
-								};
-								this->data_grid_materiais->Rows->Add(row1);
-							}	
-							// Adicionando midias de dados para o datagrid
-							for each (MidiaDados *it in *midias_dados)
-							{
-								array<String^>^row1 = 
-									gcnew array<String^>{
-										gcnew String(getTipoMidia(it->getTipoMidia())+" de Dados"),
-											gcnew String(it->getTitulo().c_str()),
-											gcnew String(Convert::ToString(it->getAno()))
-								};
-								this->data_grid_materiais->Rows->Add(row1);
-							}	
+			for each (Livro *it in *livros)
+			{
+				cli::array<String^>^row1 =
+					gcnew cli::array<String^>{
+					gcnew String("Livro"),
+						gcnew String(it->getTitulo().c_str()),
+						gcnew String(Convert::ToString(it->getAno()))
+				};
+				this->data_grid_materiais->Rows->Add(row1);
+			}
 
-							// Adicionando midias de Filme para o datagrid
-							for each (MidiaFilme *it in *midias_filme)
-							{
-								array<String^>^row1 = 
-									gcnew array<String^>{
-										gcnew String(getTipoMidia(it->getTipoMidia())+" de Filme"),
-											gcnew String(it->getTitulo().c_str()),
-											gcnew String(Convert::ToString(it->getAno()))
-								};
-								this->data_grid_materiais->Rows->Add(row1);
-							}
+			// Adicionando Midia de audio para o datagrid
+			for each (MidiaAudio *it in *midias_audio)
+			{
+				cli::array<String^>^row1 =
+					gcnew cli::array<String^>{
+					gcnew String(getTipoMidia(it->getTipoMidia()) + " de Audio"),
+						gcnew String(it->getTitulo().c_str()),
+						gcnew String(Convert::ToString(it->getAno()))
+				};
+				this->data_grid_materiais->Rows->Add(row1);
+			}
+			// Adicionando midias de dados para o datagrid
+			for each (MidiaDados *it in *midias_dados)
+			{
+				cli::array<String^>^row1 =
+					gcnew cli::array<String^>{
+					gcnew String(getTipoMidia(it->getTipoMidia()) + " de Dados"),
+						gcnew String(it->getTitulo().c_str()),
+						gcnew String(Convert::ToString(it->getAno()))
+				};
+				this->data_grid_materiais->Rows->Add(row1);
+			}
 
-							if(this->data_grid_materiais->Rows->Count == 0)
-							{
-								MessageBox::Show("Nenhum material disponível foi encontrado.", "Resultado",
-								MessageBoxButtons::OK, MessageBoxIcon::Information);
-								}
-						
-						}		
-		 }
+			// Adicionando midias de Filme para o datagrid
+			for each (MidiaFilme *it in *midias_filme)
+			{
+				cli::array<String^>^row1 =
+					gcnew cli::array<String^>{
+					gcnew String(getTipoMidia(it->getTipoMidia()) + " de Filme"),
+						gcnew String(it->getTitulo().c_str()),
+						gcnew String(Convert::ToString(it->getAno()))
+				};
+				this->data_grid_materiais->Rows->Add(row1);
+			}
+
+			if (this->data_grid_materiais->Rows->Count == 0)
+			{
+				MessageBox::Show("Nenhum material disponível foi encontrado.", "Resultado",
+					MessageBoxButtons::OK, MessageBoxIcon::Information);
+			}
+
+		}
+	}
 	private: System::Void btn_gerar_emprestimos_Click(System::Object^  sender, System::EventArgs^  e) {
-				
-				 this->data_grid_emprestimos->Rows->Clear();
-				 if ( rb_btn_emp_fechados->Checked )
+
+		this->data_grid_emprestimos->Rows->Clear();
+		if (rb_btn_emp_fechados->Checked)
+		{
+			configura_dataGridFechados();
+
+			list<Emprestimo*> *emprestimos = this->controller_emprestimo->buscarEmpFechados();
+
+			for each (Emprestimo *it in *emprestimos)
+			{
+				cli::array<String^>^row1 =
+					gcnew cli::array<String^>{
+					gcnew String(it->getAmigo()->getNome().c_str()) + " " +
+						gcnew String(it->getAmigo()->getSobrenome().c_str()),
+						gcnew String(it->getMaterial()->getTitulo().c_str()),
+						gcnew String(it->getDataDevolucao().c_str())
+				};
+				this->data_grid_emprestimos->Rows->Add(row1);
+			}
+
+			if (this->data_grid_emprestimos->Rows->Count == 0)
+			{
+				MessageBox::Show("Nenhum empréstimo Fechado foi encontrado.", "Resultado",
+					MessageBoxButtons::OK, MessageBoxIcon::Information);
+			}
+
+		}
+		else
+			if (rb_btn_emp_venc->Checked)
+			{
+				configura_dataGridVencidos();
+				list<Emprestimo*> *emprestimos = this->controller_emprestimo->buscarEmpVencidos();
+				int dias_atraso = 0;
+				for each (Emprestimo *it in *emprestimos)
+				{
+					dias_atraso = get_diasAtrasado(it);
+
+					if (dias_atraso > 0)
 					{
-						configura_dataGridFechados();
+						cli::array<String^>^row1 =
+							gcnew cli::array<String^>{
+							gcnew String(it->getAmigo()->getNome().c_str()) + " " +
+								gcnew String(it->getAmigo()->getSobrenome().c_str()),
+								gcnew String(it->getMaterial()->getTitulo().c_str()),
+								Convert::ToString(dias_atraso) + " dias"
+						};
+						this->data_grid_emprestimos->Rows->Add(row1);
+					}
+				}
 
-						list<Emprestimo*> *emprestimos = this->controller_emprestimo->buscarEmpFechados();
+				if (this->data_grid_emprestimos->Rows->Count == 0)
+				{
+					MessageBox::Show("Nenhum empréstimo vencido foi encontrado.", "Resultado",
+						MessageBoxButtons::OK, MessageBoxIcon::Information);
+				}
 
-						for each (Emprestimo *it in *emprestimos)
-						{
-							array<String^>^row1 = 
-								gcnew array<String^>{
-									gcnew String(it->getAmigo()->getNome().c_str()) +" "+
-										gcnew String(it->getAmigo()->getSobrenome().c_str()) ,
-										gcnew String(it->getMaterial()->getTitulo().c_str()),
-										gcnew String(it->getDataDevolucao().c_str())
-							};
-							this->data_grid_emprestimos->Rows->Add(row1);
-						}	
+			}
+			else
+			{
+				configura_dataGridAbertos();
 
-						if(this->data_grid_emprestimos->Rows->Count == 0)
-						{
-							MessageBox::Show("Nenhum empréstimo Fechado foi encontrado.", "Resultado",
-								MessageBoxButtons::OK, MessageBoxIcon::Information);
-						}
+				list<Emprestimo*> *emprestimos = this->controller_emprestimo->buscarEmpAbertos();
 
-						} 
-				 else
-					 if ( rb_btn_emp_venc->Checked)
-						 {
-							 configura_dataGridVencidos();
-							 list<Emprestimo*> *emprestimos = this->controller_emprestimo->buscarEmpVencidos();
-							 int dias_atraso = 0;
-							 for each (Emprestimo *it in *emprestimos)
-							 {
-								 dias_atraso = get_diasAtrasado(it);
-								 
-									if ( dias_atraso > 0)
-										{
-											array<String^>^row1 = 
-												 gcnew array<String^>{
-												 gcnew String(it->getAmigo()->getNome().c_str()) +" "+
-												 gcnew String(it->getAmigo()->getSobrenome().c_str()) ,
-												 gcnew String(it->getMaterial()->getTitulo().c_str()),
-												 Convert::ToString(dias_atraso) + " dias"
-												};
-											this->data_grid_emprestimos->Rows->Add(row1);
-											}					 
-								 }	
+				for each (Emprestimo *it in *emprestimos)
+				{
+					cli::array<String^>^row1 =
+						gcnew cli::array<String^>{
+						gcnew String(it->getAmigo()->getNome().c_str()) + " " +
+							gcnew String(it->getAmigo()->getSobrenome().c_str()),
+							gcnew String(it->getMaterial()->getTitulo().c_str()),
+							gcnew String(it->getDataEmprestimo().c_str())
+					};
+					this->data_grid_emprestimos->Rows->Add(row1);
+				}
 
-							 if(this->data_grid_emprestimos->Rows->Count == 0)
-							 {
-								 MessageBox::Show("Nenhum empréstimo vencido foi encontrado.", "Resultado",
-								 MessageBoxButtons::OK, MessageBoxIcon::Information);
-							 }
+				if (this->data_grid_emprestimos->Rows->Count == 0)
+				{
+					MessageBox::Show("Nenhum empréstimo aberto foi encontrado.", "Resultado",
+						MessageBoxButtons::OK, MessageBoxIcon::Information);
+				}
 
-							} 
-							else 
-							  {
-								  configura_dataGridAbertos();
-
-								  list<Emprestimo*> *emprestimos = this->controller_emprestimo->buscarEmpAbertos();
-
-								  for each (Emprestimo *it in *emprestimos)
-								  {
-									  array<String^>^row1 = 
-										  gcnew array<String^>{
-												gcnew String(it->getAmigo()->getNome().c_str()) +" "+
-												gcnew String(it->getAmigo()->getSobrenome().c_str()) ,
-												gcnew String(it->getMaterial()->getTitulo().c_str()),
-												gcnew String(it->getDataEmprestimo().c_str())
-									  };
-									  this->data_grid_emprestimos->Rows->Add(row1);
-								  }	
-
-								  if(this->data_grid_emprestimos->Rows->Count == 0)
-								  {
-									  MessageBox::Show("Nenhum empréstimo aberto foi encontrado.", "Resultado",
-									  MessageBoxButtons::OK, MessageBoxIcon::Information);
-								  }
-
-							}
-					 }
+			}
+	}
 
 	private:
 		String^ getTipoMidia(int codigoTipo)
-				 {
+		{
 
-					 String^ tipo_midia;
+			String^ tipo_midia;
 
-					 switch(codigoTipo)
-					 {
-					 case 1: 
-						 tipo_midia = gcnew String("CD");
-						 break;
-					 case 2:
-						 tipo_midia = gcnew String("DVD");
-						 break;
-					 case 3: 
-						 tipo_midia = gcnew String("Blu-ray");
-						 break;
-					 default: 
-						 break;
-					 }
-					 return tipo_midia;
-				 }
-		void seleciona_tabAmigo(){
-				
+			switch (codigoTipo)
+			{
+			case 1:
+				tipo_midia = gcnew String("CD");
+				break;
+			case 2:
+				tipo_midia = gcnew String("DVD");
+				break;
+			case 3:
+				tipo_midia = gcnew String("Blu-ray");
+				break;
+			default:
+				break;
+			}
+			return tipo_midia;
+		}
+		void seleciona_tabAmigo() {
+
 			this->TAB_relatorios->TabPages->Remove(this->tab_materiais);
 			this->TAB_relatorios->TabPages->Remove(this->tab_emprestimos);
 		}
-		void seleciona_tabMaterial(){
-			
+		void seleciona_tabMaterial() {
+
 			this->TAB_relatorios->TabPages->Remove(this->tab_amigos);
 			this->TAB_relatorios->TabPages->Remove(this->tab_emprestimos);
-		
+
 		}
-		void seleciona_tabEmprestimo(){
-			
+		void seleciona_tabEmprestimo() {
+
 			this->TAB_relatorios->TabPages->Remove(this->tab_materiais);
 			this->TAB_relatorios->TabPages->Remove(this->tab_amigos);
 		}
-		
-		void configura_dataGridFechados(){
+
+		void configura_dataGridFechados() {
 			this->col_emprestimo_generica->HeaderText = L"Data da Devolução";
 		}
-		void configura_dataGridVencidos(){
+		void configura_dataGridVencidos() {
 			this->col_emprestimo_generica->HeaderText = L"Dias Vencidos";
 		}
-		void configura_dataGridAbertos(){
+		void configura_dataGridAbertos() {
 			this->col_emprestimo_generica->HeaderText = L"Data do Empréstimo";
 		}
 
-		private: int get_diaDoAno(String^ data_string)
-				 {
-					 DateTime^ date = gcnew DateTime();
-					 IFormatProvider^ culture = gcnew  System::Globalization::CultureInfo("pt-BR", true);
-					 date = DateTime::Parse(data_string,culture,System::Globalization::DateTimeStyles::AssumeLocal);
+	private: int get_diaDoAno(String^ data_string)
+	{
+		DateTime^ date = gcnew DateTime();
+		IFormatProvider^ culture = gcnew  System::Globalization::CultureInfo("pt-BR", true);
+		date = DateTime::Parse(data_string, culture, System::Globalization::DateTimeStyles::AssumeLocal);
 
-					 return date->DayOfYear;
-				 }	
+		return date->DayOfYear;
+	}
 
-		private: int get_diasAtrasado(Emprestimo* emprestimo){
+	private: int get_diasAtrasado(Emprestimo* emprestimo) {
 
-					 int dias_atraso = 0;
-					 DateTime^ data_hoje = gcnew DateTime();
-					 data_hoje = DateTime::Now; 
+		int dias_atraso = 0;
+		DateTime^ data_hoje = gcnew DateTime();
+		data_hoje = DateTime::Now;
 
-					 int dia_ano_hoje = data_hoje->DayOfYear;
-					 int dia_ano_emprestimo = get_diaDoAno(gcnew String(emprestimo->getDataEmprestimo().c_str()));
-					 int dia_prazo_devolucao = emprestimo->getPrazoDias();
+		int dia_ano_hoje = data_hoje->DayOfYear;
+		int dia_ano_emprestimo = get_diaDoAno(gcnew String(emprestimo->getDataEmprestimo().c_str()));
+		int dia_prazo_devolucao = emprestimo->getPrazoDias();
 
 
-					 if( (dia_ano_emprestimo + dia_prazo_devolucao) < dia_ano_hoje)
-						  dias_atraso = dia_ano_hoje - (dia_ano_emprestimo + dia_prazo_devolucao);
-				
-					 return dias_atraso;
-					 
-			 }	
+		if ((dia_ano_emprestimo + dia_prazo_devolucao) < dia_ano_hoje)
+			dias_atraso = dia_ano_hoje - (dia_ano_emprestimo + dia_prazo_devolucao);
 
-};
+		return dias_atraso;
+
+	}
+
+	};
 }

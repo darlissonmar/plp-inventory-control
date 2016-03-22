@@ -22,10 +22,10 @@ namespace PersonalInventoryControl {
 		ControllerLivro* controller_livro;
 		TextBox^ _text_box_material;
 		Label^ _COD_MATERIAL;
-	
-	public: 
 
-		buscar_material_form( TextBox^ text_box_material, Label^ codigo_material)
+	public:
+
+		buscar_material_form(TextBox^ text_box_material, Label^ codigo_material)
 		{
 			InitializeComponent();
 
@@ -37,7 +37,7 @@ namespace PersonalInventoryControl {
 			carregar_dadosMateriais();
 			_text_box_material = text_box_material;
 			_COD_MATERIAL = codigo_material;
-			
+
 			//
 			//TODO: Add the constructor code here
 			//
@@ -46,12 +46,12 @@ namespace PersonalInventoryControl {
 		{
 			InitializeComponent();
 
-		
+
 
 			carregar_dadosMateriais();
-					//
-			//TODO: Add the constructor code here
 			//
+	//TODO: Add the constructor code here
+	//
 		}
 	protected:
 		/// <summary>
@@ -65,7 +65,7 @@ namespace PersonalInventoryControl {
 			}
 		}
 
-	private: System::Windows::Forms::DataGridView^  dataGridView1; 
+	private: System::Windows::Forms::DataGridView^  dataGridView1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  col_material_tipo;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  col_material_nome;
 	private: System::Windows::Forms::Label^  label1;
@@ -88,7 +88,7 @@ namespace PersonalInventoryControl {
 			this->col_material_tipo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->col_material_nome = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->label1 = (gcnew System::Windows::Forms::Label());
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->dataGridView1))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// dataGridView1
@@ -102,8 +102,10 @@ namespace PersonalInventoryControl {
 			this->dataGridView1->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
 			this->dataGridView1->CellBorderStyle = System::Windows::Forms::DataGridViewCellBorderStyle::None;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(2) {this->col_material_tipo, 
-				this->col_material_nome});
+			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(2) {
+				this->col_material_tipo,
+					this->col_material_nome
+			});
 			this->dataGridView1->Location = System::Drawing::Point(9, 32);
 			this->dataGridView1->MultiSelect = false;
 			this->dataGridView1->Name = L"dataGridView1";
@@ -152,7 +154,7 @@ namespace PersonalInventoryControl {
 			this->Name = L"buscar_material_form";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Materiais disponíveis";
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->dataGridView1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -160,170 +162,174 @@ namespace PersonalInventoryControl {
 #pragma endregion
 
 	public: void carregar_dadosMateriais()
-				{
-					list<Livro*> *livros = controller_livro->buscarDisponiveis();
-					list<MidiaAudio*> *midias_audio = controller_midiaAudio->buscarDisponiveis();
-					list<MidiaDados*> *midias_dados = controller_midiaDados->buscarDisponiveis();
-					list<MidiaFilme*> *midias_filme = controller_midiaFilme->buscarDisponiveis();
+	{
+		list<Livro*> *livros = controller_livro->buscarDisponiveis();
+		list<MidiaAudio*> *midias_audio = controller_midiaAudio->buscarDisponiveis();
+		list<MidiaDados*> *midias_dados = controller_midiaDados->buscarDisponiveis();
+		list<MidiaFilme*> *midias_filme = controller_midiaFilme->buscarDisponiveis();
 
-					//Solucao feia, mas funcional
-					// Adicionando Livros para o datagrid
-					for each (Livro *it in *livros)
-					{
-						array<String^>^row1 = 
-							gcnew array<String^>{
-								gcnew String("Livro"),
-								gcnew String(it->getTitulo().c_str()),
-						};
-						this->dataGridView1->Rows->Add(row1);
-					}
+		//Solucao feia, mas funcional
+		// Adicionando Livros para o datagrid
+		for each (Livro *it in *livros)
+		{
+			cli::array<String^>^row1 =
+				gcnew cli::array<String^>{
+				gcnew String("Livro"),
+					gcnew String(it->getTitulo().c_str()),
+			};
+			this->dataGridView1->Rows->Add(row1);
+		}
 
-					// Adicionando Midia de audio para o datagrid
-					for each (MidiaAudio *it in *midias_audio)
-					{
-						array<String^>^row1 = 
-							gcnew array<String^>{
-								gcnew String(getTipoMidia(it->getTipoMidia())+" de Audio"),
-									gcnew String(it->getTitulo().c_str()),
-						};
-						this->dataGridView1->Rows->Add(row1);
-					}	
-					// Adicionando midias de dados para o datagrid
-					for each (MidiaDados *it in *midias_dados)
-					{
-						array<String^>^row1 = 
-							gcnew array<String^>{
-								gcnew String(getTipoMidia(it->getTipoMidia())+" de Dados"),
-									gcnew String(it->getTitulo().c_str()),
-							};
-						this->dataGridView1->Rows->Add(row1);
-					}	
+		// Adicionando Midia de audio para o datagrid
+		for each (MidiaAudio *it in *midias_audio)
+		{
+			cli::array<String^>^row1 =
+				gcnew cli::array<String^>{
+				gcnew String(getTipoMidia(it->getTipoMidia()) + " de Audio"),
+					gcnew String(it->getTitulo().c_str()),
+			};
+			this->dataGridView1->Rows->Add(row1);
+		}
+		// Adicionando midias de dados para o datagrid
+		for each (MidiaDados *it in *midias_dados)
+		{
+			cli::array<String^>^row1 =
+				gcnew cli::array<String^>{
+				gcnew String(getTipoMidia(it->getTipoMidia()) + " de Dados"),
+					gcnew String(it->getTitulo().c_str()),
+			};
+			this->dataGridView1->Rows->Add(row1);
+		}
 
-					// Adicionando midias de Filme para o datagrid
-					for each (MidiaFilme *it in *midias_filme)
-					{
-						array<String^>^row1 = 
-							gcnew array<String^>{
-								gcnew String(getTipoMidia(it->getTipoMidia())+" de Filme"),
-									gcnew String(it->getTitulo().c_str()),
-					};
-						this->dataGridView1->Rows->Add(row1);
-					}	
+		// Adicionando midias de Filme para o datagrid
+		for each (MidiaFilme *it in *midias_filme)
+		{
+			cli::array<String^>^row1 =
+				gcnew cli::array<String^>{
+				gcnew String(getTipoMidia(it->getTipoMidia()) + " de Filme"),
+					gcnew String(it->getTitulo().c_str()),
+			};
+			this->dataGridView1->Rows->Add(row1);
+		}
 
-				}
+	}
 
 	private: String^ getTipoMidia(int codigoTipo)
-			 {
+	{
 
-				 String^ tipo_midia;
+		String^ tipo_midia;
 
-				 switch(codigoTipo)
-				 {
-				 case 1: 
-					 tipo_midia = gcnew String("CD");
-					 break;
-				 case 2:
-					 tipo_midia = gcnew String("DVD");
-					 break;
-				 case 3: 
-					 tipo_midia = gcnew String("Blu-ray");
-					 break;
-				 default: 
-					 break;
-				 }
-				 return tipo_midia;
-			 }
+		switch (codigoTipo)
+		{
+		case 1:
+			tipo_midia = gcnew String("CD");
+			break;
+		case 2:
+			tipo_midia = gcnew String("DVD");
+			break;
+		case 3:
+			tipo_midia = gcnew String("Blu-ray");
+			break;
+		default:
+			break;
+		}
+		return tipo_midia;
+	}
 
 	private: System::Void dataGridView1_CellDoubleClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
-			
-			 String^ titulo_material = dataGridView1->SelectedRows[0]->Cells[1]->Value->ToString();
-			 String^ tipo_material = dataGridView1->SelectedRows[0]->Cells[0]->Value->ToString();
-			 String^ pattern = "Audio|Livro|Filme|Dados";
-			 System::Text::RegularExpressions::Regex ^ regex = gcnew System::Text::RegularExpressions::Regex( pattern);
-			 System::Text::RegularExpressions::Match^ match = regex->Match(tipo_material);
-			 String^ tipo_material_split = match->Value;
 
-			 if(!System::String::IsNullOrEmpty(titulo_material))
-				 { 
-					 switch( get_codTipoMaterial(tipo_material_split))
-					 {
-					 case COD_AUDIO:
-						 
-						 _text_box_material->Text 
-												= gcnew String(controller_midiaAudio
-												->buscar(String_utils::SystemToStdString(titulo_material))
-												->getTitulo().c_str());
-						 
-						_COD_MATERIAL->Text = Convert::ToString(COD_AUDIO);
-						 
-						 break;
+		String^ titulo_material = dataGridView1->SelectedRows[0]->Cells[1]->Value->ToString();
+		String^ tipo_material = dataGridView1->SelectedRows[0]->Cells[0]->Value->ToString();
+		String^ pattern = "Audio|Livro|Filme|Dados";
+		System::Text::RegularExpressions::Regex ^ regex = gcnew System::Text::RegularExpressions::Regex(pattern);
+		System::Text::RegularExpressions::Match^ match = regex->Match(tipo_material);
+		String^ tipo_material_split = match->Value;
 
-					 case COD_DADOS:
-						
-						 _text_box_material->Text 
-												= gcnew String(controller_midiaDados
-												->buscar(String_utils::SystemToStdString(titulo_material))
-												->getTitulo().c_str());
+		if (!System::String::IsNullOrEmpty(titulo_material))
+		{
+			switch (get_codTipoMaterial(tipo_material_split))
+			{
+			case COD_AUDIO:
 
-						 _COD_MATERIAL->Text = Convert::ToString(COD_DADOS);
-								
-						 break;
+				_text_box_material->Text
+					= gcnew String(controller_midiaAudio
+						->buscar(String_utils::SystemToStdString(titulo_material))
+						->getTitulo().c_str());
 
-					 case COD_FILME: 
-						
-						 _text_box_material->Text 
-												 = gcnew String(controller_midiaFilme
-												->buscar(String_utils::SystemToStdString(titulo_material))
-												->getTitulo().c_str());
-						
-						  _COD_MATERIAL->Text = Convert::ToString(COD_FILME);
-						 
-						 break;
+				_COD_MATERIAL->Text = Convert::ToString(COD_AUDIO);
 
-					 case COD_LIVRO:
-						 
-						 _text_box_material->Text 
-												= gcnew String(controller_livro
-												->buscar(String_utils::SystemToStdString(titulo_material))
-												->getTitulo().c_str());
+				break;
 
-						_COD_MATERIAL->Text = Convert::ToString(COD_LIVRO);
-						  
+			case COD_DADOS:
 
-						 break;
+				_text_box_material->Text
+					= gcnew String(controller_midiaDados
+						->buscar(String_utils::SystemToStdString(titulo_material))
+						->getTitulo().c_str());
 
-					 default: 
-						 break;
-					 }
-			 } else {
-				 MessageBox::Show("Por favor, selecione um material!","Erro",
-					 MessageBoxButtons::OK, MessageBoxIcon::Warning);
-			 }
+				_COD_MATERIAL->Text = Convert::ToString(COD_DADOS);
 
-			 this->Close();
-		 }
+				break;
+
+			case COD_FILME:
+
+				_text_box_material->Text
+					= gcnew String(controller_midiaFilme
+						->buscar(String_utils::SystemToStdString(titulo_material))
+						->getTitulo().c_str());
+
+				_COD_MATERIAL->Text = Convert::ToString(COD_FILME);
+
+				break;
+
+			case COD_LIVRO:
+
+				_text_box_material->Text
+					= gcnew String(controller_livro
+						->buscar(String_utils::SystemToStdString(titulo_material))
+						->getTitulo().c_str());
+
+				_COD_MATERIAL->Text = Convert::ToString(COD_LIVRO);
+
+
+				break;
+
+			default:
+				break;
+			}
+		}
+		else {
+			MessageBox::Show("Por favor, selecione um material!", "Erro",
+				MessageBoxButtons::OK, MessageBoxIcon::Warning);
+		}
+
+		this->Close();
+	}
 
 	private: int get_codTipoMaterial(String^ material_nome)
-					  {
-						  int cod_material;
-						  if( material_nome->Equals("Audio") )
-						  {
-							  cod_material = COD_AUDIO;
+	{
+		int cod_material;
+		if (material_nome->Equals("Audio"))
+		{
+			cod_material = COD_AUDIO;
 
-						  } else if ( material_nome->Equals("Dados") )
-						  {
-							  cod_material = COD_DADOS;
+		}
+		else if (material_nome->Equals("Dados"))
+		{
+			cod_material = COD_DADOS;
 
-						  } else if ( material_nome->Equals("Filme") )
-						  {
-							  cod_material = COD_FILME;
+		}
+		else if (material_nome->Equals("Filme"))
+		{
+			cod_material = COD_FILME;
 
-						  } else if ( material_nome->Equals("Livro") )
-						  {
-							  cod_material = COD_LIVRO;
-						  }
+		}
+		else if (material_nome->Equals("Livro"))
+		{
+			cod_material = COD_LIVRO;
+		}
 
-						  return cod_material;
-					  }
-};
+		return cod_material;
+	}
+	};
 }

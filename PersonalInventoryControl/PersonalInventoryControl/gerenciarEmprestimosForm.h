@@ -101,14 +101,14 @@ namespace PersonalInventoryControl {
 			this->lb_amigo_nome = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->panel1->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->data_grid_emprestimos))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->data_grid_emprestimos))->BeginInit();
 			this->groupBox1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// panel1
 			// 
-			this->panel1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(252)), static_cast<System::Int32>(static_cast<System::Byte>(88)), 
+			this->panel1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(252)), static_cast<System::Int32>(static_cast<System::Byte>(88)),
 				static_cast<System::Int32>(static_cast<System::Byte>(16)));
 			this->panel1->Controls->Add(this->label1);
 			this->panel1->Dock = System::Windows::Forms::DockStyle::Top;
@@ -120,7 +120,7 @@ namespace PersonalInventoryControl {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
+			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label1->ForeColor = System::Drawing::SystemColors::ControlLightLight;
 			this->label1->Location = System::Drawing::Point(3, 5);
@@ -158,8 +158,10 @@ namespace PersonalInventoryControl {
 			this->data_grid_emprestimos->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
 			this->data_grid_emprestimos->CellBorderStyle = System::Windows::Forms::DataGridViewCellBorderStyle::SingleHorizontal;
 			this->data_grid_emprestimos->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->data_grid_emprestimos->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {this->dt_grid_emp_col_amigo, 
-				this->dt_grid_emp_col_mat, this->dt_grid_emp_col_data_emp, this->dt_grid_emp_col_data_dev});
+			this->data_grid_emprestimos->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {
+				this->dt_grid_emp_col_amigo,
+					this->dt_grid_emp_col_mat, this->dt_grid_emp_col_data_emp, this->dt_grid_emp_col_data_dev
+			});
 			this->data_grid_emprestimos->Location = System::Drawing::Point(6, 19);
 			this->data_grid_emprestimos->MultiSelect = false;
 			this->data_grid_emprestimos->Name = L"data_grid_emprestimos";
@@ -272,7 +274,7 @@ namespace PersonalInventoryControl {
 			// lb_emp_status
 			// 
 			this->lb_emp_status->AutoSize = true;
-			this->lb_emp_status->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
+			this->lb_emp_status->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lb_emp_status->ForeColor = System::Drawing::SystemColors::ControlText;
 			this->lb_emp_status->Location = System::Drawing::Point(571, 52);
@@ -341,7 +343,7 @@ namespace PersonalInventoryControl {
 			this->Text = L"Gerenciamento de empréstimos";
 			this->panel1->ResumeLayout(false);
 			this->panel1->PerformLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->data_grid_emprestimos))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->data_grid_emprestimos))->EndInit();
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox2->ResumeLayout(false);
 			this->groupBox2->PerformLayout();
@@ -350,383 +352,384 @@ namespace PersonalInventoryControl {
 		}
 #pragma endregion
 	private: System::Void ger_emp_btn_novo_Click(System::Object^  sender, System::EventArgs^  e) {
-				 EmprestimoForm ^form_emprestimo = gcnew EmprestimoForm();
-				 this->Close();
-				 form_emprestimo->Show();
-			 }
+		EmprestimoForm ^form_emprestimo = gcnew EmprestimoForm();
+		this->Close();
+		form_emprestimo->Show();
+	}
 	private: System::Void data_grid_emprestimos_SelectionChanged(System::Object^  sender, System::EventArgs^  e) {
-					 
-					 if(this->data_grid_emprestimos->SelectedRows->Count > 0){
 
-						ativa_buttons(true);
+		if (this->data_grid_emprestimos->SelectedRows->Count > 0) {
 
-						 String^ titulo_chave = data_grid_emprestimos->SelectedRows[0]->Cells[1]->Value->ToString();
-						 if(!System::String::IsNullOrEmpty(titulo_chave))
-						 { 
-							 Emprestimo* emprestimo = controller_emprestimo->buscarPorMatTitulo(
-											String_utils::SystemToStdString(titulo_chave));
+			ativa_buttons(true);
 
-							 this->lb_amigo_nome->Text = get_nomeCompleto(emprestimo->getAmigo());
-							 this->lb_material_titulo->Text = get_materialTipoTitulo(emprestimo->getMaterial()->getTitulo())  +" "+ 
-								 gcnew String (emprestimo->getMaterial()->getTitulo().c_str());
-							 this->lb_data_devolucao->Text = get_devolvido(gcnew String(emprestimo->getDataDevolucao().c_str()));
-			 
-							 set_estadoDetalhe(emprestimo);
-
-						 } else {
-							 MessageBox::Show("Por favor, selecione um amigo!","Erro",
-								 MessageBoxButtons::OK, MessageBoxIcon::Warning);
-						 }
-					 } 
-					 else {
-						
-						 ativa_buttons(false);
-					 }
-				 }
-	private: System::Void ger_emp_btn_remover_Click(System::Object^  sender, System::EventArgs^  e) {
-					 
-					  String^ titulo_material = data_grid_emprestimos->SelectedRows[0]->Cells[1]->Value->ToString();
-					
-					  int emprestimo_id;
-					  String^ data_devolucao;
-
-					  if(!System::String::IsNullOrEmpty(titulo_material))
-					  { 
-
-						  if(MessageBox::Show ("Tem certeza que deseja remover esse empréstimo ?", "Remover",
-							  MessageBoxButtons::YesNo, MessageBoxIcon::Question)
-							  == System::Windows::Forms::DialogResult::Yes)
-							  {
-
-								emprestimo_id = controller_emprestimo->buscarPorMatTitulo(String_utils::SystemToStdString(titulo_material))->getId();
-								data_devolucao = gcnew String (
-												controller_emprestimo
-												->buscarPorMatTitulo(String_utils::SystemToStdString(titulo_material))
-												->getDataDevolucao().c_str());
-								
-								if(!System::String::IsNullOrEmpty(data_devolucao))	
-									{
-										if(controller_emprestimo->deletar(emprestimo_id))
-											{
-												MessageBox::Show("Empréstimo removido com sucesso", "Sucesso",
-												MessageBoxButtons::OK, MessageBoxIcon::Information);
-												}
-										}
-										else
-											{
-												MessageBox::Show("Não é possível remover um empréstimo não devolvido", "Erro",
-												MessageBoxButtons::OK, MessageBoxIcon::Warning);
-												}
-									}
-
-						  this->data_grid_emprestimos->Rows->Clear();
-						  carregar_dadosEmprestimos();
-						  }
-						else
-							{
-								MessageBox::Show("Por favor, selecione um empréstimo!","Erro",
-								MessageBoxButtons::OK, MessageBoxIcon::Warning);
-								}				  
-					  }
-	private: System::Void ger_emp_btn_devolver_Click(System::Object^  sender, System::EventArgs^  e) {
-				
-				 String^ titulo_material = data_grid_emprestimos->SelectedRows[0]->Cells[1]->Value->ToString();
-
-				 if(!System::String::IsNullOrEmpty(titulo_material))
-				 { 
-					 
-					 DateTime^ data_hoje = gcnew DateTime();
-					 data_hoje = DateTime::Now;
-					 String^ data_string = 
-								  Convert::ToString(data_hoje->Day) +"-"
-								+ Convert::ToString(data_hoje->Month)+ "-"
-								+ Convert::ToString(data_hoje->Year); 
-					 
-					 if(MessageBox::Show ("Devolver para a data de hoje: " + data_string + " ?", "Devolver",
-						 MessageBoxButtons::YesNo, MessageBoxIcon::Question)
-						 == System::Windows::Forms::DialogResult::Yes)
-						{
-							Emprestimo* emprestimo = controller_emprestimo->buscarPorMatTitulo(String_utils::SystemToStdString(titulo_material));
-														
-							emprestimo->setDataDevolucao(String_utils::SystemToStdString(data_string));
-							
-							if(get_diasAtrasado(emprestimo) > 0){
-									emprestimo->setAtrasado(true);
-								}
-
-							if(controller_emprestimo->atualizar(emprestimo))
-								{
-									
-									if (devolver_material(String_utils::SystemToStdString(titulo_material)))
-										{
-											MessageBox::Show("Empréstimo devolvido com sucesso", "Sucesso",
-											MessageBoxButtons::OK, MessageBoxIcon::Information);
-											}
-										else
-											{
-												MessageBox::Show("Ocorreu um erro durante a operação", "Erro",
-												MessageBoxButtons::OK, MessageBoxIcon::Error);
-													}
-								}
-						}
-						
-					 this->data_grid_emprestimos->Rows->Clear();
-					 carregar_dadosEmprestimos();
-
-					}
-					 else
-					 {
-					 MessageBox::Show("Por favor, selecione um empréstimo!","Erro",
-						 MessageBoxButtons::OK, MessageBoxIcon::Warning);
-				 }
-			  }
-	private: String^ get_stringTipoMidia(EnumTipoMidia::Tipo _tipo_midia)
-					  {
-
-						  String^ tipo_midia;
-
-						  switch(_tipo_midia)
-						  {
-						  case EnumTipoMidia::CD: 
-							  tipo_midia = gcnew String("CD");
-							  break;
-						  case EnumTipoMidia::DVD:
-							  tipo_midia = gcnew String("DVD");
-							  break;
-						  case EnumTipoMidia::BLURAY: 
-							  tipo_midia = gcnew String("Blu-ray");
-							  break;
-						  default: 
-							  break;
-						  }
-						  return tipo_midia;
-					  }
-	private: String^ get_materialTipoTitulo(string titulo_material)
-			 {
-					 
-				 String^ tipo_material;
-				 Livro* livro = controller_livro->buscar(titulo_material);
-				 MidiaAudio* midia_audio = controller_midiaAudio->buscar(titulo_material);
-				 MidiaFilme* midia_filme = controller_midiaFilme->buscar(titulo_material);
-				 MidiaDados* midia_dados = controller_midiaDados->buscar(titulo_material);
-				 
-				 
-				 if( livro != NULL )
-				 {
-					 tipo_material = "Livro:";
-					 _CODIGO_MATERIAL = COD_LIVRO;
-				 }
-				 else if (midia_filme != NULL)
-				 {
-					 tipo_material = get_stringTipoMidia(midia_filme->getTipoMidia()) + " de Filme: ";
-					  _CODIGO_MATERIAL = COD_FILME;
-				 }
-				 else if ( midia_audio != NULL )
-				 {
-					 tipo_material = get_stringTipoMidia(midia_audio->getTipoMidia()) + " de Audio: ";
-					  _CODIGO_MATERIAL = COD_AUDIO;
-				 } 
-				 else if ( midia_dados != NULL)
-				 {
-					 tipo_material = get_stringTipoMidia(midia_dados->getTipoMidia()) + " de Dados: ";
-					  _CODIGO_MATERIAL = COD_DADOS;
-				 }
-
-				 return tipo_material;
-			 }
-	private: String^ get_devolvido(String^ data_devolucao)
-			 {
-				 String^ devolvido_status;
-				 if(String::IsNullOrEmpty(data_devolucao))
-					 devolvido_status = "Não";
-				 else
-					 devolvido_status = "Sim, em " + data_devolucao;
-
-				 return devolvido_status;	
-			 }
-	private: String^ get_nomeCompleto(Amigo* amigo)
-			 {				
-				 String^ nome_completo =  
-					 gcnew String(amigo->getNome().c_str()) + " " + gcnew String(amigo->getSobrenome().c_str());
-				 return nome_completo;
-			 }
-	private: int get_diaDoAno(String^ data_string)
-			 {
-				 DateTime^ date = gcnew DateTime();
-				 IFormatProvider^ culture = gcnew  System::Globalization::CultureInfo("pt-BR", true);
-				 date = DateTime::Parse(data_string,culture,System::Globalization::DateTimeStyles::AssumeLocal);
-
-				 return date->DayOfYear;
-			 }	
-	
-	private: void set_estadoDetalhe(Emprestimo* emprestimo)
-			 {
-
-				 if (System::String::IsNullOrEmpty(gcnew String(emprestimo->getDataDevolucao().c_str())))
-				 {
-					 this->ger_emp_btn_devolver->Enabled = true;
-					 DateTime^ data_hoje = gcnew DateTime();
-					 data_hoje = DateTime::Now; 
-					 int dia_ano_hoje = data_hoje->DayOfYear;
-					 int dia_ano_emprestimo = get_diaDoAno(gcnew String(emprestimo->getDataEmprestimo().c_str()));
-					 int dia_prazo_devolucao = emprestimo->getPrazoDias();
-										 
-					 if( (dia_ano_emprestimo + dia_prazo_devolucao) < dia_ano_hoje)
-					{
-
-						 int dias_atraso = dia_ano_hoje - (dia_ano_emprestimo + dia_prazo_devolucao);
-
-						 this->lb_emp_status->Text = "Vencido há " + Convert::ToString(dias_atraso)+" dias";
-						 this->lb_emp_status->Font->Bold;
-						 this->lb_emp_status->ForeColor = System::Drawing::Color::Red;
-						 }
-						 else 
-							 {
-							 this->lb_emp_status->Text = "Normal";
-							 this->lb_emp_status->Font->Bold;
-							 this->lb_emp_status->ForeColor = System::Drawing::Color::Green;								
-								}
-
-					 }
-					else { 
-						
-						int dia_ano_devolucao = get_diaDoAno(gcnew String(emprestimo->getDataDevolucao().c_str()));
-						int dia_ano_emprestimo = get_diaDoAno(gcnew String(emprestimo->getDataEmprestimo().c_str()));
-						int dia_prazo_devolucao = emprestimo->getPrazoDias();
-
-						 if( dia_ano_devolucao <= (dia_ano_emprestimo + dia_prazo_devolucao) )
-							{			
-						 
-							this->ger_emp_btn_devolver->Enabled = false;
-							this->lb_emp_status->Text = "Normal" ;
-							this->lb_emp_status->Font->Bold;
-							this->lb_emp_status->ForeColor = System::Drawing::Color::Green;
-								}
-								else
-								{
-								int dias_atraso = dia_ano_devolucao - (dia_ano_emprestimo + dia_prazo_devolucao);
-								this->lb_emp_status->Text = "Com atraso de " +Convert::ToString(dias_atraso)+ " dias";
-								this->lb_emp_status->Font->Bold;
-								this->lb_emp_status->ForeColor = System::Drawing::Color::Red;
-						 }
-					}
-			 }	
-	private: void ativa_buttons(bool ativando)
-		{
-			if(ativando)
+			String^ titulo_chave = data_grid_emprestimos->SelectedRows[0]->Cells[1]->Value->ToString();
+			if (!System::String::IsNullOrEmpty(titulo_chave))
 			{
-				this->ger_emp_btn_alterar->Enabled = true;
-				this->ger_emp_btn_devolver->Enabled = true;
-				this->ger_emp_btn_remover->Enabled = true;
-			} 
-			else {
+				Emprestimo* emprestimo = controller_emprestimo->buscarPorMatTitulo(
+					String_utils::SystemToStdString(titulo_chave));
 
-				this->lb_amigo_nome->Text = "";
-				this->lb_material_titulo->Text = ""; 
-				this->lb_data_devolucao->Text = "";
-				this->lb_emp_status->Text ="";
-				this->ger_emp_btn_alterar->Enabled = false;
-				this->ger_emp_btn_devolver->Enabled = false;
-				this->ger_emp_btn_remover->Enabled = false;
+				this->lb_amigo_nome->Text = get_nomeCompleto(emprestimo->getAmigo());
+				this->lb_material_titulo->Text = get_materialTipoTitulo(emprestimo->getMaterial()->getTitulo()) + " " +
+					gcnew String(emprestimo->getMaterial()->getTitulo().c_str());
+				this->lb_data_devolucao->Text = get_devolvido(gcnew String(emprestimo->getDataDevolucao().c_str()));
+
+				set_estadoDetalhe(emprestimo);
 
 			}
+			else {
+				MessageBox::Show("Por favor, selecione um amigo!", "Erro",
+					MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			}
+		}
+		else {
+
+			ativa_buttons(false);
+		}
 	}
-	private: void carregar_dadosEmprestimos()
+	private: System::Void ger_emp_btn_remover_Click(System::Object^  sender, System::EventArgs^  e) {
+
+		String^ titulo_material = data_grid_emprestimos->SelectedRows[0]->Cells[1]->Value->ToString();
+
+		int emprestimo_id;
+		String^ data_devolucao;
+
+		if (!System::String::IsNullOrEmpty(titulo_material))
 		{
 
-			list<Emprestimo*> *emprestimos = this->controller_emprestimo->buscarTodos();
-
-			for each (Emprestimo *it in *emprestimos)
+			if (MessageBox::Show("Tem certeza que deseja remover esse empréstimo ?", "Remover",
+				MessageBoxButtons::YesNo, MessageBoxIcon::Question)
+				== System::Windows::Forms::DialogResult::Yes)
 			{
-				array<String^>^row1 = 
-					gcnew array<String^>{
-						gcnew String(it->getAmigo()->getNome().c_str()),
-							gcnew String(it->getMaterial()->getTitulo().c_str()),
-							gcnew String(it->getDataEmprestimo().c_str()),
-							gcnew String(Convert::ToString(it->getPrazoDias())+ " dias"),
-				};
-				this->data_grid_emprestimos->Rows->Add(row1);
-			}	
 
-			if(this->data_grid_emprestimos->Rows->Count == 0)
+				emprestimo_id = controller_emprestimo->buscarPorMatTitulo(String_utils::SystemToStdString(titulo_material))->getId();
+				data_devolucao = gcnew String(
+					controller_emprestimo
+					->buscarPorMatTitulo(String_utils::SystemToStdString(titulo_material))
+					->getDataDevolucao().c_str());
+
+				if (!System::String::IsNullOrEmpty(data_devolucao))
+				{
+					if (controller_emprestimo->deletar(emprestimo_id))
+					{
+						MessageBox::Show("Empréstimo removido com sucesso", "Sucesso",
+							MessageBoxButtons::OK, MessageBoxIcon::Information);
+					}
+				}
+				else
+				{
+					MessageBox::Show("Não é possível remover um empréstimo não devolvido", "Erro",
+						MessageBoxButtons::OK, MessageBoxIcon::Warning);
+				}
+			}
+
+			this->data_grid_emprestimos->Rows->Clear();
+			carregar_dadosEmprestimos();
+		}
+		else
+		{
+			MessageBox::Show("Por favor, selecione um empréstimo!", "Erro",
+				MessageBoxButtons::OK, MessageBoxIcon::Warning);
+		}
+	}
+	private: System::Void ger_emp_btn_devolver_Click(System::Object^  sender, System::EventArgs^  e) {
+
+		String^ titulo_material = data_grid_emprestimos->SelectedRows[0]->Cells[1]->Value->ToString();
+
+		if (!System::String::IsNullOrEmpty(titulo_material))
+		{
+
+			DateTime^ data_hoje = gcnew DateTime();
+			data_hoje = DateTime::Now;
+			String^ data_string =
+				Convert::ToString(data_hoje->Day) + "-"
+				+ Convert::ToString(data_hoje->Month) + "-"
+				+ Convert::ToString(data_hoje->Year);
+
+			if (MessageBox::Show("Devolver para a data de hoje: " + data_string + " ?", "Devolver",
+				MessageBoxButtons::YesNo, MessageBoxIcon::Question)
+				== System::Windows::Forms::DialogResult::Yes)
 			{
-				ativa_buttons(false);
+				Emprestimo* emprestimo = controller_emprestimo->buscarPorMatTitulo(String_utils::SystemToStdString(titulo_material));
+
+				emprestimo->setDataDevolucao(String_utils::SystemToStdString(data_string));
+
+				if (get_diasAtrasado(emprestimo) > 0) {
+					emprestimo->setAtrasado(true);
+				}
+
+				if (controller_emprestimo->atualizar(emprestimo))
+				{
+
+					if (devolver_material(String_utils::SystemToStdString(titulo_material)))
+					{
+						MessageBox::Show("Empréstimo devolvido com sucesso", "Sucesso",
+							MessageBoxButtons::OK, MessageBoxIcon::Information);
+					}
+					else
+					{
+						MessageBox::Show("Ocorreu um erro durante a operação", "Erro",
+							MessageBoxButtons::OK, MessageBoxIcon::Error);
+					}
+				}
+			}
+
+			this->data_grid_emprestimos->Rows->Clear();
+			carregar_dadosEmprestimos();
+
+		}
+		else
+		{
+			MessageBox::Show("Por favor, selecione um empréstimo!", "Erro",
+				MessageBoxButtons::OK, MessageBoxIcon::Warning);
+		}
+	}
+	private: String^ get_stringTipoMidia(EnumTipoMidia::Tipo _tipo_midia)
+	{
+
+		String^ tipo_midia;
+
+		switch (_tipo_midia)
+		{
+		case EnumTipoMidia::CD:
+			tipo_midia = gcnew String("CD");
+			break;
+		case EnumTipoMidia::DVD:
+			tipo_midia = gcnew String("DVD");
+			break;
+		case EnumTipoMidia::BLURAY:
+			tipo_midia = gcnew String("Blu-ray");
+			break;
+		default:
+			break;
+		}
+		return tipo_midia;
+	}
+	private: String^ get_materialTipoTitulo(string titulo_material)
+	{
+
+		String^ tipo_material;
+		Livro* livro = controller_livro->buscar(titulo_material);
+		MidiaAudio* midia_audio = controller_midiaAudio->buscar(titulo_material);
+		MidiaFilme* midia_filme = controller_midiaFilme->buscar(titulo_material);
+		MidiaDados* midia_dados = controller_midiaDados->buscar(titulo_material);
+
+
+		if (livro != NULL)
+		{
+			tipo_material = "Livro:";
+			_CODIGO_MATERIAL = COD_LIVRO;
+		}
+		else if (midia_filme != NULL)
+		{
+			tipo_material = get_stringTipoMidia(midia_filme->getTipoMidia()) + " de Filme: ";
+			_CODIGO_MATERIAL = COD_FILME;
+		}
+		else if (midia_audio != NULL)
+		{
+			tipo_material = get_stringTipoMidia(midia_audio->getTipoMidia()) + " de Audio: ";
+			_CODIGO_MATERIAL = COD_AUDIO;
+		}
+		else if (midia_dados != NULL)
+		{
+			tipo_material = get_stringTipoMidia(midia_dados->getTipoMidia()) + " de Dados: ";
+			_CODIGO_MATERIAL = COD_DADOS;
+		}
+
+		return tipo_material;
+	}
+	private: String^ get_devolvido(String^ data_devolucao)
+	{
+		String^ devolvido_status;
+		if (String::IsNullOrEmpty(data_devolucao))
+			devolvido_status = "Não";
+		else
+			devolvido_status = "Sim, em " + data_devolucao;
+
+		return devolvido_status;
+	}
+	private: String^ get_nomeCompleto(Amigo* amigo)
+	{
+		String^ nome_completo =
+			gcnew String(amigo->getNome().c_str()) + " " + gcnew String(amigo->getSobrenome().c_str());
+		return nome_completo;
+	}
+	private: int get_diaDoAno(String^ data_string)
+	{
+		DateTime^ date = gcnew DateTime();
+		IFormatProvider^ culture = gcnew  System::Globalization::CultureInfo("pt-BR", true);
+		date = DateTime::Parse(data_string, culture, System::Globalization::DateTimeStyles::AssumeLocal);
+
+		return date->DayOfYear;
+	}
+
+	private: void set_estadoDetalhe(Emprestimo* emprestimo)
+	{
+
+		if (System::String::IsNullOrEmpty(gcnew String(emprestimo->getDataDevolucao().c_str())))
+		{
+			this->ger_emp_btn_devolver->Enabled = true;
+			DateTime^ data_hoje = gcnew DateTime();
+			data_hoje = DateTime::Now;
+			int dia_ano_hoje = data_hoje->DayOfYear;
+			int dia_ano_emprestimo = get_diaDoAno(gcnew String(emprestimo->getDataEmprestimo().c_str()));
+			int dia_prazo_devolucao = emprestimo->getPrazoDias();
+
+			if ((dia_ano_emprestimo + dia_prazo_devolucao) < dia_ano_hoje)
+			{
+
+				int dias_atraso = dia_ano_hoje - (dia_ano_emprestimo + dia_prazo_devolucao);
+
+				this->lb_emp_status->Text = "Vencido há " + Convert::ToString(dias_atraso) + " dias";
+				this->lb_emp_status->Font->Bold;
+				this->lb_emp_status->ForeColor = System::Drawing::Color::Red;
+			}
+			else
+			{
+				this->lb_emp_status->Text = "Normal";
+				this->lb_emp_status->Font->Bold;
+				this->lb_emp_status->ForeColor = System::Drawing::Color::Green;
 			}
 
 		}
-	
-	private: System::Void ger_emp_btn_alterar_Click(System::Object^  sender, System::EventArgs^  e) {
-				 
-				 if(this->data_grid_emprestimos->SelectedRows->Count > 0){
+		else {
 
-					 ativa_buttons(true);
+			int dia_ano_devolucao = get_diaDoAno(gcnew String(emprestimo->getDataDevolucao().c_str()));
+			int dia_ano_emprestimo = get_diaDoAno(gcnew String(emprestimo->getDataEmprestimo().c_str()));
+			int dia_prazo_devolucao = emprestimo->getPrazoDias();
 
-					 String^ titulo_chave = data_grid_emprestimos->SelectedRows[0]->Cells[1]->Value->ToString();
-					 if(!System::String::IsNullOrEmpty(titulo_chave))
-					 { 
-						 Emprestimo* emprestimo = controller_emprestimo->buscarPorMatTitulo(
-							 String_utils::SystemToStdString(titulo_chave));
-					EmprestimoForm ^form_emprestimo = gcnew EmprestimoForm(emprestimo, _CODIGO_MATERIAL);
-					this->Close();
-					form_emprestimo->Show();
-					 }
-				 }
-			 }
+			if (dia_ano_devolucao <= (dia_ano_emprestimo + dia_prazo_devolucao))
+			{
 
-	private: int get_diasAtrasado(Emprestimo* emprestimo){
-			 
-				 	int dias_atraso = 0; 
-					
-					int dia_ano_devolucao = get_diaDoAno(gcnew String(emprestimo->getDataDevolucao().c_str()));
-					int dia_ano_emprestimo = get_diaDoAno(gcnew String(emprestimo->getDataEmprestimo().c_str()));
-					int dia_prazo_devolucao = emprestimo->getPrazoDias();
-
-					if( dia_ano_devolucao > (dia_ano_emprestimo + dia_prazo_devolucao))
-						 {
-							 dias_atraso = dia_ano_devolucao - (dia_ano_emprestimo + dia_prazo_devolucao);
-							 }
-
-					return dias_atraso;
-				}
-	private: bool devolver_material(string titulo_material)
-		 {
-
-			 bool devolveu = false;
-			 Livro* livro = controller_livro->buscar(titulo_material);
-			 MidiaAudio* midia_audio = controller_midiaAudio->buscar(titulo_material);
-			 MidiaFilme* midia_filme = controller_midiaFilme->buscar(titulo_material);
-			 MidiaDados* midia_dados = controller_midiaDados->buscar(titulo_material);
-
-
-			 if( livro != NULL )
-			 {
-				 livro->setDisponivel(true);
-				 if(controller_livro->atualizar(livro))
-					 devolveu = true;
-			 }
-			 else if (midia_filme != NULL)
-			 {
-				 midia_filme->setDisponivel(true);
-				 if(controller_midiaFilme->atualizar(midia_filme))
-					 devolveu = true;
-
-			 }
-			 else if ( midia_audio != NULL )
-			 {
-				 midia_audio->setDisponivel(true);
-				 if(controller_midiaAudio->atualizar(midia_audio))
-					 devolveu = true;
-
-			 } 
-			 else if ( midia_dados != NULL)
-			 {
-				 midia_dados->setDisponivel(true);
-				 if(controller_midiaDados->atualizar(midia_dados))
-					 devolveu = true;
-		
-			 }
-
-			 return devolveu;
-		 }
-		};
+				this->ger_emp_btn_devolver->Enabled = false;
+				this->lb_emp_status->Text = "Normal";
+				this->lb_emp_status->Font->Bold;
+				this->lb_emp_status->ForeColor = System::Drawing::Color::Green;
+			}
+			else
+			{
+				int dias_atraso = dia_ano_devolucao - (dia_ano_emprestimo + dia_prazo_devolucao);
+				this->lb_emp_status->Text = "Com atraso de " + Convert::ToString(dias_atraso) + " dias";
+				this->lb_emp_status->Font->Bold;
+				this->lb_emp_status->ForeColor = System::Drawing::Color::Red;
+			}
+		}
 	}
+	private: void ativa_buttons(bool ativando)
+	{
+		if (ativando)
+		{
+			this->ger_emp_btn_alterar->Enabled = true;
+			this->ger_emp_btn_devolver->Enabled = true;
+			this->ger_emp_btn_remover->Enabled = true;
+		}
+		else {
+
+			this->lb_amigo_nome->Text = "";
+			this->lb_material_titulo->Text = "";
+			this->lb_data_devolucao->Text = "";
+			this->lb_emp_status->Text = "";
+			this->ger_emp_btn_alterar->Enabled = false;
+			this->ger_emp_btn_devolver->Enabled = false;
+			this->ger_emp_btn_remover->Enabled = false;
+
+		}
+	}
+	private: void carregar_dadosEmprestimos()
+	{
+
+		list<Emprestimo*> *emprestimos = this->controller_emprestimo->buscarTodos();
+
+		for each (Emprestimo *it in *emprestimos)
+		{
+			cli::array<String^>^row1 =
+				gcnew cli::array<String^>{
+				gcnew String(it->getAmigo()->getNome().c_str()),
+					gcnew String(it->getMaterial()->getTitulo().c_str()),
+					gcnew String(it->getDataEmprestimo().c_str()),
+					gcnew String(Convert::ToString(it->getPrazoDias()) + " dias"),
+			};
+			this->data_grid_emprestimos->Rows->Add(row1);
+		}
+
+		if (this->data_grid_emprestimos->Rows->Count == 0)
+		{
+			ativa_buttons(false);
+		}
+
+	}
+
+	private: System::Void ger_emp_btn_alterar_Click(System::Object^  sender, System::EventArgs^  e) {
+
+		if (this->data_grid_emprestimos->SelectedRows->Count > 0) {
+
+			ativa_buttons(true);
+
+			String^ titulo_chave = data_grid_emprestimos->SelectedRows[0]->Cells[1]->Value->ToString();
+			if (!System::String::IsNullOrEmpty(titulo_chave))
+			{
+				Emprestimo* emprestimo = controller_emprestimo->buscarPorMatTitulo(
+					String_utils::SystemToStdString(titulo_chave));
+				EmprestimoForm ^form_emprestimo = gcnew EmprestimoForm(emprestimo, _CODIGO_MATERIAL);
+				this->Close();
+				form_emprestimo->Show();
+			}
+		}
+	}
+
+	private: int get_diasAtrasado(Emprestimo* emprestimo) {
+
+		int dias_atraso = 0;
+
+		int dia_ano_devolucao = get_diaDoAno(gcnew String(emprestimo->getDataDevolucao().c_str()));
+		int dia_ano_emprestimo = get_diaDoAno(gcnew String(emprestimo->getDataEmprestimo().c_str()));
+		int dia_prazo_devolucao = emprestimo->getPrazoDias();
+
+		if (dia_ano_devolucao > (dia_ano_emprestimo + dia_prazo_devolucao))
+		{
+			dias_atraso = dia_ano_devolucao - (dia_ano_emprestimo + dia_prazo_devolucao);
+		}
+
+		return dias_atraso;
+	}
+	private: bool devolver_material(string titulo_material)
+	{
+
+		bool devolveu = false;
+		Livro* livro = controller_livro->buscar(titulo_material);
+		MidiaAudio* midia_audio = controller_midiaAudio->buscar(titulo_material);
+		MidiaFilme* midia_filme = controller_midiaFilme->buscar(titulo_material);
+		MidiaDados* midia_dados = controller_midiaDados->buscar(titulo_material);
+
+
+		if (livro != NULL)
+		{
+			livro->setDisponivel(true);
+			if (controller_livro->atualizar(livro))
+				devolveu = true;
+		}
+		else if (midia_filme != NULL)
+		{
+			midia_filme->setDisponivel(true);
+			if (controller_midiaFilme->atualizar(midia_filme))
+				devolveu = true;
+
+		}
+		else if (midia_audio != NULL)
+		{
+			midia_audio->setDisponivel(true);
+			if (controller_midiaAudio->atualizar(midia_audio))
+				devolveu = true;
+
+		}
+		else if (midia_dados != NULL)
+		{
+			midia_dados->setDisponivel(true);
+			if (controller_midiaDados->atualizar(midia_dados))
+				devolveu = true;
+
+		}
+
+		return devolveu;
+	}
+	};
+}

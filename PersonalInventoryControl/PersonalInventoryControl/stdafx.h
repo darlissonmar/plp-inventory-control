@@ -3,6 +3,8 @@
 // are changed infrequently
 #pragma once
 
+#define _SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS
+
 #define COD_CADASTRAR 1
 #define COD_EDITAR 2
 #define COD_VISUALIZAR 3
